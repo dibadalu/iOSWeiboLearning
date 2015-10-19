@@ -1,13 +1,12 @@
 //
 //  AppDelegate.m
-//  ZJWeibo
+//  ZJWeico
 //
-//  Created by 陈泽嘉 on 15/10/16.
+//  Created by dibadalu on 15/10/19.
 //  Copyright (c) 2015年 dibadalu. All rights reserved.
 //
 
 #import "AppDelegate.h"
-#import "ZJTabBarViewController.h"
 
 @interface AppDelegate ()
 
@@ -18,20 +17,6 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
-
-    application.statusBarHidden = NO;
-    
-    //成为主窗口
-    self.window = [[UIWindow alloc] init];
-    self.window.frame = [UIScreen mainScreen].bounds;
-    
-    //设置根控制器
-    ZJTabBarViewController *tabBarVC = [[ZJTabBarViewController alloc] init];
-    self.window.rootViewController = tabBarVC;
-    
-    //让主窗口显示
-    [self.window makeKeyAndVisible];
-    
     return YES;
 }
 

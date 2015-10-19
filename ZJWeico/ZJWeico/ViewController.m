@@ -1,8 +1,8 @@
 //
 //  ViewController.m
-//  ZJWeibo
+//  ZJWeico
 //
-//  Created by 陈泽嘉 on 15/10/16.
+//  Created by dibadalu on 15/10/19.
 //  Copyright (c) 2015年 dibadalu. All rights reserved.
 //
 

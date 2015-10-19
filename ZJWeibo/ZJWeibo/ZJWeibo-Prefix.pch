@@ -1,0 +1,18 @@
+//
+//  ZJWeibo-Prefix.pch
+//  ZJWeibo
+//
+//  Created by dibadalu on 15/10/19.
+//  Copyright (c) 2015年 dibadalu. All rights reserved.
+//
+
+#ifndef ZJWeibo_ZJWeibo_Prefix_pch
+#define ZJWeibo_ZJWeibo_Prefix_pch
+
+// Include any system framework and library headers here that should be included in all compilation units.
+// You will also need to set the Prefix Header build setting of one or more of your targets to reference this file.
+
+//随机色
+#define ZJRandomColor [UIColor colorWithRed:arc4random_uniform(256)/255.0 green:arc4random_uniform(256)/255.0 blue:arc4random_uniform(256)/255.0 alpha:1.0]
+
+#endif

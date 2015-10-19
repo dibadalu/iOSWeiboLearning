@@ -7,6 +7,7 @@
 //
 
 #import "ZJNavigationViewController.h"
+#import "UIBarButtonItem+ZJExtension.h"
 
 @interface ZJNavigationViewController ()
 
@@ -26,10 +27,14 @@
 {
 //    NSLog(@"%@--%d",viewController,self.viewControllers.count);
     
-#warning 在
+#warning 注意位置
     //除了栈底子控制器，其他push进来的子控制器都要隐藏tabBar
     if (self.childViewControllers.count > 0) {
         viewController.hidesBottomBarWhenPushed = YES;
+        
+        //设置所有push进来的子控制器的导航栏按钮
+        viewController.navigationItem.leftBarButtonItem = [UIBarButtonItem itemWithImage:@"navigationbar_back" highImage:@"navigationbar_back_highlighted" target:self action:@selector(back)];
+        viewController.navigationItem.rightBarButtonItem = [UIBarButtonItem itemWithImage:@"navigationbar_more" highImage:@"navigationbar_more_highlighted" target:self action:@selector(more)];
     }
     
     [super pushViewController:viewController animated:animated];
@@ -37,16 +42,18 @@
    
 }
 
-
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+#pragma mark - 点击事件
+- (void)back
+{
+ 
+    [self popViewControllerAnimated:YES];
 }
-*/
+
+- (void)more
+{
+    [self popToRootViewControllerAnimated:YES];
+}
+
+
 
 @end

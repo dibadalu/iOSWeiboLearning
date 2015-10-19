@@ -18,6 +18,8 @@
 		544A87271BD4D78100659A85 /* ZJDiscoverViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 544A87261BD4D78100659A85 /* ZJDiscoverViewController.m */; };
 		544A872A1BD4D78F00659A85 /* ZJProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 544A87291BD4D78F00659A85 /* ZJProfileViewController.m */; };
 		544A87311BD4E17800659A85 /* ZJNavigationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 544A87301BD4E17800659A85 /* ZJNavigationViewController.m */; };
+		54C2201A1BD5267100BE0ED0 /* UIBarButtonItem+ZJExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 54C220191BD5267100BE0ED0 /* UIBarButtonItem+ZJExtension.m */; };
+		54C220201BD52B0400BE0ED0 /* UIView+ZJExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 54C2201F1BD52B0400BE0ED0 /* UIView+ZJExtension.m */; };
 		54F608391BD50D3800F7BB3E /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 54F608381BD50D3800F7BB3E /* Images.xcassets */; };
 /* End PBXBuildFile section */
 
@@ -55,6 +57,10 @@
 		544A87291BD4D78F00659A85 /* ZJProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZJProfileViewController.m; sourceTree = "<group>"; };
 		544A872F1BD4E17800659A85 /* ZJNavigationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZJNavigationViewController.h; sourceTree = "<group>"; };
 		544A87301BD4E17800659A85 /* ZJNavigationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZJNavigationViewController.m; sourceTree = "<group>"; };
+		54C220181BD5267100BE0ED0 /* UIBarButtonItem+ZJExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIBarButtonItem+ZJExtension.h"; sourceTree = "<group>"; };
+		54C220191BD5267100BE0ED0 /* UIBarButtonItem+ZJExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIBarButtonItem+ZJExtension.m"; sourceTree = "<group>"; };
+		54C2201E1BD52B0400BE0ED0 /* UIView+ZJExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+ZJExtension.h"; sourceTree = "<group>"; };
+		54C2201F1BD52B0400BE0ED0 /* UIView+ZJExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+ZJExtension.m"; sourceTree = "<group>"; };
 		54F608381BD50D3800F7BB3E /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -246,6 +252,7 @@
 		5421DAA31BD4CED400B82561 /* Main(主要) */ = {
 			isa = PBXGroup;
 			children = (
+				54C220171BD5266700BE0ED0 /* Category */,
 				5421DAA41BD4CED400B82561 /* Controller */,
 				5421DAA51BD4CED400B82561 /* Model */,
 				5421DAA61BD4CED400B82561 /* View */,
@@ -386,6 +393,17 @@
 			path = Other;
 			sourceTree = "<group>";
 		};
+		54C220171BD5266700BE0ED0 /* Category */ = {
+			isa = PBXGroup;
+			children = (
+				54C2201E1BD52B0400BE0ED0 /* UIView+ZJExtension.h */,
+				54C2201F1BD52B0400BE0ED0 /* UIView+ZJExtension.m */,
+				54C220181BD5267100BE0ED0 /* UIBarButtonItem+ZJExtension.h */,
+				54C220191BD5267100BE0ED0 /* UIBarButtonItem+ZJExtension.m */,
+			);
+			path = Category;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -487,6 +505,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				54C220201BD52B0400BE0ED0 /* UIView+ZJExtension.m in Sources */,
 				544A871E1BD4D56D00659A85 /* ZJTabBarViewController.m in Sources */,
 				544A87211BD4D75E00659A85 /* ZJHomeViewController.m in Sources */,
 				544A87311BD4E17800659A85 /* ZJNavigationViewController.m in Sources */,
@@ -494,6 +513,7 @@
 				54097DBE1BD0A320008084D3 /* main.m in Sources */,
 				544A872A1BD4D78F00659A85 /* ZJProfileViewController.m in Sources */,
 				544A87241BD4D77100659A85 /* ZJMessageViewController.m in Sources */,
+				54C2201A1BD5267100BE0ED0 /* UIBarButtonItem+ZJExtension.m in Sources */,
 				544A87271BD4D78100659A85 /* ZJDiscoverViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

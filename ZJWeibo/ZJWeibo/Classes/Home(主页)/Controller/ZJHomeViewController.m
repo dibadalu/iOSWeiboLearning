@@ -7,6 +7,7 @@
 //
 
 #import "ZJHomeViewController.h"
+#import "UIBarButtonItem+ZJExtension.h"
 
 @interface ZJHomeViewController ()
 
@@ -18,18 +19,26 @@
     [super viewDidLoad];
     
     //设置导航栏按钮
-    UIButton *leftBtn = [[UIButton alloc] init];
-    [leftBtn setBackgroundImage:[UIImage imageNamed:@"navigationbar_pop"] forState:UIControlStateNormal];
-    [leftBtn setBackgroundImage:[UIImage imageNamed:@"navigationbar_pop_highlighted"] forState:UIControlStateHighlighted];
-    
-    [leftBtn addTarget:self action:@selector(popClick) forControlEvents:UIControlEventTouchUpInside];
-    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:leftBtn];
+//    UIButton *leftBtn = [[UIButton alloc] init];
+//    [leftBtn setBackgroundImage:[UIImage imageNamed:@"navigationbar_pop"] forState:UIControlStateNormal];
+//    [leftBtn setBackgroundImage:[UIImage imageNamed:@"navigationbar_pop_highlighted"] forState:UIControlStateHighlighted];
+//    CGSize imageSize = leftBtn.currentBackgroundImage.size;
+//    leftBtn.frame = CGRectMake(0, 0, imageSize.width, imageSize.height);
+//    [leftBtn addTarget:self action:@selector(popClick) forControlEvents:UIControlEventTouchUpInside];
+    self.navigationItem.leftBarButtonItem = [UIBarButtonItem itemWithImage:@"navigationbar_pop" highImage:@"navigationbar_pop_highlighted" target:self action:@selector(popClick)];
+    self.navigationItem.rightBarButtonItem = [UIBarButtonItem itemWithImage:@"navigationbar_compose" highImage:@"navigationbar_compose_highlighted" target:self action:@selector(compose)];
 }
+
 
 #pragma mark - 点击事件
 - (void)popClick
 {
     NSLog(@"popClick");
+}
+
+- (void)compose
+{
+    NSLog(@"compose");
 }
 
 #pragma mark - Table view data source

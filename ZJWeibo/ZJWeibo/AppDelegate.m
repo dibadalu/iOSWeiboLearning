@@ -8,6 +8,7 @@
 
 #import "AppDelegate.h"
 #import "ZJTabBarViewController.h"
+#import "ZJOAuthViewController.h"
 
 @interface AppDelegate ()
 
@@ -24,10 +25,12 @@
     //成为主窗口
     self.window = [[UIWindow alloc] init];
     self.window.frame = [UIScreen mainScreen].bounds;
+
+    self.window.rootViewController = [[ZJOAuthViewController alloc] init];
     
     //设置根控制器
-    ZJTabBarViewController *tabBarVC = [[ZJTabBarViewController alloc] init];
-    self.window.rootViewController = tabBarVC;
+//    ZJTabBarViewController *tabBarVC = [[ZJTabBarViewController alloc] init];
+//    self.window.rootViewController = tabBarVC;
     
     //让主窗口显示
     [self.window makeKeyAndVisible];

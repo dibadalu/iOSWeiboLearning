@@ -16,6 +16,9 @@
 
 @interface ZJHomeViewController ()
 
+/** 微博字典数组（一个字典代表一条微博） */
+@property(nonatomic,strong) NSArray *statuses;
+
 @end
 
 @implementation ZJHomeViewController
@@ -29,6 +32,10 @@
     
     //获得用户信息
     [self setupUserInfo];
+    
+    //加载最新的微博数据
+    [self loadNewsStatus];
+    
 }
 
 #pragma mark - 初始化方法
@@ -82,6 +89,39 @@
     
 }
 
+- (void)loadNewsStatus
+{
+    /*
+     https://api.weibo.com/2/statuses/friends_timeline.json
+     
+     请求参数：
+     access_token false	string	采用OAuth授权方式为必填参数，其他授权方式不需要此参数，OAuth授权后获得
+     since_id	  false	int64	若指定此参数，则返回ID比since_id大的微博（即比since_id时间晚的微博），默认为0。
+     max_id	      false	int64	若指定此参数，则返回ID小于或等于max_id的微博，默认为0。
+     count	      false	int	    单页返回的记录条数，最大不超过100，默认为20。
+     */
+    //1.拼接请求参数
+    ZJAccount *account = [ZJAccountTool account];
+    NSMutableDictionary *params = [NSMutableDictionary dictionary];
+    params[@"access_token"] = account.access_token;
+    params[@"count"] = @5;//默认是20
+    
+    //2.发送请求
+    [ZJHttpTool get:@"https://api.weibo.com/2/statuses/friends_timeline.json" params:params success:^(id json) {
+        ZJLog(@"请求成功---%@",json[@"statuses"]);
+        //取得微博字典数组
+        self.statuses = json[@"statuses"];
+        
+        //刷新表格
+        [self.tableView reloadData];
+        
+    } failure:^(NSError *error) {
+        ZJLog(@"请求失败---%@",error);
+    }];
+}
+
+
+
 #pragma mark - 点击事件
 - (void)popClick
 {
@@ -101,18 +141,20 @@
 #pragma mark - Table view data source
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
 
-    return 20;
+    return self.statuses.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *ID = @"cell";
+    static NSString *ID = @"status";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:ID];
     if (!cell) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:ID];
     }
     
-    cell.textLabel.text = @"测试数据--主页";
+    //取出微博字典数组
+    NSDictionary *status = self.statuses[indexPath.row];
+    cell.textLabel.text = status[@"text"];
     
     return cell;
 }

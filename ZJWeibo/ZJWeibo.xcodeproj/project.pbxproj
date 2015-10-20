@@ -7,15 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		196E2723D3A6902BA87E5C40 /* libPods-ZJWeibo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = ED16FE2BAEDC2227549514BF /* libPods-ZJWeibo.a */; };
-		47D4DE81297A8198653573C2 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A830344AC25C6BB6E2DCE7CE /* libPods.a */; };
 		54097DBE1BD0A320008084D3 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 54097DBD1BD0A320008084D3 /* main.m */; };
 		54097DC11BD0A320008084D3 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 54097DC01BD0A320008084D3 /* AppDelegate.m */; };
 		54097DC71BD0A320008084D3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 54097DC51BD0A320008084D3 /* Main.storyboard */; };
 		54097DCC1BD0A320008084D3 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 54097DCA1BD0A320008084D3 /* LaunchScreen.xib */; };
 		54097DD81BD0A321008084D3 /* ZJWeiboTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 54097DD71BD0A321008084D3 /* ZJWeiboTests.m */; };
-		541EC27F1BD53A0100461947 /* MBProgressHUD+MJ.m in Sources */ = {isa = PBXBuildFile; fileRef = 541EC27E1BD53A0100461947 /* MBProgressHUD+MJ.m */; };
-		541EC2811BD53A6900461947 /* MBProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 541EC2801BD53A6900461947 /* MBProgressHUD.bundle */; };
 		544A871E1BD4D56D00659A85 /* ZJTabBarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 544A871D1BD4D56D00659A85 /* ZJTabBarViewController.m */; };
 		544A87211BD4D75E00659A85 /* ZJHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 544A87201BD4D75E00659A85 /* ZJHomeViewController.m */; };
 		544A87241BD4D77100659A85 /* ZJMessageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 544A87231BD4D77100659A85 /* ZJMessageViewController.m */; };
@@ -39,7 +35,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		37361037F24C6F84A3D697AB /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		54029FDC1BD5134300A433BD /* ZJWeibo-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ZJWeibo-Prefix.pch"; sourceTree = "<group>"; };
 		54097DB81BD0A320008084D3 /* ZJWeibo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ZJWeibo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		54097DBC1BD0A320008084D3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -51,9 +46,6 @@
 		54097DD11BD0A321008084D3 /* ZJWeiboTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ZJWeiboTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		54097DD61BD0A321008084D3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		54097DD71BD0A321008084D3 /* ZJWeiboTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZJWeiboTests.m; sourceTree = "<group>"; };
-		541EC27D1BD53A0100461947 /* MBProgressHUD+MJ.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MBProgressHUD+MJ.h"; sourceTree = "<group>"; };
-		541EC27E1BD53A0100461947 /* MBProgressHUD+MJ.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MBProgressHUD+MJ.m"; sourceTree = "<group>"; };
-		541EC2801BD53A6900461947 /* MBProgressHUD.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = MBProgressHUD.bundle; sourceTree = "<group>"; };
 		544A871C1BD4D56D00659A85 /* ZJTabBarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZJTabBarViewController.h; sourceTree = "<group>"; };
 		544A871D1BD4D56D00659A85 /* ZJTabBarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZJTabBarViewController.m; sourceTree = "<group>"; };
 		544A871F1BD4D75E00659A85 /* ZJHomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZJHomeViewController.h; sourceTree = "<group>"; };
@@ -73,9 +65,6 @@
 		54C220241BD52D5F00BE0ED0 /* ZJOAuthViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZJOAuthViewController.h; sourceTree = "<group>"; };
 		54C220251BD52D5F00BE0ED0 /* ZJOAuthViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZJOAuthViewController.m; sourceTree = "<group>"; };
 		54F608381BD50D3800F7BB3E /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		A830344AC25C6BB6E2DCE7CE /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		E4E99936F1E714159DA95446 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
-		ED16FE2BAEDC2227549514BF /* libPods-ZJWeibo.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ZJWeibo.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,8 +72,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				47D4DE81297A8198653573C2 /* libPods.a in Frameworks */,
-				196E2723D3A6902BA87E5C40 /* libPods-ZJWeibo.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -104,7 +91,6 @@
 				54097DBA1BD0A320008084D3 /* ZJWeibo */,
 				54097DD41BD0A321008084D3 /* ZJWeiboTests */,
 				54097DB91BD0A320008084D3 /* Products */,
-				9C42A58848133B3FB9D80498 /* Pods */,
 				7A2DB6F96C356D02013297D7 /* Frameworks */,
 			);
 			sourceTree = "<group>";
@@ -159,19 +145,8 @@
 		541EC27B1BD539BB00461947 /* Lib */ = {
 			isa = PBXGroup;
 			children = (
-				541EC27C1BD53A0100461947 /* MBProgressHUD+MJ */,
 			);
 			path = Lib;
-			sourceTree = "<group>";
-		};
-		541EC27C1BD53A0100461947 /* MBProgressHUD+MJ */ = {
-			isa = PBXGroup;
-			children = (
-				541EC2801BD53A6900461947 /* MBProgressHUD.bundle */,
-				541EC27D1BD53A0100461947 /* MBProgressHUD+MJ.h */,
-				541EC27E1BD53A0100461947 /* MBProgressHUD+MJ.m */,
-			);
-			path = "MBProgressHUD+MJ";
 			sourceTree = "<group>";
 		};
 		5421DA961BD4CED400B82561 /* Classes */ = {
@@ -446,19 +421,8 @@
 		7A2DB6F96C356D02013297D7 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				A830344AC25C6BB6E2DCE7CE /* libPods.a */,
-				ED16FE2BAEDC2227549514BF /* libPods-ZJWeibo.a */,
 			);
 			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		9C42A58848133B3FB9D80498 /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				E4E99936F1E714159DA95446 /* Pods.debug.xcconfig */,
-				37361037F24C6F84A3D697AB /* Pods.release.xcconfig */,
-			);
-			name = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -468,12 +432,9 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 54097DDB1BD0A321008084D3 /* Build configuration list for PBXNativeTarget "ZJWeibo" */;
 			buildPhases = (
-				40BD2469CC845D737FB03104 /* Check Pods Manifest.lock */,
 				54097DB41BD0A320008084D3 /* Sources */,
 				54097DB51BD0A320008084D3 /* Frameworks */,
 				54097DB61BD0A320008084D3 /* Resources */,
-				EFCEAF6F13332AD51385A622 /* Embed Pods Frameworks */,
-				8BCC0C612A539EF46D4EBF95 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -546,7 +507,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				54F608391BD50D3800F7BB3E /* Images.xcassets in Resources */,
-				541EC2811BD53A6900461947 /* MBProgressHUD.bundle in Resources */,
 				54097DC71BD0A320008084D3 /* Main.storyboard in Resources */,
 				54097DCC1BD0A320008084D3 /* LaunchScreen.xib in Resources */,
 			);
@@ -561,60 +521,11 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
-/* Begin PBXShellScriptBuildPhase section */
-		40BD2469CC845D737FB03104 /* Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Check Pods Manifest.lock";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
-			showEnvVarsInLog = 0;
-		};
-		8BCC0C612A539EF46D4EBF95 /* Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		EFCEAF6F13332AD51385A622 /* Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ZJWeibo/Pods-ZJWeibo-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-/* End PBXShellScriptBuildPhase section */
-
 /* Begin PBXSourcesBuildPhase section */
 		54097DB41BD0A320008084D3 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				541EC27F1BD53A0100461947 /* MBProgressHUD+MJ.m in Sources */,
 				54C220201BD52B0400BE0ED0 /* UIView+ZJExtension.m in Sources */,
 				544A871E1BD4D56D00659A85 /* ZJTabBarViewController.m in Sources */,
 				544A87211BD4D75E00659A85 /* ZJHomeViewController.m in Sources */,
@@ -751,7 +662,6 @@
 		};
 		54097DDC1BD0A321008084D3 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = E4E99936F1E714159DA95446 /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -766,7 +676,6 @@
 		};
 		54097DDD1BD0A321008084D3 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 37361037F24C6F84A3D697AB /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;

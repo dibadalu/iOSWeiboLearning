@@ -7,7 +7,7 @@
 //
 
 #import "ZJOAuthViewController.h"
-#import "MBProgressHUD+MJ.h"
+//#import "MBProgressHUD+MJ.h"
 
 
 @interface ZJOAuthViewController ()<UIWebViewDelegate>
@@ -43,19 +43,19 @@
 - (void)webViewDidStartLoad:(UIWebView *)webView
 {
 //    NSLog(@"webViewDidStartLoad");
-    [MBProgressHUD showMessage:@"正在加载中"];
+//    [MBProgressHUD showMessage:@"正在加载中"];
 }
 
 - (void)webViewDidFinishLoad:(UIWebView *)webView
 {
 //    NSLog(@"webViewDidFinishLoad");
-    [MBProgressHUD hideHUD];
+//    [MBProgressHUD hideHUD];
 }
 
 - (void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error
 {
 //    NSLog(@"didFailLoadWithError");
-    [MBProgressHUD hideHUD];
+//    [MBProgressHUD hideHUD];
 
 }
 

@@ -43,7 +43,7 @@
 - (void)addOneChirdVC:(UIViewController *)chirdVC title:(NSString *)title image:(NSString *)image selectedImage:(NSString *)selectedImage
 {
     //测试：背景色
-//    chirdVC.view.backgroundColor = [UIColor colorWithRed:arc4random_uniform(256)/255.0 green:arc4random_uniform(256)/255.0 blue:arc4random_uniform(256)/255.0 alpha:1.0];
+//    chirdVC.view.backgroundColor = ZJRandomColor;
     
     //文字
     chirdVC.title = title;

@@ -8,6 +8,7 @@
 
 #import "ZJOAuthViewController.h"
 //#import "MBProgressHUD+MJ.h"
+#import <AFNetworking.h>
 
 
 @interface ZJOAuthViewController ()<UIWebViewDelegate>

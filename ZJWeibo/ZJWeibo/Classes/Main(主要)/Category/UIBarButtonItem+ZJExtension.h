@@ -4,7 +4,7 @@
 //
 //  Created by dibadalu on 15/10/19.
 //  Copyright (c) 2015年 dibadalu. All rights reserved.
-//
+//  提取创建UIBarButtonItem按钮的代码
 
 #import <UIKit/UIKit.h>
 

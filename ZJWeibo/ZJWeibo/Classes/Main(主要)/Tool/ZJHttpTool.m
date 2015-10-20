@@ -15,7 +15,7 @@
 {
     //1.创建请求管理者
     AFHTTPSessionManager *mgr = [AFHTTPSessionManager manager];
-#warning 由于新浪返回的数据content-Type是text/plain，所以在[AFJSONResponseSerializer serializer]加上text/plain类型,所以新建分类重写该方法
+#warning 由于新浪返回的数据content-Type是text/plain，所以在[AFJSONResponseSerializer serializer]加上text/plain类型，重写init方法
 //    mgr.responseSerializer = [AFJSONResponseSerializer serializer];
     
     //2.发送请求

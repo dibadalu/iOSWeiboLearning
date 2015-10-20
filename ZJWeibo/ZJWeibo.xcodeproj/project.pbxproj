@@ -10,6 +10,8 @@
 		54097DC71BD0A320008084D3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 54097DC51BD0A320008084D3 /* Main.storyboard */; };
 		54097DCC1BD0A320008084D3 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 54097DCA1BD0A320008084D3 /* LaunchScreen.xib */; };
 		54097DD81BD0A321008084D3 /* ZJWeiboTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 54097DD71BD0A321008084D3 /* ZJWeiboTests.m */; };
+		5423DFC71BD683EC00B59739 /* ZJTitleButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 5423DFC61BD683EC00B59739 /* ZJTitleButton.m */; };
+		5423DFCD1BD688D200B59739 /* ZJUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 5423DFCC1BD688D200B59739 /* ZJUser.m */; };
 		542A49F21BD635A800C457CF /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 542A49F01BD635A800C457CF /* AppDelegate.m */; };
 		542A49F31BD635A800C457CF /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 542A49F11BD635A800C457CF /* main.m */; };
 		542A49F61BD635C900C457CF /* ZJConst.m in Sources */ = {isa = PBXBuildFile; fileRef = 542A49F51BD635C900C457CF /* ZJConst.m */; };
@@ -51,6 +53,10 @@
 		54097DD11BD0A321008084D3 /* ZJWeiboTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ZJWeiboTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		54097DD61BD0A321008084D3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		54097DD71BD0A321008084D3 /* ZJWeiboTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZJWeiboTests.m; sourceTree = "<group>"; };
+		5423DFC51BD683EC00B59739 /* ZJTitleButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZJTitleButton.h; sourceTree = "<group>"; };
+		5423DFC61BD683EC00B59739 /* ZJTitleButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZJTitleButton.m; sourceTree = "<group>"; };
+		5423DFCB1BD688D200B59739 /* ZJUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZJUser.h; sourceTree = "<group>"; };
+		5423DFCC1BD688D200B59739 /* ZJUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZJUser.m; sourceTree = "<group>"; };
 		542A49EF1BD635A800C457CF /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		542A49F01BD635A800C457CF /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		542A49F11BD635A800C457CF /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -275,6 +281,8 @@
 		5421DAA11BD4CED400B82561 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				5423DFCB1BD688D200B59739 /* ZJUser.h */,
+				5423DFCC1BD688D200B59739 /* ZJUser.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -282,6 +290,8 @@
 		5421DAA21BD4CED400B82561 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				5423DFC51BD683EC00B59739 /* ZJTitleButton.h */,
+				5423DFC61BD683EC00B59739 /* ZJTitleButton.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -289,13 +299,11 @@
 		5421DAA31BD4CED400B82561 /* Main(主要) */ = {
 			isa = PBXGroup;
 			children = (
-				542A49EE1BD635A800C457CF /* Other */,
-				542A49ED1BD6353C00C457CF /* Tool */,
-				541EC27B1BD539BB00461947 /* Lib */,
-				54C220171BD5266700BE0ED0 /* Category */,
 				5421DAA41BD4CED400B82561 /* Controller */,
-				5421DAA51BD4CED400B82561 /* Model */,
-				5421DAA61BD4CED400B82561 /* View */,
+				541EC27B1BD539BB00461947 /* Lib */,
+				542A49ED1BD6353C00C457CF /* Tool */,
+				54C220171BD5266700BE0ED0 /* Category */,
+				542A49EE1BD635A800C457CF /* Other */,
 			);
 			path = "Main(主要)";
 			sourceTree = "<group>";
@@ -309,20 +317,6 @@
 				544A87301BD4E17800659A85 /* ZJNavigationViewController.m */,
 			);
 			path = Controller;
-			sourceTree = "<group>";
-		};
-		5421DAA51BD4CED400B82561 /* Model */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Model;
-			sourceTree = "<group>";
-		};
-		5421DAA61BD4CED400B82561 /* View */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = View;
 			sourceTree = "<group>";
 		};
 		5421DAA71BD4CED400B82561 /* Message(消息) */ = {
@@ -361,10 +355,9 @@
 		5421DAAB1BD4CED400B82561 /* OAuth(授权) */ = {
 			isa = PBXGroup;
 			children = (
-				542A4A071BD640E000C457CF /* Tool */,
 				5421DAAC1BD4CED400B82561 /* Controller */,
 				5421DAAD1BD4CED400B82561 /* Model */,
-				5421DAAE1BD4CED400B82561 /* View */,
+				542A4A071BD640E000C457CF /* Tool */,
 			);
 			path = "OAuth(授权)";
 			sourceTree = "<group>";
@@ -385,13 +378,6 @@
 				542A4A0C1BD641D800C457CF /* ZJAccount.m */,
 			);
 			path = Model;
-			sourceTree = "<group>";
-		};
-		5421DAAE1BD4CED400B82561 /* View */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = View;
 			sourceTree = "<group>";
 		};
 		5421DAAF1BD4CED400B82561 /* Profile(我) */ = {
@@ -664,7 +650,9 @@
 				542A4A0D1BD641D800C457CF /* ZJAccount.m in Sources */,
 				544A87311BD4E17800659A85 /* ZJNavigationViewController.m in Sources */,
 				542A49F61BD635C900C457CF /* ZJConst.m in Sources */,
+				5423DFCD1BD688D200B59739 /* ZJUser.m in Sources */,
 				544A872A1BD4D78F00659A85 /* ZJProfileViewController.m in Sources */,
+				5423DFC71BD683EC00B59739 /* ZJTitleButton.m in Sources */,
 				542EDA621BD645C600CAA724 /* ZJAccountTool.m in Sources */,
 				544A87241BD4D77100659A85 /* ZJMessageViewController.m in Sources */,
 				54C2201A1BD5267100BE0ED0 /* UIBarButtonItem+ZJExtension.m in Sources */,

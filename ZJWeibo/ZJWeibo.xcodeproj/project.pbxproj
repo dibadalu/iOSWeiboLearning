@@ -7,11 +7,16 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		54097DBE1BD0A320008084D3 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 54097DBD1BD0A320008084D3 /* main.m */; };
-		54097DC11BD0A320008084D3 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 54097DC01BD0A320008084D3 /* AppDelegate.m */; };
 		54097DC71BD0A320008084D3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 54097DC51BD0A320008084D3 /* Main.storyboard */; };
 		54097DCC1BD0A320008084D3 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 54097DCA1BD0A320008084D3 /* LaunchScreen.xib */; };
 		54097DD81BD0A321008084D3 /* ZJWeiboTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 54097DD71BD0A321008084D3 /* ZJWeiboTests.m */; };
+		542A49F21BD635A800C457CF /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 542A49F01BD635A800C457CF /* AppDelegate.m */; };
+		542A49F31BD635A800C457CF /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 542A49F11BD635A800C457CF /* main.m */; };
+		542A49F61BD635C900C457CF /* ZJConst.m in Sources */ = {isa = PBXBuildFile; fileRef = 542A49F51BD635C900C457CF /* ZJConst.m */; };
+		542A49F91BD6365A00C457CF /* ZJHttpTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 542A49F81BD6365A00C457CF /* ZJHttpTool.m */; };
+		542A4A0D1BD641D800C457CF /* ZJAccount.m in Sources */ = {isa = PBXBuildFile; fileRef = 542A4A0C1BD641D800C457CF /* ZJAccount.m */; };
+		542EDA5F1BD6444900CAA724 /* AFJSONResponseSerializer+ZJ.m in Sources */ = {isa = PBXBuildFile; fileRef = 542EDA5E1BD6444900CAA724 /* AFJSONResponseSerializer+ZJ.m */; };
+		542EDA621BD645C600CAA724 /* ZJAccountTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 542EDA611BD645C600CAA724 /* ZJAccountTool.m */; };
 		544A871E1BD4D56D00659A85 /* ZJTabBarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 544A871D1BD4D56D00659A85 /* ZJTabBarViewController.m */; };
 		544A87211BD4D75E00659A85 /* ZJHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 544A87201BD4D75E00659A85 /* ZJHomeViewController.m */; };
 		544A87241BD4D77100659A85 /* ZJMessageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 544A87231BD4D77100659A85 /* ZJMessageViewController.m */; };
@@ -41,14 +46,24 @@
 		54029FDC1BD5134300A433BD /* ZJWeibo-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ZJWeibo-Prefix.pch"; sourceTree = "<group>"; };
 		54097DB81BD0A320008084D3 /* ZJWeibo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ZJWeibo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		54097DBC1BD0A320008084D3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		54097DBD1BD0A320008084D3 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = main.m; path = ../../../main.m; sourceTree = "<group>"; };
-		54097DBF1BD0A320008084D3 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = ../../../AppDelegate.h; sourceTree = "<group>"; };
-		54097DC01BD0A320008084D3 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = AppDelegate.m; path = ../../../AppDelegate.m; sourceTree = "<group>"; };
 		54097DC61BD0A320008084D3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		54097DCB1BD0A320008084D3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		54097DD11BD0A321008084D3 /* ZJWeiboTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ZJWeiboTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		54097DD61BD0A321008084D3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		54097DD71BD0A321008084D3 /* ZJWeiboTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZJWeiboTests.m; sourceTree = "<group>"; };
+		542A49EF1BD635A800C457CF /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		542A49F01BD635A800C457CF /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		542A49F11BD635A800C457CF /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		542A49F41BD635C900C457CF /* ZJConst.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZJConst.h; sourceTree = "<group>"; };
+		542A49F51BD635C900C457CF /* ZJConst.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZJConst.m; sourceTree = "<group>"; };
+		542A49F71BD6365A00C457CF /* ZJHttpTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZJHttpTool.h; sourceTree = "<group>"; };
+		542A49F81BD6365A00C457CF /* ZJHttpTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZJHttpTool.m; sourceTree = "<group>"; };
+		542A4A0B1BD641D800C457CF /* ZJAccount.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZJAccount.h; sourceTree = "<group>"; };
+		542A4A0C1BD641D800C457CF /* ZJAccount.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZJAccount.m; sourceTree = "<group>"; };
+		542EDA5D1BD6444900CAA724 /* AFJSONResponseSerializer+ZJ.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "AFJSONResponseSerializer+ZJ.h"; sourceTree = "<group>"; };
+		542EDA5E1BD6444900CAA724 /* AFJSONResponseSerializer+ZJ.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "AFJSONResponseSerializer+ZJ.m"; sourceTree = "<group>"; };
+		542EDA601BD645C600CAA724 /* ZJAccountTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZJAccountTool.h; sourceTree = "<group>"; };
+		542EDA611BD645C600CAA724 /* ZJAccountTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZJAccountTool.m; sourceTree = "<group>"; };
 		544A871C1BD4D56D00659A85 /* ZJTabBarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZJTabBarViewController.h; sourceTree = "<group>"; };
 		544A871D1BD4D56D00659A85 /* ZJTabBarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZJTabBarViewController.m; sourceTree = "<group>"; };
 		544A871F1BD4D75E00659A85 /* ZJHomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZJHomeViewController.h; sourceTree = "<group>"; };
@@ -154,6 +169,7 @@
 		541EC27B1BD539BB00461947 /* Lib */ = {
 			isa = PBXGroup;
 			children = (
+				542A49FA1BD63CBA00C457CF /* AFNetworking */,
 				54E7EDF01BD60F640018280F /* MBProgressHUD */,
 			);
 			path = Lib;
@@ -273,12 +289,13 @@
 		5421DAA31BD4CED400B82561 /* Main(主要) */ = {
 			isa = PBXGroup;
 			children = (
+				542A49EE1BD635A800C457CF /* Other */,
+				542A49ED1BD6353C00C457CF /* Tool */,
 				541EC27B1BD539BB00461947 /* Lib */,
 				54C220171BD5266700BE0ED0 /* Category */,
 				5421DAA41BD4CED400B82561 /* Controller */,
 				5421DAA51BD4CED400B82561 /* Model */,
 				5421DAA61BD4CED400B82561 /* View */,
-				5421DAB41BD4CF2100B82561 /* Other */,
 			);
 			path = "Main(主要)";
 			sourceTree = "<group>";
@@ -344,6 +361,7 @@
 		5421DAAB1BD4CED400B82561 /* OAuth(授权) */ = {
 			isa = PBXGroup;
 			children = (
+				542A4A071BD640E000C457CF /* Tool */,
 				5421DAAC1BD4CED400B82561 /* Controller */,
 				5421DAAD1BD4CED400B82561 /* Model */,
 				5421DAAE1BD4CED400B82561 /* View */,
@@ -363,6 +381,8 @@
 		5421DAAD1BD4CED400B82561 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				542A4A0B1BD641D800C457CF /* ZJAccount.h */,
+				542A4A0C1BD641D800C457CF /* ZJAccount.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -407,14 +427,43 @@
 			path = View;
 			sourceTree = "<group>";
 		};
-		5421DAB41BD4CF2100B82561 /* Other */ = {
+		542A49ED1BD6353C00C457CF /* Tool */ = {
 			isa = PBXGroup;
 			children = (
-				54097DBD1BD0A320008084D3 /* main.m */,
-				54097DBF1BD0A320008084D3 /* AppDelegate.h */,
-				54097DC01BD0A320008084D3 /* AppDelegate.m */,
+				542A49F71BD6365A00C457CF /* ZJHttpTool.h */,
+				542A49F81BD6365A00C457CF /* ZJHttpTool.m */,
+			);
+			path = Tool;
+			sourceTree = "<group>";
+		};
+		542A49EE1BD635A800C457CF /* Other */ = {
+			isa = PBXGroup;
+			children = (
+				542A49EF1BD635A800C457CF /* AppDelegate.h */,
+				542A49F01BD635A800C457CF /* AppDelegate.m */,
+				542A49F11BD635A800C457CF /* main.m */,
+				542A49F41BD635C900C457CF /* ZJConst.h */,
+				542A49F51BD635C900C457CF /* ZJConst.m */,
 			);
 			path = Other;
+			sourceTree = "<group>";
+		};
+		542A49FA1BD63CBA00C457CF /* AFNetworking */ = {
+			isa = PBXGroup;
+			children = (
+				542EDA5D1BD6444900CAA724 /* AFJSONResponseSerializer+ZJ.h */,
+				542EDA5E1BD6444900CAA724 /* AFJSONResponseSerializer+ZJ.m */,
+			);
+			path = AFNetworking;
+			sourceTree = "<group>";
+		};
+		542A4A071BD640E000C457CF /* Tool */ = {
+			isa = PBXGroup;
+			children = (
+				542EDA601BD645C600CAA724 /* ZJAccountTool.h */,
+				542EDA611BD645C600CAA724 /* ZJAccountTool.m */,
+			);
+			path = Tool;
 			sourceTree = "<group>";
 		};
 		54C220171BD5266700BE0ED0 /* Category */ = {
@@ -606,17 +655,22 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				542A49F21BD635A800C457CF /* AppDelegate.m in Sources */,
 				54E7EDF31BD60F640018280F /* MBProgressHUD+MJ.m in Sources */,
 				54C220201BD52B0400BE0ED0 /* UIView+ZJExtension.m in Sources */,
 				544A871E1BD4D56D00659A85 /* ZJTabBarViewController.m in Sources */,
 				544A87211BD4D75E00659A85 /* ZJHomeViewController.m in Sources */,
+				542A49F91BD6365A00C457CF /* ZJHttpTool.m in Sources */,
+				542A4A0D1BD641D800C457CF /* ZJAccount.m in Sources */,
 				544A87311BD4E17800659A85 /* ZJNavigationViewController.m in Sources */,
-				54097DC11BD0A320008084D3 /* AppDelegate.m in Sources */,
-				54097DBE1BD0A320008084D3 /* main.m in Sources */,
+				542A49F61BD635C900C457CF /* ZJConst.m in Sources */,
 				544A872A1BD4D78F00659A85 /* ZJProfileViewController.m in Sources */,
+				542EDA621BD645C600CAA724 /* ZJAccountTool.m in Sources */,
 				544A87241BD4D77100659A85 /* ZJMessageViewController.m in Sources */,
 				54C2201A1BD5267100BE0ED0 /* UIBarButtonItem+ZJExtension.m in Sources */,
 				544A87271BD4D78100659A85 /* ZJDiscoverViewController.m in Sources */,
+				542EDA5F1BD6444900CAA724 /* AFJSONResponseSerializer+ZJ.m in Sources */,
+				542A49F31BD635A800C457CF /* main.m in Sources */,
 				54C220261BD52D5F00BE0ED0 /* ZJOAuthViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

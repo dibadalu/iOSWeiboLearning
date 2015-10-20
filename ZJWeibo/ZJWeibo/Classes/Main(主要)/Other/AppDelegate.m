@@ -9,6 +9,8 @@
 #import "AppDelegate.h"
 #import "ZJTabBarViewController.h"
 #import "ZJOAuthViewController.h"
+#import "ZJAccountTool.h"
+#import "ZJAccount.h"
 
 @interface AppDelegate ()
 
@@ -22,17 +24,22 @@
 
     application.statusBarHidden = NO;
     
-    //成为主窗口
+    //1.创建主窗口
     self.window = [[UIWindow alloc] init];
     self.window.frame = [UIScreen mainScreen].bounds;
 
-    self.window.rootViewController = [[ZJOAuthViewController alloc] init];
     
-    //设置根控制器
-//    ZJTabBarViewController *tabBarVC = [[ZJTabBarViewController alloc] init];
-//    self.window.rootViewController = tabBarVC;
+    //2.设置根控制器
+    //取出账号信息
+    ZJAccount *account = [ZJAccountTool account];
+    if (account) {//之前登陆过，直接进入tabBar控制器
+        ZJTabBarViewController *tabBarVC = [[ZJTabBarViewController alloc] init];
+        self.window.rootViewController = tabBarVC;
+    }else{//进入授权控制器
+        self.window.rootViewController = [[ZJOAuthViewController alloc] init];
+    }
     
-    //让主窗口显示
+    //3.让主窗口显示
     [self.window makeKeyAndVisible];
     
     return YES;

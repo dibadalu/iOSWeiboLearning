@@ -21,6 +21,7 @@
 		54C2201A1BD5267100BE0ED0 /* UIBarButtonItem+ZJExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 54C220191BD5267100BE0ED0 /* UIBarButtonItem+ZJExtension.m */; };
 		54C220201BD52B0400BE0ED0 /* UIView+ZJExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 54C2201F1BD52B0400BE0ED0 /* UIView+ZJExtension.m */; };
 		54C220261BD52D5F00BE0ED0 /* ZJOAuthViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 54C220251BD52D5F00BE0ED0 /* ZJOAuthViewController.m */; };
+		54E7EDF31BD60F640018280F /* MBProgressHUD+MJ.m in Sources */ = {isa = PBXBuildFile; fileRef = 54E7EDF21BD60F640018280F /* MBProgressHUD+MJ.m */; };
 		54F608391BD50D3800F7BB3E /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 54F608381BD50D3800F7BB3E /* Images.xcassets */; };
 		6AECC741C4BF317B731FA14B /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B19ADE546568B396A0CC7AEC /* libPods.a */; };
 /* End PBXBuildFile section */
@@ -66,6 +67,8 @@
 		54C2201F1BD52B0400BE0ED0 /* UIView+ZJExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+ZJExtension.m"; sourceTree = "<group>"; };
 		54C220241BD52D5F00BE0ED0 /* ZJOAuthViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZJOAuthViewController.h; sourceTree = "<group>"; };
 		54C220251BD52D5F00BE0ED0 /* ZJOAuthViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZJOAuthViewController.m; sourceTree = "<group>"; };
+		54E7EDF11BD60F640018280F /* MBProgressHUD+MJ.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MBProgressHUD+MJ.h"; sourceTree = "<group>"; };
+		54E7EDF21BD60F640018280F /* MBProgressHUD+MJ.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MBProgressHUD+MJ.m"; sourceTree = "<group>"; };
 		54F608381BD50D3800F7BB3E /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		B19ADE546568B396A0CC7AEC /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		EC46BF00477125448C0EDB0E /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
@@ -151,6 +154,7 @@
 		541EC27B1BD539BB00461947 /* Lib */ = {
 			isa = PBXGroup;
 			children = (
+				54E7EDF01BD60F640018280F /* MBProgressHUD */,
 			);
 			path = Lib;
 			sourceTree = "<group>";
@@ -424,6 +428,15 @@
 			path = Category;
 			sourceTree = "<group>";
 		};
+		54E7EDF01BD60F640018280F /* MBProgressHUD */ = {
+			isa = PBXGroup;
+			children = (
+				54E7EDF11BD60F640018280F /* MBProgressHUD+MJ.h */,
+				54E7EDF21BD60F640018280F /* MBProgressHUD+MJ.m */,
+			);
+			path = MBProgressHUD;
+			sourceTree = "<group>";
+		};
 		6D89A0574A1CAA8BCF295C9D /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -593,6 +606,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				54E7EDF31BD60F640018280F /* MBProgressHUD+MJ.m in Sources */,
 				54C220201BD52B0400BE0ED0 /* UIView+ZJExtension.m in Sources */,
 				544A871E1BD4D56D00659A85 /* ZJTabBarViewController.m in Sources */,
 				544A87211BD4D75E00659A85 /* ZJHomeViewController.m in Sources */,

@@ -11,6 +11,7 @@
 #import "ZJOAuthViewController.h"
 #import "ZJAccountTool.h"
 #import "ZJAccount.h"
+#import <SDWebImageManager.h>
 
 @interface AppDelegate ()
 
@@ -67,4 +68,19 @@
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
 }
 
+/**
+ *  清除内存中的从网络上加载微博数据时产生的所有图片
+ */
+- (void)applicationDidReceiveMemoryWarning:(UIApplication *)application
+{
+    //单例对象
+    SDWebImageManager *magager = [SDWebImageManager sharedManager];
+    
+    //1.取消下载
+    [magager cancelAll];
+    
+    //2.清除内存中的所有图片缓存
+    [magager.imageCache clearMemory];
+    
+}
 @end

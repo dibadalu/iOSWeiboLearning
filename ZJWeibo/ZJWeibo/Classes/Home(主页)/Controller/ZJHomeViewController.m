@@ -15,18 +15,30 @@
 #import <MJExtension.h>
 #import <UIImageView+WebCache.h>
 #import "ZJStatus.h"
+#import <MJRefresh.h>
 
 @interface ZJHomeViewController ()
 
-/** 微博模型数组（一个模型代表一条微博） */
-@property(nonatomic,strong) NSArray *statuses;
+/** 微博模型数组（一个模型代表一条微博） 可变数组*/
+@property(nonatomic,strong) NSMutableArray *statuses;
 
 @end
 
 @implementation ZJHomeViewController
+/**
+ *  微博模型数组的懒加载
+ */
+- (NSMutableArray *)statuses
+{
+    if (!_statuses) {
+        self.statuses = [NSMutableArray array];
+    }
+    return _statuses;
+}
 
 #pragma mark - 系统方法
-- (void)viewDidLoad {
+- (void)viewDidLoad
+{
     [super viewDidLoad];
     
     //设置导航栏内容
@@ -36,7 +48,10 @@
     [self setupUserInfo];
     
     //加载最新的微博数据
-    [self loadNewsStatus];
+//    [self loadNewsStatus];
+    
+    //集成下拉刷新加载最新微博数据
+    [self setupDownRefresh];
     
 }
 
@@ -102,11 +117,19 @@
      max_id	      false	int64	若指定此参数，则返回ID小于或等于max_id的微博，默认为0。
      count	      false	int	    单页返回的记录条数，最大不超过100，默认为20。
      */
+    
     //1.拼接请求参数
     ZJAccount *account = [ZJAccountTool account];
     NSMutableDictionary *params = [NSMutableDictionary dictionary];
     params[@"access_token"] = account.access_token;
 //    params[@"count"] = @5;//默认是20
+    
+    //取出最新的微博
+    ZJStatus *firstStatus = [self.statuses firstObject];
+    if (firstStatus) {
+        //若指定此参数，则返回ID比since_id大的微博（即比since_id时间晚的微博），默认为0。
+        params[@"since_id"] = firstStatus.idstr;
+    }
     
     //2.发送请求
     [ZJHttpTool get:@"https://api.weibo.com/2/statuses/friends_timeline.json" params:params success:^(id json) {
@@ -114,16 +137,38 @@
         //取得微博字典数组
 //        self.statuses = json[@"statuses"];
         //字典转模型(微博字典数组->微博模型数组)
-        self.statuses = [ZJStatus objectArrayWithKeyValuesArray:json[@"statuses"]];
+        NSArray *newStatuses = [ZJStatus objectArrayWithKeyValuesArray:json[@"statuses"]];
 
+        //将最新的微博数据，添加到总数组的最前面
+        NSRange range = NSMakeRange(0, newStatuses.count);
+        NSIndexSet *set = [NSIndexSet indexSetWithIndexesInRange:range];
+        [self.statuses insertObjects:newStatuses atIndexes:set];
+        
         //刷新表格
         [self.tableView reloadData];
         
+        //结束下拉刷新
+        [self.tableView.header endRefreshing];
+        
     } failure:^(NSError *error) {
         ZJLog(@"请求失败---%@",error);
+        
+        //结束下拉刷新
+        [self.tableView.header endRefreshing];
     }];
 }
 
+- (void)setupDownRefresh
+{
+    
+    //1.添加下拉刷新
+    self.tableView.header = [MJRefreshNormalHeader headerWithRefreshingTarget:self refreshingAction:@selector(loadNewsStatus)];
+    
+    
+    //2.进入刷新状态
+    [self.tableView.header beginRefreshing];
+
+}
 
 
 #pragma mark - 点击事件
@@ -142,8 +187,9 @@
     ZJLog(@"titleBtnClick");
 }
 
-#pragma mark - Table view data source
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+#pragma mark - 数据源
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
 
     return self.statuses.count;
 }

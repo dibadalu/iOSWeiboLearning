@@ -52,6 +52,11 @@
     //集成上拉刷新加载更多微博数据
     [self setupUpRefresh];
     
+    //显示微博未读数(定时器,每隔60调用一次)
+    NSTimer *timer = [NSTimer scheduledTimerWithTimeInterval:6 target:self selector:@selector(setupUnreadCount) userInfo:nil repeats:YES];
+    //将timer放进NSRunLoop,让主线程能够及时处理
+    [[NSRunLoop mainRunLoop] addTimer:timer forMode:NSRunLoopCommonModes];
+    
 }
 
 #pragma mark - 初始化方法
@@ -181,6 +186,9 @@
  */
 - (void)showNewStatusesCount:(NSUInteger)count
 {
+    //0.清空微博未读数
+    self.tabBarItem.badgeValue = nil;
+    
     //1.创建一个label显示最新微博数量
     UILabel *label = [[UILabel alloc] init];
     label.backgroundColor = [UIColor orangeColor];
@@ -263,6 +271,53 @@
         [self.tableView.footer endRefreshing];
     }];
 
+}
+/**
+ * 显示微博未读数
+ */
+- (void)setupUnreadCount
+{
+//    ZJLog(@"setupUnreadCount");
+    /*
+     https://rm.api.weibo.com/2/remind/unread_count.json
+     
+     请求参数
+     access_token	false	string	采用OAuth授权方式为必填参数，其他授权方式不需要此参数，OAuth授权后获得。
+     uid	true	int64	需要获取消息未读数的用户UID，必须是当前登录用户
+     */
+    //1.拼接请求参数
+    ZJAccount *account = [ZJAccountTool account];//取得模型
+    NSMutableDictionary *params = [NSMutableDictionary dictionary];
+    params[@"access_token"] = account.access_token;
+    params[@"uid"] = account.uid;
+    
+    //2.发送请求
+    [ZJHttpTool get:@"https://rm.api.weibo.com/2/remind/unread_count.json" params:params success:^(id json) {
+//        ZJLog(@"请求成功--%@",json[@"status"]);
+//        int status = [json[@"status"] intValue];
+        //设置提醒数字
+//        self.tabBarItem.badgeValue = [NSString stringWithFormat:@"%d",status];
+        
+        //改进
+        //Attempting to badge the application icon but haven't received permission from the user to badge the application
+#warning 在iOS8之后，设置应用的application badge value需要得到用户的许可
+        UIUserNotificationSettings *settings = [UIUserNotificationSettings settingsForTypes:UIUserNotificationTypeBadge categories:nil];
+        [[UIApplication sharedApplication] registerUserNotificationSettings:settings];
+        NSString *status = [json[@"status"] description];
+        if ([status isEqualToString:@"0"]) {//如果是0则清空
+            self.tabBarItem.badgeValue = nil;
+            [UIApplication sharedApplication].applicationIconBadgeNumber = 0;
+        }else{//有微博未读数
+            self.tabBarItem.badgeValue = status;
+            [UIApplication sharedApplication].applicationIconBadgeNumber = status.integerValue;
+
+        }
+        
+        
+    } failure:^(NSError *error) {
+//        ZJLog(@"请求失败--%@",error);
+
+    }];
 }
 
 

@@ -7,7 +7,6 @@
 //
 
 #import "ZJHomeViewController.h"
-#import "UIBarButtonItem+ZJExtension.h"
 #import "ZJAccountTool.h"
 #import "ZJAccount.h"
 #import "ZJHttpTool.h"
@@ -47,11 +46,11 @@
     //获得用户信息
     [self setupUserInfo];
     
-    //加载最新的微博数据
-//    [self loadNewsStatus];
-    
     //集成下拉刷新加载最新微博数据
     [self setupDownRefresh];
+    
+    //集成上拉刷新加载更多微博数据
+    [self setupUpRefresh];
     
 }
 
@@ -141,12 +140,10 @@
     //2.发送请求
     [ZJHttpTool get:@"https://api.weibo.com/2/statuses/friends_timeline.json" params:params success:^(id json) {
 //        ZJLog(@"请求成功---%@",json[@"statuses"]);
-        //取得微博字典数组
-//        self.statuses = json[@"statuses"];
-        //字典转模型(微博字典数组->微博模型数组)
+        //取得微博字典数组，字典转模型(微博字典数组->微博模型数组)
         NSArray *newStatuses = [ZJStatus objectArrayWithKeyValuesArray:json[@"statuses"]];
 
-        //将最新的微博数据，添加到总数组的最前面
+        //将最新的微博数据，添加到总数组的最前面(插入)
         NSRange range = NSMakeRange(0, newStatuses.count);
         NSIndexSet *set = [NSIndexSet indexSetWithIndexesInRange:range];
         [self.statuses insertObjects:newStatuses atIndexes:set];
@@ -213,6 +210,59 @@
         [label removeFromSuperview];
     }];
     
+}
+/**
+ *  集成上拉刷新加载更多微博数据
+ */
+- (void)setupUpRefresh
+{
+    //添加上拉刷新控件
+    self.tableView.footer = [MJRefreshAutoNormalFooter footerWithRefreshingTarget:self refreshingAction:@selector(loadMoreStatuses)];
+}
+/**
+ * 加载更多微博数据
+ */
+- (void)loadMoreStatuses
+{
+//    ZJLog(@"loadMoreStatuses");
+    
+    //1.拼接请求参数
+    ZJAccount *account = [ZJAccountTool account];
+    NSMutableDictionary *params = [NSMutableDictionary dictionary];
+    params[@"access_token"] = account.access_token;
+    //    params[@"count"] = @5;//默认是20
+    
+    //取出最后面的微博
+    ZJStatus *lastStatus = [self.statuses lastObject];
+    //max_id	false	int64	若指定此参数，则返回ID小于或等于max_id的微博，默认为0。
+    if (lastStatus) {
+        long long maxID = lastStatus.idstr.longLongValue - 1;
+        params[@"max_id"] = @(maxID);//包装成对象
+    }
+    
+    //2.发送请求
+    [ZJHttpTool get:@"https://api.weibo.com/2/statuses/friends_timeline.json" params:params success:^(id json) {
+        //        ZJLog(@"请求成功---%@",json[@"statuses"]);
+        //取得微博字典数组，并字典转模型(微博字典数组->微博模型数组)
+        NSArray *newStatuses = [ZJStatus objectArrayWithKeyValuesArray:json[@"statuses"]];
+        
+        //将更多的微博数据，添加到总数组的最后面
+        [self.statuses addObjectsFromArray:newStatuses];
+        
+        //刷新表格
+        [self.tableView reloadData];
+        
+        //结束上拉刷新
+        [self.tableView.footer endRefreshing];
+        
+ 
+    } failure:^(NSError *error) {
+        ZJLog(@"请求失败---%@",error);
+        
+        //结束上拉刷新
+        [self.tableView.footer endRefreshing];
+    }];
+
 }
 
 

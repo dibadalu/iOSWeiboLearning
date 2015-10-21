@@ -13,6 +13,7 @@
 // You will also need to set the Prefix Header build setting of one or more of your targets to reference this file.
 
 #import "UIView+ZJExtension.h"
+#import "UIBarButtonItem+ZJExtension.h"
 #import "ZJConst.h"
 
 #ifdef DEBUG //调试状态，打开LOG功能

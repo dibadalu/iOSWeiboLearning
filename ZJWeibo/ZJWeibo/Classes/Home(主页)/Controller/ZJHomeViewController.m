@@ -56,6 +56,9 @@
 }
 
 #pragma mark - 初始化方法
+/**
+ *  设置导航栏内容
+ */
 - (void)setupNav
 {
     //设置导航栏按钮
@@ -73,7 +76,9 @@
     [titleBtn addTarget:self action:@selector(titleBtnClick) forControlEvents:UIControlEventTouchUpInside];
     self.navigationItem.titleView = titleBtn;
 }
-
+/**
+ *  获得用户信息
+ */
 - (void)setupUserInfo
 {
     /*
@@ -105,7 +110,9 @@
     }];
     
 }
-
+/**
+ *  加载最新的微博数据
+ */
 - (void)loadNewsStatus
 {
     /*
@@ -150,6 +157,9 @@
         //结束下拉刷新
         [self.tableView.header endRefreshing];
         
+        //显示最新微博的数量
+        [self showNewStatusesCount:newStatuses.count];
+        
     } failure:^(NSError *error) {
         ZJLog(@"请求失败---%@",error);
         
@@ -157,17 +167,52 @@
         [self.tableView.header endRefreshing];
     }];
 }
-
+/**
+ *  集成下拉刷新加载最新微博数据
+ */
 - (void)setupDownRefresh
 {
-    
     //1.添加下拉刷新
     self.tableView.header = [MJRefreshNormalHeader headerWithRefreshingTarget:self refreshingAction:@selector(loadNewsStatus)];
-    
     
     //2.进入刷新状态
     [self.tableView.header beginRefreshing];
 
+}
+/**
+ *  显示最新微博的数量
+ */
+- (void)showNewStatusesCount:(NSUInteger)count
+{
+    //1.创建一个label显示最新微博数量
+    UILabel *label = [[UILabel alloc] init];
+    label.backgroundColor = [UIColor orangeColor];
+    label.width = [UIScreen mainScreen].bounds.size.width;
+    label.height = 35;
+    //设置label的其他属性（最新微博数量）
+    if (count == 0) {
+        label.text = @"没有新微博";
+    }else{
+        label.text = [NSString stringWithFormat:@"%d新微博",count];
+    }
+    [label setTextColor:[UIColor whiteColor]];
+    [label setFont:[UIFont systemFontOfSize:16]];
+    label.textAlignment = NSTextAlignmentCenter;
+    
+    //2.将label添加到导航栏控制器的view上，并且在导航栏的下面
+    label.y =  64 - label.height;
+//    [self.navigationController.view addSubview:label];
+    [self.navigationController.view insertSubview:label belowSubview:self.navigationController.navigationBar];
+    
+    //3.通过动画移动label以便让用户看到（transform）
+    CGFloat duration = 1.0;//动画持续时间
+    [UIView animateWithDuration:duration animations:^{
+        label.transform = CGAffineTransformMakeTranslation(0, label.height);
+    } completion:^(BOOL finished) {
+        //移除label
+        [label removeFromSuperview];
+    }];
+    
 }
 
 

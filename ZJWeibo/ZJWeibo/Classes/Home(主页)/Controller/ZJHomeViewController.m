@@ -14,10 +14,11 @@
 #import "ZJUser.h"
 #import <MJExtension.h>
 #import <UIImageView+WebCache.h>
+#import "ZJStatus.h"
 
 @interface ZJHomeViewController ()
 
-/** 微博字典数组（一个字典代表一条微博） */
+/** 微博模型数组（一个模型代表一条微博） */
 @property(nonatomic,strong) NSArray *statuses;
 
 @end
@@ -109,10 +110,12 @@
     
     //2.发送请求
     [ZJHttpTool get:@"https://api.weibo.com/2/statuses/friends_timeline.json" params:params success:^(id json) {
-        ZJLog(@"请求成功---%@",json[@"statuses"]);
+//        ZJLog(@"请求成功---%@",json[@"statuses"]);
         //取得微博字典数组
-        self.statuses = json[@"statuses"];
-        
+//        self.statuses = json[@"statuses"];
+        //字典转模型(微博字典数组->微博模型数组)
+        self.statuses = [ZJStatus objectArrayWithKeyValuesArray:json[@"statuses"]];
+
         //刷新表格
         [self.tableView reloadData];
         
@@ -154,16 +157,21 @@
     }
     
     //取出微博字典数组
-    NSDictionary *status = self.statuses[indexPath.row];
+//    NSDictionary *status = self.statuses[indexPath.row];
+    ZJStatus *status = self.statuses[indexPath.row];
     //设置微博的用户名
-    NSDictionary *user = status[@"user"];
-    cell.textLabel.text = user[@"name"];
+//    NSDictionary *user = status[@"user"];
+//    cell.textLabel.text = user[@"name"];
+    ZJUser *user = status.user;
+    cell.textLabel.text = user.name;
+    
     //设置微博的正文
-    cell.detailTextLabel.text = status[@"text"];
+//    cell.detailTextLabel.text = status[@"text"];
+    cell.detailTextLabel.text = status.text;
     
     //设置头像
     UIImage *placeImage = [UIImage imageNamed:@"avatar_default_small"];
-    [cell.imageView sd_setImageWithURL:[NSURL URLWithString:user[@"profile_image_url"]] placeholderImage:placeImage];
+    [cell.imageView sd_setImageWithURL:[NSURL URLWithString:user.profile_image_url] placeholderImage:placeImage];
     
     return cell;
 }

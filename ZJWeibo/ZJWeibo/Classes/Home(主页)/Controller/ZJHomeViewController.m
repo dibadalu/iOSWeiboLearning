@@ -13,6 +13,7 @@
 #import "ZJHttpTool.h"
 #import "ZJUser.h"
 #import <MJExtension.h>
+#import <UIImageView+WebCache.h>
 
 @interface ZJHomeViewController ()
 
@@ -104,7 +105,7 @@
     ZJAccount *account = [ZJAccountTool account];
     NSMutableDictionary *params = [NSMutableDictionary dictionary];
     params[@"access_token"] = account.access_token;
-    params[@"count"] = @5;//默认是20
+//    params[@"count"] = @5;//默认是20
     
     //2.发送请求
     [ZJHttpTool get:@"https://api.weibo.com/2/statuses/friends_timeline.json" params:params success:^(id json) {
@@ -154,7 +155,15 @@
     
     //取出微博字典数组
     NSDictionary *status = self.statuses[indexPath.row];
-    cell.textLabel.text = status[@"text"];
+    //设置微博的用户名
+    NSDictionary *user = status[@"user"];
+    cell.textLabel.text = user[@"name"];
+    //设置微博的正文
+    cell.detailTextLabel.text = status[@"text"];
+    
+    //设置头像
+    UIImage *placeImage = [UIImage imageNamed:@"avatar_default_small"];
+    [cell.imageView sd_setImageWithURL:[NSURL URLWithString:user[@"profile_image_url"]] placeholderImage:placeImage];
     
     return cell;
 }

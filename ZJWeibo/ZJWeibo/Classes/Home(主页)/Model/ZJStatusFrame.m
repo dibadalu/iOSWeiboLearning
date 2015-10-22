@@ -10,7 +10,7 @@
 #import "ZJUser.h"
 #import "ZJStatus.h"
 
-#define ZJStatusCellBorderW 10
+
 
 @implementation ZJStatusFrame
 
@@ -40,7 +40,7 @@
     /** 昵称 */
     CGFloat nameX = CGRectGetMaxX(self.iconViewF) + ZJStatusCellBorderW;
     CGFloat nameY = iconY;
-    CGSize nameSize = [self sizeWithText:user.name font:ZJStatusCellNameLableFont];
+    CGSize nameSize = [user.name sizeWithFont:ZJStatusCellNameLableFont];
     self.nameLabelF = (CGRect){{nameX,nameY},nameSize};
     
     /** 会员图标 */
@@ -55,20 +55,20 @@
     /** 时间 */
     CGFloat timeX = nameX;
     CGFloat timeY = CGRectGetMaxY(self.nameLabelF) + ZJStatusCellBorderW;
-    CGSize timeSize = [self sizeWithText:status.created_at font:ZJStatusCellTimeLableFont];
+    CGSize timeSize = [status.created_at sizeWithFont:ZJStatusCellTimeLableFont];
     self.timeLabelF = (CGRect){{timeX, timeY},timeSize};
     
     /** 来源 */
     CGFloat sourceX = CGRectGetMaxX(self.timeLabelF) + ZJStatusCellBorderW;
     CGFloat sourceY = timeY;
-    CGSize sourceSize = [self sizeWithText:status.source font:ZJStatusCellSourceLableFont];
+    CGSize sourceSize = [status.source sizeWithFont:ZJStatusCellSourceLableFont];
     self.sourceLabelF = (CGRect){{sourceX, sourceY},sourceSize};
     
     /** 正文 */
     CGFloat contentX = iconX;
     CGFloat contentY = MAX(CGRectGetMaxY(self.iconViewF), CGRectGetMaxY(self.timeLabelF)) + ZJStatusCellBorderW;
     CGFloat maxW = cellW - 2 * ZJStatusCellBorderW;
-    CGSize contentSize = [self sizeWithText:status.text font:ZJStatusCellContentLableFont maxW:maxW];
+    CGSize contentSize = [status.text sizeWithFont:ZJStatusCellContentLableFont maxW:maxW];
     self.contentLabelF = (CGRect){{contentX, contentY},contentSize};
     
     /** 配图 */
@@ -88,28 +88,8 @@
 }
 
 
-#pragma mark - 抽取的方法
-/**
- *  计算文字的size
- *
- *  @param text 文字内容
- *  @param font 字体大小
- *  @param maxW 文字范围宽度
- *
- *  @return 文字的size
- */
-- (CGSize)sizeWithText:(NSString *)text font:(UIFont *)font maxW:(CGFloat)maxW
-{
-    NSMutableDictionary *attrs = [NSMutableDictionary dictionary];
-    attrs[NSFontAttributeName] = font;
-    CGSize maxSize = CGSizeMake(maxW, MAXFLOAT);
-    return [text boundingRectWithSize:maxSize options:NSStringDrawingUsesLineFragmentOrigin attributes:attrs context:nil].size;
-}
 
-- (CGSize)sizeWithText:(NSString *)text font:(UIFont *)font
-{
-    return [self sizeWithText:text font:font maxW:MAXFLOAT];
-}
+
 
 
 @end

@@ -152,7 +152,11 @@
     self.nameLabel.text = user.name;
     
     /** 时间 */
-    self.timeLabel.frame = statusFrame.timeLabelF;
+    NSString *time = status.created_at;
+    CGFloat timeX = self.nameLabel.frame.origin.x;
+    CGFloat timeY = CGRectGetMaxY(self.nameLabel.frame) + ZJStatusCellBorderW;
+    CGSize timeSize = [time sizeWithFont:ZJStatusCellTimeLableFont];
+    self.timeLabel.frame = (CGRect){{timeX, timeY},timeSize};
     self.timeLabel.text = status.created_at;
     
     /** 来源 */

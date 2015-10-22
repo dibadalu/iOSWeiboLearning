@@ -18,6 +18,8 @@
 /* 正文字体 */
 #define ZJStatusCellContentLableFont [UIFont systemFontOfSize:15]
 
+#define ZJStatusCellBorderW 10
+
 #import <Foundation/Foundation.h>
 @class ZJStatus;
 

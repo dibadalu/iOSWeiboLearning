@@ -12,6 +12,9 @@
 		54097DD81BD0A321008084D3 /* ZJWeiboTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 54097DD71BD0A321008084D3 /* ZJWeiboTests.m */; };
 		541B327C1BD8B338004C4BC6 /* ZJStatusFrame.m in Sources */ = {isa = PBXBuildFile; fileRef = 541B327B1BD8B338004C4BC6 /* ZJStatusFrame.m */; };
 		541B327F1BD8B85D004C4BC6 /* ZJStatusCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 541B327E1BD8B85D004C4BC6 /* ZJStatusCell.m */; };
+		541B32821BD8D85C004C4BC6 /* NSDate+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = 541B32811BD8D85C004C4BC6 /* NSDate+Extension.m */; };
+		541B32841BD8D86F004C4BC6 /* Foundation+Log.m in Sources */ = {isa = PBXBuildFile; fileRef = 541B32831BD8D86F004C4BC6 /* Foundation+Log.m */; };
+		541B32871BD8DB1E004C4BC6 /* NSString+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = 541B32861BD8DB1E004C4BC6 /* NSString+Extension.m */; };
 		5423DFCD1BD688D200B59739 /* ZJUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 5423DFCC1BD688D200B59739 /* ZJUser.m */; };
 		542A49F21BD635A800C457CF /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 542A49F01BD635A800C457CF /* AppDelegate.m */; };
 		542A49F31BD635A800C457CF /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 542A49F11BD635A800C457CF /* main.m */; };
@@ -59,6 +62,11 @@
 		541B327B1BD8B338004C4BC6 /* ZJStatusFrame.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZJStatusFrame.m; sourceTree = "<group>"; };
 		541B327D1BD8B85D004C4BC6 /* ZJStatusCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZJStatusCell.h; sourceTree = "<group>"; };
 		541B327E1BD8B85D004C4BC6 /* ZJStatusCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZJStatusCell.m; sourceTree = "<group>"; };
+		541B32801BD8D85C004C4BC6 /* NSDate+Extension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+Extension.h"; sourceTree = "<group>"; };
+		541B32811BD8D85C004C4BC6 /* NSDate+Extension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+Extension.m"; sourceTree = "<group>"; };
+		541B32831BD8D86F004C4BC6 /* Foundation+Log.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Foundation+Log.m"; sourceTree = "<group>"; };
+		541B32851BD8DB1E004C4BC6 /* NSString+Extension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Extension.h"; sourceTree = "<group>"; };
+		541B32861BD8DB1E004C4BC6 /* NSString+Extension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Extension.m"; sourceTree = "<group>"; };
 		5423DFCB1BD688D200B59739 /* ZJUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZJUser.h; sourceTree = "<group>"; };
 		5423DFCC1BD688D200B59739 /* ZJUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZJUser.m; sourceTree = "<group>"; };
 		542A49EF1BD635A800C457CF /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -465,10 +473,15 @@
 		54C220171BD5266700BE0ED0 /* Category */ = {
 			isa = PBXGroup;
 			children = (
+				541B32831BD8D86F004C4BC6 /* Foundation+Log.m */,
 				54C2201E1BD52B0400BE0ED0 /* UIView+ZJExtension.h */,
 				54C2201F1BD52B0400BE0ED0 /* UIView+ZJExtension.m */,
 				54C220181BD5267100BE0ED0 /* UIBarButtonItem+ZJExtension.h */,
 				54C220191BD5267100BE0ED0 /* UIBarButtonItem+ZJExtension.m */,
+				541B32801BD8D85C004C4BC6 /* NSDate+Extension.h */,
+				541B32811BD8D85C004C4BC6 /* NSDate+Extension.m */,
+				541B32851BD8DB1E004C4BC6 /* NSString+Extension.h */,
+				541B32861BD8DB1E004C4BC6 /* NSString+Extension.m */,
 			);
 			path = Category;
 			sourceTree = "<group>";
@@ -653,10 +666,12 @@
 			files = (
 				542A49F21BD635A800C457CF /* AppDelegate.m in Sources */,
 				541B327C1BD8B338004C4BC6 /* ZJStatusFrame.m in Sources */,
+				541B32821BD8D85C004C4BC6 /* NSDate+Extension.m in Sources */,
 				54E7EDF31BD60F640018280F /* MBProgressHUD+MJ.m in Sources */,
 				54C220201BD52B0400BE0ED0 /* UIView+ZJExtension.m in Sources */,
 				544A871E1BD4D56D00659A85 /* ZJTabBarViewController.m in Sources */,
 				544A87211BD4D75E00659A85 /* ZJHomeViewController.m in Sources */,
+				541B32871BD8DB1E004C4BC6 /* NSString+Extension.m in Sources */,
 				542A49F91BD6365A00C457CF /* ZJHttpTool.m in Sources */,
 				542A4A0D1BD641D800C457CF /* ZJAccount.m in Sources */,
 				544A87311BD4E17800659A85 /* ZJNavigationViewController.m in Sources */,
@@ -671,6 +686,7 @@
 				542EDA5F1BD6444900CAA724 /* AFJSONResponseSerializer+ZJ.m in Sources */,
 				542A49F31BD635A800C457CF /* main.m in Sources */,
 				541B327F1BD8B85D004C4BC6 /* ZJStatusCell.m in Sources */,
+				541B32841BD8D86F004C4BC6 /* Foundation+Log.m in Sources */,
 				54C220261BD52D5F00BE0ED0 /* ZJOAuthViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

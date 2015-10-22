@@ -7,9 +7,19 @@
 //  
 
 #import "ZJStatus.h"
-
+#import "ZJPhoto.h"
+#import <MJExtension.h>
 
 @implementation ZJStatus
+
+/**
+ *  告知系统数组pic_urls存放的是ZJPhoto模型
+ */
++ (NSDictionary *)objectClassInArray
+{
+    return @{@"pic_urls" : [ZJPhoto class]};
+    
+}
 
 /**
  *  重写created_at的get方法，更改时间格式

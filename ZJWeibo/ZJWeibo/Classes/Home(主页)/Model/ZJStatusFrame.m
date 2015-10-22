@@ -66,16 +66,27 @@
 //    self.contentLabelF = (CGRect){{contentX, contentY},contentSize};
     CGFloat contentX = nameX;
     CGFloat contentY = CGRectGetMaxY(self.nameLabelF) + ZJStatusCellBorderW;
-    CGFloat maxW = cellW - 2 * ZJStatusCellBorderW - iconWH;
+    CGFloat maxW = cellW - 3 * ZJStatusCellBorderW - iconWH;
     CGSize contentSize = [status.text sizeWithFont:ZJStatusCellContentLableFont maxW:maxW];
     self.contentLabelF = (CGRect){{contentX, contentY},contentSize};
     
-    /** 配图 */
+    /** 配图 要考虑有无配图,会影响原创微博整体的高度*/
+    CGFloat originalH = 0;
+    if (status.pic_urls.count) {//有配图
+        CGFloat photoX = contentX;
+        CGFloat photoY = CGRectGetMaxY(self.contentLabelF) + ZJStatusCellBorderW;
+        CGFloat photoWH = 80;
+        self.photoViewF = CGRectMake(photoX, photoY, photoWH, photoWH);
+        
+        originalH = CGRectGetMaxY(self.photoViewF) + ZJStatusCellBorderW;
+    }else{//没有配图
+        
+        originalH = CGRectGetMaxY(self.contentLabelF) + ZJStatusCellBorderW;
+    }
     
     /** 原创微博整体 */
     CGFloat originalX = 0;
     CGFloat originalY = 0;
-    CGFloat originalH = CGRectGetMaxY(self.contentLabelF) + ZJStatusCellBorderW;
     CGFloat originalW = cellW ;
     self.originalViewF = CGRectMake(originalX, originalY, originalW, originalH);
     

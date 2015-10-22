@@ -138,7 +138,7 @@
     ZJAccount *account = [ZJAccountTool account];
     NSMutableDictionary *params = [NSMutableDictionary dictionary];
     params[@"access_token"] = account.access_token;
-//    params[@"count"] = @5;//默认是20
+    params[@"count"] = @5;//默认是20
     
     //取出最新的微博
     ZJStatusFrame *firstStatusFrame = [self.statusFrames firstObject];
@@ -382,7 +382,7 @@
     
     //reason: 'UITableView dataSource must return a cell from tableView:cellForRowAtIndexPath:'
     //错误原因：没有设置frame
-    
+
     /*
      static NSString *ID = @"status";
      UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:ID];

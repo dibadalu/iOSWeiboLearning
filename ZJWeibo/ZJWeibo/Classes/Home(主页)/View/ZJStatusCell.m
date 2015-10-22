@@ -11,6 +11,7 @@
 #import "ZJStatus.h"
 #import "ZJUser.h"
 #import <UIImageView+WebCache.h>
+#import "ZJPhoto.h"
 
 @interface ZJStatusCell ()
 
@@ -147,7 +148,10 @@
     
     /** 配图 */
     self.photoView.frame = statusFrame.photoViewF;
-    self.photoView.backgroundColor = [UIColor yellowColor];
+//    self.photoView.backgroundColor = [UIColor yellowColor];
+    //取出缩略图模型ZJPhoto
+    ZJPhoto *photo = [status.pic_urls lastObject];
+    [self.photoView sd_setImageWithURL:[NSURL URLWithString:photo.thumbnail_pic] placeholderImage:[UIImage imageNamed:@"timeline_image_placeholder"]];
     
     /** 昵称 */
     self.nameLabel.frame = statusFrame.nameLabelF;

@@ -16,6 +16,7 @@
  
  thumbnail_pic	string	缩略图片地址，没有时不返回此字段
  
+
  reposts_count	int	转发数
  comments_count	int	评论数
  attitudes_count	int	表态数
@@ -41,5 +42,9 @@
 
 /**  source	string	微博来源 */
 @property(nonatomic,copy) NSString *source;
+
+/** 微博配图地址。多图时返回多图链接。无配图返回“[]” */
+@property (nonatomic, strong) NSArray *pic_urls;
+
 
 @end

@@ -10,6 +10,15 @@
 
 @implementation ZJUser
 
+/**
+ *  从外界传进来的mbtype判断是否是会员
+ */
+- (void)setMbtype:(int)mbtype
+{
+    _mbtype = mbtype;
+    
+    self.vip = mbtype > 2;
+}
 
 
 @end

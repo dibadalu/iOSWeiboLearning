@@ -15,24 +15,28 @@
 #import <UIImageView+WebCache.h>
 #import "ZJStatus.h"
 #import <MJRefresh.h>
+#import "ZJStatusCell.h"
+#import "ZJStatusFrame.h"
 
 @interface ZJHomeViewController ()
 
-/** 微博模型数组（一个模型代表一条微博） 可变数组*/
-@property(nonatomic,strong) NSMutableArray *statuses;
+/** 微博模型数组（存放ZJStatus模型一个模型代表一条微博） 可变数组*/
+//@property(nonatomic,strong) NSMutableArray *statuses;
+/** 微博Frame模型数组（存放ZJStatusFrame模型，一个模型代表一条微博）*/
+@property(nonatomic,strong) NSMutableArray *statusFrames;
 
 @end
 
 @implementation ZJHomeViewController
 /**
- *  微博模型数组的懒加载
+ *  微博Frame模型数组的懒加载
  */
-- (NSMutableArray *)statuses
+- (NSMutableArray *)statusFrames
 {
-    if (!_statuses) {
-        self.statuses = [NSMutableArray array];
+    if (!_statusFrames) {
+        self.statusFrames = [NSMutableArray array];
     }
-    return _statuses;
+    return _statusFrames;
 }
 
 #pragma mark - 系统方法
@@ -114,6 +118,7 @@
     }];
     
 }
+
 /**
  *  加载最新的微博数据
  */
@@ -136,10 +141,10 @@
 //    params[@"count"] = @5;//默认是20
     
     //取出最新的微博
-    ZJStatus *firstStatus = [self.statuses firstObject];
-    if (firstStatus) {
+    ZJStatusFrame *firstStatusFrame = [self.statusFrames firstObject];
+    if (firstStatusFrame) {
         //若指定此参数，则返回ID比since_id大的微博（即比since_id时间晚的微博），默认为0。
-        params[@"since_id"] = firstStatus.idstr;
+        params[@"since_id"] = firstStatusFrame.status.idstr;
     }
     
     //2.发送请求
@@ -148,10 +153,13 @@
         //取得微博字典数组，字典转模型(微博字典数组->微博模型数组)
         NSArray *newStatuses = [ZJStatus objectArrayWithKeyValuesArray:json[@"statuses"]];
 
+        //将ZJStatus转化为ZJStatusFrame
+        NSArray *frames = [self statusFramesWithStatuses:newStatuses];
+        
         //将最新的微博数据，添加到总数组的最前面(插入)
         NSRange range = NSMakeRange(0, newStatuses.count);
         NSIndexSet *set = [NSIndexSet indexSetWithIndexesInRange:range];
-        [self.statuses insertObjects:newStatuses atIndexes:set];
+        [self.statusFrames insertObjects:frames atIndexes:set];
         
         //刷新表格
         [self.tableView reloadData];
@@ -241,10 +249,10 @@
     //    params[@"count"] = @5;//默认是20
     
     //取出最后面的微博
-    ZJStatus *lastStatus = [self.statuses lastObject];
+    ZJStatusFrame *lastStatusFrame = [self.statusFrames lastObject];
     //max_id	false	int64	若指定此参数，则返回ID小于或等于max_id的微博，默认为0。
-    if (lastStatus) {
-        long long maxID = lastStatus.idstr.longLongValue - 1;
+    if (lastStatusFrame) {
+        long long maxID = lastStatusFrame.status.idstr.longLongValue - 1;
         params[@"max_id"] = @(maxID);//包装成对象
     }
     
@@ -254,8 +262,11 @@
         //取得微博字典数组，并字典转模型(微博字典数组->微博模型数组)
         NSArray *newStatuses = [ZJStatus objectArrayWithKeyValuesArray:json[@"statuses"]];
         
+        //将ZJStatus转换为ZJStatusFrame
+        NSArray *frames = [self statusFramesWithStatuses:newStatuses];
+        
         //将更多的微博数据，添加到总数组的最后面
-        [self.statuses addObjectsFromArray:newStatuses];
+        [self.statusFrames addObjectsFromArray:frames];
         
         //刷新表格
         [self.tableView reloadData];
@@ -319,6 +330,21 @@
 
     }];
 }
+#pragma mark - 提取的方法
+/**
+ * 将ZJStatus转化为ZJStatusFrame
+ */
+- (NSArray *)statusFramesWithStatuses:(NSArray *)statuses
+{
+    //遍历status数组
+    NSMutableArray *frames = [NSMutableArray array];
+    for (ZJStatus *status in statuses) {
+        ZJStatusFrame *frame = [[ZJStatusFrame alloc] init];
+        frame.status = status;
+        [frames addObject:frame];
+    }
+    return frames;
+}
 
 
 #pragma mark - 点击事件
@@ -341,35 +367,42 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
 
-    return self.statuses.count;
+    return self.statusFrames.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *ID = @"status";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:ID];
-    if (!cell) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:ID];
-    }
+    //1.创建cell
+    ZJStatusCell *cell = [ZJStatusCell cellWithTableView:tableView];
     
-    //取出微博字典数组
-//    NSDictionary *status = self.statuses[indexPath.row];
-    ZJStatus *status = self.statuses[indexPath.row];
-    //设置微博的用户名
-//    NSDictionary *user = status[@"user"];
-//    cell.textLabel.text = user[@"name"];
-    ZJUser *user = status.user;
-    cell.textLabel.text = user.name;
-    
-    //设置微博的正文
-//    cell.detailTextLabel.text = status[@"text"];
-    cell.detailTextLabel.text = status.text;
-    
-    //设置头像
-    UIImage *placeImage = [UIImage imageNamed:@"avatar_default_small"];
-    [cell.imageView sd_setImageWithURL:[NSURL URLWithString:user.profile_image_url] placeholderImage:placeImage];
+    //2.给cell传微博frame模型（在cell里面设置frame和数据）
+    cell.statusFrame = self.statusFrames[indexPath.row];
     
     return cell;
+    
+    //reason: 'UITableView dataSource must return a cell from tableView:cellForRowAtIndexPath:'
+    //错误原因：没有设置frame
+    
+    /*
+     static NSString *ID = @"status";
+     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:ID];
+     if (!cell) {
+     cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:ID];
+     }
+     
+     //取出微博字典数组
+     ZJStatus *status = self.statuses[indexPath.row];
+     //设置微博的用户名
+     ZJUser *user = status.user;
+     cell.textLabel.text = user.name;
+     //设置微博的正文
+     cell.detailTextLabel.text = status.text;
+     //设置头像
+     UIImage *placeImage = [UIImage imageNamed:@"avatar_default_small"];
+     [cell.imageView sd_setImageWithURL:[NSURL URLWithString:user.profile_image_url] placeholderImage:placeImage];
+     */
+    
+    
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
@@ -381,4 +414,13 @@
     [self.navigationController pushViewController:vc animated:YES];
 }
 
+/**
+ *  计算cell的高度
+ */
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    ZJStatusFrame *frame = self.statusFrames[indexPath.row];
+    return frame.cellHeight;
+    
+}
 @end

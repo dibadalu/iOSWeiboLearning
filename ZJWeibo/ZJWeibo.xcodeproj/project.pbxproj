@@ -10,6 +10,8 @@
 		54097DC71BD0A320008084D3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 54097DC51BD0A320008084D3 /* Main.storyboard */; };
 		54097DCC1BD0A320008084D3 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 54097DCA1BD0A320008084D3 /* LaunchScreen.xib */; };
 		54097DD81BD0A321008084D3 /* ZJWeiboTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 54097DD71BD0A321008084D3 /* ZJWeiboTests.m */; };
+		541B327C1BD8B338004C4BC6 /* ZJStatusFrame.m in Sources */ = {isa = PBXBuildFile; fileRef = 541B327B1BD8B338004C4BC6 /* ZJStatusFrame.m */; };
+		541B327F1BD8B85D004C4BC6 /* ZJStatusCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 541B327E1BD8B85D004C4BC6 /* ZJStatusCell.m */; };
 		5423DFCD1BD688D200B59739 /* ZJUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 5423DFCC1BD688D200B59739 /* ZJUser.m */; };
 		542A49F21BD635A800C457CF /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 542A49F01BD635A800C457CF /* AppDelegate.m */; };
 		542A49F31BD635A800C457CF /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 542A49F11BD635A800C457CF /* main.m */; };
@@ -53,6 +55,10 @@
 		54097DD11BD0A321008084D3 /* ZJWeiboTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ZJWeiboTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		54097DD61BD0A321008084D3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		54097DD71BD0A321008084D3 /* ZJWeiboTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZJWeiboTests.m; sourceTree = "<group>"; };
+		541B327A1BD8B338004C4BC6 /* ZJStatusFrame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZJStatusFrame.h; sourceTree = "<group>"; };
+		541B327B1BD8B338004C4BC6 /* ZJStatusFrame.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZJStatusFrame.m; sourceTree = "<group>"; };
+		541B327D1BD8B85D004C4BC6 /* ZJStatusCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZJStatusCell.h; sourceTree = "<group>"; };
+		541B327E1BD8B85D004C4BC6 /* ZJStatusCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZJStatusCell.m; sourceTree = "<group>"; };
 		5423DFCB1BD688D200B59739 /* ZJUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZJUser.h; sourceTree = "<group>"; };
 		5423DFCC1BD688D200B59739 /* ZJUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZJUser.m; sourceTree = "<group>"; };
 		542A49EF1BD635A800C457CF /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -285,6 +291,8 @@
 				5423DFCC1BD688D200B59739 /* ZJUser.m */,
 				54330C6A1BD72BF7005DFFDE /* ZJStatus.h */,
 				54330C6B1BD72BF7005DFFDE /* ZJStatus.m */,
+				541B327A1BD8B338004C4BC6 /* ZJStatusFrame.h */,
+				541B327B1BD8B338004C4BC6 /* ZJStatusFrame.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -292,6 +300,8 @@
 		5421DAA21BD4CED400B82561 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				541B327D1BD8B85D004C4BC6 /* ZJStatusCell.h */,
+				541B327E1BD8B85D004C4BC6 /* ZJStatusCell.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -642,6 +652,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				542A49F21BD635A800C457CF /* AppDelegate.m in Sources */,
+				541B327C1BD8B338004C4BC6 /* ZJStatusFrame.m in Sources */,
 				54E7EDF31BD60F640018280F /* MBProgressHUD+MJ.m in Sources */,
 				54C220201BD52B0400BE0ED0 /* UIView+ZJExtension.m in Sources */,
 				544A871E1BD4D56D00659A85 /* ZJTabBarViewController.m in Sources */,
@@ -659,6 +670,7 @@
 				544A87271BD4D78100659A85 /* ZJDiscoverViewController.m in Sources */,
 				542EDA5F1BD6444900CAA724 /* AFJSONResponseSerializer+ZJ.m in Sources */,
 				542A49F31BD635A800C457CF /* main.m in Sources */,
+				541B327F1BD8B85D004C4BC6 /* ZJStatusCell.m in Sources */,
 				54C220261BD52D5F00BE0ED0 /* ZJOAuthViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

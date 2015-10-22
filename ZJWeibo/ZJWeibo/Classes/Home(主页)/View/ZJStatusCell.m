@@ -154,25 +154,19 @@
     self.nameLabel.text = user.name;
     
     /** 时间 */
-//    NSString *time = status.created_at;
-//    CGFloat timeX = self.nameLabel.frame.origin.x;
-//    CGFloat timeY = CGRectGetMaxY(self.nameLabel.frame) + ZJStatusCellBorderW;
-//    CGSize timeSize = [time sizeWithFont:ZJStatusCellTimeLableFont];
-//    self.timeLabel.frame = (CGRect){{timeX, timeY},timeSize};
     CGSize timeSize = [status.created_at sizeWithFont:ZJStatusCellTimeLableFont];
     CGFloat timeX = cellW - ZJStatusCellBorderW  - timeSize.width;
     CGFloat timeY = self.nameLabel.frame.origin.y;
     self.timeLabel.frame = (CGRect){{timeX, timeY},timeSize};
     self.timeLabel.text = status.created_at;
     
-    /** 来源 */
-    self.sourceLabel.frame = statusFrame.sourceLabelF;
-    self.sourceLabel.text = status.source;
-    
     /** 正文 */
     self.contentLabel.frame = statusFrame.contentLabelF;
     self.contentLabel.text = status.text;
     
+    /** 来源 */
+//    self.sourceLabel.frame = statusFrame.sourceLabelF;
+//    self.sourceLabel.text = status.source;
 }
 
 @end

@@ -53,29 +53,20 @@
     }
 
     /** 时间 */
-//    CGSize timeSize = [status.created_at sizeWithFont:ZJStatusCellTimeLableFont];
-//    CGFloat timeX = nameX;
-//    CGFloat timeY = CGRectGetMaxY(self.nameLabelF) + ZJStatusCellBorderW;
-//    self.timeLabelF = (CGRect){{timeX, timeY},timeSize};
     CGSize timeSize = [status.created_at sizeWithFont:ZJStatusCellTimeLableFont];
     CGFloat timeX = cellW - ZJStatusCellBorderW - timeSize.width;
     CGFloat timeY = nameY;
     self.timeLabelF = (CGRect){{timeX, timeY},timeSize};
-    
-    /** 来源 */
-//    CGFloat sourceX = CGRectGetMaxX(self.timeLabelF) + ZJStatusCellBorderW;
-//    CGFloat sourceY = timeY;
-//    CGSize sourceSize = [status.source sizeWithFont:ZJStatusCellSourceLableFont];
-//    self.sourceLabelF = (CGRect){{sourceX, sourceY},sourceSize};
-    CGFloat sourceX = nameX;
-    CGFloat sourceY = CGRectGetMaxY(self.nameLabelF) + ZJStatusCellBorderW;
-    CGSize sourceSize = [status.source sizeWithFont:ZJStatusCellSourceLableFont];
-    self.sourceLabelF = (CGRect){{sourceX, sourceY},sourceSize};
-    
+
     /** 正文 */
-    CGFloat contentX = iconX;
-    CGFloat contentY = MAX(CGRectGetMaxY(self.iconViewF), CGRectGetMaxY(self.timeLabelF)) + ZJStatusCellBorderW;
-    CGFloat maxW = cellW - 2 * ZJStatusCellBorderW;
+//    CGFloat contentX = iconX;
+//    CGFloat contentY = MAX(CGRectGetMaxY(self.iconViewF), CGRectGetMaxY(self.timeLabelF)) + ZJStatusCellBorderW;
+//    CGFloat maxW = cellW - 2 * ZJStatusCellBorderW;
+//    CGSize contentSize = [status.text sizeWithFont:ZJStatusCellContentLableFont maxW:maxW];
+//    self.contentLabelF = (CGRect){{contentX, contentY},contentSize};
+    CGFloat contentX = nameX;
+    CGFloat contentY = CGRectGetMaxY(self.nameLabelF) + ZJStatusCellBorderW;
+    CGFloat maxW = cellW - 2 * ZJStatusCellBorderW - iconWH;
     CGSize contentSize = [status.text sizeWithFont:ZJStatusCellContentLableFont maxW:maxW];
     self.contentLabelF = (CGRect){{contentX, contentY},contentSize};
     
@@ -87,6 +78,12 @@
     CGFloat originalH = CGRectGetMaxY(self.contentLabelF) + ZJStatusCellBorderW;
     CGFloat originalW = cellW ;
     self.originalViewF = CGRectMake(originalX, originalY, originalW, originalH);
+    
+    /** 来源 */
+//    CGFloat sourceX = nameX;
+//    CGFloat sourceY = CGRectGetMaxY(self.nameLabelF) + ZJStatusCellBorderW;
+//    CGSize sourceSize = [status.source sizeWithFont:ZJStatusCellSourceLableFont];
+//    self.sourceLabelF = (CGRect){{sourceX, sourceY},sourceSize};
     
     /** cell的高度 */
     self.cellHeight = CGRectGetMaxY(self.originalViewF);

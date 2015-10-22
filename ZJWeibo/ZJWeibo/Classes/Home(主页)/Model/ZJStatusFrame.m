@@ -59,11 +59,6 @@
     self.timeLabelF = (CGRect){{timeX, timeY},timeSize};
 
     /** 正文 */
-//    CGFloat contentX = iconX;
-//    CGFloat contentY = MAX(CGRectGetMaxY(self.iconViewF), CGRectGetMaxY(self.timeLabelF)) + ZJStatusCellBorderW;
-//    CGFloat maxW = cellW - 2 * ZJStatusCellBorderW;
-//    CGSize contentSize = [status.text sizeWithFont:ZJStatusCellContentLableFont maxW:maxW];
-//    self.contentLabelF = (CGRect){{contentX, contentY},contentSize};
     CGFloat contentX = nameX;
     CGFloat contentY = CGRectGetMaxY(self.nameLabelF) + ZJStatusCellBorderW;
     CGFloat maxW = cellW - 3 * ZJStatusCellBorderW - iconWH;
@@ -90,17 +85,58 @@
     CGFloat originalW = cellW ;
     self.originalViewF = CGRectMake(originalX, originalY, originalW, originalH);
     
+
+    /* 转发微博 要考虑是否存在转发微博 */
+    if (status.retweeted_status) {//存在转发微博
+        //取出转发微博
+        ZJStatus *retweeted_status = status.retweeted_status;
+        //取出转发微博的用户
+        ZJUser *retweeted_status_user = retweeted_status.user;
+
+        /** 昵称+正文 */
+        CGFloat retweetedContentX = ZJStatusCellBorderW;
+        CGFloat retweetedContentY = ZJStatusCellBorderW;
+        NSString *retweeted_text = [NSString stringWithFormat:@"%@:%@",retweeted_status_user.name,retweeted_status.text];
+        CGFloat retweetedContentW = maxW - 2 * ZJStatusCellBorderW;
+        CGSize retweetedContentSize = [retweeted_text sizeWithFont:ZJRetweetedStatusCellContentLableFont maxW:retweetedContentW];
+        self.retweetedContentLabelF = (CGRect){{retweetedContentX,retweetedContentY},retweetedContentSize};
+        
+        /** 配图 要考虑是否有配图*/
+        CGFloat retweetedH = 0;
+        if (retweeted_status.pic_urls.count) {//有配图
+            CGFloat retweetedPhotoX = retweetedContentX;
+            CGFloat retweetedPhotoY = CGRectGetMaxY(self.retweetedContentLabelF) + ZJStatusCellBorderW;
+            CGFloat retweetedPhotoWH = 80;
+            self.retweetedPhotoViewF = CGRectMake(retweetedPhotoX, retweetedPhotoY, retweetedPhotoWH, retweetedPhotoWH);
+        
+            retweetedH = CGRectGetMaxY(self.retweetedPhotoViewF) + ZJStatusCellBorderW;
+        }else{//没配图
+            
+            retweetedH = CGRectGetMaxY(self.retweetedContentLabelF) + ZJStatusCellBorderW;
+        }
+
+        
+        /** 转发微博整体 */
+        CGFloat retweetedX = contentX;
+        CGFloat retweetedY = CGRectGetMaxY(self.originalViewF) + ZJStatusCellBorderW;
+        CGFloat retweetedW = cellW - 3 * ZJStatusCellBorderW - iconWH;
+        self.retweetedViewF = CGRectMake(retweetedX, retweetedY, retweetedW, retweetedH);
+        
+        /** cell的高度 */
+        self.cellHeight = CGRectGetMaxY(self.retweetedViewF);
+        
+    }else{//没转发微博
+        
+        /** cell的高度 */
+        self.cellHeight = CGRectGetMaxY(self.originalViewF);
+    }
+
+
     /** 来源 */
-//    CGFloat sourceX = nameX;
-//    CGFloat sourceY = CGRectGetMaxY(self.nameLabelF) + ZJStatusCellBorderW;
-//    CGSize sourceSize = [status.source sizeWithFont:ZJStatusCellSourceLableFont];
-//    self.sourceLabelF = (CGRect){{sourceX, sourceY},sourceSize};
-    
-    /** cell的高度 */
-    self.cellHeight = CGRectGetMaxY(self.originalViewF);
-    
-    
-    
+    //    CGFloat sourceX = nameX;
+    //    CGFloat sourceY = CGRectGetMaxY(self.nameLabelF) + ZJStatusCellBorderW;
+    //    CGSize sourceSize = [status.source sizeWithFont:ZJStatusCellSourceLableFont];
+    //    self.sourceLabelF = (CGRect){{sourceX, sourceY},sourceSize};
 }
 
 

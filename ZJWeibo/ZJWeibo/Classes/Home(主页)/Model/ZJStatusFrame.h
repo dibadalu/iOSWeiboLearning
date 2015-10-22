@@ -18,6 +18,9 @@
 /* 正文字体 */
 #define ZJStatusCellContentLableFont [UIFont systemFontOfSize:15]
 
+/* 转发微博正文字体 */
+#define ZJRetweetedStatusCellContentLableFont [UIFont systemFontOfSize:14]
+
 #define ZJStatusCellBorderW 10
 
 #import <Foundation/Foundation.h>
@@ -46,6 +49,14 @@
 /** 正文 */
 @property(nonatomic,assign) CGRect contentLabelF;
 
+
+/* 转发微博 */
+/** 转发微博整体 */
+@property(nonatomic,assign) CGRect retweetedViewF;
+/** 配图 */
+@property(nonatomic,assign) CGRect retweetedPhotoViewF;
+/** 昵称+正文 */
+@property(nonatomic,assign) CGRect retweetedContentLabelF;
 
 /** cell的高度 */
 @property(nonatomic,assign) CGFloat cellHeight;

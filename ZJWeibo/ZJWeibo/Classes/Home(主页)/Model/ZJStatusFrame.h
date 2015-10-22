@@ -7,13 +7,13 @@
 //  微博frame模型,负责计算cell子控件的frame和cell的高度
 
 /* 昵称字体 */
-#define ZJStatusCellNameLableFont [UIFont systemFontOfSize:15]
+#define ZJStatusCellNameLableFont [UIFont systemFontOfSize:14]
 
 /* 时间字体 */
 #define ZJStatusCellTimeLableFont [UIFont systemFontOfSize:10]
 
 /* 来源字体 */
-#define ZJStatusCellSourceLableFont ZJStatusCellTimeLableFont
+#define ZJStatusCellSourceLableFont [UIFont systemFontOfSize:8]
 
 /* 正文字体 */
 #define ZJStatusCellContentLableFont [UIFont systemFontOfSize:15]

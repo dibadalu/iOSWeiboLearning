@@ -131,6 +131,8 @@
     //取出用户模型
     ZJUser *user = status.user;
     
+    CGFloat cellW = [UIScreen mainScreen].bounds.size.width;
+    
     /* 原创微博 */
     /** 原创微博整体 */
     self.originalView.frame = statusFrame.originalViewF;
@@ -152,10 +154,14 @@
     self.nameLabel.text = user.name;
     
     /** 时间 */
-    NSString *time = status.created_at;
-    CGFloat timeX = self.nameLabel.frame.origin.x;
-    CGFloat timeY = CGRectGetMaxY(self.nameLabel.frame) + ZJStatusCellBorderW;
-    CGSize timeSize = [time sizeWithFont:ZJStatusCellTimeLableFont];
+//    NSString *time = status.created_at;
+//    CGFloat timeX = self.nameLabel.frame.origin.x;
+//    CGFloat timeY = CGRectGetMaxY(self.nameLabel.frame) + ZJStatusCellBorderW;
+//    CGSize timeSize = [time sizeWithFont:ZJStatusCellTimeLableFont];
+//    self.timeLabel.frame = (CGRect){{timeX, timeY},timeSize};
+    CGSize timeSize = [status.created_at sizeWithFont:ZJStatusCellTimeLableFont];
+    CGFloat timeX = cellW - ZJStatusCellBorderW  - timeSize.width;
+    CGFloat timeY = self.nameLabel.frame.origin.y;
     self.timeLabel.frame = (CGRect){{timeX, timeY},timeSize};
     self.timeLabel.text = status.created_at;
     

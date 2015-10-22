@@ -34,7 +34,7 @@
     /** 头像 */
     CGFloat iconX = ZJStatusCellBorderW;
     CGFloat iconY = ZJStatusCellBorderW;
-    CGFloat iconWH = 35;
+    CGFloat iconWH = 30;
     self.iconViewF = CGRectMake(iconX, iconY, iconWH, iconWH);
     
     /** 昵称 */
@@ -53,14 +53,22 @@
     }
 
     /** 时间 */
-    CGFloat timeX = nameX;
-    CGFloat timeY = CGRectGetMaxY(self.nameLabelF) + ZJStatusCellBorderW;
+//    CGSize timeSize = [status.created_at sizeWithFont:ZJStatusCellTimeLableFont];
+//    CGFloat timeX = nameX;
+//    CGFloat timeY = CGRectGetMaxY(self.nameLabelF) + ZJStatusCellBorderW;
+//    self.timeLabelF = (CGRect){{timeX, timeY},timeSize};
     CGSize timeSize = [status.created_at sizeWithFont:ZJStatusCellTimeLableFont];
+    CGFloat timeX = cellW - ZJStatusCellBorderW - timeSize.width;
+    CGFloat timeY = nameY;
     self.timeLabelF = (CGRect){{timeX, timeY},timeSize};
     
     /** 来源 */
-    CGFloat sourceX = CGRectGetMaxX(self.timeLabelF) + ZJStatusCellBorderW;
-    CGFloat sourceY = timeY;
+//    CGFloat sourceX = CGRectGetMaxX(self.timeLabelF) + ZJStatusCellBorderW;
+//    CGFloat sourceY = timeY;
+//    CGSize sourceSize = [status.source sizeWithFont:ZJStatusCellSourceLableFont];
+//    self.sourceLabelF = (CGRect){{sourceX, sourceY},sourceSize};
+    CGFloat sourceX = nameX;
+    CGFloat sourceY = CGRectGetMaxY(self.nameLabelF) + ZJStatusCellBorderW;
     CGSize sourceSize = [status.source sizeWithFont:ZJStatusCellSourceLableFont];
     self.sourceLabelF = (CGRect){{sourceX, sourceY},sourceSize};
     

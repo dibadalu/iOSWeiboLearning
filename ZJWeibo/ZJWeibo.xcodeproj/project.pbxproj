@@ -19,6 +19,7 @@
 		541B328D1BD9D825004C4BC6 /* ZJStatusToolBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 541B328C1BD9D825004C4BC6 /* ZJStatusToolBar.m */; };
 		541B328F1BD9E350004C4BC6 /* fakeStatus.plist in Resources */ = {isa = PBXBuildFile; fileRef = 541B328E1BD9E350004C4BC6 /* fakeStatus.plist */; };
 		541B32921BDA228D004C4BC6 /* ZJStatusPhotosView.m in Sources */ = {isa = PBXBuildFile; fileRef = 541B32911BDA228D004C4BC6 /* ZJStatusPhotosView.m */; };
+		541B32951BDA2A22004C4BC6 /* ZJStatusPhotoView.m in Sources */ = {isa = PBXBuildFile; fileRef = 541B32941BDA2A22004C4BC6 /* ZJStatusPhotoView.m */; };
 		5423DFCD1BD688D200B59739 /* ZJUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 5423DFCC1BD688D200B59739 /* ZJUser.m */; };
 		542A49F21BD635A800C457CF /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 542A49F01BD635A800C457CF /* AppDelegate.m */; };
 		542A49F31BD635A800C457CF /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 542A49F11BD635A800C457CF /* main.m */; };
@@ -78,6 +79,8 @@
 		541B328E1BD9E350004C4BC6 /* fakeStatus.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = fakeStatus.plist; sourceTree = "<group>"; };
 		541B32901BDA228D004C4BC6 /* ZJStatusPhotosView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZJStatusPhotosView.h; sourceTree = "<group>"; };
 		541B32911BDA228D004C4BC6 /* ZJStatusPhotosView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZJStatusPhotosView.m; sourceTree = "<group>"; };
+		541B32931BDA2A22004C4BC6 /* ZJStatusPhotoView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZJStatusPhotoView.h; sourceTree = "<group>"; };
+		541B32941BDA2A22004C4BC6 /* ZJStatusPhotoView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZJStatusPhotoView.m; sourceTree = "<group>"; };
 		5423DFCB1BD688D200B59739 /* ZJUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZJUser.h; sourceTree = "<group>"; };
 		5423DFCC1BD688D200B59739 /* ZJUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZJUser.m; sourceTree = "<group>"; };
 		542A49EF1BD635A800C457CF /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -328,6 +331,8 @@
 				541B328C1BD9D825004C4BC6 /* ZJStatusToolBar.m */,
 				541B32901BDA228D004C4BC6 /* ZJStatusPhotosView.h */,
 				541B32911BDA228D004C4BC6 /* ZJStatusPhotosView.m */,
+				541B32931BDA2A22004C4BC6 /* ZJStatusPhotoView.h */,
+				541B32941BDA2A22004C4BC6 /* ZJStatusPhotoView.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -686,6 +691,7 @@
 				542A49F21BD635A800C457CF /* AppDelegate.m in Sources */,
 				541B327C1BD8B338004C4BC6 /* ZJStatusFrame.m in Sources */,
 				541B32821BD8D85C004C4BC6 /* NSDate+Extension.m in Sources */,
+				541B32951BDA2A22004C4BC6 /* ZJStatusPhotoView.m in Sources */,
 				54E7EDF31BD60F640018280F /* MBProgressHUD+MJ.m in Sources */,
 				54C220201BD52B0400BE0ED0 /* UIView+ZJExtension.m in Sources */,
 				544A871E1BD4D56D00659A85 /* ZJTabBarViewController.m in Sources */,

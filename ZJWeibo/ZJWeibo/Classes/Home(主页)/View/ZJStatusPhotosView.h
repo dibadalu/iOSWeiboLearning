@@ -12,7 +12,7 @@
 
 /** 配图模型数组，一个模型代表一张配图 */
 @property(nonatomic,strong) NSArray *photos;
-
+/** 计算图片的位置和尺寸 */
 + (CGSize)sizeWithPhotosCount:(NSUInteger)count;
 
 @end

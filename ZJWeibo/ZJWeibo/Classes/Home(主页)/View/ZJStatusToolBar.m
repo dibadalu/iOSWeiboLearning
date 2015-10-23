@@ -44,14 +44,13 @@
     return _dividers;
 }
 
-#pragma mark -
+#pragma mark - 创建方法
 + (instancetype)tooBar
 {
     ZJStatusToolBar *toolBar = [[self alloc] init];
 //    toolBar.backgroundColor = [UIColor yellowColor];
     return toolBar;
 }
-
 
 #pragma mark - 系统方法
 /**
@@ -77,7 +76,6 @@
     
     return self;
 }
-
 /**
  *  在layoutSubviews方法中设置子控件的位置和尺寸
  */
@@ -89,7 +87,6 @@
     int btnCount =(int) self.btns.count;
     CGFloat btnW = self.width / btnCount;
     CGFloat btnH = self.height;
-    ZJLog(@"%f",self.width);
     for (int i = 0; i< btnCount; i++) {
         UIButton *btn = self.subviews[i];
         btn.x = i * btnW;
@@ -147,8 +144,6 @@
     
     [self.dividers addObject:divider];
 }
-
-
 
 #pragma mark - 传值
 /**

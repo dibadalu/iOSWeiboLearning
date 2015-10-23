@@ -51,7 +51,7 @@
 
 @implementation ZJStatusCell
 
-#pragma mark -
+#pragma mark - 创建方法
 /**
  *  创建cell
  *
@@ -185,7 +185,7 @@
     self.toolBar = toolBar;
 }
 
-#pragma mark -
+#pragma mark - 传值
 /**
  *  设置frame和数据
  *  cell根据StatusFrame模型给子控件设置frame，根据Status模型给子控件设置数据

@@ -39,7 +39,7 @@
 /** 会员图标 */
 @property(nonatomic,assign) CGRect vipViewF;
 /** 配图 */
-@property(nonatomic,assign) CGRect photoViewF;
+@property(nonatomic,assign) CGRect photosViewF;
 /** 昵称 */
 @property(nonatomic,assign) CGRect nameLabelF;
 /** 时间 */
@@ -54,7 +54,7 @@
 /** 转发微博整体 */
 @property(nonatomic,assign) CGRect retweetedViewF;
 /** 配图 */
-@property(nonatomic,assign) CGRect retweetedPhotoViewF;
+@property(nonatomic,assign) CGRect retweetedPhotosViewF;
 /** 昵称+正文 */
 @property(nonatomic,assign) CGRect retweetedContentLabelF;
 

@@ -13,6 +13,7 @@
 #import <UIImageView+WebCache.h>
 #import "ZJPhoto.h"
 #import "ZJStatusToolBar.h"
+#import "ZJStatusPhotosView.h"
 
 @interface ZJStatusCell ()
 
@@ -25,7 +26,7 @@
 /** 会员图标 */
 @property(nonatomic,weak) UIImageView *vipView;
 /** 配图 */
-@property(nonatomic,weak) UIImageView *photoView;
+@property(nonatomic,weak) ZJStatusPhotosView *photosView;
 /** 昵称 */
 @property(nonatomic,weak) UILabel *nameLabel;
 /** 时间 */
@@ -40,7 +41,7 @@
 /** 转发微博整体 */
 @property(nonatomic,weak) UIView *retweetedView;
 /** 配图 */
-@property(nonatomic,weak) UIImageView *retweetedPhotoView;
+@property(nonatomic,weak) ZJStatusPhotosView *retweetedphotosView;
 /** 昵称+正文 */
 @property(nonatomic,weak) UILabel *retweetedContentLabel;
 
@@ -122,9 +123,9 @@
     self.vipView = vipView;
     
     /** 配图 */
-    UIImageView *photoView = [[UIImageView alloc] init];
-    [self.contentView addSubview:photoView];
-    self.photoView = photoView;
+    ZJStatusPhotosView *photosView = [[ZJStatusPhotosView alloc] init];
+    [self.contentView addSubview:photosView];
+    self.photosView = photosView;
     
     /** 昵称 */
     UILabel *nameLabel = [[UILabel alloc] init];
@@ -171,9 +172,9 @@
     self.retweetedContentLabel = retweetedContentLabel;
     
     /** 配图 */
-    UIImageView *retweetedPhotoView = [[UIImageView alloc] init];
-    [retweetedView addSubview:retweetedPhotoView];
-    self.retweetedPhotoView = retweetedPhotoView;
+    ZJStatusPhotosView *retweetedphotosView = [[ZJStatusPhotosView alloc] init];
+    [retweetedView addSubview:retweetedphotosView];
+    self.retweetedphotosView = retweetedphotosView;
 }
 /**
  *  初始化工具条
@@ -215,10 +216,11 @@
     self.vipView.image = [UIImage imageNamed:@"common_icon_membership_level1"];
     
     /** 配图 */
-    self.photoView.frame = statusFrame.photoViewF;
+    self.photosView.frame = statusFrame.photosViewF;
     //取出缩略图模型ZJPhoto
-    ZJPhoto *photo = [status.pic_urls lastObject];
-    [self.photoView sd_setImageWithURL:[NSURL URLWithString:photo.thumbnail_pic] placeholderImage:[UIImage imageNamed:@"timeline_image_placeholder"]];
+//    ZJPhoto *photo = [status.pic_urls lastObject];
+//    [self.photosView sd_setImageWithURL:[NSURL URLWithString:photo.thumbnail_pic] placeholderImage:[UIImage imageNamed:@"timeline_image_placeholder"]];
+    self.photosView.photos = status.pic_urls;
     
     /** 昵称 */
     self.nameLabel.frame = statusFrame.nameLabelF;
@@ -254,13 +256,14 @@
         
         /** 配图 要考虑是否有配图*/
         if (retweeted_status.pic_urls.count) {//有配图
-            self.retweetedPhotoView.hidden = NO;
+            self.retweetedphotosView.hidden = NO;
             
-            self.retweetedPhotoView.frame = statusFrame.retweetedPhotoViewF;
-            ZJPhoto *retweeted_Photo = [retweeted_status.pic_urls lastObject];
-            [self.retweetedPhotoView sd_setImageWithURL:[NSURL URLWithString:retweeted_Photo.thumbnail_pic] placeholderImage:[UIImage imageNamed:@"timeline_image_placeholder"]];
+            self.retweetedphotosView.frame = statusFrame.retweetedPhotosViewF;
+//            ZJPhoto *retweeted_Photo = [retweeted_status.pic_urls lastObject];
+//            [self.retweetedphotosView sd_setImageWithURL:[NSURL URLWithString:retweeted_Photo.thumbnail_pic] placeholderImage:[UIImage imageNamed:@"timeline_image_placeholder"]];
+            self.retweetedphotosView.photos = retweeted_status.pic_urls;
         }else{//没配图
-            self.retweetedPhotoView.hidden = YES;
+            self.retweetedphotosView.hidden = YES;
 
             
         }

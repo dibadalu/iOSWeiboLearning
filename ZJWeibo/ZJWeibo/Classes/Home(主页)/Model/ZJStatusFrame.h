@@ -13,7 +13,7 @@
 #define ZJStatusCellTimeLableFont [UIFont systemFontOfSize:10]
 
 /* 来源字体 */
-#define ZJStatusCellSourceLableFont [UIFont systemFontOfSize:8]
+#define ZJStatusCellSourceLableFont [UIFont systemFontOfSize:10]
 
 /* 正文字体 */
 #define ZJStatusCellContentLableFont [UIFont systemFontOfSize:15]
@@ -57,6 +57,9 @@
 @property(nonatomic,assign) CGRect retweetedPhotoViewF;
 /** 昵称+正文 */
 @property(nonatomic,assign) CGRect retweetedContentLabelF;
+
+/** 工具条 */
+@property(nonatomic,assign) CGRect toolBarF;
 
 /** cell的高度 */
 @property(nonatomic,assign) CGFloat cellHeight;

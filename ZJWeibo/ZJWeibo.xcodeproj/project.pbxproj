@@ -16,6 +16,8 @@
 		541B32841BD8D86F004C4BC6 /* Foundation+Log.m in Sources */ = {isa = PBXBuildFile; fileRef = 541B32831BD8D86F004C4BC6 /* Foundation+Log.m */; };
 		541B32871BD8DB1E004C4BC6 /* NSString+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = 541B32861BD8DB1E004C4BC6 /* NSString+Extension.m */; };
 		541B328A1BD90197004C4BC6 /* ZJPhoto.m in Sources */ = {isa = PBXBuildFile; fileRef = 541B32891BD90197004C4BC6 /* ZJPhoto.m */; };
+		541B328D1BD9D825004C4BC6 /* ZJStatusToolBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 541B328C1BD9D825004C4BC6 /* ZJStatusToolBar.m */; };
+		541B328F1BD9E350004C4BC6 /* fakeStatus.plist in Resources */ = {isa = PBXBuildFile; fileRef = 541B328E1BD9E350004C4BC6 /* fakeStatus.plist */; };
 		5423DFCD1BD688D200B59739 /* ZJUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 5423DFCC1BD688D200B59739 /* ZJUser.m */; };
 		542A49F21BD635A800C457CF /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 542A49F01BD635A800C457CF /* AppDelegate.m */; };
 		542A49F31BD635A800C457CF /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 542A49F11BD635A800C457CF /* main.m */; };
@@ -70,6 +72,9 @@
 		541B32861BD8DB1E004C4BC6 /* NSString+Extension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Extension.m"; sourceTree = "<group>"; };
 		541B32881BD90197004C4BC6 /* ZJPhoto.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZJPhoto.h; sourceTree = "<group>"; };
 		541B32891BD90197004C4BC6 /* ZJPhoto.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZJPhoto.m; sourceTree = "<group>"; };
+		541B328B1BD9D825004C4BC6 /* ZJStatusToolBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZJStatusToolBar.h; sourceTree = "<group>"; };
+		541B328C1BD9D825004C4BC6 /* ZJStatusToolBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZJStatusToolBar.m; sourceTree = "<group>"; };
+		541B328E1BD9E350004C4BC6 /* fakeStatus.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = fakeStatus.plist; sourceTree = "<group>"; };
 		5423DFCB1BD688D200B59739 /* ZJUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZJUser.h; sourceTree = "<group>"; };
 		5423DFCC1BD688D200B59739 /* ZJUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZJUser.m; sourceTree = "<group>"; };
 		542A49EF1BD635A800C457CF /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -163,6 +168,7 @@
 		54097DBB1BD0A320008084D3 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				541B328E1BD9E350004C4BC6 /* fakeStatus.plist */,
 				54F608381BD50D3800F7BB3E /* Images.xcassets */,
 				54097DC51BD0A320008084D3 /* Main.storyboard */,
 				54097DCA1BD0A320008084D3 /* LaunchScreen.xib */,
@@ -315,6 +321,8 @@
 			children = (
 				541B327D1BD8B85D004C4BC6 /* ZJStatusCell.h */,
 				541B327E1BD8B85D004C4BC6 /* ZJStatusCell.m */,
+				541B328B1BD9D825004C4BC6 /* ZJStatusToolBar.h */,
+				541B328C1BD9D825004C4BC6 /* ZJStatusToolBar.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -602,6 +610,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				54F608391BD50D3800F7BB3E /* Images.xcassets in Resources */,
+				541B328F1BD9E350004C4BC6 /* fakeStatus.plist in Resources */,
 				54097DC71BD0A320008084D3 /* Main.storyboard in Resources */,
 				54097DCC1BD0A320008084D3 /* LaunchScreen.xib in Resources */,
 			);
@@ -676,6 +685,7 @@
 				54C220201BD52B0400BE0ED0 /* UIView+ZJExtension.m in Sources */,
 				544A871E1BD4D56D00659A85 /* ZJTabBarViewController.m in Sources */,
 				544A87211BD4D75E00659A85 /* ZJHomeViewController.m in Sources */,
+				541B328D1BD9D825004C4BC6 /* ZJStatusToolBar.m in Sources */,
 				541B32871BD8DB1E004C4BC6 /* NSString+Extension.m in Sources */,
 				542A49F91BD6365A00C457CF /* ZJHttpTool.m in Sources */,
 				542A4A0D1BD641D800C457CF /* ZJAccount.m in Sources */,

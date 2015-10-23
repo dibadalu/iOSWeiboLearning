@@ -10,8 +10,6 @@
 #import "ZJUser.h"
 #import "ZJStatus.h"
 
-
-
 @implementation ZJStatusFrame
 
 /**
@@ -87,6 +85,7 @@
     
 
     /* 转发微博 要考虑是否存在转发微博 */
+    CGFloat toolBarY = 0;
     if (status.retweeted_status) {//存在转发微博
         //取出转发微博
         ZJStatus *retweeted_status = status.retweeted_status;
@@ -122,21 +121,33 @@
         CGFloat retweetedW = cellW - 3 * ZJStatusCellBorderW - iconWH;
         self.retweetedViewF = CGRectMake(retweetedX, retweetedY, retweetedW, retweetedH);
         
-        /** cell的高度 */
-        self.cellHeight = CGRectGetMaxY(self.retweetedViewF);
+
+        toolBarY = CGRectGetMaxY(self.retweetedViewF);
         
     }else{//没转发微博
         
-        /** cell的高度 */
-        self.cellHeight = CGRectGetMaxY(self.originalViewF);
-    }
+        
+        toolBarY = CGRectGetMaxY(self.originalViewF);
 
+    }
+    
+
+    /** 工具条 */
+    CGFloat toolBarX = cellW * 0.5;
+    CGFloat toolBarW = cellW * 0.5;
+    CGFloat toolBarH = 30;
+    self.toolBarF = CGRectMake(toolBarX, toolBarY, toolBarW, toolBarH);
 
     /** 来源 */
-    //    CGFloat sourceX = nameX;
-    //    CGFloat sourceY = CGRectGetMaxY(self.nameLabelF) + ZJStatusCellBorderW;
-    //    CGSize sourceSize = [status.source sizeWithFont:ZJStatusCellSourceLableFont];
-    //    self.sourceLabelF = (CGRect){{sourceX, sourceY},sourceSize};
+    CGFloat sourceX = contentX;
+    CGFloat sourceY = toolBarY + ZJStatusCellBorderW;
+    CGSize sourceSize = [status.source sizeWithFont:ZJStatusCellSourceLableFont];
+    self.sourceLabelF = (CGRect){{sourceX, sourceY},sourceSize};
+    
+    /** cell的高度 */
+    self.cellHeight = CGRectGetMaxY(self.toolBarF);
+
+  
 }
 
 

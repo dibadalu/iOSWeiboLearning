@@ -12,6 +12,7 @@
 #import "ZJUser.h"
 #import <UIImageView+WebCache.h>
 #import "ZJPhoto.h"
+#import "ZJStatusToolBar.h"
 
 @interface ZJStatusCell ()
 
@@ -43,9 +44,14 @@
 /** 昵称+正文 */
 @property(nonatomic,weak) UILabel *retweetedContentLabel;
 
+/** 工具条 */
+@property(nonatomic,weak) ZJStatusToolBar *toolBar;
+
 @end
 
 @implementation ZJStatusCell
+
+#pragma mark -
 /**
  *  创建cell
  *
@@ -64,6 +70,7 @@
     return cell;
 }
 
+#pragma mark - 系统方法
 /**
  *  只调用一次，进行cell子控件的初始化
  *  1.添加有可能显示的所有cell子控件到contentView中
@@ -74,83 +81,115 @@
  
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
-        /* 原创微博 */
-        /** 原创微博整体 */
-        UIView *originalView = [[UIView alloc] init];
-//        originalView.backgroundColor = [UIColor redColor];
-        [self.contentView addSubview:originalView];
-        self.originalView = originalView;
+//        self.backgroundColor = [UIColor clearColor];
+        self.selectionStyle = UITableViewCellSelectionStyleNone;//选中cell不要变色
         
-        /** 头像 */
-        UIImageView *iconView = [[UIImageView alloc] init];
-        [self.contentView addSubview:iconView];
-        self.iconView = iconView;
+        //初始化原创微博
+        [self setupOriginal];
         
-        /** 会员图标 */
-        UIImageView *vipView = [[UIImageView alloc] init];
-        [self.contentView addSubview:vipView];
-        self.vipView = vipView;
+        //初始化转发微博
+        [self setupRetweet];
         
-        /** 配图 */
-        UIImageView *photoView = [[UIImageView alloc] init];
-        [self.contentView addSubview:photoView];
-        self.photoView = photoView;
-        
-        /** 昵称 */
-        UILabel *nameLabel = [[UILabel alloc] init];
-        nameLabel.font = ZJStatusCellNameLableFont;
-        [self.contentView addSubview:nameLabel];
-        self.nameLabel = nameLabel;
-        
-        /** 时间 */
-        UILabel *timeLabel = [[UILabel alloc] init];
-        timeLabel.font = ZJStatusCellTimeLableFont;
-        [self.contentView addSubview:timeLabel];
-        self.timeLabel = timeLabel;
-        
-        /** 来源 */
-        UILabel *sourceLabel = [[UILabel alloc] init];
-        sourceLabel.font = ZJStatusCellSourceLableFont;
-        [self.contentView addSubview:sourceLabel];
-        self.sourceLabel = sourceLabel;
-        
-        /** 正文 */
-        UILabel *contentLabel = [[UILabel alloc] init];
-        contentLabel.font = ZJStatusCellContentLableFont;
-        contentLabel.numberOfLines = 0;
-        [self.contentView addSubview:contentLabel];
-        self.contentLabel = contentLabel;
-        
-        
-        /* 转发微博 */
-        /** 转发微博整体 */
-        UIView *retweetedView = [[UIView alloc] init];
-        retweetedView.backgroundColor = [UIColor colorWithRed:240/255.0 green:240/255.0 blue:240/255.0 alpha:1.0];
-        [self.contentView addSubview:retweetedView];
-        self.retweetedView = retweetedView;
-        
-        /** 昵称+正文 */
-        UILabel *retweetedContentLabel = [[UILabel alloc] init];
-        retweetedContentLabel.font = ZJRetweetedStatusCellContentLableFont;
-        retweetedContentLabel.numberOfLines = 0;
-        [retweetedView addSubview:retweetedContentLabel];
-        self.retweetedContentLabel = retweetedContentLabel;
-        
-        /** 配图 */
-        UIImageView *retweetedPhotoView = [[UIImageView alloc] init];
-        [retweetedView addSubview:retweetedPhotoView];
-        self.retweetedPhotoView = retweetedPhotoView;
+        //初始化工具条
+        [self setupToolBar];
     }
     
     return self;
 
 }
 
+#pragma mark - 初始化方法
+/**
+ *  初始化原创微博
+ */
+- (void)setupOriginal
+{
+    /* 原创微博 */
+    /** 原创微博整体 */
+    UIView *originalView = [[UIView alloc] init];
+    //        originalView.backgroundColor = [UIColor redColor];
+    [self.contentView addSubview:originalView];
+    self.originalView = originalView;
+    
+    /** 头像 */
+    UIImageView *iconView = [[UIImageView alloc] init];
+    [self.contentView addSubview:iconView];
+    self.iconView = iconView;
+    
+    /** 会员图标 */
+    UIImageView *vipView = [[UIImageView alloc] init];
+    [self.contentView addSubview:vipView];
+    self.vipView = vipView;
+    
+    /** 配图 */
+    UIImageView *photoView = [[UIImageView alloc] init];
+    [self.contentView addSubview:photoView];
+    self.photoView = photoView;
+    
+    /** 昵称 */
+    UILabel *nameLabel = [[UILabel alloc] init];
+    nameLabel.font = ZJStatusCellNameLableFont;
+    [self.contentView addSubview:nameLabel];
+    self.nameLabel = nameLabel;
+    
+    /** 时间 */
+    UILabel *timeLabel = [[UILabel alloc] init];
+    timeLabel.font = ZJStatusCellTimeLableFont;
+    [self.contentView addSubview:timeLabel];
+    self.timeLabel = timeLabel;
+    
+    /** 正文 */
+    UILabel *contentLabel = [[UILabel alloc] init];
+    contentLabel.font = ZJStatusCellContentLableFont;
+    contentLabel.numberOfLines = 0;
+    [self.contentView addSubview:contentLabel];
+    self.contentLabel = contentLabel;
+    
+    /** 来源 */
+    UILabel *sourceLabel = [[UILabel alloc] init];
+    sourceLabel.font = ZJStatusCellSourceLableFont;
+    [self.contentView addSubview:sourceLabel];
+    self.sourceLabel = sourceLabel;
+}
+/**
+ *  初始化转发微博
+ */
+- (void)setupRetweet
+{
+    /* 转发微博 */
+    /** 转发微博整体 */
+    UIView *retweetedView = [[UIView alloc] init];
+    retweetedView.backgroundColor = [UIColor colorWithRed:240/255.0 green:240/255.0 blue:240/255.0 alpha:1.0];
+    [self.contentView addSubview:retweetedView];
+    self.retweetedView = retweetedView;
+    
+    /** 昵称+正文 */
+    UILabel *retweetedContentLabel = [[UILabel alloc] init];
+    retweetedContentLabel.font = ZJRetweetedStatusCellContentLableFont;
+    retweetedContentLabel.numberOfLines = 0;
+    [retweetedView addSubview:retweetedContentLabel];
+    self.retweetedContentLabel = retweetedContentLabel;
+    
+    /** 配图 */
+    UIImageView *retweetedPhotoView = [[UIImageView alloc] init];
+    [retweetedView addSubview:retweetedPhotoView];
+    self.retweetedPhotoView = retweetedPhotoView;
+}
+/**
+ *  初始化工具条
+ */
+- (void)setupToolBar
+{
+    ZJStatusToolBar *toolBar = [ZJStatusToolBar tooBar];
+    [self.contentView addSubview:toolBar];
+    self.toolBar = toolBar;
+}
 
+#pragma mark -
 /**
  *  设置frame和数据
  *  cell根据StatusFrame模型给子控件设置frame，根据Status模型给子控件设置数据
- *  @param statusFrame 微博Frame模型
+ *  @param statusFrame 微博Frame模型 从控制器传进来的
  */
 - (void)setStatusFrame:(ZJStatusFrame *)statusFrame
 {
@@ -225,14 +264,22 @@
 
             
         }
+        
     }else{//没转发微博
         self.retweetedView.hidden = YES;
-        
+
     }
     
     /** 来源 */
-//    self.sourceLabel.frame = statusFrame.sourceLabelF;
-//    self.sourceLabel.text = status.source;
+    self.sourceLabel.frame = statusFrame.sourceLabelF;
+    self.sourceLabel.text = status.source;
+    
+    /** 工具条 在微博Frame的setter方法中再考虑位置问题*/
+    self.toolBar.frame = statusFrame.toolBarF;
+    self.toolBar.status = status;
+    
+    
+ 
 }
 
 @end

@@ -51,5 +51,13 @@
 /** 被转发的原微博信息字段，当该微博为转发微博时返回 */
 @property(nonatomic,strong) ZJStatus *retweeted_status;
 
+/** reposts_count	int	转发数 */
+@property(nonatomic,assign) int reposts_count;
+
+/** comments_count	int	评论数 */
+@property(nonatomic,assign) int comments_count;
+
+/** attitudes_count	int	表态数 */
+@property(nonatomic,assign) int attitudes_count;
 
 @end

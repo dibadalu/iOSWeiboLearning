@@ -16,7 +16,8 @@
 #import "ZJStatusPhotosView.h"
 #import "ZJPhoto.h"
 #import "ZJStatusPhotoView.h"
-#import <UIImageView+WebCache.h>
+//#import <UIImageView+WebCache.h>
+#import "ZJStatusPhotoView.h"
 
 @implementation ZJStatusPhotosView
 #pragma mark - 系统方法
@@ -45,13 +46,13 @@
     
     //注意：创建足够多的imageView（图片控件） 要考虑到cell的循环利用
     while (self.subviews.count < photosCount) {
-        UIImageView *photoView = [[UIImageView alloc] init];
+        ZJStatusPhotoView *photoView = [[ZJStatusPhotoView alloc] init];
         [self addSubview:photoView];
     }
     
     //遍历所有的iamgeView（图片控件），设置图片
     for (int i = 0; i< self.subviews.count; i++) {
-        UIImageView *photoView = self.subviews[i];
+        ZJStatusPhotoView *photoView = self.subviews[i];
         
         //注意：判断是否显示或隐藏几个图片控件
         if (i < photosCount) {//显示图片控件
@@ -59,8 +60,9 @@
             
             //设置配图
             //取出配图模型
-            ZJPhoto *photo = photos[i] ;
-            [photoView sd_setImageWithURL:[NSURL URLWithString:photo.thumbnail_pic] placeholderImage:[UIImage imageNamed:@"timeline_image_placeholder"]];
+//            ZJPhoto *photo = photos[i] ;
+//            [photoView sd_setImageWithURL:[NSURL URLWithString:photo.thumbnail_pic] placeholderImage:[UIImage imageNamed:@"timeline_image_placeholder"]];
+            photoView.photo = photos[i];
 
         }else{//隐藏没用到的imageView
             photoView.hidden = YES;
@@ -82,7 +84,7 @@
     //设置图片的位置和尺寸
     int maxCols = ZJStatusPhotoMaxCol(photosCount);
     for (int i = 0; i< self.photos.count; i++) {
-        UIImageView *photoView = self.subviews[i];
+        ZJStatusPhotoView *photoView = self.subviews[i];
         
         //列
         int col = i % maxCols;

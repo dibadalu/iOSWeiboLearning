@@ -10,10 +10,11 @@
 #import "ZJStatusFrame.h"
 #import "ZJStatus.h"
 #import "ZJUser.h"
-#import <UIImageView+WebCache.h>
+//#import <UIImageView+WebCache.h>
 #import "ZJPhoto.h"
 #import "ZJStatusToolBar.h"
 #import "ZJStatusPhotosView.h"
+#import "ZJIconView.h"
 
 @interface ZJStatusCell ()
 
@@ -22,7 +23,7 @@
 /** 原创微博整体 */
 @property(nonatomic,weak) UIView *originalView;
 /** 头像 */
-@property(nonatomic,weak) UIImageView *iconView;
+@property(nonatomic,weak) ZJIconView *iconView;
 /** 会员图标 */
 @property(nonatomic,weak) UIImageView *vipView;
 /** 配图 */
@@ -113,7 +114,7 @@
     self.originalView = originalView;
     
     /** 头像 */
-    UIImageView *iconView = [[UIImageView alloc] init];
+    ZJIconView *iconView = [[ZJIconView alloc] init];
     [self.contentView addSubview:iconView];
     self.iconView = iconView;
     
@@ -209,8 +210,9 @@
     
     /** 头像 */
     self.iconView.frame = statusFrame.iconViewF;
-    [self.iconView sd_setImageWithURL:[NSURL URLWithString:user.profile_image_url] placeholderImage:[UIImage imageNamed:@"avatar_default_small"]];
-
+//    [self.iconView sd_setImageWithURL:[NSURL URLWithString:user.profile_image_url] placeholderImage:[UIImage imageNamed:@"avatar_default_small"]];
+    self.iconView.user = user;
+    
     /** 会员图标 */
     self.vipView.frame = statusFrame.vipViewF;
     self.vipView.image = [UIImage imageNamed:@"common_icon_membership_level1"];

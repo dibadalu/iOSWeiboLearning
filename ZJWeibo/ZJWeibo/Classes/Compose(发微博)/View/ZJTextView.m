@@ -18,11 +18,19 @@
         
         //通过通知来监听textView
         //当UITextView的文字发生改变时，UITextView自己会发出一个UITextViewTextDidChangeNotificationt通知
-        //添加通知的监听者 object:self  自己监听自己
+        //添加通知的观察者 object:self  自己监听自己
         [ZJNotificationCenter addObserver:self selector:@selector(textDidChange) name:UITextViewTextDidChangeNotification object:self];
         
     }
     return self;
+}
+
+/**
+ *  移除观察者
+ */
+- (void)dealloc
+{
+    [ZJNotificationCenter removeObserver:self];
 }
 
 /**
@@ -50,6 +58,35 @@
     CGRect placeholderRect = CGRectMake(x, y, w, h);
     [self.placedholder drawInRect:placeholderRect withAttributes:attrs];
     
+}
+#pragma mark - setter方法
+//当自定义控件时，“属性”有时候要重写set方法
+- (void)setPlacedholder:(NSString *)placedholder
+{
+    _placedholder = [placedholder copy];
+    
+    [self setNeedsDisplay];
+}
+
+- (void)setPlacedholderColor:(UIColor *)placedholderColor
+{
+    _placedholderColor = placedholderColor;
+    
+    [self setNeedsDisplay];
+}
+
+- (void)setText:(NSString *)text
+{
+    [super setText:text];
+    //setNeedsDisplay 会在下一个消息循环时刻，调用drawRect
+    [self setNeedsDisplay];
+}
+
+- (void)setFont:(UIFont *)font
+{
+    [super setFont:font];
+    
+    [self setNeedsDisplay];
 }
 
 #pragma mark - 点击事件

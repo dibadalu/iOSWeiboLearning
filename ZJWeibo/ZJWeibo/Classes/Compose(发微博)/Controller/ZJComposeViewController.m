@@ -71,9 +71,17 @@
     
     
     //通知
-    //添加通知的监听者（self），对象是textView
+    //添加通知的观察者（self），对象是textView
     [ZJNotificationCenter addObserver:self selector:@selector(textDidChange) name:UITextViewTextDidChangeNotification object:textView];
     
+}
+
+/**
+ *  移除观察者
+ */
+- (void)dealloc
+{
+    [ZJNotificationCenter removeObserver:self];
 }
 
 #pragma mark - 点击事件

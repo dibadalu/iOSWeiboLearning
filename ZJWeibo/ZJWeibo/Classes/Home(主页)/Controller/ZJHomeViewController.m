@@ -17,6 +17,7 @@
 #import <MJRefresh.h>
 #import "ZJStatusCell.h"
 #import "ZJStatusFrame.h"
+#import "ZJComposeViewController.h"
 
 @interface ZJHomeViewController ()
 
@@ -381,10 +382,15 @@
 {
     ZJLog(@"popClick");
 }
-
+/**
+ *  发微博
+ */
 - (void)compose
 {
-    ZJLog(@"compose");
+//    ZJLog(@"compose");
+    ZJComposeViewController *compose = [[ZJComposeViewController alloc] init];
+    UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:compose];
+    [self presentViewController:nav animated:YES completion:nil];
 }
 
 - (void)titleBtnClick

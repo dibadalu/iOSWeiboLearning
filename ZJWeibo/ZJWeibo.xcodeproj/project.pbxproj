@@ -32,6 +32,7 @@
 		542EDA621BD645C600CAA724 /* ZJAccountTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 542EDA611BD645C600CAA724 /* ZJAccountTool.m */; };
 		54330C6C1BD72BF7005DFFDE /* ZJStatus.m in Sources */ = {isa = PBXBuildFile; fileRef = 54330C6B1BD72BF7005DFFDE /* ZJStatus.m */; };
 		5444C6431BDBBC2300C7A5C1 /* ZJComposeToolBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 5444C6421BDBBC2300C7A5C1 /* ZJComposeToolBar.m */; };
+		5444C6461BDBC55900C7A5C1 /* ZJComposePhotosView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5444C6451BDBC55900C7A5C1 /* ZJComposePhotosView.m */; };
 		544A871E1BD4D56D00659A85 /* ZJTabBarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 544A871D1BD4D56D00659A85 /* ZJTabBarViewController.m */; };
 		544A87211BD4D75E00659A85 /* ZJHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 544A87201BD4D75E00659A85 /* ZJHomeViewController.m */; };
 		544A87241BD4D77100659A85 /* ZJMessageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 544A87231BD4D77100659A85 /* ZJMessageViewController.m */; };
@@ -108,6 +109,8 @@
 		54330C6B1BD72BF7005DFFDE /* ZJStatus.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZJStatus.m; sourceTree = "<group>"; };
 		5444C6411BDBBC2300C7A5C1 /* ZJComposeToolBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZJComposeToolBar.h; sourceTree = "<group>"; };
 		5444C6421BDBBC2300C7A5C1 /* ZJComposeToolBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZJComposeToolBar.m; sourceTree = "<group>"; };
+		5444C6441BDBC55900C7A5C1 /* ZJComposePhotosView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZJComposePhotosView.h; sourceTree = "<group>"; };
+		5444C6451BDBC55900C7A5C1 /* ZJComposePhotosView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZJComposePhotosView.m; sourceTree = "<group>"; };
 		544A871C1BD4D56D00659A85 /* ZJTabBarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZJTabBarViewController.h; sourceTree = "<group>"; };
 		544A871D1BD4D56D00659A85 /* ZJTabBarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZJTabBarViewController.m; sourceTree = "<group>"; };
 		544A871F1BD4D75E00659A85 /* ZJHomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZJHomeViewController.h; sourceTree = "<group>"; };
@@ -269,6 +272,8 @@
 				54A3AD851BDA63E300F4C89F /* ZJTextView.m */,
 				5444C6411BDBBC2300C7A5C1 /* ZJComposeToolBar.h */,
 				5444C6421BDBBC2300C7A5C1 /* ZJComposeToolBar.m */,
+				5444C6441BDBC55900C7A5C1 /* ZJComposePhotosView.h */,
+				5444C6451BDBC55900C7A5C1 /* ZJComposePhotosView.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -726,6 +731,7 @@
 				542A49F61BD635C900C457CF /* ZJConst.m in Sources */,
 				54330C6C1BD72BF7005DFFDE /* ZJStatus.m in Sources */,
 				541B32981BDA3AEB004C4BC6 /* ZJIconView.m in Sources */,
+				5444C6461BDBC55900C7A5C1 /* ZJComposePhotosView.m in Sources */,
 				5423DFCD1BD688D200B59739 /* ZJUser.m in Sources */,
 				544A872A1BD4D78F00659A85 /* ZJProfileViewController.m in Sources */,
 				542EDA621BD645C600CAA724 /* ZJAccountTool.m in Sources */,

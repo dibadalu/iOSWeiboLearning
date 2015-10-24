@@ -14,7 +14,7 @@
 #import "MBProgressHUD+MJ.h"
 #import "ZJComposeToolBar.h"
 
-@interface ZJComposeViewController ()
+@interface ZJComposeViewController ()<ZJComposeToolBarDelegate>//遵守toolBar的代理协议
 
 /** 输入控件 */
 @property(nonatomic,strong) ZJTextView *textView;
@@ -106,6 +106,7 @@
     toolBar.width = self.view.width;
     toolBar.height = 44;
     toolBar.y = self.view.height - toolBar.height;
+    toolBar.delegate = self;//设置代理
     [self.view addSubview:toolBar];
     self.toolBar = toolBar;
     
@@ -184,6 +185,32 @@
         self.toolBar.y = frame.origin.y - self.toolBar.height;
     }];
     
+}
+
+#pragma mark - ZJComposeToolBarDelegate
+- (void)composeToolBar:(ZJComposeToolBar *)toolBar didClickbuttonType:(ZJComposeToolbarButtonType)buttonType
+{
+    switch (buttonType) {
+        case ZJComposeToolbarButtonTypeCamera://相机
+            ZJLog(@"相机");
+            break;
+        case ZJComposeToolbarButtonTypePicture://相册
+            ZJLog(@"相册");
+
+            break;
+        case ZJComposeToolbarButtonTypeTrend://#
+            ZJLog(@"#");
+
+            break;
+        case ZJComposeToolbarButtonTypeMention://@
+            ZJLog(@"@");
+
+            break;
+        case ZJComposeToolbarButtonTypeEmotion://表情
+            ZJLog(@"表情");
+
+            break;
+    }
 }
 
 @end

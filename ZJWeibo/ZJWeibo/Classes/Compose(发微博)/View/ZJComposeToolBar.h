@@ -6,9 +6,29 @@
 //  Copyright (c) 2015年 dibadalu. All rights reserved.
 //  键盘上的工具条
 
+typedef enum
+{
+    ZJComposeToolbarButtonTypeCamera,//拍照
+    ZJComposeToolbarButtonTypePicture,//相册
+    ZJComposeToolbarButtonTypeMention,//@
+    ZJComposeToolbarButtonTypeTrend,//#
+    ZJComposeToolbarButtonTypeEmotion//表情
+}ZJComposeToolbarButtonType;
+
 #import <UIKit/UIKit.h>
+@class ZJComposeToolBar;
+//声明代理协议
+@protocol ZJComposeToolBarDelegate <NSObject>
+//代理方法
+@optional
+- (void)composeToolBar:(ZJComposeToolBar *)toolBar didClickbuttonType:(ZJComposeToolbarButtonType)buttonType;
+
+@end
 
 @interface ZJComposeToolBar : UIView
+
+//设置代理属性
+@property(nonatomic,weak) id<ZJComposeToolBarDelegate> delegate;
 
 @end
 

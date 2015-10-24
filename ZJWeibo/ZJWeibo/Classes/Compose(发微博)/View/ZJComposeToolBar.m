@@ -18,11 +18,11 @@
         self.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"compose_toolbar_background"]];
         
         //初始化toolBar的按钮
-        [self setupOneBtn:@"compose_camerabutton_background" highImage:@"compose_camerabutton_background_highlighted"];
-        [self setupOneBtn:@"compose_toolbar_picture" highImage:@"compose_toolbar_picture_highlighted"];
-        [self setupOneBtn:@"compose_trendbutton_background" highImage:@"compose_trendbutton_background_highlighted"];
-        [self setupOneBtn:@"compose_mentionbutton_background" highImage:@"compose_mentionbutton_background_highlighted"];
-        [self setupOneBtn:@"compose_emoticonbutton_background" highImage:@"compose_emoticonbutton_background_highlighted"];
+        [self setupOneBtn:@"compose_camerabutton_background" highImage:@"compose_camerabutton_background_highlighted" buttonType:ZJComposeToolbarButtonTypeCamera];
+        [self setupOneBtn:@"compose_toolbar_picture" highImage:@"compose_toolbar_picture_highlighted" buttonType:ZJComposeToolbarButtonTypePicture];
+        [self setupOneBtn:@"compose_trendbutton_background" highImage:@"compose_trendbutton_background_highlighted" buttonType:ZJComposeToolbarButtonTypeTrend];
+        [self setupOneBtn:@"compose_mentionbutton_background" highImage:@"compose_mentionbutton_background_highlighted" buttonType:ZJComposeToolbarButtonTypeMention];
+        [self setupOneBtn:@"compose_emoticonbutton_background" highImage:@"compose_emoticonbutton_background_highlighted" buttonType:ZJComposeToolbarButtonTypeEmotion];
         
     }
     
@@ -52,15 +52,29 @@
 
 
 #pragma mark - 初始化方法
-- (void)setupOneBtn:(NSString *)image highImage:(NSString *)highImage
+- (void)setupOneBtn:(NSString *)image highImage:(NSString *)highImage buttonType:(ZJComposeToolbarButtonType)buttonType
 {
     UIButton *btn = [[UIButton alloc] init];
     [btn setImage:[UIImage imageNamed:image] forState:UIControlStateNormal];
     [btn setImage:[UIImage imageNamed:highImage] forState:UIControlStateHighlighted];
-    
+    [btn addTarget:self action:@selector(btnClick:) forControlEvents:UIControlEventTouchUpInside];
+    btn.tag = buttonType;
     [self addSubview:btn];
     
 }
+
+#pragma mark - 点击时间
+- (void)btnClick:(UIButton *)btn
+{
+    //通知代理做事情
+    if ([self.delegate respondsToSelector:@selector(composeToolBar:didClickbuttonType:)]) {
+        [self.delegate composeToolBar:self didClickbuttonType:btn.tag];
+    }
+
+}
+
+
+
 
 
 

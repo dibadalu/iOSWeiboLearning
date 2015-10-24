@@ -12,11 +12,14 @@
 #import "ZJTextView.h"
 #import "ZJHttpTool.h"
 #import "MBProgressHUD+MJ.h"
+#import "ZJComposeToolBar.h"
 
 @interface ZJComposeViewController ()
 
 /** 输入控件 */
 @property(nonatomic,strong) ZJTextView *textView;
+/** 工具条 */
+@property(nonatomic,strong) ZJComposeToolBar *toolBar;
 
 @end
 
@@ -35,7 +38,24 @@
     //添加输入控件
     [self setupTextView];
     
+    //设置键盘工具条
+    [self setupToolBar];
     
+}
+
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    
+    [self.textView becomeFirstResponder];
+}
+
+/**
+ *  移除观察者
+ */
+- (void)dealloc
+{
+    [ZJNotificationCenter removeObserver:self];
 }
 
 #pragma mark - 初始化方法
@@ -71,18 +91,27 @@
     
     
     //通知
-    //添加通知的观察者（self），对象是textView
-    [ZJNotificationCenter addObserver:self selector:@selector(textDidChange) name:UITextViewTextDidChangeNotification object:textView];
+    //文字改变发出通知
+    [ZJNotificationCenter addObserver:self selector:@selector(textDidChange) name:UITextViewTextDidChangeNotification object:nil];
+    //键盘frame发生改变发出通知
+    [ZJNotificationCenter addObserver:self selector:@selector(keyboardWillChangeFrame:) name:UIKeyboardWillChangeFrameNotification object:nil];
+    
+}
+/**
+ *  设置键盘工具条
+ */
+- (void)setupToolBar
+{
+    ZJComposeToolBar *toolBar = [[ZJComposeToolBar alloc] init];
+    toolBar.width = self.view.width;
+    toolBar.height = 44;
+    toolBar.y = self.view.height - toolBar.height;
+    [self.view addSubview:toolBar];
+    self.toolBar = toolBar;
     
 }
 
-/**
- *  移除观察者
- */
-- (void)dealloc
-{
-    [ZJNotificationCenter removeObserver:self];
-}
+
 
 #pragma mark - 点击事件
 - (void)cancel
@@ -128,6 +157,34 @@
     self.navigationItem.rightBarButtonItem.enabled = self.textView.hasText;
 }
 
+
+- (void)keyboardWillChangeFrame:(NSNotification *)notification
+{
+    //    ZJLog(@"keyboardDidChangeFrame--%@",notification);
+    /*
+     userInfo = {
+     //键盘弹出\隐藏后的frame
+     UIKeyboardFrameEndUserInfoKey = NSRect: {{0, 352}, {320, 216}},
+     //键盘弹出\隐藏所耗费的时间
+     UIKeyboardAnimationDurationUserInfoKey = 0.25,
+     //键盘弹出\隐藏动画执行的节奏（先快后慢、匀速）
+     UIKeyboardAnimationCurveUserInfoKey = 7
+     }
+     */
+    
+    //通过动画移动toolBar
+    //取出notification的userInfo
+    NSDictionary *userInfo = notification.userInfo;
+    //键盘弹出后的frame
+    CGRect frame = [userInfo[UIKeyboardFrameEndUserInfoKey] CGRectValue];
+    //键盘弹出动画的持续时间
+    double duration = [userInfo[UIKeyboardAnimationDurationUserInfoKey] doubleValue];
+    //执行动画
+    [UIView animateWithDuration:duration animations:^{
+        self.toolBar.y = frame.origin.y - self.toolBar.height;
+    }];
+    
+}
 
 @end
 

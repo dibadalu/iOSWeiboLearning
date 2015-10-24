@@ -130,7 +130,7 @@
     photosView.width = self.view.width;
     photosView.height = 300;
     photosView.y = 100;
-    photosView.backgroundColor = ZJRandomColor;
+//    photosView.backgroundColor = ZJRandomColor;
     [self.textView addSubview:photosView];
     self.photosView = photosView;
 }
@@ -262,8 +262,8 @@
 {
     switch (buttonType) {
         case ZJComposeToolbarButtonTypeCamera://相机
-//            ZJLog(@"相机");
-            [self openCamera];
+            ZJLog(@"相机");
+//            [self openCamera];//需要真机调试
             
             break;
         case ZJComposeToolbarButtonTypePicture://相册

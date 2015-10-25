@@ -43,6 +43,7 @@
 		547272A51BDCBBA20021D9EA /* ZJEmotionListView.m in Sources */ = {isa = PBXBuildFile; fileRef = 547272A41BDCBBA20021D9EA /* ZJEmotionListView.m */; };
 		547272A81BDCBBB50021D9EA /* ZJEmotionTabBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 547272A71BDCBBB50021D9EA /* ZJEmotionTabBar.m */; };
 		547272AB1BDCC81E0021D9EA /* ZJEmotionTabBarButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 547272AA1BDCC81E0021D9EA /* ZJEmotionTabBarButton.m */; };
+		547272AF1BDCD1360021D9EA /* ZJEmotion.m in Sources */ = {isa = PBXBuildFile; fileRef = 547272AE1BDCD1360021D9EA /* ZJEmotion.m */; };
 		54A3AD861BDA63E300F4C89F /* ZJTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 54A3AD851BDA63E300F4C89F /* ZJTextView.m */; };
 		54C2201A1BD5267100BE0ED0 /* UIBarButtonItem+ZJExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 54C220191BD5267100BE0ED0 /* UIBarButtonItem+ZJExtension.m */; };
 		54C220201BD52B0400BE0ED0 /* UIView+ZJExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 54C2201F1BD52B0400BE0ED0 /* UIView+ZJExtension.m */; };
@@ -135,6 +136,8 @@
 		547272A71BDCBBB50021D9EA /* ZJEmotionTabBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZJEmotionTabBar.m; sourceTree = "<group>"; };
 		547272A91BDCC81E0021D9EA /* ZJEmotionTabBarButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZJEmotionTabBarButton.h; sourceTree = "<group>"; };
 		547272AA1BDCC81E0021D9EA /* ZJEmotionTabBarButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZJEmotionTabBarButton.m; sourceTree = "<group>"; };
+		547272AD1BDCD1360021D9EA /* ZJEmotion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZJEmotion.h; sourceTree = "<group>"; };
+		547272AE1BDCD1360021D9EA /* ZJEmotion.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZJEmotion.m; sourceTree = "<group>"; };
 		54A3AD841BDA63E300F4C89F /* ZJTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZJTextView.h; sourceTree = "<group>"; };
 		54A3AD851BDA63E300F4C89F /* ZJTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZJTextView.m; sourceTree = "<group>"; };
 		54C220181BD5267100BE0ED0 /* UIBarButtonItem+ZJExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIBarButtonItem+ZJExtension.h"; sourceTree = "<group>"; };
@@ -255,6 +258,7 @@
 			isa = PBXGroup;
 			children = (
 				5421DA981BD4CED400B82561 /* Controller */,
+				547272AC1BDCD1220021D9EA /* Model */,
 				5421DA9A1BD4CED400B82561 /* View */,
 			);
 			path = "Compose(发微博)";
@@ -530,6 +534,15 @@
 			path = Tool;
 			sourceTree = "<group>";
 		};
+		547272AC1BDCD1220021D9EA /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				547272AD1BDCD1360021D9EA /* ZJEmotion.h */,
+				547272AE1BDCD1360021D9EA /* ZJEmotion.m */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		54C220171BD5266700BE0ED0 /* Category */ = {
 			isa = PBXGroup;
 			children = (
@@ -762,6 +775,7 @@
 				541B327F1BD8B85D004C4BC6 /* ZJStatusCell.m in Sources */,
 				541B32841BD8D86F004C4BC6 /* Foundation+Log.m in Sources */,
 				54C220261BD52D5F00BE0ED0 /* ZJOAuthViewController.m in Sources */,
+				547272AF1BDCD1360021D9EA /* ZJEmotion.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -4,7 +4,7 @@
 //
 //  Created by dibadalu on 15/10/24.
 //  Copyright (c) 2015年 dibadalu. All rights reserved.
-//
+//  微博正文的配图显示容器
 
 #import <UIKit/UIKit.h>
 

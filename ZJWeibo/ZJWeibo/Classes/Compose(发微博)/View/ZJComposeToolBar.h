@@ -27,8 +27,10 @@ typedef enum
 
 @interface ZJComposeToolBar : UIView
 
-//设置代理属性
+/** 代理属性 */
 @property(nonatomic,weak) id<ZJComposeToolBarDelegate> delegate;
+/** 是否显示键盘按钮 */
+@property(nonatomic,assign) BOOL showKeyboardButton;
 
 @end
 

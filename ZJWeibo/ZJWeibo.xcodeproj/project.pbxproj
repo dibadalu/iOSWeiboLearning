@@ -39,6 +39,10 @@
 		544A87271BD4D78100659A85 /* ZJDiscoverViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 544A87261BD4D78100659A85 /* ZJDiscoverViewController.m */; };
 		544A872A1BD4D78F00659A85 /* ZJProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 544A87291BD4D78F00659A85 /* ZJProfileViewController.m */; };
 		544A87311BD4E17800659A85 /* ZJNavigationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 544A87301BD4E17800659A85 /* ZJNavigationViewController.m */; };
+		547272A21BDCB86D0021D9EA /* ZJEmotionKeyboard.m in Sources */ = {isa = PBXBuildFile; fileRef = 547272A11BDCB86D0021D9EA /* ZJEmotionKeyboard.m */; };
+		547272A51BDCBBA20021D9EA /* ZJEmotionListView.m in Sources */ = {isa = PBXBuildFile; fileRef = 547272A41BDCBBA20021D9EA /* ZJEmotionListView.m */; };
+		547272A81BDCBBB50021D9EA /* ZJEmotionTabBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 547272A71BDCBBB50021D9EA /* ZJEmotionTabBar.m */; };
+		547272AB1BDCC81E0021D9EA /* ZJEmotionTabBarButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 547272AA1BDCC81E0021D9EA /* ZJEmotionTabBarButton.m */; };
 		54A3AD861BDA63E300F4C89F /* ZJTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 54A3AD851BDA63E300F4C89F /* ZJTextView.m */; };
 		54C2201A1BD5267100BE0ED0 /* UIBarButtonItem+ZJExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 54C220191BD5267100BE0ED0 /* UIBarButtonItem+ZJExtension.m */; };
 		54C220201BD52B0400BE0ED0 /* UIView+ZJExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 54C2201F1BD52B0400BE0ED0 /* UIView+ZJExtension.m */; };
@@ -123,6 +127,14 @@
 		544A87291BD4D78F00659A85 /* ZJProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZJProfileViewController.m; sourceTree = "<group>"; };
 		544A872F1BD4E17800659A85 /* ZJNavigationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZJNavigationViewController.h; sourceTree = "<group>"; };
 		544A87301BD4E17800659A85 /* ZJNavigationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZJNavigationViewController.m; sourceTree = "<group>"; };
+		547272A01BDCB86D0021D9EA /* ZJEmotionKeyboard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZJEmotionKeyboard.h; sourceTree = "<group>"; };
+		547272A11BDCB86D0021D9EA /* ZJEmotionKeyboard.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZJEmotionKeyboard.m; sourceTree = "<group>"; };
+		547272A31BDCBBA20021D9EA /* ZJEmotionListView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZJEmotionListView.h; sourceTree = "<group>"; };
+		547272A41BDCBBA20021D9EA /* ZJEmotionListView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZJEmotionListView.m; sourceTree = "<group>"; };
+		547272A61BDCBBB50021D9EA /* ZJEmotionTabBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZJEmotionTabBar.h; sourceTree = "<group>"; };
+		547272A71BDCBBB50021D9EA /* ZJEmotionTabBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZJEmotionTabBar.m; sourceTree = "<group>"; };
+		547272A91BDCC81E0021D9EA /* ZJEmotionTabBarButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZJEmotionTabBarButton.h; sourceTree = "<group>"; };
+		547272AA1BDCC81E0021D9EA /* ZJEmotionTabBarButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZJEmotionTabBarButton.m; sourceTree = "<group>"; };
 		54A3AD841BDA63E300F4C89F /* ZJTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZJTextView.h; sourceTree = "<group>"; };
 		54A3AD851BDA63E300F4C89F /* ZJTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZJTextView.m; sourceTree = "<group>"; };
 		54C220181BD5267100BE0ED0 /* UIBarButtonItem+ZJExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIBarButtonItem+ZJExtension.h"; sourceTree = "<group>"; };
@@ -243,7 +255,6 @@
 			isa = PBXGroup;
 			children = (
 				5421DA981BD4CED400B82561 /* Controller */,
-				5421DA991BD4CED400B82561 /* Model */,
 				5421DA9A1BD4CED400B82561 /* View */,
 			);
 			path = "Compose(发微博)";
@@ -258,13 +269,6 @@
 			path = Controller;
 			sourceTree = "<group>";
 		};
-		5421DA991BD4CED400B82561 /* Model */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Model;
-			sourceTree = "<group>";
-		};
 		5421DA9A1BD4CED400B82561 /* View */ = {
 			isa = PBXGroup;
 			children = (
@@ -274,6 +278,14 @@
 				5444C6421BDBBC2300C7A5C1 /* ZJComposeToolBar.m */,
 				5444C6441BDBC55900C7A5C1 /* ZJComposePhotosView.h */,
 				5444C6451BDBC55900C7A5C1 /* ZJComposePhotosView.m */,
+				547272A01BDCB86D0021D9EA /* ZJEmotionKeyboard.h */,
+				547272A11BDCB86D0021D9EA /* ZJEmotionKeyboard.m */,
+				547272A61BDCBBB50021D9EA /* ZJEmotionTabBar.h */,
+				547272A71BDCBBB50021D9EA /* ZJEmotionTabBar.m */,
+				547272A91BDCC81E0021D9EA /* ZJEmotionTabBarButton.h */,
+				547272AA1BDCC81E0021D9EA /* ZJEmotionTabBarButton.m */,
+				547272A31BDCBBA20021D9EA /* ZJEmotionListView.h */,
+				547272A41BDCBBA20021D9EA /* ZJEmotionListView.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -724,6 +736,7 @@
 				541B328D1BD9D825004C4BC6 /* ZJStatusToolBar.m in Sources */,
 				541B32871BD8DB1E004C4BC6 /* NSString+Extension.m in Sources */,
 				54A3AD861BDA63E300F4C89F /* ZJTextView.m in Sources */,
+				547272A81BDCBBB50021D9EA /* ZJEmotionTabBar.m in Sources */,
 				542A49F91BD6365A00C457CF /* ZJHttpTool.m in Sources */,
 				542A4A0D1BD641D800C457CF /* ZJAccount.m in Sources */,
 				541B328A1BD90197004C4BC6 /* ZJPhoto.m in Sources */,
@@ -733,12 +746,15 @@
 				541B32981BDA3AEB004C4BC6 /* ZJIconView.m in Sources */,
 				5444C6461BDBC55900C7A5C1 /* ZJComposePhotosView.m in Sources */,
 				5423DFCD1BD688D200B59739 /* ZJUser.m in Sources */,
+				547272A21BDCB86D0021D9EA /* ZJEmotionKeyboard.m in Sources */,
 				544A872A1BD4D78F00659A85 /* ZJProfileViewController.m in Sources */,
 				542EDA621BD645C600CAA724 /* ZJAccountTool.m in Sources */,
+				547272A51BDCBBA20021D9EA /* ZJEmotionListView.m in Sources */,
 				544A87241BD4D77100659A85 /* ZJMessageViewController.m in Sources */,
 				541B329B1BDA5934004C4BC6 /* ZJComposeViewController.m in Sources */,
 				54C2201A1BD5267100BE0ED0 /* UIBarButtonItem+ZJExtension.m in Sources */,
 				544A87271BD4D78100659A85 /* ZJDiscoverViewController.m in Sources */,
+				547272AB1BDCC81E0021D9EA /* ZJEmotionTabBarButton.m in Sources */,
 				542EDA5F1BD6444900CAA724 /* AFJSONResponseSerializer+ZJ.m in Sources */,
 				5444C6431BDBBC2300C7A5C1 /* ZJComposeToolBar.m in Sources */,
 				542A49F31BD635A800C457CF /* main.m in Sources */,

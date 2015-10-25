@@ -15,6 +15,7 @@
 #import "ZJComposeToolBar.h"
 #import "ZJComposePhotosView.h"
 #import <AFNetworking.h>
+#import "ZJEmotionKeyboard.h"
 
 @interface ZJComposeViewController ()<UITextViewDelegate,ZJComposeToolBarDelegate,UINavigationControllerDelegate,UIImagePickerControllerDelegate>
 
@@ -24,10 +25,26 @@
 @property(nonatomic,strong) ZJComposeToolBar *toolBar;
 /** 相册（存放拍照或者相册中选择的图片） */
 @property(nonatomic,weak) ZJComposePhotosView *photosView;
+/** 记录是否正在切换键盘(主要作用控制切换键盘时微博工具条不要移动) */
+@property(nonatomic,assign) BOOL switchingKeyBoard;
+/** 键盘 strong 整个生存期都只有一个键盘 */
+@property(nonatomic,strong) ZJEmotionKeyboard *emotionKeyboard;
 
 @end
 
 @implementation ZJComposeViewController
+#pragma mark - 懒加载
+- (ZJEmotionKeyboard *)emotionKeyboard
+{
+    if (!_emotionKeyboard) {
+        ZJEmotionKeyboard *emotionKeyboard = [[ZJEmotionKeyboard alloc] init];
+        emotionKeyboard.width = self.view.width;
+        emotionKeyboard.height = 216;
+        self.emotionKeyboard = emotionKeyboard;
+    }
+    return _emotionKeyboard;
+}
+
 
 #pragma mark - 系统方法
 - (void)viewDidLoad
@@ -224,6 +241,11 @@
 }
 - (void)keyboardWillChangeFrame:(NSNotification *)notification
 {
+    //0.如果正在切换键盘，不要移动工具条
+    if (self.switchingKeyBoard) {
+        return;
+    }
+    
     //    ZJLog(@"keyboardDidChangeFrame--%@",notification);
     /*
      userInfo = {
@@ -280,7 +302,9 @@
 
             break;
         case ZJComposeToolbarButtonTypeEmotion://表情
-            ZJLog(@"表情");
+//            ZJLog(@"表情");
+            //切换键盘
+            [self switchKeyboard];
 
             break;
     }
@@ -312,6 +336,40 @@
     ipc.delegate = self;
     [self presentViewController:ipc animated:YES completion:nil];
     
+}
+/**
+ *  切换键盘
+ */
+- (void)switchKeyboard
+{
+//    ZJLog(@"switchKeyboard");
+    
+    if (self.textView.inputView == nil) {//如果是系统键盘，切换表情键盘
+        self.textView.inputView = self.emotionKeyboard;
+        
+        //显示键盘按钮(借助布尔值)
+        self.toolBar.showKeyboardButton = YES;
+        
+    }else{//如果是表情键盘，切换系统键盘
+        self.textView.inputView = nil;
+        self.toolBar.showKeyboardButton = NO;
+    }
+    
+    //正在切换键盘
+    self.switchingKeyBoard = YES;
+    
+    //注意：必须先退出原先的键盘
+    [self.textView endEditing:YES];
+    
+    //延迟0.1s切换另外一个键盘
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        //弹出键盘
+        [self.textView becomeFirstResponder];
+        
+        //已经切换完键盘
+        self.switchingKeyBoard = NO;
+        
+    });
 }
 #pragma mark - UIImagePickerControllerDelegate
 /**

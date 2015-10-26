@@ -12,13 +12,57 @@
 
 
 @interface ZJEmotionKeyboard ()<ZJEmotionTabBarButtonDelegate>
-
-@property(nonatomic,weak) ZJEmotionListView *emotionListView;
+/** 显示表情内容的容器 */
+@property(nonatomic,weak) ZJEmotionListView *showingEmotionView;
+/** 表情键盘上的表情类型选项卡条 */
 @property(nonatomic,weak) ZJEmotionTabBar *emotionTabBar;
+
+/** 表情内容，strong */
+@property(nonatomic,strong) ZJEmotionListView *recentEmotionListView;
+@property(nonatomic,strong) ZJEmotionListView *defaultEmotionListView;
+@property(nonatomic,strong) ZJEmotionListView *emojiEmotionListView;
+@property(nonatomic,strong) ZJEmotionListView *lxhEmotionListView;
 
 @end
 
 @implementation ZJEmotionKeyboard
+#pragma mark - 懒加载
+- (ZJEmotionListView *)recentEmotionListView
+{
+    if (!_recentEmotionListView) {
+        self.recentEmotionListView = [[ZJEmotionListView alloc] init];
+        self.recentEmotionListView.backgroundColor = ZJRandomColor;
+    }
+    return _recentEmotionListView;
+}
+
+- (ZJEmotionListView *)defaultEmotionListView
+{
+    if (!_defaultEmotionListView) {
+        self.defaultEmotionListView = [[ZJEmotionListView alloc] init];
+        self.defaultEmotionListView.backgroundColor = ZJRandomColor;
+    }
+    return _defaultEmotionListView;
+}
+
+- (ZJEmotionListView *)emojiEmotionListView
+{
+    if (!_emojiEmotionListView) {
+        self.emojiEmotionListView = [[ZJEmotionListView alloc] init];
+        self.emojiEmotionListView.backgroundColor = ZJRandomColor;
+    }
+    return _emojiEmotionListView;
+}
+
+- (ZJEmotionListView *)lxhEmotionListView
+{
+    if (!_lxhEmotionListView) {
+        self.lxhEmotionListView = [[ZJEmotionListView alloc] init];
+        self.lxhEmotionListView.backgroundColor = ZJRandomColor;
+    }
+    return _lxhEmotionListView;
+}
+
 
 #pragma mark - 系统方法
 - (id)initWithFrame:(CGRect)frame
@@ -27,9 +71,9 @@
     if (self) {
         
         //添加子控件（emotionListView和emotionTabBar）
-        ZJEmotionListView *emotionListView = [[ZJEmotionListView alloc] init];
-        [self addSubview:emotionListView];
-        self.emotionListView = emotionListView;
+        ZJEmotionListView *showingEmotionView = [[ZJEmotionListView alloc] init];
+        [self addSubview:showingEmotionView];
+        self.showingEmotionView = showingEmotionView;
         
         ZJEmotionTabBar *emotionTabBar = [[ZJEmotionTabBar alloc] init];
         emotionTabBar.delegate = self;//设置代理
@@ -53,29 +97,46 @@
     self.emotionTabBar.y = self.height - self.emotionTabBar.height;
     
     //2.emotionListView
-    self.emotionListView.width = self.width;
-    self.emotionListView.height = self.height - self.emotionTabBar.height;
-    self.emotionListView.x = self.emotionListView.y = 0;
+    self.showingEmotionView.width = self.width;
+    self.showingEmotionView.height = self.height - self.emotionTabBar.height;
+    self.showingEmotionView.x = self.showingEmotionView.y = 0;
 
 }
 
 #pragma mark - ZJEmotionTabBarButtonDelegate
 - (void)emotionTabBar:(ZJEmotionTabBar *)emotionTabBar didTabBarButtonType:(ZJEmotionTabBarButtonType)btnType
 {
+    //移除showingEmotionView上显示的组件
+    [self.showingEmotionView removeFromSuperview];
+    
     switch (btnType) {
         case ZJEmotionTabBarButtonTypeRecent://最近
             ZJLog(@"最近");
+            [self addSubview:self.recentEmotionListView];
+            
             break;
         case ZJEmotionTabBarButtonTypeDefault://默认
             ZJLog(@"默认");
+            [self addSubview:self.defaultEmotionListView];
+
             break;
         case ZJEmotionTabBarButtonTypeEmoji://emoji
             ZJLog(@"emoji");
+            [self addSubview:self.emojiEmotionListView];
+
             break;
         case ZJEmotionTabBarButtonTypeLxh://emoji
             ZJLog(@"emoji");
+            [self addSubview:self.lxhEmotionListView];
+
             break;
     }
+    
+    //设置showingEmotionView上显示的组件
+    self.showingEmotionView = [self.subviews lastObject];
+    
+    //重新计算子控件的frame
+    [self setNeedsLayout];
 }
 
 @end

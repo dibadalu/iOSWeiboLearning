@@ -55,7 +55,18 @@
     }
     
 }
+/**
+ *  设置代理对象
+ *
+ *  @param delegate 从emotionKeboard传进来的
+ */
+- (void)setDelegate:(id<ZJEmotionTabBarButtonDelegate>)delegate
+{
+    _delegate = delegate;
 
+    //设置默认按钮
+    [self btnClick:(ZJEmotionTabBarButton *)[self viewWithTag:ZJEmotionTabBarButtonTypeDefault]];
+}
 
 #pragma mark - 初始化方法
 /**

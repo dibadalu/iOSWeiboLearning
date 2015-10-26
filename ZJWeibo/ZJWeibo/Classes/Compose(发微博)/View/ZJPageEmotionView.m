@@ -10,13 +10,26 @@
 #import "ZJEmotion.h"
 #import "ZJEmotinButton.h"
 
+@interface ZJPageEmotionView ()
+
+@property(nonatomic,weak) UIButton *deleteButton;
+
+@end
+
 @implementation ZJPageEmotionView
 #pragma mark - 系统方法
 - (id)initWithFrame:(CGRect)frame
 {
     self = [super initWithFrame:frame];
     if (self) {
-        
+        //1.添加删除按钮
+        UIButton *deleteButton = [[UIButton alloc] init];
+        [deleteButton setImage:[UIImage imageNamed:@"compose_emotion_delete"] forState:UIControlStateNormal];
+        [deleteButton setImage:[UIImage imageNamed:@"compose_emotion_delete_highlighted"] forState:UIControlStateHighlighted];
+        //监听按钮点击
+        [deleteButton addTarget:self action:@selector(deleteBtnClick) forControlEvents:UIControlEventTouchUpInside];
+        [self addSubview:deleteButton];
+        self.deleteButton = deleteButton;
     
     }
     return self;
@@ -36,7 +49,7 @@
     CGFloat btnH = (self.height -  padding) / ZJEmotionMaxRows;
     for (int i = 0; i< count; i++) {
         //取出按钮
-        UIButton *btn = self.subviews[i];
+        UIButton *btn = self.subviews[i + 1];//删除按钮在0，排除它
 
         btn.width = btnW;
         btn.height = btnH;
@@ -48,6 +61,12 @@
         btn.y = padding + btnH *cow;
         
     }
+    
+    //设置删除按钮的frame
+    self.deleteButton.width = btnW;
+    self.deleteButton.height = btnH;
+    self.deleteButton.y = self.height - btnH;
+    self.deleteButton.x = self.width - btnW - padding;
 }
 /**
  *  添加按钮，设置表情图标
@@ -81,6 +100,13 @@
     NSMutableDictionary *userInfo = [NSMutableDictionary dictionary];
     userInfo[ZJSelectEmotion] = btn.emotion;
     [ZJNotificationCenter postNotificationName:ZJEmotionDidSelectNotification object:nil userInfo:userInfo];
+}
+
+- (void)deleteBtnClick
+{
+//    ZJLog(@"deleteBtnClick");
+    //发出通知
+    [ZJNotificationCenter postNotificationName:ZJEmotionDidDeleteNotification object:nil userInfo:nil];
 }
 
 @end

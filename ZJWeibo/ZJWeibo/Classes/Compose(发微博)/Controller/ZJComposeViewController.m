@@ -127,6 +127,8 @@
     [ZJNotificationCenter addObserver:self selector:@selector(keyboardWillChangeFrame:) name:UIKeyboardWillChangeFrameNotification object:nil];
     //表情键盘上表情按钮被点击的通知
     [ZJNotificationCenter addObserver:self selector:@selector(emotionDidSelect:) name:ZJEmotionDidSelectNotification object:nil];
+    //表情键盘上删除按钮被点击的通知
+    [ZJNotificationCenter addObserver:self selector:@selector(emotionDidDelete) name:ZJEmotionDidDeleteNotification object:nil];
     
 }
 /**
@@ -283,7 +285,11 @@
 //    ZJLog(@"%@---表情按钮被点击了",emotion.chs);
     //插入文字或图片
     [self.textView insertEmotion:emotion];
-
+}
+- (void)emotionDidDelete
+{
+    //在textView删除之前输入的文字或图片
+    [self.textView deleteBackward];
 }
 
 #pragma mark - UITextViewDelegate

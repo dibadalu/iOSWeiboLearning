@@ -12,3 +12,9 @@
 NSString * const ZJAppKey = @"2053650830";
 NSString * const ZJRedirctURI = @"http://www.baidu.com";
 NSString * const ZJAppSecret = @"75938468eecb498878db62066ed75b1e";
+
+//表情文字的通知
+NSString * const ZJSelectEmotion = @"selectEmotion";
+NSString * const ZJEmotionDidSelectNotification = @"HMEmotionDidSelectNotification";
+//删除文字的通知
+NSString * const ZJEmotionDidDeleteNotification = @"HMEmotionDidDeleteNotification";

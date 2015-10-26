@@ -8,6 +8,7 @@
 
 #import "ZJPageEmotionView.h"
 #import "ZJEmotion.h"
+#import "ZJEmotinButton.h"
 
 @implementation ZJPageEmotionView
 #pragma mark - 系统方法
@@ -60,32 +61,26 @@
     NSUInteger count = emotions.count;
     //添加按钮
     for (int i = 0; i< count; i++) {
-        UIButton *btn = [[UIButton alloc] init];
+        ZJEmotinButton *btn = [[ZJEmotinButton alloc] init];
 //        btn.backgroundColor = ZJRandomColor;
+        //将模型传给btn
+        btn.emotion = emotions[i];
+        //监听事件
+        [btn addTarget:self action:@selector(btnClick:) forControlEvents:UIControlEventTouchUpInside];
         
-        //取出模型
-        ZJEmotion *emotion = emotions[i];
-        //设置按钮的表情图标(疑点：测试)
-        if (emotion.png) {
-                ZJLog(@"%@",emotion.png);
-            UIImage *imageTest = [UIImage imageNamed:emotion.png];
-            if (imageTest) {
-                [btn setImage:[UIImage imageNamed:emotion.png] forState:UIControlStateNormal];
-            }else{
-                ZJLog(@"why is my image object nil?");
-            }
-                ZJLog(@"%@",btn.currentImage);
-        }else if (emotion.code){
-            //设置emoji
-            ZJLog(@"%@",emotion.code);
-            [btn setTitle:emotion.code.emoji forState:UIControlStateNormal];
-            btn.titleLabel.font = [UIFont systemFontOfSize:32];
-            ZJLog(@"%@",btn.currentTitle);
-        }
         [self addSubview:btn];
     }
     
 }
 
+#pragma mark - 点击事件
+- (void)btnClick:(ZJEmotinButton *)btn
+{
+//    ZJLog(@"btnClick");
+   //发出通知(携带被点击表情按钮的模型数据)
+    NSMutableDictionary *userInfo = [NSMutableDictionary dictionary];
+    userInfo[ZJSelectEmotion] = btn.emotion;
+    [ZJNotificationCenter postNotificationName:ZJEmotionDidSelectNotification object:nil userInfo:userInfo];
+}
 
 @end

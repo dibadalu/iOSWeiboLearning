@@ -16,11 +16,14 @@
 #import "ZJComposePhotosView.h"
 #import <AFNetworking.h>
 #import "ZJEmotionKeyboard.h"
+#import "ZJEmotion.h"
+#import "ZJEmotionTextView.h"
+
 
 @interface ZJComposeViewController ()<UITextViewDelegate,ZJComposeToolBarDelegate,UINavigationControllerDelegate,UIImagePickerControllerDelegate>
 
 /** 输入控件 */
-@property(nonatomic,strong) ZJTextView *textView;
+@property(nonatomic,strong) ZJEmotionTextView *textView;
 /** 工具条 */
 @property(nonatomic,strong) ZJComposeToolBar *toolBar;
 /** 相册（存放拍照或者相册中选择的图片） */
@@ -104,7 +107,7 @@
 - (void)setupTextView
 {
     //在导航控制器中，textView会自动设置contenInset，默认是{64, 0, 0, 0}，光标下移
-    ZJTextView *textView = [[ZJTextView alloc] init];
+    ZJEmotionTextView *textView = [[ZJEmotionTextView alloc] init];
 //    textView.backgroundColor = [UIColor redColor];
     //垂直方向上永远可用拖拽（有弹簧效果）
     textView.alwaysBounceVertical = YES;
@@ -118,10 +121,12 @@
     
     
     //通知
-    //文字改变发出通知
+    //文字改变的通知
     [ZJNotificationCenter addObserver:self selector:@selector(textDidChange) name:UITextViewTextDidChangeNotification object:nil];
-    //键盘frame发生改变发出通知
+    //键盘frame发生改变的通知
     [ZJNotificationCenter addObserver:self selector:@selector(keyboardWillChangeFrame:) name:UIKeyboardWillChangeFrameNotification object:nil];
+    //表情键盘上表情按钮被点击的通知
+    [ZJNotificationCenter addObserver:self selector:@selector(emotionDidSelect:) name:ZJEmotionDidSelectNotification object:nil];
     
 }
 /**
@@ -183,7 +188,7 @@
     ZJAccount *account = [ZJAccountTool account];//取出账号模型
     NSMutableDictionary *params = [NSMutableDictionary dictionary];
     params[@"access_token"] = account.access_token;
-    params[@"status"] = self.textView.text;
+    params[@"status"] = self.textView.fullText;
     
     //2.发送请求
     [ZJHttpTool post:@"https://api.weibo.com/2/statuses/update.json" params:params success:^(id json) {
@@ -212,7 +217,7 @@
     ZJAccount *account = [ZJAccountTool account];//取出账号模型
     NSMutableDictionary *params = [NSMutableDictionary dictionary];
     params[@"access_token"] = account.access_token;
-    params[@"status"] = self.textView.text;
+    params[@"status"] = self.textView.fullText;
     
     //2.发送请求
     [mgr POST:@"https://api.weibo.com/2/statuses/upload.json" parameters:params constructingBodyWithBlock:^(id<AFMultipartFormData> formData) {
@@ -270,6 +275,15 @@
         self.toolBar.y = frame.origin.y - self.toolBar.height;
     }];
     
+}
+- (void)emotionDidSelect:(NSNotification *)notification
+{
+//    ZJLog(@"emotionDidSelect");
+    ZJEmotion *emotion = notification.userInfo[ZJSelectEmotion];//取出携带的模型数据
+//    ZJLog(@"%@---表情按钮被点击了",emotion.chs);
+    //插入文字或图片
+    [self.textView insertEmotion:emotion];
+
 }
 
 #pragma mark - UITextViewDelegate

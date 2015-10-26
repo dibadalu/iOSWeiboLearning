@@ -4,7 +4,7 @@
 //
 //  Created by dibadalu on 15/10/26.
 //  Copyright (c) 2015年 dibadalu. All rights reserved.
-//
+//  每一页的表情内容
 
 // 一页中最多3行
 #define ZJEmotionMaxRows 3

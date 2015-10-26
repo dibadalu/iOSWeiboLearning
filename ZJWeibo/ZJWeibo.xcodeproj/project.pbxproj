@@ -270,6 +270,10 @@
 		547AF2811BDDDC93008A949B /* w_xianhua@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 547AF1A11BDDDC93008A949B /* w_xianhua@2x.png */; };
 		547AF2821BDDDC93008A949B /* w_xiayu@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 547AF1A21BDDDC93008A949B /* w_xiayu@2x.png */; };
 		547AF2831BDDDC93008A949B /* w_yueliang@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 547AF1A31BDDDC93008A949B /* w_yueliang@2x.png */; };
+		547AF2861BDE0DE8008A949B /* ZJEmotinButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 547AF2851BDE0DE8008A949B /* ZJEmotinButton.m */; };
+		547AF2911BDE1501008A949B /* ZJEmotionTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 547AF2901BDE1501008A949B /* ZJEmotionTextView.m */; };
+		547AF2941BDE159F008A949B /* ZJEmotionAttachment.m in Sources */ = {isa = PBXBuildFile; fileRef = 547AF2931BDE159F008A949B /* ZJEmotionAttachment.m */; };
+		547AF2971BDE16B0008A949B /* UITextView+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = 547AF2961BDE16B0008A949B /* UITextView+Extension.m */; };
 		54A3AD861BDA63E300F4C89F /* ZJTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 54A3AD851BDA63E300F4C89F /* ZJTextView.m */; };
 		54C2201A1BD5267100BE0ED0 /* UIBarButtonItem+ZJExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 54C220191BD5267100BE0ED0 /* UIBarButtonItem+ZJExtension.m */; };
 		54C220201BD52B0400BE0ED0 /* UIView+ZJExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 54C2201F1BD52B0400BE0ED0 /* UIView+ZJExtension.m */; };
@@ -592,6 +596,14 @@
 		547AF1A11BDDDC93008A949B /* w_xianhua@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "w_xianhua@2x.png"; sourceTree = "<group>"; };
 		547AF1A21BDDDC93008A949B /* w_xiayu@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "w_xiayu@2x.png"; sourceTree = "<group>"; };
 		547AF1A31BDDDC93008A949B /* w_yueliang@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "w_yueliang@2x.png"; sourceTree = "<group>"; };
+		547AF2841BDE0DE8008A949B /* ZJEmotinButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZJEmotinButton.h; sourceTree = "<group>"; };
+		547AF2851BDE0DE8008A949B /* ZJEmotinButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZJEmotinButton.m; sourceTree = "<group>"; };
+		547AF28F1BDE1501008A949B /* ZJEmotionTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZJEmotionTextView.h; sourceTree = "<group>"; };
+		547AF2901BDE1501008A949B /* ZJEmotionTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZJEmotionTextView.m; sourceTree = "<group>"; };
+		547AF2921BDE159F008A949B /* ZJEmotionAttachment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZJEmotionAttachment.h; sourceTree = "<group>"; };
+		547AF2931BDE159F008A949B /* ZJEmotionAttachment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZJEmotionAttachment.m; sourceTree = "<group>"; };
+		547AF2951BDE16B0008A949B /* UITextView+Extension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITextView+Extension.h"; sourceTree = "<group>"; };
+		547AF2961BDE16B0008A949B /* UITextView+Extension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITextView+Extension.m"; sourceTree = "<group>"; };
 		54A3AD841BDA63E300F4C89F /* ZJTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZJTextView.h; sourceTree = "<group>"; };
 		54A3AD851BDA63E300F4C89F /* ZJTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZJTextView.m; sourceTree = "<group>"; };
 		54C220181BD5267100BE0ED0 /* UIBarButtonItem+ZJExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIBarButtonItem+ZJExtension.h"; sourceTree = "<group>"; };
@@ -658,7 +670,7 @@
 		54097DBB1BD0A320008084D3 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				547AF0C31BDDDC93008A949B /* Emotions */,
+				547AF0C31BDDDC93008A949B /* EmotionIcons */,
 				541B328E1BD9E350004C4BC6 /* fakeStatus.plist */,
 				54F608381BD50D3800F7BB3E /* Images.xcassets */,
 				54097DC51BD0A320008084D3 /* Main.storyboard */,
@@ -747,6 +759,10 @@
 				547272A41BDCBBA20021D9EA /* ZJEmotionListView.m */,
 				547AEEFC1BDDD5F1008A949B /* ZJPageEmotionView.h */,
 				547AEEFD1BDDD5F1008A949B /* ZJPageEmotionView.m */,
+				547AF2841BDE0DE8008A949B /* ZJEmotinButton.h */,
+				547AF2851BDE0DE8008A949B /* ZJEmotinButton.m */,
+				547AF28F1BDE1501008A949B /* ZJEmotionTextView.h */,
+				547AF2901BDE1501008A949B /* ZJEmotionTextView.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -996,11 +1012,13 @@
 			children = (
 				547272AD1BDCD1360021D9EA /* ZJEmotion.h */,
 				547272AE1BDCD1360021D9EA /* ZJEmotion.m */,
+				547AF2921BDE159F008A949B /* ZJEmotionAttachment.h */,
+				547AF2931BDE159F008A949B /* ZJEmotionAttachment.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
 		};
-		547AF0C31BDDDC93008A949B /* Emotions */ = {
+		547AF0C31BDDDC93008A949B /* EmotionIcons */ = {
 			isa = PBXGroup;
 			children = (
 				547AF0C41BDDDC93008A949B /* d_aini@2x.png */,
@@ -1228,6 +1246,7 @@
 				547AF1A21BDDDC93008A949B /* w_xiayu@2x.png */,
 				547AF1A31BDDDC93008A949B /* w_yueliang@2x.png */,
 			);
+			name = EmotionIcons;
 			path = Emotions;
 			sourceTree = "<group>";
 		};
@@ -1245,6 +1264,8 @@
 				541B32861BD8DB1E004C4BC6 /* NSString+Extension.m */,
 				547AEEFF1BDDD9B6008A949B /* NSString+Emoji.h */,
 				547AEF001BDDD9B6008A949B /* NSString+Emoji.m */,
+				547AF2951BDE16B0008A949B /* UITextView+Extension.h */,
+				547AF2961BDE16B0008A949B /* UITextView+Extension.m */,
 			);
 			path = Category;
 			sourceTree = "<group>";
@@ -1668,7 +1689,9 @@
 				542A49F91BD6365A00C457CF /* ZJHttpTool.m in Sources */,
 				542A4A0D1BD641D800C457CF /* ZJAccount.m in Sources */,
 				541B328A1BD90197004C4BC6 /* ZJPhoto.m in Sources */,
+				547AF2941BDE159F008A949B /* ZJEmotionAttachment.m in Sources */,
 				544A87311BD4E17800659A85 /* ZJNavigationViewController.m in Sources */,
+				547AF2911BDE1501008A949B /* ZJEmotionTextView.m in Sources */,
 				542A49F61BD635C900C457CF /* ZJConst.m in Sources */,
 				54330C6C1BD72BF7005DFFDE /* ZJStatus.m in Sources */,
 				541B32981BDA3AEB004C4BC6 /* ZJIconView.m in Sources */,
@@ -1685,11 +1708,13 @@
 				544A87271BD4D78100659A85 /* ZJDiscoverViewController.m in Sources */,
 				547272AB1BDCC81E0021D9EA /* ZJEmotionTabBarButton.m in Sources */,
 				542EDA5F1BD6444900CAA724 /* AFJSONResponseSerializer+ZJ.m in Sources */,
+				547AF2971BDE16B0008A949B /* UITextView+Extension.m in Sources */,
 				5444C6431BDBBC2300C7A5C1 /* ZJComposeToolBar.m in Sources */,
 				542A49F31BD635A800C457CF /* main.m in Sources */,
 				541B32921BDA228D004C4BC6 /* ZJStatusPhotosView.m in Sources */,
 				541B327F1BD8B85D004C4BC6 /* ZJStatusCell.m in Sources */,
 				541B32841BD8D86F004C4BC6 /* Foundation+Log.m in Sources */,
+				547AF2861BDE0DE8008A949B /* ZJEmotinButton.m in Sources */,
 				54C220261BD52D5F00BE0ED0 /* ZJOAuthViewController.m in Sources */,
 				547272AF1BDCD1360021D9EA /* ZJEmotion.m in Sources */,
 			);

@@ -12,3 +12,9 @@
 extern NSString * const ZJAppKey;
 extern NSString * const ZJRedirctURI;
 extern NSString * const ZJAppSecret;
+
+//表情文字的通知
+extern NSString * const ZJSelectEmotion;
+extern NSString * const ZJEmotionDidSelectNotification;
+//删除文字的通知
+extern NSString * const ZJEmotionDidDeleteNotification;

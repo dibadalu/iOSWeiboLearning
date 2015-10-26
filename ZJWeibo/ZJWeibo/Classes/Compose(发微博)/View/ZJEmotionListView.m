@@ -88,9 +88,7 @@
 - (void)setEmotions:(NSArray *)emotions
 {
     _emotions = emotions;
-    
-    ZJLog(@"%d",emotions.count);
-    
+ 
 //    ZJLog(@"%d",emotions.count);
     
     NSUInteger count = (emotions.count + ZJEmotionsPageCount - 1) / ZJEmotionsPageCount;

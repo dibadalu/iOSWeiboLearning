@@ -274,6 +274,7 @@
 		547AF2911BDE1501008A949B /* ZJEmotionTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 547AF2901BDE1501008A949B /* ZJEmotionTextView.m */; };
 		547AF2941BDE159F008A949B /* ZJEmotionAttachment.m in Sources */ = {isa = PBXBuildFile; fileRef = 547AF2931BDE159F008A949B /* ZJEmotionAttachment.m */; };
 		547AF2971BDE16B0008A949B /* UITextView+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = 547AF2961BDE16B0008A949B /* UITextView+Extension.m */; };
+		547AF29B1BDE1F2B008A949B /* ZJEmotionTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 547AF29A1BDE1F2B008A949B /* ZJEmotionTool.m */; };
 		54A3AD861BDA63E300F4C89F /* ZJTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 54A3AD851BDA63E300F4C89F /* ZJTextView.m */; };
 		54C2201A1BD5267100BE0ED0 /* UIBarButtonItem+ZJExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 54C220191BD5267100BE0ED0 /* UIBarButtonItem+ZJExtension.m */; };
 		54C220201BD52B0400BE0ED0 /* UIView+ZJExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 54C2201F1BD52B0400BE0ED0 /* UIView+ZJExtension.m */; };
@@ -604,6 +605,8 @@
 		547AF2931BDE159F008A949B /* ZJEmotionAttachment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZJEmotionAttachment.m; sourceTree = "<group>"; };
 		547AF2951BDE16B0008A949B /* UITextView+Extension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITextView+Extension.h"; sourceTree = "<group>"; };
 		547AF2961BDE16B0008A949B /* UITextView+Extension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITextView+Extension.m"; sourceTree = "<group>"; };
+		547AF2991BDE1F2B008A949B /* ZJEmotionTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZJEmotionTool.h; sourceTree = "<group>"; };
+		547AF29A1BDE1F2B008A949B /* ZJEmotionTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZJEmotionTool.m; sourceTree = "<group>"; };
 		54A3AD841BDA63E300F4C89F /* ZJTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZJTextView.h; sourceTree = "<group>"; };
 		54A3AD851BDA63E300F4C89F /* ZJTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZJTextView.m; sourceTree = "<group>"; };
 		54C220181BD5267100BE0ED0 /* UIBarButtonItem+ZJExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIBarButtonItem+ZJExtension.h"; sourceTree = "<group>"; };
@@ -724,6 +727,7 @@
 		5421DA971BD4CED400B82561 /* Compose(发微博) */ = {
 			isa = PBXGroup;
 			children = (
+				547AF2981BDE1F19008A949B /* Tool */,
 				5421DA981BD4CED400B82561 /* Controller */,
 				547272AC1BDCD1220021D9EA /* Model */,
 				5421DA9A1BD4CED400B82561 /* View */,
@@ -1250,6 +1254,15 @@
 			path = Emotions;
 			sourceTree = "<group>";
 		};
+		547AF2981BDE1F19008A949B /* Tool */ = {
+			isa = PBXGroup;
+			children = (
+				547AF2991BDE1F2B008A949B /* ZJEmotionTool.h */,
+				547AF29A1BDE1F2B008A949B /* ZJEmotionTool.m */,
+			);
+			path = Tool;
+			sourceTree = "<group>";
+		};
 		54C220171BD5266700BE0ED0 /* Category */ = {
 			isa = PBXGroup;
 			children = (
@@ -1678,6 +1691,7 @@
 				541B32821BD8D85C004C4BC6 /* NSDate+Extension.m in Sources */,
 				541B32951BDA2A22004C4BC6 /* ZJStatusPhotoView.m in Sources */,
 				54E7EDF31BD60F640018280F /* MBProgressHUD+MJ.m in Sources */,
+				547AF29B1BDE1F2B008A949B /* ZJEmotionTool.m in Sources */,
 				54C220201BD52B0400BE0ED0 /* UIView+ZJExtension.m in Sources */,
 				544A871E1BD4D56D00659A85 /* ZJTabBarViewController.m in Sources */,
 				544A87211BD4D75E00659A85 /* ZJHomeViewController.m in Sources */,

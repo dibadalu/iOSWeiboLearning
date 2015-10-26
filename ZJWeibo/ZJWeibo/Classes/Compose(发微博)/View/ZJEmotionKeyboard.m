@@ -11,7 +11,7 @@
 #import "ZJEmotionTabBar.h"
 #import "ZJEmotion.h"
 #import <MJExtension.h>
-
+#import "ZJEmotionTool.h"
 
 @interface ZJEmotionKeyboard ()<ZJEmotionTabBarButtonDelegate>
 /** 显示表情内容的容器 */
@@ -33,7 +33,9 @@
 {
     if (!_recentEmotionListView) {
         self.recentEmotionListView = [[ZJEmotionListView alloc] init];
-        self.recentEmotionListView.backgroundColor = ZJRandomColor;
+//        self.recentEmotionListView.backgroundColor = ZJRandomColor;
+        //加载沙盒的ZJEmotion模型数组（只有同一个表情数组）
+        self.recentEmotionListView.emotions = [ZJEmotionTool recentEmotions];
     }
     return _recentEmotionListView;
 }
@@ -81,14 +83,18 @@
     if (self) {
         
         //添加子控件（emotionListView和emotionTabBar）
-        ZJEmotionListView *showingEmotionView = [[ZJEmotionListView alloc] init];
-        [self addSubview:showingEmotionView];
-        self.showingEmotionView = showingEmotionView;
+//        ZJEmotionListView *showingEmotionView = [[ZJEmotionListView alloc] init];
+//        [self addSubview:showingEmotionView];
+//        self.showingEmotionView = showingEmotionView;
         
+        //2.tabBar
         ZJEmotionTabBar *emotionTabBar = [[ZJEmotionTabBar alloc] init];
         emotionTabBar.delegate = self;//设置代理
         [self addSubview:emotionTabBar];
         self.emotionTabBar = emotionTabBar;
+        
+        //表情通知
+        [ZJNotificationCenter addObserver:self selector:@selector(emotionDidSelect) name:ZJEmotionDidSelectNotification object:nil];
       
     }
     return self;
@@ -113,6 +119,13 @@
 
 }
 
+#pragma mark - 点击事件
+- (void)emotionDidSelect
+{
+    //保证“最近”上的表情能够随着tabBar选项卡的切换及时更新
+    self.recentEmotionListView.emotions = [ZJEmotionTool recentEmotions];
+}
+
 #pragma mark - ZJEmotionTabBarButtonDelegate
 - (void)emotionTabBar:(ZJEmotionTabBar *)emotionTabBar didTabBarButtonType:(ZJEmotionTabBarButtonType)btnType
 {
@@ -121,22 +134,23 @@
     
     switch (btnType) {
         case ZJEmotionTabBarButtonTypeRecent://最近
-            ZJLog(@"最近");
+//            ZJLog(@"最近");
             [self addSubview:self.recentEmotionListView];
             
+        
             break;
         case ZJEmotionTabBarButtonTypeDefault://默认
-            ZJLog(@"默认");
+//            ZJLog(@"默认");
             [self addSubview:self.defaultEmotionListView];
 
             break;
         case ZJEmotionTabBarButtonTypeEmoji://emoji
-            ZJLog(@"emoji");
+//            ZJLog(@"emoji");
             [self addSubview:self.emojiEmotionListView];
 
             break;
         case ZJEmotionTabBarButtonTypeLxh://emoji
-            ZJLog(@"emoji");
+//            ZJLog(@"emoji");
             [self addSubview:self.lxhEmotionListView];
 
             break;

@@ -63,7 +63,6 @@
         [self setTitle:emotion.code.emoji forState:UIControlStateNormal];
     }
  
-
 }
 
 @end

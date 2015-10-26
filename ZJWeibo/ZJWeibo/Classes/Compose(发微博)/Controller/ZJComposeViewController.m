@@ -48,7 +48,6 @@
     return _emotionKeyboard;
 }
 
-
 #pragma mark - 系统方法
 - (void)viewDidLoad
 {

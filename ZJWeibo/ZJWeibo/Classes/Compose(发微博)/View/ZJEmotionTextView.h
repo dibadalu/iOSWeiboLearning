@@ -13,7 +13,6 @@
 
 /** 插入文字和图片 */
 - (void)insertEmotion:(ZJEmotion *)emotion;
-
 /** 包含文字和图片的属性文字 */
 - (NSString *)fullText;
 

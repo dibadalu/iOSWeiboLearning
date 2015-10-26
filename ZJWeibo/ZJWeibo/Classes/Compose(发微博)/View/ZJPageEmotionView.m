@@ -9,6 +9,7 @@
 #import "ZJPageEmotionView.h"
 #import "ZJEmotion.h"
 #import "ZJEmotinButton.h"
+#import "ZJEmotionTool.h"
 
 @interface ZJPageEmotionView ()
 
@@ -96,10 +97,14 @@
 - (void)btnClick:(ZJEmotinButton *)btn
 {
 //    ZJLog(@"btnClick");
+    //存储表情模型数组
+    [ZJEmotionTool saveRecentEmotion:btn.emotion];
+    
    //发出通知(携带被点击表情按钮的模型数据)
     NSMutableDictionary *userInfo = [NSMutableDictionary dictionary];
     userInfo[ZJSelectEmotion] = btn.emotion;
     [ZJNotificationCenter postNotificationName:ZJEmotionDidSelectNotification object:nil userInfo:userInfo];
+    
 }
 
 - (void)deleteBtnClick

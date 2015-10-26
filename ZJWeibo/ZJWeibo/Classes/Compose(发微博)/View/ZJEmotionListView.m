@@ -90,6 +90,8 @@
     _emotions = emotions;
  
 //    ZJLog(@"%d",emotions.count);
+    //0.更新“最近”页面上的表情数据
+    [self.scrollView.subviews makeObjectsPerformSelector:@selector(removeFromSuperview)];
     
     NSUInteger count = (emotions.count + ZJEmotionsPageCount - 1) / ZJEmotionsPageCount;
     
@@ -116,6 +118,9 @@
         
         [self.scrollView addSubview:pageView];
     }
+    
+    //重置frame
+    [self setNeedsLayout];
     
 }
 

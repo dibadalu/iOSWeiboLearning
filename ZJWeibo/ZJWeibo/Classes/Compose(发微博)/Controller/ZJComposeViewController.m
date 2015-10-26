@@ -380,13 +380,13 @@
     //注意：必须先退出原先的键盘
     [self.textView endEditing:YES];
     
+    //已经切换完键盘
+    self.switchingKeyBoard = NO;
+    
     //延迟0.1s切换另外一个键盘
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         //弹出键盘
         [self.textView becomeFirstResponder];
-        
-        //已经切换完键盘
-        self.switchingKeyBoard = NO;
         
     });
 }

@@ -11,6 +11,7 @@
 
 #import "ZJEmotionTool.h"
 #import "ZJEmotion.h"
+#import <MJExtension.h>
 
 @implementation ZJEmotionTool
 
@@ -31,7 +32,7 @@ static NSMutableArray *_recentEmotions; //静态全局变量
  */
 + (void)saveRecentEmotion:(ZJEmotion *)emotion
 {
-    //删除重复的表情，HMEmotion类中重写了isEqual方法
+    //删除重复的表情，ZJEmotion类中重写了isEqual方法
     [_recentEmotions removeObject:emotion];
     
     //将表情模型放到数组的最前面
@@ -48,5 +49,27 @@ static NSMutableArray *_recentEmotions; //静态全局变量
 {
     return _recentEmotions;
 }
+
++ (NSArray *)defaultEmotions
+{
+    NSString *path = [[NSBundle mainBundle] pathForResource:@"defaultInfo.plist" ofType:nil];
+    //字典数组-->模型数组
+    return [ZJEmotion objectArrayWithKeyValuesArray:[NSArray arrayWithContentsOfFile:path]];
+}
+
++ (NSArray *)emojiEmotions
+{
+    NSString *path = [[NSBundle mainBundle] pathForResource:@"emojiInfo.plist" ofType:nil];
+    //字典数组-->模型数组    
+    return  [ZJEmotion objectArrayWithKeyValuesArray:[NSArray arrayWithContentsOfFile:path]];
+}
+
++ (NSArray *)lxhEmotions
+{
+    NSString *path = [[NSBundle mainBundle] pathForResource:@"lxhInfo.plist" ofType:nil];
+    //字典数组-->模型数组
+    return [ZJEmotion objectArrayWithKeyValuesArray:[NSArray arrayWithContentsOfFile:path]];
+}
+
 
 @end

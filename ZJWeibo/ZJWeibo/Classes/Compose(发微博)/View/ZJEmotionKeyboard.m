@@ -10,7 +10,7 @@
 #import "ZJEmotionListView.h"
 #import "ZJEmotionTabBar.h"
 #import "ZJEmotion.h"
-#import <MJExtension.h>
+//#import <MJExtension.h>
 #import "ZJEmotionTool.h"
 
 @interface ZJEmotionKeyboard ()<ZJEmotionTabBarButtonDelegate>
@@ -45,9 +45,8 @@
     if (!_defaultEmotionListView) {
         self.defaultEmotionListView = [[ZJEmotionListView alloc] init];
 //        self.defaultEmotionListView.backgroundColor = ZJRandomColor;
-        NSString *path = [[NSBundle mainBundle] pathForResource:@"defaultInfo.plist" ofType:nil];
-        //字典数组-->模型数组
-        self.defaultEmotionListView.emotions = [ZJEmotion objectArrayWithKeyValuesArray:[NSArray arrayWithContentsOfFile:path]];
+        self.defaultEmotionListView.emotions = [ZJEmotionTool defaultEmotions];
+        
     }
     return _defaultEmotionListView;
 }
@@ -57,9 +56,7 @@
     if (!_emojiEmotionListView) {
         self.emojiEmotionListView = [[ZJEmotionListView alloc] init];
 //        self.emojiEmotionListView.backgroundColor = ZJRandomColor;
-        NSString *path = [[NSBundle mainBundle] pathForResource:@"emojiInfo.plist" ofType:nil];
-        //字典数组-->模型数组
-        self.emojiEmotionListView.emotions = [ZJEmotion objectArrayWithKeyValuesArray:[NSArray arrayWithContentsOfFile:path]];
+        self.emojiEmotionListView.emotions = [ZJEmotionTool emojiEmotions];
     }
     return _emojiEmotionListView;
 }
@@ -69,9 +66,7 @@
     if (!_lxhEmotionListView) {
         self.lxhEmotionListView = [[ZJEmotionListView alloc] init];
 //        self.lxhEmotionListView.backgroundColor = ZJRandomColor;
-        NSString *path = [[NSBundle mainBundle] pathForResource:@"lxhInfo.plist" ofType:nil];
-        //字典数组-->模型数组
-        self.lxhEmotionListView.emotions = [ZJEmotion objectArrayWithKeyValuesArray:[NSArray arrayWithContentsOfFile:path]];
+        self.lxhEmotionListView.emotions = [ZJEmotionTool lxhEmotions];
     }
     return _lxhEmotionListView;
 }

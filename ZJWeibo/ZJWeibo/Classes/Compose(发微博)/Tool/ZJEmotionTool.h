@@ -16,4 +16,11 @@
 /** 返回最近用过的模型 */
 + (NSArray *)recentEmotions;
 
+/** 返回默认用过的模型 */
++ (NSArray *)defaultEmotions;
+/** 返回emoji用过的模型 */
++ (NSArray *)emojiEmotions;
+/** 返回lxh用过的模型 */
++ (NSArray *)lxhEmotions;
+
 @end

@@ -17,6 +17,7 @@
 #import "NSDate+Extension.h"
 #import "NSString+Extension.h"
 #import "ZJConst.h"
+#import "NSString+Emoji.h"
 
 
 #ifdef DEBUG //调试状态，打开LOG功能

@@ -9,6 +9,8 @@
 #import "ZJEmotionKeyboard.h"
 #import "ZJEmotionListView.h"
 #import "ZJEmotionTabBar.h"
+#import "ZJEmotion.h"
+#import <MJExtension.h>
 
 
 @interface ZJEmotionKeyboard ()<ZJEmotionTabBarButtonDelegate>
@@ -40,7 +42,10 @@
 {
     if (!_defaultEmotionListView) {
         self.defaultEmotionListView = [[ZJEmotionListView alloc] init];
-        self.defaultEmotionListView.backgroundColor = ZJRandomColor;
+//        self.defaultEmotionListView.backgroundColor = ZJRandomColor;
+        NSString *path = [[NSBundle mainBundle] pathForResource:@"defaultInfo.plist" ofType:nil];
+        //字典数组-->模型数组
+        self.defaultEmotionListView.emotions = [ZJEmotion objectArrayWithKeyValuesArray:[NSArray arrayWithContentsOfFile:path]];
     }
     return _defaultEmotionListView;
 }
@@ -49,7 +54,10 @@
 {
     if (!_emojiEmotionListView) {
         self.emojiEmotionListView = [[ZJEmotionListView alloc] init];
-        self.emojiEmotionListView.backgroundColor = ZJRandomColor;
+//        self.emojiEmotionListView.backgroundColor = ZJRandomColor;
+        NSString *path = [[NSBundle mainBundle] pathForResource:@"emojiInfo.plist" ofType:nil];
+        //字典数组-->模型数组
+        self.emojiEmotionListView.emotions = [ZJEmotion objectArrayWithKeyValuesArray:[NSArray arrayWithContentsOfFile:path]];
     }
     return _emojiEmotionListView;
 }
@@ -58,11 +66,13 @@
 {
     if (!_lxhEmotionListView) {
         self.lxhEmotionListView = [[ZJEmotionListView alloc] init];
-        self.lxhEmotionListView.backgroundColor = ZJRandomColor;
+//        self.lxhEmotionListView.backgroundColor = ZJRandomColor;
+        NSString *path = [[NSBundle mainBundle] pathForResource:@"lxhInfo.plist" ofType:nil];
+        //字典数组-->模型数组
+        self.lxhEmotionListView.emotions = [ZJEmotion objectArrayWithKeyValuesArray:[NSArray arrayWithContentsOfFile:path]];
     }
     return _lxhEmotionListView;
 }
-
 
 #pragma mark - 系统方法
 - (id)initWithFrame:(CGRect)frame
@@ -106,7 +116,7 @@
 #pragma mark - ZJEmotionTabBarButtonDelegate
 - (void)emotionTabBar:(ZJEmotionTabBar *)emotionTabBar didTabBarButtonType:(ZJEmotionTabBarButtonType)btnType
 {
-    //移除showingEmotionView上显示的组件
+    //移除emotionListView上显示的组件
     [self.showingEmotionView removeFromSuperview];
     
     switch (btnType) {
@@ -132,7 +142,7 @@
             break;
     }
     
-    //设置showingEmotionView上显示的组件
+    //设置emotionListView上显示的组件
     self.showingEmotionView = [self.subviews lastObject];
     
     //重新计算子控件的frame

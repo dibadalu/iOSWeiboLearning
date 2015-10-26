@@ -15,6 +15,7 @@
 #import "ZJStatusToolBar.h"
 #import "ZJStatusPhotosView.h"
 #import "ZJIconView.h"
+#import "ZJStatusTextView.h"
 
 @interface ZJStatusCell ()
 
@@ -35,7 +36,7 @@
 /** 来源 */
 @property(nonatomic,weak) UILabel *sourceLabel;
 /** 正文 */
-@property(nonatomic,weak) UILabel *contentLabel;
+@property(nonatomic,weak) ZJStatusTextView *contentLabel;
 
 
 /* 转发微博 */
@@ -44,7 +45,7 @@
 /** 配图 */
 @property(nonatomic,weak) ZJStatusPhotosView *retweetedphotosView;
 /** 昵称+正文 */
-@property(nonatomic,weak) UILabel *retweetedContentLabel;
+@property(nonatomic,weak) ZJStatusTextView *retweetedContentLabel;
 
 /** 工具条 */
 @property(nonatomic,weak) ZJStatusToolBar *toolBar;
@@ -141,9 +142,9 @@
     self.timeLabel = timeLabel;
     
     /** 正文 */
-    UILabel *contentLabel = [[UILabel alloc] init];
+    ZJStatusTextView *contentLabel = [[ZJStatusTextView alloc] init];
     contentLabel.font = ZJStatusCellContentLableFont;
-    contentLabel.numberOfLines = 0;
+//    contentLabel.numberOfLines = 0;
     [self.contentView addSubview:contentLabel];
     self.contentLabel = contentLabel;
     
@@ -166,9 +167,9 @@
     self.retweetedView = retweetedView;
     
     /** 昵称+正文 */
-    UILabel *retweetedContentLabel = [[UILabel alloc] init];
+    ZJStatusTextView *retweetedContentLabel = [[ZJStatusTextView alloc] init];
     retweetedContentLabel.font = ZJRetweetedStatusCellContentLableFont;
-    retweetedContentLabel.numberOfLines = 0;
+//    retweetedContentLabel.numberOfLines = 0;
     [retweetedView addSubview:retweetedContentLabel];
     self.retweetedContentLabel = retweetedContentLabel;
     
@@ -237,7 +238,8 @@
     
     /** 正文 */
     self.contentLabel.frame = statusFrame.contentLabelF;
-    self.contentLabel.text = status.text;
+//    self.contentLabel.text = status.text;
+    self.contentLabel.attributedText = status.attributedText;
     
     /* 转发微博 要考虑是否存在转发微博 */
     if (status.retweeted_status) {//存在转发微博
@@ -245,7 +247,7 @@
         //取出转发微博
         ZJStatus *retweeted_status = status.retweeted_status;
         //取出转发微博的用户
-        ZJUser *retweeted_status_user = retweeted_status.user;
+//        ZJUser *retweeted_status_user = retweeted_status.user;
         
         self.retweetedView.hidden = NO;
         
@@ -254,7 +256,8 @@
         
         /** 昵称+正文 */
         self.retweetedContentLabel.frame = statusFrame.retweetedContentLabelF;
-        self.retweetedContentLabel.text = [NSString stringWithFormat:@"%@:%@",retweeted_status_user.name,retweeted_status.text];
+//        self.retweetedContentLabel.text = [NSString stringWithFormat:@"%@:%@",retweeted_status_user.name,retweeted_status.text];
+        self.retweetedContentLabel.attributedText = status.retweeted_attributedText;
         
         /** 配图 要考虑是否有配图*/
         if (retweeted_status.pic_urls.count) {//有配图

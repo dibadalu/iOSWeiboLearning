@@ -72,4 +72,25 @@ static NSMutableArray *_recentEmotions; //静态全局变量
 }
 
 
+/**
+ *  根据chs返回相应的HMEmotion模型
+ */
++ (ZJEmotion *)emotinWithChs:(NSString *)chs
+{
+    
+    NSArray *defaults = [self defaultEmotions];
+    for (ZJEmotion *emotion in defaults) {
+        if ([emotion.chs isEqualToString:chs]) return emotion;
+    }
+    
+    NSArray *lxhs = [self lxhEmotions];
+    for (ZJEmotion *emotion in lxhs) {
+        if ([emotion.chs isEqualToString:chs]) return emotion;
+    }
+    
+    return nil;
+}
+
+
+
 @end

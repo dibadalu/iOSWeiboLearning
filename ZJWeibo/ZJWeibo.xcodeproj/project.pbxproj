@@ -275,6 +275,9 @@
 		547AF2941BDE159F008A949B /* ZJEmotionAttachment.m in Sources */ = {isa = PBXBuildFile; fileRef = 547AF2931BDE159F008A949B /* ZJEmotionAttachment.m */; };
 		547AF2971BDE16B0008A949B /* UITextView+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = 547AF2961BDE16B0008A949B /* UITextView+Extension.m */; };
 		547AF29B1BDE1F2B008A949B /* ZJEmotionTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 547AF29A1BDE1F2B008A949B /* ZJEmotionTool.m */; };
+		54855CB61BDE5ED000FF876B /* ZJStatusTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 54855CB51BDE5ED000FF876B /* ZJStatusTextView.m */; };
+		54855CB91BDE678300FF876B /* ZJTextPart.m in Sources */ = {isa = PBXBuildFile; fileRef = 54855CB81BDE678300FF876B /* ZJTextPart.m */; };
+		54855CBC1BDE67CC00FF876B /* ZJSpecialText.m in Sources */ = {isa = PBXBuildFile; fileRef = 54855CBB1BDE67CC00FF876B /* ZJSpecialText.m */; };
 		54A3AD861BDA63E300F4C89F /* ZJTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 54A3AD851BDA63E300F4C89F /* ZJTextView.m */; };
 		54C2201A1BD5267100BE0ED0 /* UIBarButtonItem+ZJExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 54C220191BD5267100BE0ED0 /* UIBarButtonItem+ZJExtension.m */; };
 		54C220201BD52B0400BE0ED0 /* UIView+ZJExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 54C2201F1BD52B0400BE0ED0 /* UIView+ZJExtension.m */; };
@@ -607,6 +610,12 @@
 		547AF2961BDE16B0008A949B /* UITextView+Extension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITextView+Extension.m"; sourceTree = "<group>"; };
 		547AF2991BDE1F2B008A949B /* ZJEmotionTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZJEmotionTool.h; sourceTree = "<group>"; };
 		547AF29A1BDE1F2B008A949B /* ZJEmotionTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZJEmotionTool.m; sourceTree = "<group>"; };
+		54855CB41BDE5ED000FF876B /* ZJStatusTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZJStatusTextView.h; sourceTree = "<group>"; };
+		54855CB51BDE5ED000FF876B /* ZJStatusTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZJStatusTextView.m; sourceTree = "<group>"; };
+		54855CB71BDE678300FF876B /* ZJTextPart.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZJTextPart.h; sourceTree = "<group>"; };
+		54855CB81BDE678300FF876B /* ZJTextPart.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZJTextPart.m; sourceTree = "<group>"; };
+		54855CBA1BDE67CC00FF876B /* ZJSpecialText.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZJSpecialText.h; sourceTree = "<group>"; };
+		54855CBB1BDE67CC00FF876B /* ZJSpecialText.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZJSpecialText.m; sourceTree = "<group>"; };
 		54A3AD841BDA63E300F4C89F /* ZJTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZJTextView.h; sourceTree = "<group>"; };
 		54A3AD851BDA63E300F4C89F /* ZJTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZJTextView.m; sourceTree = "<group>"; };
 		54C220181BD5267100BE0ED0 /* UIBarButtonItem+ZJExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIBarButtonItem+ZJExtension.h"; sourceTree = "<group>"; };
@@ -834,6 +843,10 @@
 				541B327B1BD8B338004C4BC6 /* ZJStatusFrame.m */,
 				541B32881BD90197004C4BC6 /* ZJPhoto.h */,
 				541B32891BD90197004C4BC6 /* ZJPhoto.m */,
+				54855CB71BDE678300FF876B /* ZJTextPart.h */,
+				54855CB81BDE678300FF876B /* ZJTextPart.m */,
+				54855CBA1BDE67CC00FF876B /* ZJSpecialText.h */,
+				54855CBB1BDE67CC00FF876B /* ZJSpecialText.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -851,6 +864,8 @@
 				541B32941BDA2A22004C4BC6 /* ZJStatusPhotoView.m */,
 				541B32961BDA3AEB004C4BC6 /* ZJIconView.h */,
 				541B32971BDA3AEB004C4BC6 /* ZJIconView.m */,
+				54855CB41BDE5ED000FF876B /* ZJStatusTextView.h */,
+				54855CB51BDE5ED000FF876B /* ZJStatusTextView.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1706,6 +1721,7 @@
 				547AF2941BDE159F008A949B /* ZJEmotionAttachment.m in Sources */,
 				544A87311BD4E17800659A85 /* ZJNavigationViewController.m in Sources */,
 				547AF2911BDE1501008A949B /* ZJEmotionTextView.m in Sources */,
+				54855CBC1BDE67CC00FF876B /* ZJSpecialText.m in Sources */,
 				542A49F61BD635C900C457CF /* ZJConst.m in Sources */,
 				54330C6C1BD72BF7005DFFDE /* ZJStatus.m in Sources */,
 				541B32981BDA3AEB004C4BC6 /* ZJIconView.m in Sources */,
@@ -1723,9 +1739,11 @@
 				547272AB1BDCC81E0021D9EA /* ZJEmotionTabBarButton.m in Sources */,
 				542EDA5F1BD6444900CAA724 /* AFJSONResponseSerializer+ZJ.m in Sources */,
 				547AF2971BDE16B0008A949B /* UITextView+Extension.m in Sources */,
+				54855CB61BDE5ED000FF876B /* ZJStatusTextView.m in Sources */,
 				5444C6431BDBBC2300C7A5C1 /* ZJComposeToolBar.m in Sources */,
 				542A49F31BD635A800C457CF /* main.m in Sources */,
 				541B32921BDA228D004C4BC6 /* ZJStatusPhotosView.m in Sources */,
+				54855CB91BDE678300FF876B /* ZJTextPart.m in Sources */,
 				541B327F1BD8B85D004C4BC6 /* ZJStatusCell.m in Sources */,
 				541B32841BD8D86F004C4BC6 /* Foundation+Log.m in Sources */,
 				547AF2861BDE0DE8008A949B /* ZJEmotinButton.m in Sources */,

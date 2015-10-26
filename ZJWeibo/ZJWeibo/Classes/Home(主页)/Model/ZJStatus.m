@@ -9,6 +9,12 @@
 #import "ZJStatus.h"
 #import "ZJPhoto.h"
 #import <MJExtension.h>
+#import <RegexKitLite.h>
+#import "ZJUser.h"
+#import "ZJTextPart.h"
+#import "ZJSpecialText.h"
+#import "ZJEmotion.h"
+#import "ZJEmotionTool.h"
 
 @implementation ZJStatus
 
@@ -21,13 +27,14 @@
     
 }
 
+#pragma mark - 系统方法
 /**
- *  重写created_at的get方法，更改时间格式
+ *  重写created_at的getter方法，更改时间格式
  *  注意：时间会不断改变，所以要用get方法多次获取时间
  */
 - (NSString *)created_at
 {
-
+    
     NSDateFormatter *fmt = [[NSDateFormatter alloc] init];
     //如果是真机调试，转换欧美时间，需要设置locale
     fmt.locale = [[NSLocale alloc] initWithLocaleIdentifier:@"en_US"];
@@ -68,19 +75,19 @@
         fmt.dateFormat = @"yyyy-MM-dd HH:mm";
         return [fmt stringFromDate:createDate];
     }
-
+    
     
 }
 
 /**
- *  重写source的set方法，更改来源格式
+ *  重写source的setter方法，更改来源格式
  */
 - (void)setSource:(NSString *)source
 {
     
     // 范例 <a href="http://weibo.com/" rel="nofollow">微博 weibo.com</a>
     //截取字符串
-
+    
     if (source.length != 0) {
         NSRange range = NSMakeRange(0, 0);
         range.location = [source rangeOfString:@">"].location + 1;
@@ -93,5 +100,140 @@
     }
     
 }
+
+
+/**
+ *  text的setter方法，将微博正文转为属性文字
+ *
+ *  @param text 微博正文
+ */
+- (void)setText:(NSString *)text
+{
+    _text = [text copy];
+    
+    self.attributedText = [self attributedTextWithText:text];
+}
+
+/**
+ *  setRetweeted_status的setter方法，将转发微博的正文改为属性文字
+ *
+ *  @param retweeted_status 转发微博模型
+ */
+- (void)setRetweeted_status:(ZJStatus *)retweeted_status
+{
+    _retweeted_status = retweeted_status;
+    
+    NSString *retweetedContent = [NSString stringWithFormat:@"@%@ : %@",retweeted_status.user.name,retweeted_status.text];
+    self.retweeted_attributedText = [self attributedTextWithText:retweetedContent];
+    
+}
+
+#pragma mark -  抽取的方法
+/**
+ *  将普通文字转变为属性文字，利用正则表达式将特殊字符高亮显示
+ *
+ *  @param text 普通文字
+ *
+ *  @return 属性文字
+ */
+- (NSAttributedString *)attributedTextWithText:(NSString *)text
+{
+    //利用text生成attributedText
+    NSMutableAttributedString *attributedText = [[NSMutableAttributedString alloc] init];
+    
+    /*---------正则表达式处理-----------------*/
+    
+    // 表情的规则
+    NSString *emotionPattern = @"\\[[0-9a-zA-Z\\u4e00-\\u9fa5]+\\]";
+    // @的规则
+    NSString *atPattern = @"@[0-9a-zA-Z\\u4e00-\\u9fa5-_]+";
+    // #话题#的规则
+    NSString *topicPattern = @"#[0-9a-zA-Z\\u4e00-\\u9fa5]+#";
+    // url链接的规则
+    NSString *urlPattern = @"\\b(([\\w-]+://?|www[.])[^\\s()<>]+(?:\\([\\w\\d]+\\)|([^[:punct:]\\s]|/)))";
+    NSString *pattern = [NSString stringWithFormat:@"%@|%@|%@|%@", emotionPattern, atPattern, topicPattern, urlPattern];
+    NSMutableArray *parts = [NSMutableArray array];
+    // 遍历所有的特殊字符
+    [text enumerateStringsMatchedByRegex:pattern usingBlock:^(NSInteger captureCount, NSString *const __unsafe_unretained *capturedStrings, const NSRange *capturedRanges, volatile BOOL *const stop) {
+        //        [attributedText addAttribute:NSForegroundColorAttributeName value:[UIColor blueColor] range:*capturedRanges];
+        if ((*capturedRanges).length == 0) return ;
+        
+        ZJTextPart *part = [[ZJTextPart alloc] init];
+        part.special = YES;
+        part.text = *capturedStrings;
+        part.range = *capturedRanges;
+        part.emotion = [part.text hasPrefix:@"["] && [part.text hasSuffix:@"]"];
+        [parts addObject:part];
+        
+    }];
+    // 遍历所有的非特殊字符
+    [text enumerateStringsSeparatedByRegex:pattern usingBlock:^(NSInteger captureCount, NSString *const __unsafe_unretained *capturedStrings, const NSRange *capturedRanges, volatile BOOL *const stop) {
+        //        [attributedText addAttribute:NSForegroundColorAttributeName value:[UIColor redColor] range:*capturedRanges];
+        if ((*capturedRanges).length == 0) return ;
+        
+        ZJTextPart *part = [[ZJTextPart alloc] init];
+        part.text = *capturedStrings;
+        part.range = *capturedRanges;
+        [parts addObject:part];
+        
+    }];
+    
+    //排序(从小 ——> 大)
+    [parts sortUsingComparator:^NSComparisonResult(ZJTextPart *part1, ZJTextPart *part2) {
+        //NSOrderedAscending = -1L, NSOrderedSame, NSOrderedDescending
+        if (part1.range.location > part2.range.location) {
+            return NSOrderedDescending;
+        }
+        return NSOrderedAscending;
+    }];
+    
+    /*---------文字的高亮显示等-----------------*/
+    UIFont *font = [UIFont systemFontOfSize:15];
+    
+    
+    //遍历parts数组，做高亮显示等操作，并按排序拼接每一段字符
+    NSMutableArray *specials = [NSMutableArray array];
+    for (ZJTextPart *part in parts) {
+        NSAttributedString *subStr = nil;
+        if (part.isEmotion) {//表情
+            NSTextAttachment *attch = [[NSTextAttachment alloc] init];
+            NSString *name = [ZJEmotionTool emotinWithChs:part.text].png;
+            if (name) {//能找到对应的图片
+                attch.image = [UIImage imageNamed:name];
+                attch.bounds = CGRectMake(0, -3, font.lineHeight, font.lineHeight);
+                //拼接表情
+                subStr = [NSAttributedString attributedStringWithAttachment:attch];
+            }else{//表情图片不存在
+                subStr = [[NSAttributedString alloc] initWithString:part.text];
+            }
+        }else if (part.isSepcail){//非表情的特殊字符
+            subStr = [[NSAttributedString alloc] initWithString:part.text attributes:@{
+                                                                                       NSForegroundColorAttributeName:[UIColor blueColor]
+                                                                                       }];
+            
+            //创建特殊对象
+            ZJSpecialText *s = [[ZJSpecialText alloc] init];
+            s.text = part.text;
+            NSUInteger loc = attributedText.length;
+            NSUInteger len = part.text.length;
+            s.range = NSMakeRange(loc, len);
+            [specials addObject:s];
+            
+        }else{//非特殊字符
+            subStr = [[NSAttributedString alloc] initWithString:part.text];
+        }
+        [attributedText appendAttributedString:subStr];
+    };
+    
+    //    HMLog(@"%@",specials);
+    //attributedText通过key"specials"存储特殊文字
+    [attributedText addAttribute:@"specials" value:specials range:NSMakeRange(0, 1)];
+    
+    //必须设置字体，保证计算出来的尺寸是正确的
+    [attributedText addAttribute:NSFontAttributeName value:font range:NSMakeRange(0, attributedText.length)];
+    
+    return attributedText;
+}
+
 
 @end

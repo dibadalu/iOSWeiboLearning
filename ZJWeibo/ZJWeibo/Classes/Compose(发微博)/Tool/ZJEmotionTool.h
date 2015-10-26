@@ -23,4 +23,7 @@
 /** 返回lxh用过的模型 */
 + (NSArray *)lxhEmotions;
 
+/** 根据chs返回相应的HMEmotion模型 */
++ (ZJEmotion *)emotinWithChs:(NSString *)chs;
+
 @end

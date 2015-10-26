@@ -61,8 +61,10 @@
     CGFloat contentX = nameX;
     CGFloat contentY = CGRectGetMaxY(self.nameLabelF) + ZJStatusCellBorderW;
     CGFloat maxW = cellW - 3 * ZJStatusCellBorderW - iconWH;
-    CGSize contentSize = [status.text sizeWithFont:ZJStatusCellContentLableFont maxW:maxW];
+//    CGSize contentSize = [status.text sizeWithFont:ZJStatusCellContentLableFont maxW:maxW];
+    CGSize contentSize = [status.attributedText boundingRectWithSize:CGSizeMake(maxW, MAXFLOAT) options:NSStringDrawingUsesLineFragmentOrigin context:nil].size;
     self.contentLabelF = (CGRect){{contentX, contentY},contentSize};
+    
     
     /** 配图 要考虑有无配图,会影响原创微博整体的高度*/
     CGFloat originalH = 0;
@@ -92,14 +94,15 @@
         //取出转发微博
         ZJStatus *retweeted_status = status.retweeted_status;
         //取出转发微博的用户
-        ZJUser *retweeted_status_user = retweeted_status.user;
+//        ZJUser *retweeted_status_user = retweeted_status.user;
 
         /** 昵称+正文 */
         CGFloat retweetedContentX = ZJStatusCellBorderW;
         CGFloat retweetedContentY = ZJStatusCellBorderW;
-        NSString *retweeted_text = [NSString stringWithFormat:@"%@:%@",retweeted_status_user.name,retweeted_status.text];
+//        NSString *retweeted_text = [NSString stringWithFormat:@"%@:%@",retweeted_status_user.name,retweeted_status.text];
         CGFloat retweetedContentW = maxW - 2 * ZJStatusCellBorderW;
-        CGSize retweetedContentSize = [retweeted_text sizeWithFont:ZJRetweetedStatusCellContentLableFont maxW:retweetedContentW];
+//        CGSize retweetedContentSize = [retweeted_text sizeWithFont:ZJRetweetedStatusCellContentLableFont maxW:retweetedContentW];
+        CGSize retweetedContentSize = [status.retweeted_attributedText boundingRectWithSize:CGSizeMake(retweetedContentW, MAXFLOAT) options:NSStringDrawingUsesLineFragmentOrigin context:nil].size;
         self.retweetedContentLabelF = (CGRect){{retweetedContentX,retweetedContentY},retweetedContentSize};
         
         /** 配图 要考虑是否有配图*/

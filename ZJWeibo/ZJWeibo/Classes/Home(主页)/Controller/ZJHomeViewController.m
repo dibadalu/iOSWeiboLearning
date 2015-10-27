@@ -129,7 +129,6 @@
 
     /*
      https://api.weibo.com/2/statuses/friends_timeline.json
-     
      请求参数：
      access_token false	string	采用OAuth授权方式为必填参数，其他授权方式不需要此参数，OAuth授权后获得
      since_id	  false	int64	若指定此参数，则返回ID比since_id大的微博（即比since_id时间晚的微博），默认为0。
@@ -141,7 +140,7 @@
     ZJAccount *account = [ZJAccountTool account];
     NSMutableDictionary *params = [NSMutableDictionary dictionary];
     params[@"access_token"] = account.access_token;
-    params[@"count"] = @5;//默认是20
+//    params[@"count"] = @5;//默认是20
     
     //取出最新的微博
     ZJStatusFrame *firstStatusFrame = [self.statusFrames firstObject];
@@ -150,9 +149,8 @@
         params[@"since_id"] = firstStatusFrame.status.idstr;
     }
     
-    //2.根据请求参数从沙盒中加载FMDB缓存的微博数据（微博字典数组）
-    NSArray *statuses = [ZJStatusTool statusesWithParams:params];
-    if (statuses.count) {//数据库有数据
+    //通过block（局部函数）的方式，处理微博数据（微博字典数组）
+    void(^dealingResult)(NSArray *) = ^(NSArray *statuses){
         
         //取得微博字典数组，字典转模型(微博字典数组->微博模型数组)
         NSArray *newStatuses = [ZJStatus objectArrayWithKeyValuesArray:statuses];
@@ -173,6 +171,14 @@
         
         //显示最新微博的数量
         [self showNewStatusesCount:newStatuses.count];
+    };
+    
+    //2.根据请求参数从沙盒中加载FMDB缓存的微博数据（微博字典数组）
+    NSArray *statuses = [ZJStatusTool statusesWithParams:params];
+    if (statuses.count) {//数据库有数据
+        
+        dealingResult(statuses);
+       
     }else{
         //3.发送请求
         [ZJHttpTool get:@"https://api.weibo.com/2/statuses/friends_timeline.json" params:params success:^(id json) {
@@ -181,25 +187,7 @@
             //FMDB缓存从新浪获取的微博字典数组
             [ZJStatusTool saveStatuses:json[@"statuses"]];
             
-            //取得微博字典数组，字典转模型(微博字典数组->微博模型数组)
-            NSArray *newStatuses = [ZJStatus objectArrayWithKeyValuesArray:json[@"statuses"]];
-            
-            //将ZJStatus转化为ZJStatusFrame
-            NSArray *frames = [self statusFramesWithStatuses:newStatuses];
-            
-            //将最新的微博数据，添加到总数组的最前面(插入)
-            NSRange range = NSMakeRange(0, newStatuses.count);
-            NSIndexSet *set = [NSIndexSet indexSetWithIndexesInRange:range];
-            [self.statusFrames insertObjects:frames atIndexes:set];
-            
-            //刷新表格
-            [self.tableView reloadData];
-            
-            //结束下拉刷新
-            [self.tableView.header endRefreshing];
-            
-            //显示最新微博的数量
-            [self showNewStatusesCount:newStatuses.count];
+            dealingResult(json[@"statuses"]);
             
         } failure:^(NSError *error) {
             ZJLog(@"请求失败---%@",error);
@@ -289,9 +277,8 @@
         params[@"max_id"] = @(maxID);//包装成对象
     }
     
-    //2.根据请求参数从沙盒中加载FMDB缓存好的微博数据（微博字典数组）
-    NSArray *statuses = [ZJStatusTool statusesWithParams:params];
-    if (statuses.count) {//数据库有数据
+    //通过block（局部函数）的方式，处理微博数据（微博字典数组）
+    void(^dealingResult)(NSArray *) = ^(NSArray *statuses){
         
         //取得微博字典数组，并字典转模型(微博字典数组->微博模型数组)
         NSArray *newStatuses = [ZJStatus objectArrayWithKeyValuesArray:statuses];
@@ -307,6 +294,13 @@
         
         //结束上拉刷新
         [self.tableView.footer endRefreshing];
+    };
+    
+    //2.根据请求参数从沙盒中加载FMDB缓存好的微博数据（微博字典数组）
+    NSArray *statuses = [ZJStatusTool statusesWithParams:params];
+    if (statuses.count) {//数据库有数据
+        
+        dealingResult(statuses);
 
     }else{
         //3.发送请求
@@ -316,21 +310,7 @@
             //FMDB缓存从新浪服务器获取的微博数据（微博字典数组）
             [ZJStatusTool saveStatuses:json[@"statuses"]];
             
-            //取得微博字典数组，并字典转模型(微博字典数组->微博模型数组)
-            NSArray *newStatuses = [ZJStatus objectArrayWithKeyValuesArray:json[@"statuses"]];
-            
-            //将ZJStatus转换为ZJStatusFrame
-            NSArray *frames = [self statusFramesWithStatuses:newStatuses];
-            
-            //将更多的微博数据，添加到总数组的最后面
-            [self.statusFrames addObjectsFromArray:frames];
-            
-            //刷新表格
-            [self.tableView reloadData];
-            
-            //结束上拉刷新
-            [self.tableView.footer endRefreshing];
-            
+            dealingResult(json[@"statuses"]);
             
         } failure:^(NSError *error) {
             ZJLog(@"请求失败---%@",error);

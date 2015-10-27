@@ -25,58 +25,7 @@
     return self;
 }
 
-#pragma mark - 其他方法
-/**
- *  计算特殊文字的矩形框，并将其存储在模型ZJSpecialText中
- */
-- (void)setupSpecialTextRects
-{
-    //通过key"specials"获得HMStatus模型所存储的特殊文字
-    NSArray *specials = [self.attributedText attribute:@"specials" atIndex:0 effectiveRange:NULL];
-    
-    //遍历specials数组里的ZJSpecialText模型
-    for (ZJSpecialText *special in specials) {
-        //获得选中范围(特殊文字)的矩形框
-        //     self.selectedRange 影响 self.selectedTextRange(readonly)
-        self.selectedRange = special.range;
-        NSArray *selectionRects = [self selectionRectsForRange:self.selectedTextRange];
-        self.selectedRange = NSMakeRange(0, 0);//清空选中范围
-        
-        NSMutableArray *rects = [NSMutableArray array];
-        for (UITextSelectionRect *selectionRect in selectionRects) {
-            CGRect rect = selectionRect.rect;
-            if (rect.size.width == 0 || rect.size.height == 0) continue;
-            
-            //添加rect
-            [rects addObject:[NSValue valueWithCGRect:rect]];
-            
-        }
-        special.rects = rects;
-        
-    }
-}
-
-/**
- *  根据被触摸点找出被触摸的特殊字符串
- *
- *  @param point <#point description#>
- *
- *  @return <#return value description#>
- */
-- (ZJSpecialText *)touchingSpecialTextWith:(CGPoint)point
-{
-    NSArray *specials = [self.attributedText attribute:@"specials" atIndex:0 effectiveRange:NULL];
-    
-    for (ZJSpecialText *special in specials) {
-        for (NSValue *rectValue in special.rects) {
-            if (CGRectContainsPoint(rectValue.CGRectValue, point)) {//点击了特殊字符串
-                return special;
-            }
-        }
-    }
-    return nil;
-}
-
+#pragma mark -
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
 {
     //触摸对象
@@ -85,7 +34,7 @@
     //触摸点
     CGPoint point = [touch locationInView:self];
     
-    //初始化矩形框
+    //初始化(计算特殊文字所占的)矩形框大小
     [self setupSpecialTextRects];
     
     //根据被触摸点找出被触摸的特殊字符串
@@ -120,6 +69,67 @@
     }
     //    HMLog(@"touchesCancelled");
 }
+
+#pragma mark - 其他方法
+/**
+ *  计算特殊文字的矩形框，并将其存储在模型ZJSpecialText中
+ */
+- (void)setupSpecialTextRects
+{
+    //attributedText通过key"specials"获取之前所存储特殊文字数组
+    NSArray *specials = [self.attributedText attribute:@"specials" atIndex:0 effectiveRange:NULL];
+    
+    //遍历specials数组里的ZJSpecialText模型
+    for (ZJSpecialText *special in specials) {
+        //获得选中范围(特殊文字)的矩形框
+        //     self.selectedRange 影响 self.selectedTextRange(readonly)
+        self.selectedRange = special.range;
+        NSArray *selectionRects = [self selectionRectsForRange:self.selectedTextRange];
+        self.selectedRange = NSMakeRange(0, 0);//清空选中范围
+        
+        //遍历选中范围（特殊文字）的矩形框数组
+        NSMutableArray *rects = [NSMutableArray array];
+        for (UITextSelectionRect *selectionRect in selectionRects) {
+            CGRect rect = selectionRect.rect;
+            if (rect.size.width == 0 || rect.size.height == 0) continue;
+            
+            //添加rect
+            [rects addObject:[NSValue valueWithCGRect:rect]];
+            
+        }
+        //将结果存进ZJSpecialText模型里
+        special.rects = rects;
+        
+    }
+}
+
+/**
+ *  根据被触摸点找出被触摸的特殊字符串
+ *
+ *  @param point 被触摸点
+ *
+ *  @return 被触摸的特殊字符串
+ */
+- (ZJSpecialText *)touchingSpecialTextWith:(CGPoint)point
+{
+    //attributedText通过key"specials"获取之前所存储特殊文字数组
+    NSArray *specials = [self.attributedText attribute:@"specials" atIndex:0 effectiveRange:NULL];
+    
+    //遍历ZJSpecialText里的特殊文字矩形框数组
+    for (ZJSpecialText *special in specials) {
+        for (NSValue *rectValue in special.rects) {
+            if (CGRectContainsPoint(rectValue.CGRectValue, point)) {//点击了特殊字符串
+                return special;
+            }
+        }
+    }
+    return nil;
+}
+
+
+
+
+
 
 
 

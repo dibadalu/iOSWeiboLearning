@@ -29,7 +29,7 @@
 
 #pragma mark - 系统方法
 /**
- *  重写created_at的getter方法，更改时间格式
+ *  created_at的getter方法，更改时间格式
  *  注意：时间会不断改变，所以要用get方法多次获取时间
  */
 - (NSString *)created_at
@@ -80,7 +80,7 @@
 }
 
 /**
- *  重写source的setter方法，更改来源格式
+ *  source的setter方法，更改来源格式
  */
 - (void)setSource:(NSString *)source
 {
@@ -110,7 +110,7 @@
 - (void)setText:(NSString *)text
 {
     _text = [text copy];
-    
+    //text -> attributedText
     self.attributedText = [self attributedTextWithText:text];
 }
 
@@ -122,15 +122,16 @@
 - (void)setRetweeted_status:(ZJStatus *)retweeted_status
 {
     _retweeted_status = retweeted_status;
-    
+    //拼接转发微博的昵称+正文
     NSString *retweetedContent = [NSString stringWithFormat:@"@%@ : %@",retweeted_status.user.name,retweeted_status.text];
+    //text -> attributedText
     self.retweeted_attributedText = [self attributedTextWithText:retweetedContent];
     
 }
 
 #pragma mark -  抽取的方法
 /**
- *  将普通文字转变为属性文字，利用正则表达式将特殊字符高亮显示
+ *  重点：将普通文字转变为属性文字，利用正则表达式将特殊字符高亮显示
  *
  *  @param text 普通文字
  *
@@ -138,7 +139,7 @@
  */
 - (NSAttributedString *)attributedTextWithText:(NSString *)text
 {
-    //利用text生成attributedText
+    
     NSMutableAttributedString *attributedText = [[NSMutableAttributedString alloc] init];
     
     /*---------正则表达式处理-----------------*/
@@ -157,7 +158,7 @@
     [text enumerateStringsMatchedByRegex:pattern usingBlock:^(NSInteger captureCount, NSString *const __unsafe_unretained *capturedStrings, const NSRange *capturedRanges, volatile BOOL *const stop) {
         //        [attributedText addAttribute:NSForegroundColorAttributeName value:[UIColor blueColor] range:*capturedRanges];
         if ((*capturedRanges).length == 0) return ;
-        
+        //新建模型ZJTextPart，存储相关信息
         ZJTextPart *part = [[ZJTextPart alloc] init];
         part.special = YES;
         part.text = *capturedStrings;
@@ -178,7 +179,7 @@
         
     }];
     
-    //排序(从小 ——> 大)
+    //对之前的两个遍历所得到的模型数组parts进行排序(所得到结果是从小 ——> 大)
     [parts sortUsingComparator:^NSComparisonResult(ZJTextPart *part1, ZJTextPart *part2) {
         //NSOrderedAscending = -1L, NSOrderedSame, NSOrderedDescending
         if (part1.range.location > part2.range.location) {
@@ -187,16 +188,15 @@
         return NSOrderedAscending;
     }];
     
-    /*---------文字的高亮显示等-----------------*/
-    UIFont *font = [UIFont systemFontOfSize:15];
-    
+    /*----根据正则表达式处理过的parts数组，做特殊文字的高亮显示，将特殊文字存进模型等操作----*/
+    UIFont *font = [UIFont systemFontOfSize:15];//字体
     
     //遍历parts数组，做高亮显示等操作，并按排序拼接每一段字符
     NSMutableArray *specials = [NSMutableArray array];
     for (ZJTextPart *part in parts) {
         NSAttributedString *subStr = nil;
         if (part.isEmotion) {//表情
-            NSTextAttachment *attch = [[NSTextAttachment alloc] init];
+            NSTextAttachment *attch = [[NSTextAttachment alloc] init];//附件
             NSString *name = [ZJEmotionTool emotinWithChs:part.text].png;
             if (name) {//能找到对应的图片
                 attch.image = [UIImage imageNamed:name];
@@ -206,12 +206,13 @@
             }else{//表情图片不存在
                 subStr = [[NSAttributedString alloc] initWithString:part.text];
             }
+            
         }else if (part.isSepcail){//非表情的特殊字符
             subStr = [[NSAttributedString alloc] initWithString:part.text attributes:@{
                                                                                        NSForegroundColorAttributeName:[UIColor blueColor]
                                                                                        }];
             
-            //创建特殊对象
+            //创建特殊对象，存储相关信息
             ZJSpecialText *s = [[ZJSpecialText alloc] init];
             s.text = part.text;
             NSUInteger loc = attributedText.length;
@@ -226,7 +227,7 @@
     };
     
     //    HMLog(@"%@",specials);
-    //attributedText通过key"specials"存储特殊文字
+    //attributedText通过key"specials"存储特殊文字数组
     [attributedText addAttribute:@"specials" value:specials range:NSMakeRange(0, 1)];
     
     //必须设置字体，保证计算出来的尺寸是正确的

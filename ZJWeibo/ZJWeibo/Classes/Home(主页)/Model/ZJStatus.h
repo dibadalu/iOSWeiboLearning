@@ -22,7 +22,6 @@
  reposts_count	int	转发数
  comments_count	int	评论数
  attitudes_count	int	表态数
- 
  */
 
 #import <Foundation/Foundation.h>

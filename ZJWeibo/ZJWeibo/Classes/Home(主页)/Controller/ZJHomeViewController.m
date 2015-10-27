@@ -440,15 +440,6 @@
     
 }
 
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    UIViewController *vc = [[UIViewController alloc] init];
-    vc.view.backgroundColor = [UIColor grayColor];
-    vc.title = @"新控制器";
-    
-    [self.navigationController pushViewController:vc animated:YES];
-}
-
 /**
  *  计算cell的高度
  */
@@ -458,4 +449,15 @@
     return frame.cellHeight;
     
 }
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    ZJLog(@"didSelectRowAtIndexPath---%d",indexPath.row);
+    UIViewController *vc = [[UIViewController alloc] init];
+    vc.view.backgroundColor = [UIColor grayColor];
+    vc.title = @"新控制器";
+    
+    [self.navigationController pushViewController:vc animated:YES];
+}
+
 @end

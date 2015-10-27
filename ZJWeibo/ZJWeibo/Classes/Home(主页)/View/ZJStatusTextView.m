@@ -127,11 +127,39 @@
 }
 
 
+#pragma mark - 触摸事件
+//- (UIView *)hitTest:(CGPoint)point withEvent:(UIEvent *)event
+//{
+//    return [super hitTest:point withEvent:event];
+//}
 
-
-
-
-
+/**
+ *  根据返回值决定触摸点所在的UI控件(即响应事件的UI控件),yes表示触摸点所在UI控件
+ *
+ *  @param point 触摸点
+ *  @param event 响应的事件
+ *
+ *  @return 布尔值 
+ */
+- (BOOL)pointInside:(CGPoint)point withEvent:(UIEvent *)event{
+    
+    //初始化矩形框
+    [self setupSpecialTextRects];
+    
+    //根据被触摸点找出被触摸的特殊字符串
+    ZJSpecialText *special = [self touchingSpecialTextWith:point];
+    
+    if (special) {
+        return YES;
+    }else{
+        return NO;
+    }
+}
 
 
 @end
+
+// 触摸事件的处理
+// 1.判断触摸点在谁身上: 调用所有UI控件的- (BOOL)pointInside:(CGPoint)point withEvent:(UIEvent *)event
+// 2.pointInside返回YES的控件就是触摸点所在的UI控件
+// 3.由触摸点所在的UI控件选出处理事件的UI控件: 调用- (UIView *)hitTest:(CGPoint)point withEvent:(UIEvent *)event

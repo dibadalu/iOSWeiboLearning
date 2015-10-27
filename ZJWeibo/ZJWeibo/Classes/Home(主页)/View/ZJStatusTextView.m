@@ -139,7 +139,7 @@
  *  @param point 触摸点
  *  @param event 响应的事件
  *
- *  @return 布尔值 
+ *  @return 布尔值
  */
 - (BOOL)pointInside:(CGPoint)point withEvent:(UIEvent *)event{
     

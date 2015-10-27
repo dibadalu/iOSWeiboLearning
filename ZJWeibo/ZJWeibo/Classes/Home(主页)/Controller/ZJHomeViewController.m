@@ -18,6 +18,7 @@
 #import "ZJStatusCell.h"
 #import "ZJStatusFrame.h"
 #import "ZJComposeViewController.h"
+#import "ZJStatusTool.h"
 
 @interface ZJHomeViewController ()
 
@@ -125,35 +126,7 @@
  */
 - (void)loadNewsStatus
 {
-    
-    //测试代码：下面都是假数据
-    /*
-     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-     NSDictionary *responseObject = [NSDictionary dictionaryWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"fakeStatus" ofType:@"plist"]];
-     // 将 "微博字典"数组 转为 "微博模型"数组
-     NSArray *newStatuses = [ZJStatus objectArrayWithKeyValuesArray:responseObject[@"statuses"]];
-     
-     // 将 HWStatus数组 转为 HWStatusFrame数组
-     NSArray *newFrames = [self statusFramesWithStatuses:newStatuses];
-     
-     // 将最新的微博数据，添加到总数组的最前面
-     NSRange range = NSMakeRange(0, newFrames.count);
-     NSIndexSet *set = [NSIndexSet indexSetWithIndexesInRange:range];
-     [self.statusFrames insertObjects:newFrames atIndexes:set];
-     
-     // 刷新表格
-     [self.tableView reloadData];
-     
-     //结束下拉刷新
-     [self.tableView.header endRefreshing];
-     
-     //显示最新微博的数量
-     [self showNewStatusesCount:newStatuses.count];
-         
-     });
-     return;
-    */
-    
+
     /*
      https://api.weibo.com/2/statuses/friends_timeline.json
      
@@ -177,12 +150,13 @@
         params[@"since_id"] = firstStatusFrame.status.idstr;
     }
     
-    //2.发送请求
-    [ZJHttpTool get:@"https://api.weibo.com/2/statuses/friends_timeline.json" params:params success:^(id json) {
-//        ZJLog(@"请求成功---%@",json[@"statuses"]);
+    //2.根据请求参数从沙盒中加载FMDB缓存的微博数据（微博字典数组）
+    NSArray *statuses = [ZJStatusTool statusesWithParams:params];
+    if (statuses.count) {//数据库有数据
+        
         //取得微博字典数组，字典转模型(微博字典数组->微博模型数组)
-        NSArray *newStatuses = [ZJStatus objectArrayWithKeyValuesArray:json[@"statuses"]];
-
+        NSArray *newStatuses = [ZJStatus objectArrayWithKeyValuesArray:statuses];
+        
         //将ZJStatus转化为ZJStatusFrame
         NSArray *frames = [self statusFramesWithStatuses:newStatuses];
         
@@ -199,13 +173,43 @@
         
         //显示最新微博的数量
         [self showNewStatusesCount:newStatuses.count];
-        
-    } failure:^(NSError *error) {
-        ZJLog(@"请求失败---%@",error);
-        
-        //结束下拉刷新
-        [self.tableView.header endRefreshing];
-    }];
+    }else{
+        //3.发送请求
+        [ZJHttpTool get:@"https://api.weibo.com/2/statuses/friends_timeline.json" params:params success:^(id json) {
+            //        ZJLog(@"请求成功---%@",json[@"statuses"]);
+            
+            //FMDB缓存从新浪获取的微博字典数组
+            [ZJStatusTool saveStatuses:json[@"statuses"]];
+            
+            //取得微博字典数组，字典转模型(微博字典数组->微博模型数组)
+            NSArray *newStatuses = [ZJStatus objectArrayWithKeyValuesArray:json[@"statuses"]];
+            
+            //将ZJStatus转化为ZJStatusFrame
+            NSArray *frames = [self statusFramesWithStatuses:newStatuses];
+            
+            //将最新的微博数据，添加到总数组的最前面(插入)
+            NSRange range = NSMakeRange(0, newStatuses.count);
+            NSIndexSet *set = [NSIndexSet indexSetWithIndexesInRange:range];
+            [self.statusFrames insertObjects:frames atIndexes:set];
+            
+            //刷新表格
+            [self.tableView reloadData];
+            
+            //结束下拉刷新
+            [self.tableView.header endRefreshing];
+            
+            //显示最新微博的数量
+            [self showNewStatusesCount:newStatuses.count];
+            
+        } failure:^(NSError *error) {
+            ZJLog(@"请求失败---%@",error);
+            
+            //结束下拉刷新
+            [self.tableView.header endRefreshing];
+        }];
+
+    }
+    
 }
 /**
  *  集成下拉刷新加载最新微博数据
@@ -244,7 +248,6 @@
     
     //2.将label添加到导航栏控制器的view上，并且在导航栏的下面
     label.y =  64 - label.height;
-//    [self.navigationController.view addSubview:label];
     [self.navigationController.view insertSubview:label belowSubview:self.navigationController.navigationBar];
     
     //3.通过动画移动label以便让用户看到（transform）
@@ -286,11 +289,12 @@
         params[@"max_id"] = @(maxID);//包装成对象
     }
     
-    //2.发送请求
-    [ZJHttpTool get:@"https://api.weibo.com/2/statuses/friends_timeline.json" params:params success:^(id json) {
-        //        ZJLog(@"请求成功---%@",json[@"statuses"]);
+    //2.根据请求参数从沙盒中加载FMDB缓存好的微博数据（微博字典数组）
+    NSArray *statuses = [ZJStatusTool statusesWithParams:params];
+    if (statuses.count) {//数据库有数据
+        
         //取得微博字典数组，并字典转模型(微博字典数组->微博模型数组)
-        NSArray *newStatuses = [ZJStatus objectArrayWithKeyValuesArray:json[@"statuses"]];
+        NSArray *newStatuses = [ZJStatus objectArrayWithKeyValuesArray:statuses];
         
         //将ZJStatus转换为ZJStatusFrame
         NSArray *frames = [self statusFramesWithStatuses:newStatuses];
@@ -303,14 +307,38 @@
         
         //结束上拉刷新
         [self.tableView.footer endRefreshing];
-        
- 
-    } failure:^(NSError *error) {
-        ZJLog(@"请求失败---%@",error);
-        
-        //结束上拉刷新
-        [self.tableView.footer endRefreshing];
-    }];
+
+    }else{
+        //3.发送请求
+        [ZJHttpTool get:@"https://api.weibo.com/2/statuses/friends_timeline.json" params:params success:^(id json) {
+            //        ZJLog(@"请求成功---%@",json[@"statuses"]);
+            
+            //FMDB缓存从新浪服务器获取的微博数据（微博字典数组）
+            [ZJStatusTool saveStatuses:json[@"statuses"]];
+            
+            //取得微博字典数组，并字典转模型(微博字典数组->微博模型数组)
+            NSArray *newStatuses = [ZJStatus objectArrayWithKeyValuesArray:json[@"statuses"]];
+            
+            //将ZJStatus转换为ZJStatusFrame
+            NSArray *frames = [self statusFramesWithStatuses:newStatuses];
+            
+            //将更多的微博数据，添加到总数组的最后面
+            [self.statusFrames addObjectsFromArray:frames];
+            
+            //刷新表格
+            [self.tableView reloadData];
+            
+            //结束上拉刷新
+            [self.tableView.footer endRefreshing];
+            
+            
+        } failure:^(NSError *error) {
+            ZJLog(@"请求失败---%@",error);
+            
+            //结束上拉刷新
+            [self.tableView.footer endRefreshing];
+        }];
+    }
 
 }
 /**
@@ -335,11 +363,7 @@
     //2.发送请求
     [ZJHttpTool get:@"https://rm.api.weibo.com/2/remind/unread_count.json" params:params success:^(id json) {
 //        ZJLog(@"请求成功--%@",json[@"status"]);
-//        int status = [json[@"status"] intValue];
-        //设置提醒数字
-//        self.tabBarItem.badgeValue = [NSString stringWithFormat:@"%d",status];
-        
-        //改进
+
         //Attempting to badge the application icon but haven't received permission from the user to badge the application
 #warning 在iOS8之后，设置应用的application badge value需要得到用户的许可
         UIUserNotificationSettings *settings = [UIUserNotificationSettings settingsForTypes:UIUserNotificationTypeBadge categories:nil];
@@ -414,29 +438,6 @@
     cell.statusFrame = self.statusFrames[indexPath.row];
     
     return cell;
-    
-    //reason: 'UITableView dataSource must return a cell from tableView:cellForRowAtIndexPath:'
-    //错误原因：没有设置frame
-
-    /*
-     static NSString *ID = @"status";
-     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:ID];
-     if (!cell) {
-     cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:ID];
-     }
-     
-     //取出微博字典数组
-     ZJStatus *status = self.statuses[indexPath.row];
-     //设置微博的用户名
-     ZJUser *user = status.user;
-     cell.textLabel.text = user.name;
-     //设置微博的正文
-     cell.detailTextLabel.text = status.text;
-     //设置头像
-     UIImage *placeImage = [UIImage imageNamed:@"avatar_default_small"];
-     [cell.imageView sd_setImageWithURL:[NSURL URLWithString:user.profile_image_url] placeholderImage:placeImage];
-     */
-    
     
 }
 

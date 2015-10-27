@@ -20,6 +20,11 @@ PODS:
   - AFNetworking/UIKit (2.6.1):
     - AFNetworking/NSURLConnection
     - AFNetworking/NSURLSession
+  - FMDB (2.5):
+    - FMDB/standard (= 2.5)
+  - FMDB/common (2.5)
+  - FMDB/standard (2.5):
+    - FMDB/common
   - MBProgressHUD (0.9.1)
   - MJExtension (2.5.14)
   - MJRefresh (2.4.12)
@@ -30,6 +35,7 @@ PODS:
 
 DEPENDENCIES:
   - AFNetworking (~> 2.0)
+  - FMDB (~> 2.5)
   - MBProgressHUD (~> 0.9.1)
   - MJExtension (~> 2.5.14)
   - MJRefresh (~> 2.4.12)
@@ -38,6 +44,7 @@ DEPENDENCIES:
 
 SPEC CHECKSUMS:
   AFNetworking: 8e4e60500beb8bec644cf575beee72990a76d399
+  FMDB: 96e8f1bcc1329e269330f99770ad4285d9003e52
   MBProgressHUD: c47f2c166c126cf2ce36498d80f33e754d4e93ad
   MJExtension: fb8e6e900fb44c9a7be435ba3d72b7fdf5f0994c
   MJRefresh: ca8e9589895977df32d379d46e6b8a5450b3ff44

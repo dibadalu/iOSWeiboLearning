@@ -33,4 +33,25 @@
 //设置通知中心
 #define ZJNotificationCenter [NSNotificationCenter defaultCenter]
 
+/* 昵称字体 */
+#define ZJStatusCellNameLableFont [UIFont systemFontOfSize:14]
+
+/* 时间字体 */
+#define ZJStatusCellTimeLableFont [UIFont systemFontOfSize:8]
+
+/* 来源字体 */
+#define ZJStatusCellSourceLableFont [UIFont systemFontOfSize:8]
+
+/* 正文字体 */
+#define ZJStatusCellContentLableFont [UIFont systemFontOfSize:15]
+
+/* 转发微博正文字体 */
+#define ZJRetweetedStatusCellContentLableFont [UIFont systemFontOfSize:14]
+
+/* 微博cell间隙 */
+#define ZJStatusCellBorderW 10
+
+//屏幕的宽度
+#define ZJScreenW ([UIScreen mainScreen].bounds.size.width)
+
 #endif

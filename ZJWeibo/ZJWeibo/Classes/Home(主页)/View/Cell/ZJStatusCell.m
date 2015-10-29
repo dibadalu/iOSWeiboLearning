@@ -84,7 +84,6 @@
  
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
-//        self.backgroundColor = [UIColor clearColor];
         self.selectionStyle = UITableViewCellSelectionStyleNone;//选中cell不要变色
         
         //初始化原创微博
@@ -203,7 +202,6 @@
     //取出用户模型
     ZJUser *user = status.user;
     
-    CGFloat cellW = [UIScreen mainScreen].bounds.size.width;
     
     /* 原创微博 */
     /** 原创微博整体 */
@@ -231,7 +229,7 @@
     
     /** 时间 */
     CGSize timeSize = [status.created_at sizeWithFont:ZJStatusCellTimeLableFont];
-    CGFloat timeX = cellW - ZJStatusCellBorderW  - timeSize.width;
+    CGFloat timeX = ZJScreenW - ZJStatusCellBorderW  - timeSize.width;
     CGFloat timeY = self.nameLabel.frame.origin.y;
     self.timeLabel.frame = (CGRect){{timeX, timeY},timeSize};
     self.timeLabel.text = status.created_at;

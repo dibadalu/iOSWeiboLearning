@@ -46,6 +46,9 @@
 {
     [super viewDidLoad];
     
+    //设置tableView的颜色
+    self.tableView.backgroundColor = [UIColor colorWithRed:221/255.0 green:221/255.0 blue:221/255.0 alpha:1.0];
+    
     //设置导航栏内容
     [self setupNav];
     

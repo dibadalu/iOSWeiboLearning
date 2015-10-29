@@ -6,22 +6,9 @@
 //  Copyright (c) 2015年 dibadalu. All rights reserved.
 //  微博frame模型,负责计算cell子控件的frame和cell的高度
 
-/* 昵称字体 */
-#define ZJStatusCellNameLableFont [UIFont systemFontOfSize:14]
 
-/* 时间字体 */
-#define ZJStatusCellTimeLableFont [UIFont systemFontOfSize:10]
 
-/* 来源字体 */
-#define ZJStatusCellSourceLableFont [UIFont systemFontOfSize:10]
 
-/* 正文字体 */
-#define ZJStatusCellContentLableFont [UIFont systemFontOfSize:15]
-
-/* 转发微博正文字体 */
-#define ZJRetweetedStatusCellContentLableFont [UIFont systemFontOfSize:14]
-
-#define ZJStatusCellBorderW 10
 
 #import <Foundation/Foundation.h>
 @class ZJStatus;

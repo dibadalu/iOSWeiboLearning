@@ -80,7 +80,7 @@
  */
 - (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
- 
+    
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
         self.selectionStyle = UITableViewCellSelectionStyleNone;//选中cell不要变色
@@ -96,7 +96,7 @@
     }
     
     return self;
-
+    
 }
 
 #pragma mark - 初始化方法
@@ -248,7 +248,7 @@
     ZJStatus *status = statusFrame.status;
     //取出转发微博
     ZJStatus *retweeted_status = status.retweeted_status;
-
+    
     /** 转发微博整体 */
     self.retweetedView.frame = statusFrame.retweetedViewF;
     
@@ -288,16 +288,16 @@
         
         [self setupRetweetedFrame:statusFrame];
         self.retweetedView.hidden = NO;
- 
+        
     }else{//没转发微博
         self.retweetedView.hidden = YES;
     }
-
+    
     //3.工具条
     self.toolBar.frame = statusFrame.toolBarF;
     self.toolBar.status = status;
     
-
+    
 }
 
 @end

@@ -10,7 +10,6 @@
 		54097DC71BD0A320008084D3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 54097DC51BD0A320008084D3 /* Main.storyboard */; };
 		54097DCC1BD0A320008084D3 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 54097DCA1BD0A320008084D3 /* LaunchScreen.xib */; };
 		54097DD81BD0A321008084D3 /* ZJWeiboTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 54097DD71BD0A321008084D3 /* ZJWeiboTests.m */; };
-		541B327C1BD8B338004C4BC6 /* ZJStatusFrame.m in Sources */ = {isa = PBXBuildFile; fileRef = 541B327B1BD8B338004C4BC6 /* ZJStatusFrame.m */; };
 		541B32821BD8D85C004C4BC6 /* NSDate+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = 541B32811BD8D85C004C4BC6 /* NSDate+Extension.m */; };
 		541B32841BD8D86F004C4BC6 /* Foundation+Log.m in Sources */ = {isa = PBXBuildFile; fileRef = 541B32831BD8D86F004C4BC6 /* Foundation+Log.m */; };
 		541B32871BD8DB1E004C4BC6 /* NSString+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = 541B32861BD8DB1E004C4BC6 /* NSString+Extension.m */; };
@@ -40,11 +39,12 @@
 		547272AB1BDCC81E0021D9EA /* ZJEmotionTabBarButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 547272AA1BDCC81E0021D9EA /* ZJEmotionTabBarButton.m */; };
 		547272AF1BDCD1360021D9EA /* ZJEmotion.m in Sources */ = {isa = PBXBuildFile; fileRef = 547272AE1BDCD1360021D9EA /* ZJEmotion.m */; };
 		547A886A1BE2216E00805E0C /* ZJIconView.m in Sources */ = {isa = PBXBuildFile; fileRef = 547A885F1BE2216E00805E0C /* ZJIconView.m */; };
-		547A886B1BE2216E00805E0C /* ZJStatusCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 547A88611BE2216E00805E0C /* ZJStatusCell.m */; };
 		547A886C1BE2216E00805E0C /* ZJStatusPhotosView.m in Sources */ = {isa = PBXBuildFile; fileRef = 547A88631BE2216E00805E0C /* ZJStatusPhotosView.m */; };
 		547A886D1BE2216E00805E0C /* ZJStatusPhotoView.m in Sources */ = {isa = PBXBuildFile; fileRef = 547A88651BE2216E00805E0C /* ZJStatusPhotoView.m */; };
 		547A886E1BE2216E00805E0C /* ZJStatusTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 547A88671BE2216E00805E0C /* ZJStatusTextView.m */; };
 		547A886F1BE2216E00805E0C /* ZJStatusToolBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 547A88691BE2216E00805E0C /* ZJStatusToolBar.m */; };
+		547A88711BE2318700805E0C /* ZJStatusFrame.m in Sources */ = {isa = PBXBuildFile; fileRef = 547A88701BE2318700805E0C /* ZJStatusFrame.m */; };
+		547A88731BE2319300805E0C /* ZJStatusCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 547A88721BE2319300805E0C /* ZJStatusCell.m */; };
 		547AEEFE1BDDD5F1008A949B /* ZJPageEmotionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 547AEEFD1BDDD5F1008A949B /* ZJPageEmotionView.m */; };
 		547AEF011BDDD9B6008A949B /* NSString+Emoji.m in Sources */ = {isa = PBXBuildFile; fileRef = 547AEF001BDDD9B6008A949B /* NSString+Emoji.m */; };
 		547AF1A41BDDDC93008A949B /* d_aini@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 547AF0C41BDDDC93008A949B /* d_aini@2x.png */; };
@@ -309,7 +309,6 @@
 		54097DD61BD0A321008084D3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		54097DD71BD0A321008084D3 /* ZJWeiboTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZJWeiboTests.m; sourceTree = "<group>"; };
 		541B327A1BD8B338004C4BC6 /* ZJStatusFrame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZJStatusFrame.h; sourceTree = "<group>"; };
-		541B327B1BD8B338004C4BC6 /* ZJStatusFrame.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZJStatusFrame.m; sourceTree = "<group>"; };
 		541B32801BD8D85C004C4BC6 /* NSDate+Extension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+Extension.h"; sourceTree = "<group>"; };
 		541B32811BD8D85C004C4BC6 /* NSDate+Extension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+Extension.m"; sourceTree = "<group>"; };
 		541B32831BD8D86F004C4BC6 /* Foundation+Log.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Foundation+Log.m"; sourceTree = "<group>"; };
@@ -366,7 +365,6 @@
 		547A885E1BE2216E00805E0C /* ZJIconView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZJIconView.h; sourceTree = "<group>"; };
 		547A885F1BE2216E00805E0C /* ZJIconView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZJIconView.m; sourceTree = "<group>"; };
 		547A88601BE2216E00805E0C /* ZJStatusCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZJStatusCell.h; sourceTree = "<group>"; };
-		547A88611BE2216E00805E0C /* ZJStatusCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZJStatusCell.m; sourceTree = "<group>"; };
 		547A88621BE2216E00805E0C /* ZJStatusPhotosView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZJStatusPhotosView.h; sourceTree = "<group>"; };
 		547A88631BE2216E00805E0C /* ZJStatusPhotosView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZJStatusPhotosView.m; sourceTree = "<group>"; };
 		547A88641BE2216E00805E0C /* ZJStatusPhotoView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZJStatusPhotoView.h; sourceTree = "<group>"; };
@@ -375,6 +373,8 @@
 		547A88671BE2216E00805E0C /* ZJStatusTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZJStatusTextView.m; sourceTree = "<group>"; };
 		547A88681BE2216E00805E0C /* ZJStatusToolBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZJStatusToolBar.h; sourceTree = "<group>"; };
 		547A88691BE2216E00805E0C /* ZJStatusToolBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZJStatusToolBar.m; sourceTree = "<group>"; };
+		547A88701BE2318700805E0C /* ZJStatusFrame.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZJStatusFrame.m; sourceTree = "<group>"; };
+		547A88721BE2319300805E0C /* ZJStatusCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZJStatusCell.m; sourceTree = "<group>"; };
 		547AEEFC1BDDD5F1008A949B /* ZJPageEmotionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZJPageEmotionView.h; sourceTree = "<group>"; };
 		547AEEFD1BDDD5F1008A949B /* ZJPageEmotionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZJPageEmotionView.m; sourceTree = "<group>"; };
 		547AEEFF1BDDD9B6008A949B /* NSString+Emoji.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Emoji.h"; sourceTree = "<group>"; };
@@ -844,7 +844,7 @@
 				54330C6A1BD72BF7005DFFDE /* ZJStatus.h */,
 				54330C6B1BD72BF7005DFFDE /* ZJStatus.m */,
 				541B327A1BD8B338004C4BC6 /* ZJStatusFrame.h */,
-				541B327B1BD8B338004C4BC6 /* ZJStatusFrame.m */,
+				547A88701BE2318700805E0C /* ZJStatusFrame.m */,
 				541B32881BD90197004C4BC6 /* ZJPhoto.h */,
 				541B32891BD90197004C4BC6 /* ZJPhoto.m */,
 				54855CB71BDE678300FF876B /* ZJTextPart.h */,
@@ -861,7 +861,7 @@
 				547A885E1BE2216E00805E0C /* ZJIconView.h */,
 				547A885F1BE2216E00805E0C /* ZJIconView.m */,
 				547A88601BE2216E00805E0C /* ZJStatusCell.h */,
-				547A88611BE2216E00805E0C /* ZJStatusCell.m */,
+				547A88721BE2319300805E0C /* ZJStatusCell.m */,
 				547A88621BE2216E00805E0C /* ZJStatusPhotosView.h */,
 				547A88631BE2216E00805E0C /* ZJStatusPhotosView.m */,
 				547A88641BE2216E00805E0C /* ZJStatusPhotoView.h */,
@@ -1715,11 +1715,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				542A49F21BD635A800C457CF /* AppDelegate.m in Sources */,
-				541B327C1BD8B338004C4BC6 /* ZJStatusFrame.m in Sources */,
 				547A886D1BE2216E00805E0C /* ZJStatusPhotoView.m in Sources */,
 				541B32821BD8D85C004C4BC6 /* NSDate+Extension.m in Sources */,
 				54E7EDF31BD60F640018280F /* MBProgressHUD+MJ.m in Sources */,
-				547A886B1BE2216E00805E0C /* ZJStatusCell.m in Sources */,
 				547AF29B1BDE1F2B008A949B /* ZJEmotionTool.m in Sources */,
 				54C220201BD52B0400BE0ED0 /* UIView+ZJExtension.m in Sources */,
 				544A871E1BD4D56D00659A85 /* ZJTabBarViewController.m in Sources */,
@@ -1728,6 +1726,7 @@
 				541B32871BD8DB1E004C4BC6 /* NSString+Extension.m in Sources */,
 				547AEF011BDDD9B6008A949B /* NSString+Emoji.m in Sources */,
 				54A3AD861BDA63E300F4C89F /* ZJTextView.m in Sources */,
+				547A88731BE2319300805E0C /* ZJStatusCell.m in Sources */,
 				547272A81BDCBBB50021D9EA /* ZJEmotionTabBar.m in Sources */,
 				542A49F91BD6365A00C457CF /* ZJHttpTool.m in Sources */,
 				542A4A0D1BD641D800C457CF /* ZJAccount.m in Sources */,
@@ -1753,6 +1752,7 @@
 				542EDA5F1BD6444900CAA724 /* AFJSONResponseSerializer+ZJ.m in Sources */,
 				547A886E1BE2216E00805E0C /* ZJStatusTextView.m in Sources */,
 				547AF2971BDE16B0008A949B /* UITextView+Extension.m in Sources */,
+				547A88711BE2318700805E0C /* ZJStatusFrame.m in Sources */,
 				547A886C1BE2216E00805E0C /* ZJStatusPhotosView.m in Sources */,
 				547A886F1BE2216E00805E0C /* ZJStatusToolBar.m in Sources */,
 				5444C6431BDBBC2300C7A5C1 /* ZJComposeToolBar.m in Sources */,

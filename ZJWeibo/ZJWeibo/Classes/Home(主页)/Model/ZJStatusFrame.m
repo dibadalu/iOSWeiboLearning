@@ -13,16 +13,14 @@
 
 @implementation ZJStatusFrame
 
-
 /**
- *  计算原创微博的frame
+ *  计算cell子控件的frame和cell的高度
  *
  *  @param status 微博模型
  */
-- (void)setupOriginalFrame:(ZJStatus *)status
+- (void)setStatus:(ZJStatus *)status
 {
     _status = status;
-    
     
     //取出用户模型
     ZJUser *user = status.user;
@@ -90,67 +88,38 @@
     CGFloat originalY = 0;
     CGFloat originalW = ZJScreenW ;
     self.originalViewF = CGRectMake(originalX, originalY, originalW, originalH);
-}
-
-
-/**
- *  计算转发微博的frame
- *
- *  @param status 微博模型
- */
-- (void)setupRetweetedFrame:(ZJStatus *)status
-{
-    _status = status;
     
-    //取出转发微博
-    ZJStatus *retweeted_status = status.retweeted_status;
     
-    /** 昵称+正文 */
-    CGFloat retweetedContentX = ZJStatusCellBorderW;
-    CGFloat retweetedContentY = ZJStatusCellBorderW;
-    CGFloat retweetedContentW = ZJScreenW - 4 * ZJStatusCellBorderW;
-    CGSize retweetedContentSize = [status.retweeted_attributedText boundingRectWithSize:CGSizeMake(retweetedContentW, MAXFLOAT) options:NSStringDrawingUsesLineFragmentOrigin context:nil].size;
-    self.retweetedContentLabelF = (CGRect){{retweetedContentX,retweetedContentY},retweetedContentSize};
-    
-    /** 配图 要考虑是否有配图*/
-    if (retweeted_status.pic_urls.count) {//有配图
-        CGFloat retweetedPhotosX = retweetedContentX;
-        CGFloat retweetedPhotosY = CGRectGetMaxY(self.retweetedContentLabelF) + ZJStatusCellBorderW;
-        CGSize retweetedPhotosSize = [ZJStatusPhotosView sizeWithPhotosCount:retweeted_status.pic_urls.count];
-        self.retweetedPhotosViewF = (CGRect){{retweetedPhotosX,retweetedPhotosY},retweetedPhotosSize};
-    }
-
-}
-
-/**
- *  计算cell子控件的frame和cell的高度
- *
- *  @param status 微博模型
- */
-- (void)setStatus:(ZJStatus *)status
-{
-    _status = status;
-
-    //1.计算原创微博的frame
-    [self setupOriginalFrame:status];
-
-    //2.计算转发微博的frame
+    /**  转发微博 要考虑是否存在转发微博 */
     CGFloat toolBarY = 0;
     if (status.retweeted_status) {//存在转发微博
+        //取出转发微博
+        ZJStatus *retweeted_status = status.retweeted_status;
         
-        [self setupRetweetedFrame:status];
+        /** 昵称+正文 */
+        CGFloat retweetedContentX = ZJStatusCellBorderW;
+        CGFloat retweetedContentY = ZJStatusCellBorderW;
+        CGFloat retweetedContentW = ZJScreenW - 4 * ZJStatusCellBorderW;
+        CGSize retweetedContentSize = [status.retweeted_attributedText boundingRectWithSize:CGSizeMake(retweetedContentW, MAXFLOAT) options:NSStringDrawingUsesLineFragmentOrigin context:nil].size;
+        self.retweetedContentLabelF = (CGRect){{retweetedContentX,retweetedContentY},retweetedContentSize};
         
+        /** 配图 要考虑是否有配图*/
         CGFloat retweetedH = 0;
-        if (status.retweeted_status.pic_urls) {// 有配图
+        if (retweeted_status.pic_urls.count) {//有配图
+            CGFloat retweetedPhotosX = retweetedContentX;
+            CGFloat retweetedPhotosY = CGRectGetMaxY(self.retweetedContentLabelF) + ZJStatusCellBorderW;
+            CGSize retweetedPhotosSize = [ZJStatusPhotosView sizeWithPhotosCount:retweeted_status.pic_urls.count];
+            self.retweetedPhotosViewF = (CGRect){{retweetedPhotosX,retweetedPhotosY},retweetedPhotosSize};
             
             retweetedH = CGRectGetMaxY(self.retweetedPhotosViewF) + ZJStatusCellBorderW;
-        }else{
+        }else{//没配图
             
             retweetedH = CGRectGetMaxY(self.retweetedContentLabelF) + ZJStatusCellBorderW;
         }
-
+        
+        
         /** 转发微博整体 */
-        CGFloat retweetedX = ZJStatusCellBorderW;
+        CGFloat retweetedX = contentX;
         CGFloat retweetedY = CGRectGetMaxY(self.originalViewF) + ZJStatusCellBorderW;
         CGFloat retweetedW = ZJScreenW - 2 * ZJStatusCellBorderW;
         self.retweetedViewF = CGRectMake(retweetedX, retweetedY, retweetedW, retweetedH);
@@ -163,16 +132,16 @@
         
     }
     
-    //3.工具条
+    /** 工具条 */
     CGFloat toolBarX = 0;
     CGFloat toolBarW = ZJScreenW ;
     CGFloat toolBarH = 30;
     self.toolBarF = CGRectMake(toolBarX, toolBarY, toolBarW, toolBarH);
     
-    //4.cell的高度
+    /** cell的高度 */
     self.cellHeight = CGRectGetMaxY(self.toolBarF);
-  
-
+    
+    
 }
 
 

@@ -10,7 +10,6 @@
 #import "ZJStatusFrame.h"
 #import "ZJStatus.h"
 #import "ZJUser.h"
-//#import <UIImageView+WebCache.h>
 #import "ZJPhoto.h"
 #import "ZJStatusToolBar.h"
 #import "ZJStatusPhotosView.h"
@@ -184,13 +183,14 @@
     self.toolBar = toolBar;
 }
 
+
 #pragma mark - 传值
 /**
- *  设置frame和数据
- *  cell根据StatusFrame模型给子控件设置frame，根据Status模型给子控件设置数据
- *  @param statusFrame 微博Frame模型 从控制器传进来的
+ *  设置原创微博的frame和微博数据
+ *
+ *  @param statusFrame <#statusFrame description#>
  */
-- (void)setStatusFrame:(ZJStatusFrame *)statusFrame
+- (void)setupOriginalFrame:(ZJStatusFrame *)statusFrame
 {
     _statusFrame = statusFrame;
     
@@ -198,7 +198,6 @@
     ZJStatus *status = statusFrame.status;
     //取出用户模型
     ZJUser *user = status.user;
-    
     
     /* 原创微博 */
     /** 原创微博整体 */
@@ -234,41 +233,67 @@
     /** 正文 */
     self.contentLabel.frame = statusFrame.contentLabelF;
     self.contentLabel.attributedText = status.attributedText;
+}
+
+/**
+ *   设置转发微博的frame和转发微博数据
+ *
+ *  @param statusFrame <#statusFrame description#>
+ */
+- (void)setupRetweetedFrame:(ZJStatusFrame *)statusFrame
+{
+    _statusFrame = statusFrame;
     
-    /* 转发微博 要考虑是否存在转发微博 */
+    //取出微博模型
+    ZJStatus *status = statusFrame.status;
+    //取出转发微博
+    ZJStatus *retweeted_status = status.retweeted_status;
+
+    /** 转发微博整体 */
+    self.retweetedView.frame = statusFrame.retweetedViewF;
+    
+    /** 昵称+正文 */
+    self.retweetedContentLabel.frame = statusFrame.retweetedContentLabelF;
+    self.retweetedContentLabel.attributedText = status.retweeted_attributedText;
+    
+    /** 配图 要考虑是否有配图*/
+    if (retweeted_status.pic_urls.count) {//有配图
+        self.retweetedphotosView.hidden = NO;
+        
+        self.retweetedphotosView.frame = statusFrame.retweetedPhotosViewF;
+        self.retweetedphotosView.photos = retweeted_status.pic_urls;
+    }else{//没配图
+        self.retweetedphotosView.hidden = YES;
+    }
+    
+}
+
+/**
+ *  设置frame和数据
+ *  cell根据StatusFrame模型给子控件设置frame，根据Status模型给子控件设置数据
+ *  @param statusFrame 微博Frame模型 从控制器传进来的
+ */
+- (void)setStatusFrame:(ZJStatusFrame *)statusFrame
+{
+    _statusFrame = statusFrame;
+    
+    //取出微博模型
+    ZJStatus *status = statusFrame.status;
+    
+    //1.设置原创微博的frame和微博数据
+    [self setupOriginalFrame:statusFrame];
+    
+    //2.设置转发微博的frame和转发微博数据
     if (status.retweeted_status) {//存在转发微博
         
-        //取出转发微博
-        ZJStatus *retweeted_status = status.retweeted_status;
-
-        
+        [self setupRetweetedFrame:statusFrame];
         self.retweetedView.hidden = NO;
-        
-        /** 转发微博整体 */
-        self.retweetedView.frame = statusFrame.retweetedViewF;
-        
-        /** 昵称+正文 */
-        self.retweetedContentLabel.frame = statusFrame.retweetedContentLabelF;
-        self.retweetedContentLabel.attributedText = status.retweeted_attributedText;
-        
-        /** 配图 要考虑是否有配图*/
-        if (retweeted_status.pic_urls.count) {//有配图
-            self.retweetedphotosView.hidden = NO;
-            
-            self.retweetedphotosView.frame = statusFrame.retweetedPhotosViewF;
-            self.retweetedphotosView.photos = retweeted_status.pic_urls;
-        }else{//没配图
-            self.retweetedphotosView.hidden = YES;
-
-            
-        }
-        
+ 
     }else{//没转发微博
         self.retweetedView.hidden = YES;
-
     }
 
-    /** 工具条 在微博Frame的setter方法中再考虑位置问题*/
+    //3.工具条
     self.toolBar.frame = statusFrame.toolBarF;
     self.toolBar.status = status;
     

@@ -109,7 +109,6 @@
     /* 原创微博 */
     /** 原创微博整体 */
     UIView *originalView = [[UIView alloc] init];
-    //        originalView.backgroundColor = [UIColor redColor];
     [self.contentView addSubview:originalView];
     self.originalView = originalView;
     
@@ -143,7 +142,6 @@
     /** 正文 */
     ZJStatusTextView *contentLabel = [[ZJStatusTextView alloc] init];
     contentLabel.font = ZJStatusCellContentLableFont;
-//    contentLabel.numberOfLines = 0;
     [self.contentView addSubview:contentLabel];
     self.contentLabel = contentLabel;
     
@@ -168,7 +166,6 @@
     /** 昵称+正文 */
     ZJStatusTextView *retweetedContentLabel = [[ZJStatusTextView alloc] init];
     retweetedContentLabel.font = ZJRetweetedStatusCellContentLableFont;
-//    retweetedContentLabel.numberOfLines = 0;
     [retweetedView addSubview:retweetedContentLabel];
     self.retweetedContentLabel = retweetedContentLabel;
     
@@ -209,7 +206,6 @@
     
     /** 头像 */
     self.iconView.frame = statusFrame.iconViewF;
-//    [self.iconView sd_setImageWithURL:[NSURL URLWithString:user.profile_image_url] placeholderImage:[UIImage imageNamed:@"avatar_default_small"]];
     self.iconView.user = user;
     
     /** 会员图标 */
@@ -218,9 +214,6 @@
     
     /** 配图 */
     self.photosView.frame = statusFrame.photosViewF;
-    //取出缩略图模型ZJPhoto
-//    ZJPhoto *photo = [status.pic_urls lastObject];
-//    [self.photosView sd_setImageWithURL:[NSURL URLWithString:photo.thumbnail_pic] placeholderImage:[UIImage imageNamed:@"timeline_image_placeholder"]];
     self.photosView.photos = status.pic_urls;
     
     /** 昵称 */
@@ -229,14 +222,17 @@
     
     /** 时间 */
     CGSize timeSize = [status.created_at sizeWithFont:ZJStatusCellTimeLableFont];
-    CGFloat timeX = ZJScreenW - ZJStatusCellBorderW  - timeSize.width;
-    CGFloat timeY = self.nameLabel.frame.origin.y;
+    CGFloat timeX = self.nameLabel.frame.origin.x;
+    CGFloat timeY = CGRectGetMaxY(self.nameLabel.frame) + ZJStatusCellBorderW;
     self.timeLabel.frame = (CGRect){{timeX, timeY},timeSize};
     self.timeLabel.text = status.created_at;
     
+    /** 来源 */
+    self.sourceLabel.frame = statusFrame.sourceLabelF;
+    self.sourceLabel.text = status.source;
+    
     /** 正文 */
     self.contentLabel.frame = statusFrame.contentLabelF;
-//    self.contentLabel.text = status.text;
     self.contentLabel.attributedText = status.attributedText;
     
     /* 转发微博 要考虑是否存在转发微博 */
@@ -244,8 +240,7 @@
         
         //取出转发微博
         ZJStatus *retweeted_status = status.retweeted_status;
-        //取出转发微博的用户
-//        ZJUser *retweeted_status_user = retweeted_status.user;
+
         
         self.retweetedView.hidden = NO;
         
@@ -254,7 +249,6 @@
         
         /** 昵称+正文 */
         self.retweetedContentLabel.frame = statusFrame.retweetedContentLabelF;
-//        self.retweetedContentLabel.text = [NSString stringWithFormat:@"%@:%@",retweeted_status_user.name,retweeted_status.text];
         self.retweetedContentLabel.attributedText = status.retweeted_attributedText;
         
         /** 配图 要考虑是否有配图*/
@@ -262,8 +256,6 @@
             self.retweetedphotosView.hidden = NO;
             
             self.retweetedphotosView.frame = statusFrame.retweetedPhotosViewF;
-//            ZJPhoto *retweeted_Photo = [retweeted_status.pic_urls lastObject];
-//            [self.retweetedphotosView sd_setImageWithURL:[NSURL URLWithString:retweeted_Photo.thumbnail_pic] placeholderImage:[UIImage imageNamed:@"timeline_image_placeholder"]];
             self.retweetedphotosView.photos = retweeted_status.pic_urls;
         }else{//没配图
             self.retweetedphotosView.hidden = YES;
@@ -275,17 +267,12 @@
         self.retweetedView.hidden = YES;
 
     }
-    
-    /** 来源 */
-    self.sourceLabel.frame = statusFrame.sourceLabelF;
-    self.sourceLabel.text = status.source;
-    
+
     /** 工具条 在微博Frame的setter方法中再考虑位置问题*/
     self.toolBar.frame = statusFrame.toolBarF;
     self.toolBar.status = status;
     
-    
- 
+
 }
 
 @end

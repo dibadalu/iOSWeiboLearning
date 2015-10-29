@@ -49,21 +49,21 @@
     }
     
     /** 时间 */
+    CGFloat timeX = nameX;
+    CGFloat timeY = CGRectGetMaxY(self.nameLabelF) + ZJStatusCellBorderW;
     CGSize timeSize = [status.created_at sizeWithFont:ZJStatusCellTimeLableFont];
-    CGFloat timeX = ZJScreenW - ZJStatusCellBorderW - timeSize.width;
-    CGFloat timeY = nameY;
     self.timeLabelF = (CGRect){{timeX, timeY},timeSize};
     
     
     /** 来源 */
-    CGFloat sourceX = nameX;
-    CGFloat sourceY = CGRectGetMaxY(self.nameLabelF) + ZJStatusCellBorderW;
+    CGFloat sourceX = CGRectGetMaxX(self.timeLabelF) + ZJStatusCellBorderW;
+    CGFloat sourceY = timeY;
     CGSize sourceSize = [status.source sizeWithFont:ZJStatusCellSourceLableFont];
     self.sourceLabelF = (CGRect){{sourceX, sourceY},sourceSize};
     
     /** 正文 */
-    CGFloat contentX = sourceX;
-    CGFloat contentY = CGRectGetMaxY(self.sourceLabelF) + ZJStatusCellBorderW;
+    CGFloat contentX = timeX;
+    CGFloat contentY = MAX(CGRectGetMaxY(self.iconViewF), CGRectGetMaxY(self.timeLabelF)) + ZJStatusCellBorderW;
     CGFloat maxW = ZJScreenW - 3 * ZJStatusCellBorderW - iconWH;
     CGSize contentSize = [status.attributedText boundingRectWithSize:CGSizeMake(maxW, MAXFLOAT) options:NSStringDrawingUsesLineFragmentOrigin context:nil].size;
     self.contentLabelF = (CGRect){{contentX, contentY},contentSize};

@@ -18,6 +18,7 @@
 /** 微博模型ZJStatus */
 @property(nonatomic,strong) ZJStatus *status;
 
+
 /* 原创微博 */
 /** 原创微博整体 */
 @property(nonatomic,assign) CGRect originalViewF;

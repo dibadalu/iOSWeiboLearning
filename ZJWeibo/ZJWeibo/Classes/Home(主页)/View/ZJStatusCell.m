@@ -8,44 +8,13 @@
 
 #import "ZJStatusCell.h"
 #import "ZJStatusFrame.h"
-#import "ZJStatus.h"
-#import "ZJUser.h"
-#import "ZJPhoto.h"
 #import "ZJStatusToolBar.h"
-#import "ZJStatusPhotosView.h"
-#import "ZJIconView.h"
-#import "ZJStatusTextView.h"
+#import "ZJStatusDetailView.h"
 
 @interface ZJStatusCell ()
 
-#pragma mark - cell的子控件weak
-/* 原创微博 */
-/** 原创微博整体 */
-@property(nonatomic,weak) UIView *originalView;
-/** 头像 */
-@property(nonatomic,weak) ZJIconView *iconView;
-/** 会员图标 */
-@property(nonatomic,weak) UIImageView *vipView;
-/** 配图 */
-@property(nonatomic,weak) ZJStatusPhotosView *photosView;
-/** 昵称 */
-@property(nonatomic,weak) UILabel *nameLabel;
-/** 时间 */
-@property(nonatomic,weak) UILabel *timeLabel;
-/** 来源 */
-@property(nonatomic,weak) UILabel *sourceLabel;
-/** 正文 */
-@property(nonatomic,weak) ZJStatusTextView *contentLabel;
 
-
-/* 转发微博 */
-/** 转发微博整体 */
-@property(nonatomic,weak) UIView *retweetedView;
-/** 配图 */
-@property(nonatomic,weak) ZJStatusPhotosView *retweetedphotosView;
-/** 昵称+正文 */
-@property(nonatomic,weak) ZJStatusTextView *retweetedContentLabel;
-
+@property(nonatomic,weak) ZJStatusDetailView *detailView;
 /** 工具条 */
 @property(nonatomic,weak) ZJStatusToolBar *toolBar;
 
@@ -84,190 +53,23 @@
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
         self.selectionStyle = UITableViewCellSelectionStyleNone;//选中cell不要变色
-        
-        //初始化原创微博
-        [self setupOriginal];
-        
-        //初始化转发微博
-        [self setupRetweet];
-        
-        //初始化工具条
-        [self setupToolBar];
+       
+        //1.微博整体
+        ZJStatusDetailView *detailView = [[ZJStatusDetailView alloc] init];
+        [self.contentView addSubview:detailView];
+        self.detailView = detailView;
+       
+        //2.工具条
+        ZJStatusToolBar *toolBar = [ZJStatusToolBar tooBar];
+        [self.contentView addSubview:toolBar];
+        self.toolBar = toolBar;
     }
     
     return self;
     
 }
 
-#pragma mark - 初始化方法
-/**
- *  初始化原创微博
- */
-- (void)setupOriginal
-{
-    /* 原创微博 */
-    /** 原创微博整体 */
-    UIView *originalView = [[UIView alloc] init];
-    [self.contentView addSubview:originalView];
-    self.originalView = originalView;
-    
-    /** 头像 */
-    ZJIconView *iconView = [[ZJIconView alloc] init];
-    [self.contentView addSubview:iconView];
-    self.iconView = iconView;
-    
-    /** 会员图标 */
-    UIImageView *vipView = [[UIImageView alloc] init];
-    [self.contentView addSubview:vipView];
-    self.vipView = vipView;
-    
-    /** 配图 */
-    ZJStatusPhotosView *photosView = [[ZJStatusPhotosView alloc] init];
-    [self.contentView addSubview:photosView];
-    self.photosView = photosView;
-    
-    /** 昵称 */
-    UILabel *nameLabel = [[UILabel alloc] init];
-    nameLabel.font = ZJStatusCellNameLableFont;
-    [self.contentView addSubview:nameLabel];
-    self.nameLabel = nameLabel;
-    
-    /** 时间 */
-    UILabel *timeLabel = [[UILabel alloc] init];
-    timeLabel.font = ZJStatusCellTimeLableFont;
-    [self.contentView addSubview:timeLabel];
-    self.timeLabel = timeLabel;
-    
-    /** 正文 */
-    ZJStatusTextView *contentLabel = [[ZJStatusTextView alloc] init];
-    contentLabel.font = ZJStatusCellContentLableFont;
-    [self.contentView addSubview:contentLabel];
-    self.contentLabel = contentLabel;
-    
-    /** 来源 */
-    UILabel *sourceLabel = [[UILabel alloc] init];
-    sourceLabel.font = ZJStatusCellSourceLableFont;
-    [self.contentView addSubview:sourceLabel];
-    self.sourceLabel = sourceLabel;
-}
-/**
- *  初始化转发微博
- */
-- (void)setupRetweet
-{
-    /* 转发微博 */
-    /** 转发微博整体 */
-    UIView *retweetedView = [[UIView alloc] init];
-    retweetedView.backgroundColor = [UIColor colorWithRed:240/255.0 green:240/255.0 blue:240/255.0 alpha:1.0];
-    [self.contentView addSubview:retweetedView];
-    self.retweetedView = retweetedView;
-    
-    /** 昵称+正文 */
-    ZJStatusTextView *retweetedContentLabel = [[ZJStatusTextView alloc] init];
-    retweetedContentLabel.font = ZJRetweetedStatusCellContentLableFont;
-    [retweetedView addSubview:retweetedContentLabel];
-    self.retweetedContentLabel = retweetedContentLabel;
-    
-    /** 配图 */
-    ZJStatusPhotosView *retweetedphotosView = [[ZJStatusPhotosView alloc] init];
-    [retweetedView addSubview:retweetedphotosView];
-    self.retweetedphotosView = retweetedphotosView;
-}
-/**
- *  初始化工具条
- */
-- (void)setupToolBar
-{
-    ZJStatusToolBar *toolBar = [ZJStatusToolBar tooBar];
-    [self.contentView addSubview:toolBar];
-    self.toolBar = toolBar;
-}
-
-
 #pragma mark - 传值
-/**
- *  设置原创微博的frame和微博数据
- *
- *  @param statusFrame <#statusFrame description#>
- */
-- (void)setupOriginalFrame:(ZJStatusFrame *)statusFrame
-{
-    _statusFrame = statusFrame;
-    
-    //取出微博模型
-    ZJStatus *status = statusFrame.status;
-    //取出用户模型
-    ZJUser *user = status.user;
-    
-    /* 原创微博 */
-    /** 原创微博整体 */
-    self.originalView.frame = statusFrame.originalViewF;
-    
-    /** 头像 */
-    self.iconView.frame = statusFrame.iconViewF;
-    self.iconView.user = user;
-    
-    /** 会员图标 */
-    self.vipView.frame = statusFrame.vipViewF;
-    self.vipView.image = [UIImage imageNamed:@"common_icon_membership_level1"];
-    
-    /** 配图 */
-    self.photosView.frame = statusFrame.photosViewF;
-    self.photosView.photos = status.pic_urls;
-    
-    /** 昵称 */
-    self.nameLabel.frame = statusFrame.nameLabelF;
-    self.nameLabel.text = user.name;
-    
-    /** 时间 */
-    CGSize timeSize = [status.created_at sizeWithFont:ZJStatusCellTimeLableFont];
-    CGFloat timeX = self.nameLabel.frame.origin.x;
-    CGFloat timeY = CGRectGetMaxY(self.nameLabel.frame) + ZJStatusCellBorderW;
-    self.timeLabel.frame = (CGRect){{timeX, timeY},timeSize};
-    self.timeLabel.text = status.created_at;
-    
-    /** 来源 */
-    self.sourceLabel.frame = statusFrame.sourceLabelF;
-    self.sourceLabel.text = status.source;
-    
-    /** 正文 */
-    self.contentLabel.frame = statusFrame.contentLabelF;
-    self.contentLabel.attributedText = status.attributedText;
-}
-
-/**
- *   设置转发微博的frame和转发微博数据
- *
- *  @param statusFrame <#statusFrame description#>
- */
-- (void)setupRetweetedFrame:(ZJStatusFrame *)statusFrame
-{
-    _statusFrame = statusFrame;
-    
-    //取出微博模型
-    ZJStatus *status = statusFrame.status;
-    //取出转发微博
-    ZJStatus *retweeted_status = status.retweeted_status;
-    
-    /** 转发微博整体 */
-    self.retweetedView.frame = statusFrame.retweetedViewF;
-    
-    /** 昵称+正文 */
-    self.retweetedContentLabel.frame = statusFrame.retweetedContentLabelF;
-    self.retweetedContentLabel.attributedText = status.retweeted_attributedText;
-    
-    /** 配图 要考虑是否有配图*/
-    if (retweeted_status.pic_urls.count) {//有配图
-        self.retweetedphotosView.hidden = NO;
-        
-        self.retweetedphotosView.frame = statusFrame.retweetedPhotosViewF;
-        self.retweetedphotosView.photos = retweeted_status.pic_urls;
-    }else{//没配图
-        self.retweetedphotosView.hidden = YES;
-    }
-    
-}
-
 /**
  *  设置frame和数据
  *  cell根据StatusFrame模型给子控件设置frame，根据Status模型给子控件设置数据
@@ -277,25 +79,12 @@
 {
     _statusFrame = statusFrame;
     
-    //取出微博模型
-    ZJStatus *status = statusFrame.status;
+    //1.微博整体
+    self.detailView.detailFrame = statusFrame.detailFrame;
     
-    //1.设置原创微博的frame和微博数据
-    [self setupOriginalFrame:statusFrame];
-    
-    //2.设置转发微博的frame和转发微博数据
-    if (status.retweeted_status) {//存在转发微博
-        
-        [self setupRetweetedFrame:statusFrame];
-        self.retweetedView.hidden = NO;
-        
-    }else{//没转发微博
-        self.retweetedView.hidden = YES;
-    }
-    
-    //3.工具条
+    //2.工具条
     self.toolBar.frame = statusFrame.toolBarF;
-    self.toolBar.status = status;
+    self.toolBar.status =statusFrame.status;
     
     
 }

@@ -62,9 +62,9 @@
     self.sourceLabelF = (CGRect){{sourceX, sourceY},sourceSize};
     
     /** 正文 */
-    CGFloat contentX = timeX;
+    CGFloat contentX = iconX;
     CGFloat contentY = MAX(CGRectGetMaxY(self.iconViewF), CGRectGetMaxY(self.timeLabelF)) + ZJStatusCellBorderW;
-    CGFloat maxW = ZJScreenW - 3 * ZJStatusCellBorderW - iconWH;
+    CGFloat maxW = ZJScreenW - 2 * ZJStatusCellBorderW;
     CGSize contentSize = [status.attributedText boundingRectWithSize:CGSizeMake(maxW, MAXFLOAT) options:NSStringDrawingUsesLineFragmentOrigin context:nil].size;
     self.contentLabelF = (CGRect){{contentX, contentY},contentSize};
     
@@ -99,7 +99,7 @@
         /** 昵称+正文 */
         CGFloat retweetedContentX = ZJStatusCellBorderW;
         CGFloat retweetedContentY = ZJStatusCellBorderW;
-        CGFloat retweetedContentW = maxW - 2 * ZJStatusCellBorderW;
+        CGFloat retweetedContentW = ZJScreenW - 4 * ZJStatusCellBorderW;
         CGSize retweetedContentSize = [status.retweeted_attributedText boundingRectWithSize:CGSizeMake(retweetedContentW, MAXFLOAT) options:NSStringDrawingUsesLineFragmentOrigin context:nil].size;
         self.retweetedContentLabelF = (CGRect){{retweetedContentX,retweetedContentY},retweetedContentSize};
         
@@ -121,13 +121,12 @@
         /** 转发微博整体 */
         CGFloat retweetedX = contentX;
         CGFloat retweetedY = CGRectGetMaxY(self.originalViewF) + ZJStatusCellBorderW;
-        CGFloat retweetedW = ZJScreenW - 3 * ZJStatusCellBorderW - iconWH;
+        CGFloat retweetedW = ZJScreenW - 2 * ZJStatusCellBorderW;
         self.retweetedViewF = CGRectMake(retweetedX, retweetedY, retweetedW, retweetedH);
         
         toolBarY = CGRectGetMaxY(self.retweetedViewF);
         
     }else{//没转发微博
-        
         
         toolBarY = CGRectGetMaxY(self.originalViewF);
         
@@ -141,8 +140,7 @@
     
     /** cell的高度 */
     self.cellHeight = CGRectGetMaxY(self.toolBarF);
-    
-    
+  
     
 }
 

@@ -66,6 +66,9 @@
     //将timer放进NSRunLoop,让主线程能够及时处理
     [[NSRunLoop mainRunLoop] addTimer:timer forMode:NSRunLoopCommonModes];
     
+    //特殊字符上url链接被选中的通知
+    [ZJNotificationCenter addObserver:self selector:@selector(specialTextDidSelect:) name:ZJSpecialTextDidSelectNotification object:nil];
+    
 }
 
 #pragma mark - 初始化方法
@@ -403,6 +406,22 @@
 - (void)titleBtnClick
 {
     ZJLog(@"titleBtnClick");
+}
+/**
+ *  特殊字符上url链接被选中的通知
+ */
+- (void)specialTextDidSelect:(NSNotification *)notification
+{
+//    ZJLog(@"%@",notification.userInfo[ZJSpecialTextDidSelectText]);
+    //取出通知携带的信息
+    NSString *specialText = notification.userInfo[ZJSpecialTextDidSelectText];
+    if ([specialText hasPrefix:@"http"]){
+        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:specialText]];
+    }else{
+        //跳转到相应的控制器
+        ZJLog(@"选中了非url链接--%@",notification.userInfo[ZJSpecialTextDidSelectText]);
+    }
+    
 }
 
 #pragma mark - 数据源

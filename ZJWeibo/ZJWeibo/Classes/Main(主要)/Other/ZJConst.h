@@ -18,3 +18,7 @@ extern NSString * const ZJSelectEmotion;
 extern NSString * const ZJEmotionDidSelectNotification;
 //删除文字的通知
 extern NSString * const ZJEmotionDidDeleteNotification;
+//链接选中的通知
+extern NSString * const ZJSpecialTextDidSelectNotification;
+//特殊字符出现的文本内容
+extern NSString * const ZJSpecialTextDidSelectText;

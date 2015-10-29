@@ -18,3 +18,7 @@ NSString * const ZJSelectEmotion = @"selectEmotion";
 NSString * const ZJEmotionDidSelectNotification = @"HMEmotionDidSelectNotification";
 //删除文字的通知
 NSString * const ZJEmotionDidDeleteNotification = @"HMEmotionDidDeleteNotification";
+//链接的通知
+NSString * const ZJSpecialTextDidSelectNotification =@"ZJSpecialTextDidSelectNotification";
+//特殊字符出现的文本内容
+NSString * const ZJSpecialTextDidSelectText = @"ZJSpecialTextDidSelectText";

@@ -25,7 +25,7 @@
     return self;
 }
 
-#pragma mark -
+#pragma mark - touches
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
 {
     //触摸对象
@@ -48,26 +48,35 @@
         cover.tag = ZJSpecialTextTag;
         cover.layer.cornerRadius = 5;
         [self insertSubview:cover atIndex:0];
+        
     }
     
 }
 
 - (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
 {
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.25 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        [self touchesCancelled:touches withEvent:event];
-    });
-    //    HMLog(@"touchesEnded");
+    //触摸对象
+    UITouch *touch = [touches anyObject];
+    //触摸点
+    CGPoint point = [touch locationInView:self];
+    //找出被触摸的特殊字符
+    ZJSpecialText *specialText = [self touchingSpecialTextWith:point];
+    if (specialText) {
+        //当手指在某个链接上面抬起来时，发出通知
+        [ZJNotificationCenter postNotificationName:ZJSpecialTextDidSelectNotification object:nil userInfo:@{ZJSpecialTextDidSelectText : specialText.text}];
+    }
+
+    //移除高亮的背景
+    [self touchesCancelled:touches withEvent:event];
 }
 
 - (void)touchesCancelled:(NSSet *)touches withEvent:(UIEvent *)event
 {
-    
-    //去掉被触摸的特殊字符串后面的一段高亮的背景
-    for (UIView *chird in self.subviews) {
-        if (chird.tag == ZJSpecialTextTag)  [chird removeFromSuperview];
-    }
-    //    HMLog(@"touchesCancelled");
+ 
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.25 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        //移除高亮的背景
+        [self removeAllSpecialTextBackground];
+    });
 }
 
 #pragma mark - 其他方法
@@ -126,6 +135,15 @@
     return nil;
 }
 
+/**
+ *  去掉被触摸的特殊字符串后面的一段高亮的背景
+ */
+- (void)removeAllSpecialTextBackground
+{
+    for (UIView *chird in self.subviews) {
+        if (chird.tag == ZJSpecialTextTag)  [chird removeFromSuperview];
+    }
+}
 
 #pragma mark - 触摸事件
 //- (UIView *)hitTest:(CGPoint)point withEvent:(UIEvent *)event

@@ -859,7 +859,6 @@
 			isa = PBXGroup;
 			children = (
 				54ECE5CB1BDF97D000BC0CC6 /* Cell */,
-				54ECE5D81BDF97D000BC0CC6 /* StatusDetail */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1321,19 +1320,12 @@
 				54ECE5D11BDF97D000BC0CC6 /* ZJStatusPhotosView.m */,
 				54ECE5D21BDF97D000BC0CC6 /* ZJStatusPhotoView.h */,
 				54ECE5D31BDF97D000BC0CC6 /* ZJStatusPhotoView.m */,
-				54ECE5D41BDF97D000BC0CC6 /* ZJStatusTextView.h */,
-				54ECE5D51BDF97D000BC0CC6 /* ZJStatusTextView.m */,
 				54ECE5D61BDF97D000BC0CC6 /* ZJStatusToolBar.h */,
 				54ECE5D71BDF97D000BC0CC6 /* ZJStatusToolBar.m */,
+				54ECE5D41BDF97D000BC0CC6 /* ZJStatusTextView.h */,
+				54ECE5D51BDF97D000BC0CC6 /* ZJStatusTextView.m */,
 			);
 			path = Cell;
-			sourceTree = "<group>";
-		};
-		54ECE5D81BDF97D000BC0CC6 /* StatusDetail */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = StatusDetail;
 			sourceTree = "<group>";
 		};
 		6D89A0574A1CAA8BCF295C9D /* Pods */ = {

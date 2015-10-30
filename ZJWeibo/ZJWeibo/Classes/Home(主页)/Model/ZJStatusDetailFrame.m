@@ -111,23 +111,30 @@
     self.retweetedContentLabelF = (CGRect){{retweetedContentX,retweetedContentY},retweetedContentSize};
     
     /** 配图 要考虑是否有配图*/
-    CGFloat retweetedH = 0;
+    CGFloat retweetedToolBarY = 0;
     if (retweeted_status.pic_urls.count) {//有配图
         CGFloat retweetedPhotosX = retweetedContentX;
         CGFloat retweetedPhotosY = CGRectGetMaxY(self.retweetedContentLabelF) + ZJStatusCellBorderW;
         CGSize retweetedPhotosSize = [ZJStatusPhotosView sizeWithPhotosCount:retweeted_status.pic_urls.count];
         self.retweetedPhotosViewF = (CGRect){{retweetedPhotosX,retweetedPhotosY},retweetedPhotosSize};
         
-        retweetedH = CGRectGetMaxY(self.retweetedPhotosViewF) + ZJStatusCellBorderW;
+        retweetedToolBarY = CGRectGetMaxY(self.retweetedPhotosViewF) + ZJStatusCellBorderW;
     }else{//没配图
         
-        retweetedH = CGRectGetMaxY(self.retweetedContentLabelF) + ZJStatusCellBorderW;
+        retweetedToolBarY = CGRectGetMaxY(self.retweetedContentLabelF) + ZJStatusCellBorderW;
     }
+    
+    //工具条
+    CGFloat retweetedToolBarX = ZJScreenW * 0.5 - ZJStatusCellBorderW;
+    CGFloat retweetedToolBarW = ZJScreenW * 0.5 - ZJStatusCellBorderW;
+    CGFloat retweetedToolBarH = 20;
+    self.retweetedToolBarF = CGRectMake(retweetedToolBarX, retweetedToolBarY, retweetedToolBarW, retweetedToolBarH);
     
     /** 转发微博整体 */
     CGFloat retweetedX = ZJStatusCellBorderW;
     CGFloat retweetedY = CGRectGetMaxY(self.originalViewF) + ZJStatusCellBorderW;
     CGFloat retweetedW = ZJScreenW - 2 * ZJStatusCellBorderW;
+    CGFloat retweetedH = CGRectGetMaxY(self.retweetedToolBarF);
     self.retweetedViewF = CGRectMake(retweetedX, retweetedY, retweetedW, retweetedH);
     
 }

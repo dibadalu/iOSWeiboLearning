@@ -14,6 +14,7 @@
 #import "ZJStatusPhotosView.h"
 #import "ZJIconView.h"
 #import "ZJStatusTextView.h"
+#import "ZJStatusToolBar.h"
 
 @interface ZJStatusDetailView ()
 
@@ -43,6 +44,8 @@
 @property(nonatomic,weak) ZJStatusPhotosView *retweetedphotosView;
 /** 昵称+正文 */
 @property(nonatomic,weak) ZJStatusTextView *retweetedContentLabel;
+/** 工具条 */
+@property(nonatomic,weak) ZJStatusToolBar *retweetedToolBar;
 
 
 @end
@@ -125,7 +128,7 @@
     /* 转发微博 */
     /** 转发微博整体 */
     UIView *retweetedView = [[UIView alloc] init];
-    retweetedView.backgroundColor = [UIColor colorWithRed:240/255.0 green:240/255.0 blue:240/255.0 alpha:1.0];
+//    retweetedView.backgroundColor = [UIColor colorWithRed:240/255.0 green:240/255.0 blue:240/255.0 alpha:1.0];
     [self addSubview:retweetedView];
     self.retweetedView = retweetedView;
     
@@ -139,7 +142,18 @@
     ZJStatusPhotosView *retweetedphotosView = [[ZJStatusPhotosView alloc] init];
     [retweetedView addSubview:retweetedphotosView];
     self.retweetedphotosView = retweetedphotosView;
+    
+    //工具条
+    ZJStatusToolBar *retweetedToolBar = [[ZJStatusToolBar alloc] init];
+    [retweetedView addSubview:retweetedToolBar];
+    self.retweetedToolBar = retweetedToolBar;
+    
+    
+    
 }
+
+
+
 
 #pragma mark - 
 - (void)setDetailFrame:(ZJStatusDetailFrame *)detailFrame
@@ -244,6 +258,10 @@
     }else{//没配图
         self.retweetedphotosView.hidden = YES;
     }
+    
+    //工具条
+    self.retweetedToolBar.frame = detailFrame.retweetedToolBarF;
+    self.retweetedToolBar.status = retweeted_status;//将转发微博模型传给retweetedToolBar
     
 }
 

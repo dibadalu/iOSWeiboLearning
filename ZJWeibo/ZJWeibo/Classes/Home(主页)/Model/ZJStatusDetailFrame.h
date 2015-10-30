@@ -40,6 +40,8 @@
 @property(nonatomic,assign) CGRect retweetedPhotosViewF;
 /** 昵称+正文 */
 @property(nonatomic,assign) CGRect retweetedContentLabelF;
+/** 工具条 */
+@property(nonatomic,assign) CGRect retweetedToolBarF;
 
 
 

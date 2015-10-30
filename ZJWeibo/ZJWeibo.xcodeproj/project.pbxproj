@@ -285,6 +285,8 @@
 		54C220261BD52D5F00BE0ED0 /* ZJOAuthViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 54C220251BD52D5F00BE0ED0 /* ZJOAuthViewController.m */; };
 		54E7EDF31BD60F640018280F /* MBProgressHUD+MJ.m in Sources */ = {isa = PBXBuildFile; fileRef = 54E7EDF21BD60F640018280F /* MBProgressHUD+MJ.m */; };
 		54F034441BE31C3900B32304 /* ZJStatusDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 54F034431BE31C3900B32304 /* ZJStatusDetailViewController.m */; };
+		54F034471BE31F9A00B32304 /* ZJStatusDetailFrame.m in Sources */ = {isa = PBXBuildFile; fileRef = 54F034461BE31F9A00B32304 /* ZJStatusDetailFrame.m */; };
+		54F0344A1BE31FAB00B32304 /* ZJStatusDetailView.m in Sources */ = {isa = PBXBuildFile; fileRef = 54F034491BE31FAB00B32304 /* ZJStatusDetailView.m */; };
 		54F608391BD50D3800F7BB3E /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 54F608381BD50D3800F7BB3E /* Images.xcassets */; };
 		6AECC741C4BF317B731FA14B /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B19ADE546568B396A0CC7AEC /* libPods.a */; };
 /* End PBXBuildFile section */
@@ -632,6 +634,10 @@
 		54E7EDF21BD60F640018280F /* MBProgressHUD+MJ.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MBProgressHUD+MJ.m"; sourceTree = "<group>"; };
 		54F034421BE31C3900B32304 /* ZJStatusDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZJStatusDetailViewController.h; sourceTree = "<group>"; };
 		54F034431BE31C3900B32304 /* ZJStatusDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZJStatusDetailViewController.m; sourceTree = "<group>"; };
+		54F034451BE31F9A00B32304 /* ZJStatusDetailFrame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZJStatusDetailFrame.h; sourceTree = "<group>"; };
+		54F034461BE31F9A00B32304 /* ZJStatusDetailFrame.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZJStatusDetailFrame.m; sourceTree = "<group>"; };
+		54F034481BE31FAB00B32304 /* ZJStatusDetailView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZJStatusDetailView.h; sourceTree = "<group>"; };
+		54F034491BE31FAB00B32304 /* ZJStatusDetailView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZJStatusDetailView.m; sourceTree = "<group>"; };
 		54F608381BD50D3800F7BB3E /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		B19ADE546568B396A0CC7AEC /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		EC46BF00477125448C0EDB0E /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
@@ -850,6 +856,8 @@
 				54330C6B1BD72BF7005DFFDE /* ZJStatus.m */,
 				547A888F1BE26D5B00805E0C /* ZJStatusFrame.h */,
 				547A88901BE26D5B00805E0C /* ZJStatusFrame.m */,
+				54F034451BE31F9A00B32304 /* ZJStatusDetailFrame.h */,
+				54F034461BE31F9A00B32304 /* ZJStatusDetailFrame.m */,
 				541B32881BD90197004C4BC6 /* ZJPhoto.h */,
 				541B32891BD90197004C4BC6 /* ZJPhoto.m */,
 				54855CB71BDE678300FF876B /* ZJTextPart.h */,
@@ -867,6 +875,8 @@
 				547A885F1BE2216E00805E0C /* ZJIconView.m */,
 				547A88921BE26D6A00805E0C /* ZJStatusCell.h */,
 				547A88931BE26D6A00805E0C /* ZJStatusCell.m */,
+				54F034481BE31FAB00B32304 /* ZJStatusDetailView.h */,
+				54F034491BE31FAB00B32304 /* ZJStatusDetailView.m */,
 				547A88621BE2216E00805E0C /* ZJStatusPhotosView.h */,
 				547A88631BE2216E00805E0C /* ZJStatusPhotosView.m */,
 				547A88641BE2216E00805E0C /* ZJStatusPhotoView.h */,
@@ -1744,6 +1754,7 @@
 				54855CBC1BDE67CC00FF876B /* ZJSpecialText.m in Sources */,
 				542A49F61BD635C900C457CF /* ZJConst.m in Sources */,
 				54330C6C1BD72BF7005DFFDE /* ZJStatus.m in Sources */,
+				54F0344A1BE31FAB00B32304 /* ZJStatusDetailView.m in Sources */,
 				5444C6461BDBC55900C7A5C1 /* ZJComposePhotosView.m in Sources */,
 				5423DFCD1BD688D200B59739 /* ZJUser.m in Sources */,
 				547272A21BDCB86D0021D9EA /* ZJEmotionKeyboard.m in Sources */,
@@ -1762,6 +1773,7 @@
 				547A886C1BE2216E00805E0C /* ZJStatusPhotosView.m in Sources */,
 				547A886F1BE2216E00805E0C /* ZJStatusToolBar.m in Sources */,
 				5444C6431BDBBC2300C7A5C1 /* ZJComposeToolBar.m in Sources */,
+				54F034471BE31F9A00B32304 /* ZJStatusDetailFrame.m in Sources */,
 				542A49F31BD635A800C457CF /* main.m in Sources */,
 				54855CB91BDE678300FF876B /* ZJTextPart.m in Sources */,
 				541B32841BD8D86F004C4BC6 /* Foundation+Log.m in Sources */,

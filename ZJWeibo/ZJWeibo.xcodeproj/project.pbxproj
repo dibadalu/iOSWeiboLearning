@@ -284,6 +284,7 @@
 		54C220201BD52B0400BE0ED0 /* UIView+ZJExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 54C2201F1BD52B0400BE0ED0 /* UIView+ZJExtension.m */; };
 		54C220261BD52D5F00BE0ED0 /* ZJOAuthViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 54C220251BD52D5F00BE0ED0 /* ZJOAuthViewController.m */; };
 		54E7EDF31BD60F640018280F /* MBProgressHUD+MJ.m in Sources */ = {isa = PBXBuildFile; fileRef = 54E7EDF21BD60F640018280F /* MBProgressHUD+MJ.m */; };
+		54F034441BE31C3900B32304 /* ZJStatusDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 54F034431BE31C3900B32304 /* ZJStatusDetailViewController.m */; };
 		54F608391BD50D3800F7BB3E /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 54F608381BD50D3800F7BB3E /* Images.xcassets */; };
 		6AECC741C4BF317B731FA14B /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B19ADE546568B396A0CC7AEC /* libPods.a */; };
 /* End PBXBuildFile section */
@@ -629,6 +630,8 @@
 		54C220251BD52D5F00BE0ED0 /* ZJOAuthViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZJOAuthViewController.m; sourceTree = "<group>"; };
 		54E7EDF11BD60F640018280F /* MBProgressHUD+MJ.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MBProgressHUD+MJ.h"; sourceTree = "<group>"; };
 		54E7EDF21BD60F640018280F /* MBProgressHUD+MJ.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MBProgressHUD+MJ.m"; sourceTree = "<group>"; };
+		54F034421BE31C3900B32304 /* ZJStatusDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZJStatusDetailViewController.h; sourceTree = "<group>"; };
+		54F034431BE31C3900B32304 /* ZJStatusDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZJStatusDetailViewController.m; sourceTree = "<group>"; };
 		54F608381BD50D3800F7BB3E /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		B19ADE546568B396A0CC7AEC /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		EC46BF00477125448C0EDB0E /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
@@ -832,6 +835,8 @@
 			children = (
 				544A871F1BD4D75E00659A85 /* ZJHomeViewController.h */,
 				544A87201BD4D75E00659A85 /* ZJHomeViewController.m */,
+				54F034421BE31C3900B32304 /* ZJStatusDetailViewController.h */,
+				54F034431BE31C3900B32304 /* ZJStatusDetailViewController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -1735,6 +1740,7 @@
 				547AF2941BDE159F008A949B /* ZJEmotionAttachment.m in Sources */,
 				544A87311BD4E17800659A85 /* ZJNavigationViewController.m in Sources */,
 				547AF2911BDE1501008A949B /* ZJEmotionTextView.m in Sources */,
+				54F034441BE31C3900B32304 /* ZJStatusDetailViewController.m in Sources */,
 				54855CBC1BDE67CC00FF876B /* ZJSpecialText.m in Sources */,
 				542A49F61BD635C900C457CF /* ZJConst.m in Sources */,
 				54330C6C1BD72BF7005DFFDE /* ZJStatus.m in Sources */,

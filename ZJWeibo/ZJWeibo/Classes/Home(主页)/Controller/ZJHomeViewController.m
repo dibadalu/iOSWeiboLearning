@@ -19,6 +19,8 @@
 #import "ZJStatusFrame.h"
 #import "ZJComposeViewController.h"
 #import "ZJStatusTool.h"
+#import "ZJStatusDetailViewController.h"
+
 
 @interface ZJHomeViewController ()
 
@@ -456,11 +458,10 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     ZJLog(@"didSelectRowAtIndexPath---%d",indexPath.row);
-    UIViewController *vc = [[UIViewController alloc] init];
-    vc.view.backgroundColor = [UIColor grayColor];
-    vc.title = @"新控制器";
-    
-    [self.navigationController pushViewController:vc animated:YES];
+    ZJStatusDetailViewController *detail = [[ZJStatusDetailViewController alloc] init];
+    ZJStatusFrame *frame = self.statusFrames[indexPath.row];
+    detail.status = frame.status;//传微博数据给ZJStatusDetailViewController
+    [self.navigationController pushViewController:detail animated:YES];
 }
 
 @end

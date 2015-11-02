@@ -51,8 +51,7 @@
 @end
 
 @implementation ZJStatusDetailView
-
-
+#pragma mark -  system method
 - (id)initWithFrame:(CGRect)frame
 {
     self = [super initWithFrame:frame];
@@ -69,6 +68,7 @@
     return self;
 }
 
+#pragma mark -  init method
 
 /**
  *  初始化原创微博
@@ -125,10 +125,9 @@
  */
 - (void)setupRetweet
 {
-    /* 转发微博 */
+
     /** 转发微博整体 */
     UIView *retweetedView = [[UIView alloc] init];
-//    retweetedView.backgroundColor = [UIColor colorWithRed:240/255.0 green:240/255.0 blue:240/255.0 alpha:1.0];
     [self addSubview:retweetedView];
     self.retweetedView = retweetedView;
     
@@ -143,19 +142,15 @@
     [retweetedView addSubview:retweetedphotosView];
     self.retweetedphotosView = retweetedphotosView;
     
-    //工具条
+    /** 工具条 */
     ZJStatusToolBar *retweetedToolBar = [[ZJStatusToolBar alloc] init];
     [retweetedView addSubview:retweetedToolBar];
     self.retweetedToolBar = retweetedToolBar;
-    
-    
+
     
 }
 
-
-
-
-#pragma mark - 
+#pragma mark -  data set method
 - (void)setDetailFrame:(ZJStatusDetailFrame *)detailFrame
 {
     _detailFrame = detailFrame;
@@ -178,10 +173,9 @@
 
 }
 
+#pragma mark - data init method
 /**
  *  设置原创微博的frame和微博数据
- *
- *  @param statusFrame <#statusFrame description#>
  */
 - (void)setupOriginalFrame:(ZJStatusDetailFrame *)detailFrame
 {
@@ -227,11 +221,8 @@
     self.contentLabel.frame = detailFrame.contentLabelF;
     self.contentLabel.attributedText = status.attributedText;
 }
-
 /**
  *   设置转发微博的frame和转发微博数据
- *
- *  @param statusFrame <#statusFrame description#>
  */
 - (void)setupRetweetedFrame:(ZJStatusDetailFrame *)detailFrame
 {

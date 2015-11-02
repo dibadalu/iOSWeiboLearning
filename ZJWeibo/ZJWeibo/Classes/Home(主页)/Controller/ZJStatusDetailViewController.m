@@ -70,7 +70,9 @@
     [self setupDetailView];
     //创建底部工具条
     [self setupBottomToolBar];
+    
     //通过UITableViewDelegate创建顶部工具条
+    
     
 }
 
@@ -120,12 +122,12 @@
 #pragma mark - UITableViewDataSource
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-
 //    if (self.topToolBar.selectedButtonType == ZJStatusDetailTopToolbarButtonRetweetedType) {
 //        return self.reposts.count;
 //    }else{
         return self.comments.count;
 //    }
+    
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -136,14 +138,12 @@
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:ID];
     }
     
-    
 //    if (self.topToolBar.selectedButtonType == ZJStatusDetailTopToolbarButtonRetweetedType) {
 //        ZJStatus *status = self.reposts[indexPath.row];//取出微博模型
 //        cell.textLabel.text = status.text;
 //    }else{
         ZJComment *comment = self.comments[indexPath.row];//取出评论模型
         cell.textLabel.text = comment.text;
-        
 //    }
     
     return cell;
@@ -160,25 +160,37 @@
     return self.topToolBar.height;
 }
 
+
 #pragma mark - ZJStatusDetailTopToolBarDelegate
 - (void)statusDetailTopToolBar:(ZJStatusDetailTopToolBar *)topToolBar didSelectedButton:(ZJStatusDetailTopToolbarButtonType)buttonType
 {
+//    dispatch_async(dispatch_get_main_queue(), ^{
+    
+        [self.tableView reloadData];
+//    });
+    
     switch (buttonType) {
         case ZJStatusDetailTopToolbarButtonRetweetedType:
             ZJLog(@"转发");
+            //获取转发内容
             [self loadRetweeteds];
             break;
         case ZJStatusDetailTopToolbarButtonCommentType:
             ZJLog(@"评论");
+            //获取评论内容
             [self loadComments];
             break;
     }
+    
 }
 
-#pragma mark - other method 
+#pragma mark - other method
+/**
+ *  获取转发内容
+ */
 - (void)loadRetweeteds
 {
-//    ZJLog(@"loadRetweeteds");
+    ZJLog(@"loadRetweeteds");
     /*
      https://api.weibo.com/2/statuses/repost_timeline.json  get
      
@@ -210,15 +222,20 @@
         [self.reposts insertObjects:repostResults.reposts atIndexes:set];
         
         //刷新表格
-        [self.tableView reloadData];
-
+//        dispatch_async(dispatch_get_main_queue(), ^{
+        
+            [self.tableView reloadData];
+//        });
+ 
     } failure:^(NSError *error) {
         ZJLog(@"请求失败---%@",error);
         
     }];
 
 }
-
+/**
+ *  获取评论内容
+ */
 - (void)loadComments
 {
     ZJLog(@"loadComments");
@@ -256,10 +273,11 @@
         [self.comments insertObjects:commentResults.comments atIndexes:set];
         
         //刷新表格
-        [self.tableView reloadData];
+//        dispatch_async(dispatch_get_main_queue(), ^{
 
-
-        
+            [self.tableView reloadData];
+//        });
+   
     } failure:^(NSError *error) {
         ZJLog(@"请求失败---%@",error);
 

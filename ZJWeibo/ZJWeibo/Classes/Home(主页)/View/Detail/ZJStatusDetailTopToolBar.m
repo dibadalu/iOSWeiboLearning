@@ -7,6 +7,7 @@
 //
 
 #import "ZJStatusDetailTopToolBar.h"
+#import "ZJStatus.h"
 
 @interface ZJStatusDetailTopToolBar ()
 
@@ -48,6 +49,46 @@
     
     //设置默认按钮
     [self btnClick:self.commentButton];
+}
+
+/**
+ *  微博模型的setter方法，设置按钮上的数字
+ *
+ *  @param status 从cell传进来的微博模型
+ */
+- (void)setStatus:(ZJStatus *)status
+{
+    _status = status;
+    
+    //转发
+    [self setupBtnCount:status.reposts_count btn:self.retweetedButton title:@"转发"];
+    //评论
+    [self setupBtnCount:status.comments_count btn:self.commentButton title:@"评论"];
+    //赞
+    [self setupBtnCount:status.attitudes_count btn:self.attitudeButton title:@"赞"];
+}
+
+- (void)setupBtnCount:(int)count  btn:(UIButton *)btn title:(NSString *)title
+{
+    
+    if (count) {//数字不为0
+        if (count < 10000) {// 不足10000：直接显示数字，比如786、7986
+            title = [NSString stringWithFormat:@"%@ %d",title,count];
+        }else{// 达到10000：显示xx.x万，不要有.0的情况
+            double wan = count/10000.0;
+            title = [NSString stringWithFormat:@"%@ %.1f万",title,wan];
+            // 将字符串里面的.0去掉
+            title = [title stringByReplacingOccurrencesOfString:@".0" withString:@""];
+        }
+        
+        [btn setTitle:title forState:UIControlStateNormal];
+        [btn setTitle:title forState:UIControlStateSelected];
+
+    }
+    [btn setTitle:title forState:UIControlStateNormal];
+    [btn setTitle:title forState:UIControlStateSelected];
+
+    
 }
 
 #pragma mark - action method

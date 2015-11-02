@@ -12,6 +12,9 @@
 		54042C221BE6F7A700183AFC /* ZJStatusDetailBottomToolBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 54042C211BE6F7A700183AFC /* ZJStatusDetailBottomToolBar.m */; };
 		54042C251BE6FB3C00183AFC /* ZJStatusDetailTopToolBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 54042C241BE6FB3C00183AFC /* ZJStatusDetailTopToolBar.m */; };
 		54042C271BE6FB6200183AFC /* ZJStatusDetailTopToolBar.xib in Resources */ = {isa = PBXBuildFile; fileRef = 54042C261BE6FB6200183AFC /* ZJStatusDetailTopToolBar.xib */; };
+		54042C2A1BE746B300183AFC /* ZJCommentResult.m in Sources */ = {isa = PBXBuildFile; fileRef = 54042C291BE746B300183AFC /* ZJCommentResult.m */; };
+		54042C2D1BE74DD800183AFC /* ZJComment.m in Sources */ = {isa = PBXBuildFile; fileRef = 54042C2C1BE74DD800183AFC /* ZJComment.m */; };
+		54042C301BE75ABE00183AFC /* ZJRepostResult.m in Sources */ = {isa = PBXBuildFile; fileRef = 54042C2F1BE75ABE00183AFC /* ZJRepostResult.m */; };
 		54097DC71BD0A320008084D3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 54097DC51BD0A320008084D3 /* Main.storyboard */; };
 		54097DCC1BD0A320008084D3 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 54097DCA1BD0A320008084D3 /* LaunchScreen.xib */; };
 		54097DD81BD0A321008084D3 /* ZJWeiboTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 54097DD71BD0A321008084D3 /* ZJWeiboTests.m */; };
@@ -316,6 +319,12 @@
 		54042C231BE6FB3C00183AFC /* ZJStatusDetailTopToolBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZJStatusDetailTopToolBar.h; sourceTree = "<group>"; };
 		54042C241BE6FB3C00183AFC /* ZJStatusDetailTopToolBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZJStatusDetailTopToolBar.m; sourceTree = "<group>"; };
 		54042C261BE6FB6200183AFC /* ZJStatusDetailTopToolBar.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ZJStatusDetailTopToolBar.xib; sourceTree = "<group>"; };
+		54042C281BE746B300183AFC /* ZJCommentResult.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZJCommentResult.h; sourceTree = "<group>"; };
+		54042C291BE746B300183AFC /* ZJCommentResult.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZJCommentResult.m; sourceTree = "<group>"; };
+		54042C2B1BE74DD800183AFC /* ZJComment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZJComment.h; sourceTree = "<group>"; };
+		54042C2C1BE74DD800183AFC /* ZJComment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZJComment.m; sourceTree = "<group>"; };
+		54042C2E1BE75ABE00183AFC /* ZJRepostResult.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZJRepostResult.h; sourceTree = "<group>"; };
+		54042C2F1BE75ABE00183AFC /* ZJRepostResult.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZJRepostResult.m; sourceTree = "<group>"; };
 		54097DB81BD0A320008084D3 /* ZJWeibo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ZJWeibo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		54097DBC1BD0A320008084D3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		54097DC61BD0A320008084D3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -675,6 +684,12 @@
 			children = (
 				54042C191BE6F55F00183AFC /* ZJStatusDetailFrame.h */,
 				54042C1A1BE6F55F00183AFC /* ZJStatusDetailFrame.m */,
+				54042C281BE746B300183AFC /* ZJCommentResult.h */,
+				54042C291BE746B300183AFC /* ZJCommentResult.m */,
+				54042C2B1BE74DD800183AFC /* ZJComment.h */,
+				54042C2C1BE74DD800183AFC /* ZJComment.m */,
+				54042C2E1BE75ABE00183AFC /* ZJRepostResult.h */,
+				54042C2F1BE75ABE00183AFC /* ZJRepostResult.m */,
 			);
 			path = Detail;
 			sourceTree = "<group>";
@@ -1767,8 +1782,10 @@
 				54C220201BD52B0400BE0ED0 /* UIView+ZJExtension.m in Sources */,
 				544A871E1BD4D56D00659A85 /* ZJTabBarViewController.m in Sources */,
 				544A87211BD4D75E00659A85 /* ZJHomeViewController.m in Sources */,
+				54042C301BE75ABE00183AFC /* ZJRepostResult.m in Sources */,
 				54965CCD1BDF5C35007DD69C /* ZJStatusTool.m in Sources */,
 				541B32871BD8DB1E004C4BC6 /* NSString+Extension.m in Sources */,
+				54042C2A1BE746B300183AFC /* ZJCommentResult.m in Sources */,
 				54042C251BE6FB3C00183AFC /* ZJStatusDetailTopToolBar.m in Sources */,
 				547AEF011BDDD9B6008A949B /* NSString+Emoji.m in Sources */,
 				547A88911BE26D5B00805E0C /* ZJStatusFrame.m in Sources */,
@@ -1803,6 +1820,7 @@
 				547A886E1BE2216E00805E0C /* ZJStatusTextView.m in Sources */,
 				547AF2971BDE16B0008A949B /* UITextView+Extension.m in Sources */,
 				547A886C1BE2216E00805E0C /* ZJStatusPhotosView.m in Sources */,
+				54042C2D1BE74DD800183AFC /* ZJComment.m in Sources */,
 				54042C221BE6F7A700183AFC /* ZJStatusDetailBottomToolBar.m in Sources */,
 				547A886F1BE2216E00805E0C /* ZJStatusToolBar.m in Sources */,
 				5444C6431BDBBC2300C7A5C1 /* ZJComposeToolBar.m in Sources */,

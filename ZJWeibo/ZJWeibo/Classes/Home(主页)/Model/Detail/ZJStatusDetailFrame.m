@@ -125,9 +125,9 @@
     }
     
     //工具条
-    CGFloat retweetedToolBarX = ZJScreenW * 0.5 - ZJStatusCellBorderW;
-    CGFloat retweetedToolBarW = ZJScreenW * 0.5 - ZJStatusCellBorderW;
+    CGFloat retweetedToolBarW = ZJScreenW * 0.6 ;
     CGFloat retweetedToolBarH = 20;
+    CGFloat retweetedToolBarX = ZJScreenW - ZJStatusCellBorderW - retweetedToolBarW;
     self.retweetedToolBarF = CGRectMake(retweetedToolBarX, retweetedToolBarY, retweetedToolBarW, retweetedToolBarH);
     
     /** 转发微博整体 */

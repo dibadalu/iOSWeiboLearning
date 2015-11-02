@@ -13,7 +13,7 @@ typedef enum {
     ZJStatusDetailTopToolbarButtonCommentType
 }ZJStatusDetailTopToolbarButtonType;
 
-@class ZJStatusDetailTopToolBar;
+@class ZJStatusDetailTopToolBar,ZJStatus;
 //声明代理协议
 @protocol ZJStatusDetailTopToolBarDelegate <NSObject>
 
@@ -29,5 +29,12 @@ typedef enum {
 
 /** 设置代理属性 */
 @property(nonatomic,weak) id<ZJStatusDetailTopToolBarDelegate> delegate;
+
+/** 微博模型数据 */
+@property(nonatomic,strong) ZJStatus *status;
+
+/** 选中按钮类型 */
+@property(nonatomic,assign) ZJStatusDetailTopToolbarButtonType selectedButtonType;
+
 
 @end

@@ -19,6 +19,8 @@
 #import "ZJConst.h"
 #import "NSString+Emoji.h"
 #import "UITextView+Extension.h"
+#import "UIImage+ZJExtension.h"
+
 
 
 #ifdef DEBUG //调试状态，打开LOG功能
@@ -29,6 +31,9 @@
 
 //随机色
 #define ZJRandomColor [UIColor colorWithRed:arc4random_uniform(256)/255.0 green:arc4random_uniform(256)/255.0 blue:arc4random_uniform(256)/255.0 alpha:1.0]
+
+//全局背景色
+#define ZJGrobalColor [UIColor colorWithRed:221/255.0 green:221/255.0 blue:221/255.0 alpha:1.0]
 
 //设置通知中心
 #define ZJNotificationCenter [NSNotificationCenter defaultCenter]
@@ -53,5 +58,7 @@
 
 //屏幕的宽度
 #define ZJScreenW ([UIScreen mainScreen].bounds.size.width)
+
+#define ZJCellMargin 10
 
 #endif

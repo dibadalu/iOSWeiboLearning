@@ -30,8 +30,8 @@
     ZJHomeViewController *home = [[ZJHomeViewController alloc] init];
     [self addOneChirdVC:home title:@"主页" image:@"tabbar_home" selectedImage:@"tabbar_home_selected"];
     //message
-    ZJMessageViewController *message = [[ZJMessageViewController alloc] init];
-    [self addOneChirdVC:message title:@"消息" image:@"tabbar_message_center" selectedImage:@"tabbar_message_center_selected"];
+//    ZJMessageViewController *message = [[ZJMessageViewController alloc] init];
+//    [self addOneChirdVC:message title:@"消息" image:@"tabbar_message_center" selectedImage:@"tabbar_message_center_selected"];
     //discover
     ZJDiscoverViewController *discover = [[ZJDiscoverViewController alloc] init];
     [self addOneChirdVC:discover title:@"探索" image:@"tabbar_discover" selectedImage:@"tabbar_discover_selected"];

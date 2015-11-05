@@ -4,7 +4,7 @@
 //
 //  Created by dibadalu on 15/10/19.
 //  Copyright (c) 2015年 dibadalu. All rights reserved.
-// 针对x、y、width、height、size的扩展
+// 针对x、y、centerX、centerY、width、height、size的扩展
 
 #import <UIKit/UIKit.h>
 

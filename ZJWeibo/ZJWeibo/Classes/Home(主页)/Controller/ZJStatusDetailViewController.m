@@ -76,7 +76,6 @@
     
 }
 
-
 #pragma mark - init method
 /**
  *  创建tableView
@@ -86,7 +85,7 @@
     UITableView *tableView = [[UITableView alloc] init];
     tableView.width = self.view.width;
     tableView.height = self.view.height - 35;
-    tableView.backgroundColor = [UIColor colorWithRed:240/255.0 green:240/255.0 blue:240/255.0 alpha:1.0];
+    tableView.backgroundColor = ZJGrobalColor;
     tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     tableView.delegate = self;
     tableView.dataSource = self;
@@ -210,7 +209,7 @@
     
     //2.发送请求
     [ZJHttpTool get:@"https://api.weibo.com/2/statuses/repost_timeline.json" params:params success:^(id json) {
-//        ZJLog(@"请求成功---%@--%@",json[@"total_number"],json);//转发内容的接口被封
+        ZJLog(@"请求成功---%@--%@",json[@"total_number"],json);//转发内容的接口被封
        
         //将字典 转换为 转发结果模型
         ZJRepostResult *repostResults = [ZJRepostResult objectWithKeyValues:json];
@@ -223,9 +222,10 @@
         
         //刷新表格
 //        dispatch_async(dispatch_get_main_queue(), ^{
-        
             [self.tableView reloadData];
 //        });
+        
+
  
     } failure:^(NSError *error) {
         ZJLog(@"请求失败---%@",error);

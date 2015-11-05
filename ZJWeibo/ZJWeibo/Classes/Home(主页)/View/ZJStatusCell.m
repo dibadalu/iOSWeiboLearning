@@ -158,7 +158,7 @@
     /* 转发微博 */
     /** 转发微博整体 */
     UIView *retweetedView = [[UIView alloc] init];
-    retweetedView.backgroundColor = [UIColor colorWithRed:240/255.0 green:240/255.0 blue:240/255.0 alpha:1.0];
+    retweetedView.backgroundColor = ZJGrobalColor;
     [self.contentView addSubview:retweetedView];
     self.retweetedView = retweetedView;
     

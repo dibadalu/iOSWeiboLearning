@@ -170,12 +170,12 @@
     
     switch (buttonType) {
         case ZJStatusDetailTopToolbarButtonRetweetedType:
-            ZJLog(@"转发");
+//            ZJLog(@"转发");
             //获取转发内容
             [self loadRetweeteds];
             break;
         case ZJStatusDetailTopToolbarButtonCommentType:
-            ZJLog(@"评论");
+//            ZJLog(@"评论");
             //获取评论内容
             [self loadComments];
             break;
@@ -189,7 +189,7 @@
  */
 - (void)loadRetweeteds
 {
-    ZJLog(@"loadRetweeteds");
+//    ZJLog(@"loadRetweeteds");
     /*
      https://api.weibo.com/2/statuses/repost_timeline.json  get
      
@@ -238,7 +238,7 @@
  */
 - (void)loadComments
 {
-    ZJLog(@"loadComments");
+//    ZJLog(@"loadComments");
     /*
      https://api.weibo.com/2/comments/show.json  get 
      

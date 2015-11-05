@@ -8,10 +8,61 @@
 
 #import "ZJCommonCell.h"
 #import "ZJCommonItem.h"
+#import "ZJCommonArrowItem.h"
+#import "ZJCommonSwitchItem.h"
+#import "ZJCommonLabelItem.h"
+#import "ZJBadgeView.h"
+
+@interface ZJCommonCell ()
+
+@property(nonatomic,strong) UIView *rightArrow;
+@property(nonatomic,strong) UIView *rightSwitch;
+@property(nonatomic,strong) UILabel *rightLabel;
+@property(nonatomic,strong) ZJBadgeView *badgeView;
+
+@end
+
 
 @implementation ZJCommonCell
+#pragma mark - lazy method 
+- (UIView *)rightArrow
+{
+    if (!_rightArrow) {
+        self.rightArrow = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"common_icon_arrow"]];
+    }
+    return _rightArrow;
+}
+
+- (UIView *)rightSwitch
+{
+    if (!_rightSwitch) {
+        self.rightSwitch = [[UISwitch alloc] init];
+    }
+    return _rightSwitch;
+}
+
+- (UILabel *)rightLabel
+{
+    if (!_rightLabel) {
+        self.rightLabel = [[UILabel alloc] init];
+        self.rightLabel.textColor = [UIColor lightGrayColor];
+        self.rightLabel.font = [UIFont systemFontOfSize:14];
+    }
+    return _rightLabel;
+}
+
+- (ZJBadgeView *)badgeView
+{
+    if (!_badgeView) {
+        self.badgeView = [[ZJBadgeView alloc] init];
+    }
+    return _badgeView;
+}
 
 #pragma mark - init method
+/**
+ *  类方法：创建cell
+ */
 + (instancetype)cellWithTableView:(UITableView *)tableview
 {
     static NSString *ID = @"common";
@@ -23,6 +74,9 @@
 }
 
 #pragma mark - system method
+/**
+ *  初始化设置：只调用一次
+ */
 - (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
@@ -42,7 +96,9 @@
     }
     return self;
 }
-
+/**
+ *  设置子控件的位置
+ */
 - (void)layoutSubviews
 {
     [super layoutSubviews];
@@ -52,6 +108,11 @@
 }
 
 #pragma mark - setter
+/**
+ *  设置item数据
+ *
+ *  @param item 从控制器传进来的ZJCommonItem模型数据
+ */
 - (void)setItem:(ZJCommonItem *)item
 {
     _item = item;
@@ -61,8 +122,31 @@
     self.textLabel.text = item.title;
     self.detailTextLabel.text = item.subTitle;
     
+    //2.设置cell的右边样式
+    if (item.badgeValue) {//特殊情况：右边样式为数字标识
+        //设置数字
+        self.badgeView.badgeValue = item.badgeValue;
+        self.accessoryView = self.badgeView;
+    }else if ([item isKindOfClass:[ZJCommonArrowItem class]]) {
+        self.accessoryView = self.rightArrow;
+    }else if ([item isKindOfClass:[ZJCommonSwitchItem class]]){
+        self.accessoryView = self.rightSwitch;
+    }else if ([item isKindOfClass:[ZJCommonLabelItem class]]){
+        ZJCommonLabelItem *lableItem = (ZJCommonLabelItem *)item;//取出模型
+        //设置右边label上的文字
+        self.rightLabel.text = lableItem.text;
+        //设置文字尺寸（只有设置尺寸才会显示）
+        self.rightLabel.size = [lableItem.text sizeWithFont:self.rightLabel.font];
+        self.accessoryView = self.rightLabel;
+    }else{
+        self.accessoryView = nil;
+    }
+    
 }
 
+/**
+ *  设置背景图片
+ */
 - (void)setIndexPath:(NSIndexPath *)indexPath rowsInSection:(NSUInteger)rows
 {
     //1.取出背景view

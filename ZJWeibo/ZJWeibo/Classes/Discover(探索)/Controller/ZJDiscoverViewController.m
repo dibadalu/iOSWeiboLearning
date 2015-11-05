@@ -11,6 +11,9 @@
 #import "ZJCommonItem.h"
 #import "ZJCommonGroup.h"
 #import "ZJCommonCell.h"
+#import "ZJCommonArrowItem.h"
+#import "ZJCommonSwitchItem.h"
+#import "ZJCommonLabelItem.h"
 
 @interface ZJDiscoverViewController ()<UIScrollViewDelegate>
 
@@ -123,9 +126,11 @@
     //2.设置组的所有行
     ZJCommonItem *video = [ZJCommonItem itemWithTitle:@"视频" icon:@"video"];
     ZJCommonItem *music = [ZJCommonItem itemWithTitle:@"音乐" icon:@"music"];
-    ZJCommonItem *movie = [ZJCommonItem itemWithTitle:@"电影" icon:@"movie"];
-    ZJCommonItem *cast = [ZJCommonItem itemWithTitle:@"播客" icon:@"cast"];
-    ZJCommonItem *more = [ZJCommonItem itemWithTitle:@"更多" icon:@"more"];
+    music.badgeValue = @"998";//右边样式为数字标识
+    ZJCommonLabelItem *movie = [ZJCommonLabelItem itemWithTitle:@"电影" icon:@"movie"];
+    movie.text = @"最新最热门的电影";
+    ZJCommonSwitchItem *cast = [ZJCommonSwitchItem itemWithTitle:@"播客" icon:@"cast"];
+    ZJCommonArrowItem *more = [ZJCommonArrowItem itemWithTitle:@"更多" icon:@"more"];
     
     group.items = @[video,music,movie,cast,more];
 }

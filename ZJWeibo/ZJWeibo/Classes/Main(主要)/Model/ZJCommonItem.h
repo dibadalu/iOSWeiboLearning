@@ -18,6 +18,10 @@
 @property(nonatomic,copy) NSString *subTitle;
 /** 右边显示的数字标识 */
 @property(nonatomic,copy) NSString *badgeValue;
+/** 目标控制器 */
+@property(nonatomic,assign) Class destVcClass;
+/** 用block封装点击item时所要执行的操作 copy属性 */
+@property(nonatomic,copy) void (^operation)();
 
 
 + (instancetype)itemWithTitle:(NSString *)title icon:(NSString *)icon;

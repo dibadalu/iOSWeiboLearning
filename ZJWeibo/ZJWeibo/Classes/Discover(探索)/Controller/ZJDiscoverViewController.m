@@ -14,6 +14,8 @@
 #import "ZJCommonArrowItem.h"
 #import "ZJCommonSwitchItem.h"
 #import "ZJCommonLabelItem.h"
+#import "ZJOneViewController.h"
+#import "ZJTwoViewController.h"
 
 @interface ZJDiscoverViewController ()<UIScrollViewDelegate>
 
@@ -112,8 +114,15 @@
     
     //2.设置组的所有行
     ZJCommonItem *gameCenter = [ZJCommonItem itemWithTitle:@"游戏中心" icon:@"game_center"];
+    gameCenter.operation = ^{
+        ZJLog(@"点击了游戏中心");
+    };
     ZJCommonItem *near = [ZJCommonItem itemWithTitle:@"周边" icon:@"near"];
+    near.operation = ^{
+        ZJLog(@"点击了周边");
+    };
     ZJCommonItem *app = [ZJCommonItem itemWithTitle:@"应用" icon:@"app"];
+    app.destVcClass = [ZJTwoViewController class];
     
     group.items = @[gameCenter,near,app];
 }
@@ -125,6 +134,7 @@
     
     //2.设置组的所有行
     ZJCommonItem *video = [ZJCommonItem itemWithTitle:@"视频" icon:@"video"];
+    video.destVcClass = [ZJOneViewController class];
     ZJCommonItem *music = [ZJCommonItem itemWithTitle:@"音乐" icon:@"music"];
     music.badgeValue = @"998";//右边样式为数字标识
     ZJCommonLabelItem *movie = [ZJCommonLabelItem itemWithTitle:@"电影" icon:@"movie"];
@@ -156,6 +166,29 @@
     [cell setIndexPath:indexPath rowsInSection:group.items.count];
 
     return cell;
+}
+
+#pragma mark - UITableViewDelegate
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    //1.取出item模型
+    ZJCommonGroup *group = self.groups[indexPath.section];
+    ZJCommonItem *item = group.items[indexPath.row];
+    
+    //2.判断该item有无需要跳转的目标控制器
+    if (item.destVcClass) {
+//        UIViewController *destVc = (UIViewController *)item.destVcClass;//错误
+        UIViewController *destVc = [[item.destVcClass alloc] init];
+        destVc.title = item.title;
+        [self.navigationController pushViewController:destVc animated:YES];
+    }
+    
+    //3.判断该item有无需要执行的操作
+    if (item.operation) {
+        item.operation();
+    }
+    
+    
 }
 
 #pragma mark - UIScrollViewDelegate

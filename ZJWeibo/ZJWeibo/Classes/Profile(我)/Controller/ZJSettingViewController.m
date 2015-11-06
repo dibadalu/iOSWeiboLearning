@@ -12,6 +12,8 @@
 #import "ZJCommonArrowItem.h"
 #import "ZJCommonSwitchItem.h"
 #import "ZJCommonLabelItem.h"
+#import <SDImageCache.h>
+#import "MBProgressHUD+MJ.h"
 
 
 @implementation ZJSettingViewController
@@ -106,7 +108,35 @@
     //2.设置组的所有行
     ZJCommonSwitchItem *night = [ZJCommonSwitchItem itemWithTitle:@"夜间模式"];
     ZJCommonLabelItem *cache = [ZJCommonLabelItem itemWithTitle:@"清除缓存"];
-    cache.text = @"282.0MB";
+    //计算图片缓存的字节
+    int byteSize = [SDImageCache sharedImageCache].getSize;
+    double size = byteSize / 1000.0 /1000.0;//记得加.0
+    cache.text = [NSString stringWithFormat:@"%.1fMB",size];
+    
+    __weak typeof(cache) weakCache = cache;
+    __weak typeof(self) weakSettingVc = self;
+    cache.operation = ^{//需要执行的操作：清除缓存
+//        ZJLog(@"清除缓存");
+        [MBProgressHUD showMessage:@"正在清除缓存中..."];
+        
+        //清除缓存
+        [[SDImageCache sharedImageCache] cleanDisk];
+        
+        //文件管理者
+        NSFileManager *mgr = [NSFileManager defaultManager];
+        //缓存路径
+        NSString *caches = [NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES) lastObject];
+        //移除所有文件/文件夹
+        [mgr removeItemAtPath:caches error:nil];
+        
+        //设置item右边label为0
+        weakCache.text = nil;
+        
+        //刷新表格
+        [weakSettingVc.tableView reloadData];
+        
+        [MBProgressHUD hideHUD];
+    };
     group.items = @[night,cache];
 }
 

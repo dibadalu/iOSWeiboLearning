@@ -117,7 +117,7 @@
     _item = item;
     
     //1.设置cell的基本数据
-    if (item.icon) {        
+    if (item.icon) {
         self.imageView.image = [UIImage imageNamed:item.icon];
     }
     self.textLabel.text = item.title;

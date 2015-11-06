@@ -988,8 +988,6 @@
 			isa = PBXGroup;
 			children = (
 				5421DAA81BD4CED400B82561 /* Controller */,
-				5421DAA91BD4CED400B82561 /* Model */,
-				5421DAAA1BD4CED400B82561 /* View */,
 			);
 			path = "Message(消息)";
 			sourceTree = "<group>";
@@ -1001,20 +999,6 @@
 				544A87231BD4D77100659A85 /* ZJMessageViewController.m */,
 			);
 			path = Controller;
-			sourceTree = "<group>";
-		};
-		5421DAA91BD4CED400B82561 /* Model */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Model;
-			sourceTree = "<group>";
-		};
-		5421DAAA1BD4CED400B82561 /* View */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = View;
 			sourceTree = "<group>";
 		};
 		5421DAAB1BD4CED400B82561 /* OAuth(授权) */ = {

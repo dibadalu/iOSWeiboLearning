@@ -129,8 +129,8 @@
         //移除所有文件/文件夹
         [mgr removeItemAtPath:caches error:nil];
         
-        //设置item右边label为0
-        weakCache.text = nil;
+        //设置item右边label为0.0MB
+        weakCache.text = [NSString stringWithFormat:@"0.0MB"];
         
         //刷新表格
         [weakSettingVc.tableView reloadData];

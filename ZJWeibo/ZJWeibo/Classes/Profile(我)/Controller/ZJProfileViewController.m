@@ -13,13 +13,19 @@
 #import "ZJCommonSwitchItem.h"
 #import "ZJCommonLabelItem.h"
 #import "ZJSettingViewController.h"
+#import "ZJProfileHeaderView.h"
+#import "ZJAccountTool.h"
+#import "ZJAccount.h"
 
 
 @interface ZJProfileViewController ()
 
+
 @end
 
 @implementation ZJProfileViewController
+
+
 #pragma mark - system method
 - (void)viewDidLoad
 {
@@ -30,24 +36,31 @@
     
     //navigationBar的设置按钮
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"设置" style:UIBarButtonItemStylePlain target:self action:@selector(setting)];
+    
+    //设置tableHeaderView
+    [self setupHeaderView];
+   
 
 }
-
-#pragma mark - action method
-- (void)setting
-{
-//    ZJLog(@"setting");
-    ZJSettingViewController *settingVc = [[ZJSettingViewController alloc] init];
-    settingVc.title = @"设置";
-    [self.navigationController pushViewController:settingVc animated:YES];
-}
-
 #pragma mark - init method
+/**
+ *  设置tableHeaderView
+ */
+- (void)setupHeaderView
+{
+    ZJAccount *acount = [ZJAccountTool account];
+    ZJProfileHeaderView *headerView = [[ZJProfileHeaderView alloc] init];
+    headerView.account = acount;//将账号模型数据传给ZJProfileHeaderView
+    headerView.frame = CGRectMake(0, 0, self.view.width, 100);
+    self.tableView.tableHeaderView = headerView;
+    self.tableView.contentInset = UIEdgeInsetsMake(ZJCellMargin, 0, 0, 0);
+}
 /**
  *  初始化模型数据
  */
 - (void)setupGroups
 {
+    //设置headerView
     [self setupGroup0];
     [self setupGroup1];
 
@@ -79,6 +92,24 @@
     like.subTitle = @"(182)";
 
     group.items = @[album,collect,like];
+}
+
+#pragma mark - action method
+- (void)setting
+{
+    //    ZJLog(@"setting");
+    ZJSettingViewController *settingVc = [[ZJSettingViewController alloc] init];
+    settingVc.title = @"设置";
+    [self.navigationController pushViewController:settingVc animated:YES];
+}
+
+#pragma mark - UITableViewDelegate
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
+{
+    if (section == 0) {
+        return ZJCellMargin + 3;
+    }
+    return 0.0;
 }
 
 

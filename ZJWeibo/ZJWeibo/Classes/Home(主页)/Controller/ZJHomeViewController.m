@@ -120,8 +120,10 @@
         ZJUser *user = [ZJUser objectWithKeyValues:json];
         [titleBtn setTitle:user.name forState:UIControlStateNormal];
         
-        //将昵称存储到沙盒
+        //将昵称和头像存储到沙盒
         account.name = user.name;
+        account.profile_image_url = user.profile_image_url;
+        account.descriptionText = json[@"description"];
         [ZJAccountTool saveAccount:account];
     } failure:^(NSError *error) {
         ZJLog(@"请求失败--%@",error);

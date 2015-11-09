@@ -32,6 +32,11 @@
 /** 用户的昵称 */
 @property(nonatomic,copy) NSString *name;
 
+/** 用户的头像 */
+@property(nonatomic,copy) NSString *profile_image_url;
+
+/** 用户的简介 */
+@property(nonatomic,copy) NSString *descriptionText;
 
 + (instancetype)accountWithDict:(NSDictionary *)dict;
 

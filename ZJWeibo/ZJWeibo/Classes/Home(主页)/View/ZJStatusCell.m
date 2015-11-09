@@ -183,7 +183,6 @@
     self.toolBar = toolBar;
 }
 
-
 #pragma mark - 传值
 /**
  *  设置原创微博的frame和微博数据

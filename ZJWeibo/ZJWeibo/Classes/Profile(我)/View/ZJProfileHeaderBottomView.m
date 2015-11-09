@@ -16,7 +16,6 @@
 @property (weak, nonatomic) IBOutlet UIButton *followerBtn;
 - (IBAction)btnClick:(UIButton *)button;
 
-
 @end
 
 @implementation ZJProfileHeaderBottomView
@@ -70,6 +69,7 @@
     [btn setTitle:title forState:UIControlStateSelected];
 }
 
+#pragma mark - action method 
 - (IBAction)btnClick:(UIButton *)button {
     ZJLog(@"btnClick");
 }

@@ -11,12 +11,13 @@
 #import <UIImageView+WebCache.h>
 #import "ZJProfileHeaderBottomView.h"
 
+
 #define ZJProfileNameFont [UIFont systemFontOfSize:18]
 #define ZJProfileDetailFont [UIFont systemFontOfSize:10]
 
 @interface ZJProfileHeaderView ()
 
-@property(nonatomic,weak) UIView *topView;
+@property(nonatomic,weak) UIButton *topView;
 @property(nonatomic,weak) UIImageView *iconView;
 @property(nonatomic,weak) UILabel *nameLabel;
 @property(nonatomic,weak) UILabel *detailLabel;
@@ -92,7 +93,8 @@
 - (void)setupTopView
 {
     //topView
-    UIView *topView = [[UIView alloc] init];
+    UIButton *topView = [[UIButton alloc] init];
+    [topView addTarget:self action:@selector(topViewBtnClick) forControlEvents:UIControlEventTouchUpInside];
     [self addSubview:topView];
     self.topView = topView;
     
@@ -146,6 +148,17 @@
     _infoCount = infoCount;
     
     self.bottomView.infoCount = infoCount;
+}
+
+#pragma mark - action method
+- (void)topViewBtnClick
+{
+//    ZJLog(@"topViewBtnClick");
+
+    //通知代理做事情
+    if ([self.delegate respondsToSelector:@selector(profileHeaderView:)]) {
+        [self.delegate profileHeaderView:self];
+    }
 }
 
 @end

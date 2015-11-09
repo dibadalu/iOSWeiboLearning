@@ -19,8 +19,9 @@
 #import "ZJHttpTool.h"
 #import <MJExtension.h>
 #import "ZJInfoCount.h"
+#import "ZJProfileDetailViewController.h"
 
-@interface ZJProfileViewController ()
+@interface ZJProfileViewController ()<ZJProfileHeaderViewDelegate>
 
 @property(nonatomic,weak) ZJInfoCount *infoCount;
 @property(nonatomic,weak) ZJProfileHeaderView *headerView;
@@ -28,7 +29,6 @@
 @end
 
 @implementation ZJProfileViewController
-
 
 #pragma mark - system method
 - (void)viewDidLoad
@@ -46,9 +46,9 @@
     
     //获取用户信息
     [self setupUserInfo];
-   
-
+    
 }
+
 #pragma mark - init method
 /**
  *  初始化模型数据
@@ -88,7 +88,6 @@
 
     group.items = @[album,collect,like];
 }
-
 /**
  *  设置tableHeaderView
  */
@@ -98,11 +97,11 @@
     ZJProfileHeaderView *headerView = [[ZJProfileHeaderView alloc] init];
     headerView.account = acount;//将账号模型数据传给ZJProfileHeaderView
     headerView.frame = CGRectMake(0, 0, self.view.width, 100);
+    headerView.delegate = self;//设置代理
     self.tableView.tableHeaderView = headerView;
     self.tableView.contentInset = UIEdgeInsetsMake(ZJCellMargin, 0, 0, 0);
     self.headerView = headerView;
 }
-
 /**
  *  获取用户信息
  */
@@ -151,5 +150,13 @@
     return 0.0;
 }
 
+#pragma mark - ZJProfileHeaderViewDelegate
+- (void)profileHeaderView:(ZJProfileHeaderView *)profileHeaderView
+{
+//    ZJLog(@"ZJProfileViewController---profileHeaderView");
+    ZJProfileDetailViewController *profileDetailVc = [[ZJProfileDetailViewController alloc] init];
+    [self.navigationController pushViewController:profileDetailVc animated:YES];
+    
+}
 
 @end

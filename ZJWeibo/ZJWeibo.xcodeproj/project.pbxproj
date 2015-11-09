@@ -53,6 +53,7 @@
 		54703FC41BF08DF9003F8207 /* ZJProfileHeaderBottomView.m in Sources */ = {isa = PBXBuildFile; fileRef = 54703FC31BF08DF9003F8207 /* ZJProfileHeaderBottomView.m */; };
 		54703FC61BF090E8003F8207 /* ZJProfileHeaderBottomView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 54703FC51BF090E8003F8207 /* ZJProfileHeaderBottomView.xib */; };
 		54703FCA1BF0B16B003F8207 /* ZJInfoCount.m in Sources */ = {isa = PBXBuildFile; fileRef = 54703FC91BF0B16B003F8207 /* ZJInfoCount.m */; };
+		54703FCD1BF0C1CE003F8207 /* ZJProfileDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 54703FCC1BF0C1CE003F8207 /* ZJProfileDetailViewController.m */; };
 		547272A21BDCB86D0021D9EA /* ZJEmotionKeyboard.m in Sources */ = {isa = PBXBuildFile; fileRef = 547272A11BDCB86D0021D9EA /* ZJEmotionKeyboard.m */; };
 		547272A51BDCBBA20021D9EA /* ZJEmotionListView.m in Sources */ = {isa = PBXBuildFile; fileRef = 547272A41BDCBBA20021D9EA /* ZJEmotionListView.m */; };
 		547272A81BDCBBB50021D9EA /* ZJEmotionTabBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 547272A71BDCBBB50021D9EA /* ZJEmotionTabBar.m */; };
@@ -415,6 +416,8 @@
 		54703FC51BF090E8003F8207 /* ZJProfileHeaderBottomView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ZJProfileHeaderBottomView.xib; sourceTree = "<group>"; };
 		54703FC81BF0B16B003F8207 /* ZJInfoCount.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZJInfoCount.h; sourceTree = "<group>"; };
 		54703FC91BF0B16B003F8207 /* ZJInfoCount.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZJInfoCount.m; sourceTree = "<group>"; };
+		54703FCB1BF0C1CE003F8207 /* ZJProfileDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZJProfileDetailViewController.h; sourceTree = "<group>"; };
+		54703FCC1BF0C1CE003F8207 /* ZJProfileDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZJProfileDetailViewController.m; sourceTree = "<group>"; };
 		547272A01BDCB86D0021D9EA /* ZJEmotionKeyboard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZJEmotionKeyboard.h; sourceTree = "<group>"; };
 		547272A11BDCB86D0021D9EA /* ZJEmotionKeyboard.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZJEmotionKeyboard.m; sourceTree = "<group>"; };
 		547272A31BDCBBA20021D9EA /* ZJEmotionListView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZJEmotionListView.h; sourceTree = "<group>"; };
@@ -1057,6 +1060,8 @@
 				544A87291BD4D78F00659A85 /* ZJProfileViewController.m */,
 				54689AFF1BEC721A002FAD95 /* ZJSettingViewController.h */,
 				54689B001BEC721A002FAD95 /* ZJSettingViewController.m */,
+				54703FCB1BF0C1CE003F8207 /* ZJProfileDetailViewController.h */,
+				54703FCC1BF0C1CE003F8207 /* ZJProfileDetailViewController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -1873,6 +1878,7 @@
 				54A911B61BE8B05200B9720D /* ZJCommonItem.m in Sources */,
 				547A88911BE26D5B00805E0C /* ZJStatusFrame.m in Sources */,
 				547A88941BE26D6A00805E0C /* ZJStatusCell.m in Sources */,
+				54703FCD1BF0C1CE003F8207 /* ZJProfileDetailViewController.m in Sources */,
 				54A3AD861BDA63E300F4C89F /* ZJTextView.m in Sources */,
 				54689AFE1BEC6F72002FAD95 /* ZJCommonViewController.m in Sources */,
 				547272A81BDCBBB50021D9EA /* ZJEmotionTabBar.m in Sources */,

@@ -54,7 +54,6 @@
     
     self.tableView.tableFooterView = footerBtn;
 }
-
 /**
  *  初始化模型数据
  */

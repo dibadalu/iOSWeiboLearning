@@ -7,7 +7,14 @@
 //  profile的tableHeaderView
 
 #import <UIKit/UIKit.h>
-@class ZJAccount,ZJInfoCount;
+@class ZJAccount,ZJInfoCount,ZJProfileHeaderView;
+
+@protocol ZJProfileHeaderViewDelegate <NSObject>
+
+@optional
+- (void)profileHeaderView:(ZJProfileHeaderView *)profileHeaderView;
+
+@end
 
 @interface ZJProfileHeaderView : UIView
 
@@ -15,4 +22,7 @@
 @property(nonatomic,strong) ZJAccount *account;
 /** ZJInfoCount模型 */
 @property(nonatomic,strong) ZJInfoCount *infoCount;
+
+@property(nonatomic,weak) id<ZJProfileHeaderViewDelegate> delegate;
+
 @end

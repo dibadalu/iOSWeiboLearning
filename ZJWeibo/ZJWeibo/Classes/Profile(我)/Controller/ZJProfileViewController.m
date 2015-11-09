@@ -16,10 +16,14 @@
 #import "ZJProfileHeaderView.h"
 #import "ZJAccountTool.h"
 #import "ZJAccount.h"
-
+#import "ZJHttpTool.h"
+#import <MJExtension.h>
+#import "ZJInfoCount.h"
 
 @interface ZJProfileViewController ()
 
+@property(nonatomic,weak) ZJInfoCount *infoCount;
+@property(nonatomic,weak) ZJProfileHeaderView *headerView;
 
 @end
 
@@ -39,22 +43,13 @@
     
     //设置tableHeaderView
     [self setupHeaderView];
+    
+    //获取用户信息
+    [self setupUserInfo];
    
 
 }
 #pragma mark - init method
-/**
- *  设置tableHeaderView
- */
-- (void)setupHeaderView
-{
-    ZJAccount *acount = [ZJAccountTool account];
-    ZJProfileHeaderView *headerView = [[ZJProfileHeaderView alloc] init];
-    headerView.account = acount;//将账号模型数据传给ZJProfileHeaderView
-    headerView.frame = CGRectMake(0, 0, self.view.width, 100);
-    self.tableView.tableHeaderView = headerView;
-    self.tableView.contentInset = UIEdgeInsetsMake(ZJCellMargin, 0, 0, 0);
-}
 /**
  *  初始化模型数据
  */
@@ -92,6 +87,50 @@
     like.subTitle = @"(182)";
 
     group.items = @[album,collect,like];
+}
+
+/**
+ *  设置tableHeaderView
+ */
+- (void)setupHeaderView
+{
+    ZJAccount *acount = [ZJAccountTool account];
+    ZJProfileHeaderView *headerView = [[ZJProfileHeaderView alloc] init];
+    headerView.account = acount;//将账号模型数据传给ZJProfileHeaderView
+    headerView.frame = CGRectMake(0, 0, self.view.width, 100);
+    self.tableView.tableHeaderView = headerView;
+    self.tableView.contentInset = UIEdgeInsetsMake(ZJCellMargin, 0, 0, 0);
+    self.headerView = headerView;
+}
+
+/**
+ *  获取用户信息
+ */
+- (void)setupUserInfo
+{
+    /*
+     https://api.weibo.com/2/users/show.json
+     access_token	false	string	采用OAuth授权方式为必填参数，其他授权方式不需要此参数，OAuth授权后获得。
+     uid	false	int64	需要查询的用户ID。
+     */
+    
+    //1.拼接请求参数
+    ZJAccount *account = [ZJAccountTool account];//取得模型
+    NSMutableDictionary *params = [NSMutableDictionary dictionary];
+    params[@"access_token"] = account.access_token;
+    params[@"uid"] = account.uid;
+    
+    //2.发送请求
+    [ZJHttpTool get:@"https://api.weibo.com/2/users/show.json" params:params success:^(id json) {
+//        ZJLog(@"请求成功--%@",json);
+        ////通过MJExtension字典转模型
+        ZJInfoCount *infoCount = [ZJInfoCount objectWithKeyValues:json];
+        self.headerView.infoCount = infoCount;
+        
+    } failure:^(NSError *error) {
+        ZJLog(@"请求失败--%@",error);
+    }];
+
 }
 
 #pragma mark - action method

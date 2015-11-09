@@ -13,6 +13,7 @@
 
 #define ZJProfileNameFont [UIFont systemFontOfSize:18]
 #define ZJProfileDetailFont [UIFont systemFontOfSize:10]
+
 @interface ZJProfileHeaderView ()
 
 @property(nonatomic,weak) UIView *topView;
@@ -138,6 +139,13 @@
     //简介
     self.detailLabel.text = [NSString stringWithFormat:@"简介: %@",account.descriptionText];
     
+}
+
+- (void)setInfoCount:(ZJInfoCount *)infoCount
+{
+    _infoCount = infoCount;
+    
+    self.bottomView.infoCount = infoCount;
 }
 
 @end

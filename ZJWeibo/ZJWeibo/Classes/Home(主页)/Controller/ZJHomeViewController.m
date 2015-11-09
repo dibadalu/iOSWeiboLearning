@@ -125,6 +125,8 @@
         account.profile_image_url = user.profile_image_url;
         account.descriptionText = json[@"description"];
         [ZJAccountTool saveAccount:account];
+        
+        
     } failure:^(NSError *error) {
         ZJLog(@"请求失败--%@",error);
     }];

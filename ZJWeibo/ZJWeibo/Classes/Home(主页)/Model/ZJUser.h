@@ -5,13 +5,7 @@
 //  Created by dibadalu on 15/10/20.
 //  Copyright (c) 2015年 dibadalu. All rights reserved.
 // 用户模型，存放从新浪服务器获得的与用户相关的数据
-/*
- followers_count	int	粉丝数
- friends_count	int	关注数
- statuses_count	int	微博数
- favourites_count	int	收藏数
- 
- */
+
 #warning 注意所有模型的属性名称要保证与服务器的名称一致
 
 typedef enum {
@@ -53,13 +47,5 @@ typedef enum {
 /** 认证类型 */
 @property (nonatomic, assign) ZJUserVerifiedType verified_type;
 
-/** 微博数 */
-@property (nonatomic, assign) int statuses_count;
-/** 关注数 */
-@property (nonatomic, assign) int friends_count;
-/** 粉丝数 */
-@property (nonatomic, assign) int followers_count;
-/** 收藏数 */
-@property (nonatomic, assign) int favourites_count;
 
 @end

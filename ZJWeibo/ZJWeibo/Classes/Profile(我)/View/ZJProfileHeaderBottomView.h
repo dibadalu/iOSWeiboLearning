@@ -7,14 +7,16 @@
 //
 
 #import <UIKit/UIKit.h>
-@class ZJUser;
+@class ZJInfoCount;
 
 @interface ZJProfileHeaderBottomView : UIView
 
 /** 类方法 */
 + (instancetype)headerBottomView;
 
-/** 用户模型 */
-@property(nonatomic,strong) ZJUser *user;
+
+
+/** ZJInfoCount模型 */
+@property(nonatomic,strong) ZJInfoCount *infoCount;
 
 @end

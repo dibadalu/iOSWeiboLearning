@@ -7,7 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+@class ZJAccount;
 
 @interface ZJProfileDetailViewController : UIViewController
+
+/** 账号模型 */
+@property(nonatomic,strong) ZJAccount *account;
 
 @end

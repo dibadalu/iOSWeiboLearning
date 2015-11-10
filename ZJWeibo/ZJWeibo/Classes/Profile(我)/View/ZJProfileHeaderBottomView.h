@@ -14,8 +14,6 @@
 /** 类方法 */
 + (instancetype)headerBottomView;
 
-
-
 /** ZJInfoCount模型 */
 @property(nonatomic,strong) ZJInfoCount *infoCount;
 

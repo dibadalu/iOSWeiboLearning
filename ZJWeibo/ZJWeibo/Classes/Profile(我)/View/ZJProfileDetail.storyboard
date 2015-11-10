@@ -27,10 +27,10 @@
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="200"/>
                                     </imageView>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="suoluobg" translatesAutoresizingMaskIntoConstraints="NO" id="QJ3-hC-Chm">
-                                        <rect key="frame" x="128" y="72" width="64" height="64"/>
+                                        <rect key="frame" x="135" y="86" width="50" height="50"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="64" id="Ds8-V5-cA3"/>
-                                            <constraint firstAttribute="width" constant="64" id="z3L-qm-HuG"/>
+                                            <constraint firstAttribute="height" constant="50" id="Ds8-V5-cA3"/>
+                                            <constraint firstAttribute="width" constant="50" id="z3L-qm-HuG"/>
                                         </constraints>
                                     </imageView>
                                 </subviews>
@@ -94,12 +94,13 @@
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
                         <outlet property="headerViewHCons" destination="EFr-Gd-rEW" id="5T3-wx-c8f"/>
+                        <outlet property="iconView" destination="QJ3-hC-Chm" id="7Uq-1q-61f"/>
                         <outlet property="tableView" destination="zQ6-8u-qRY" id="OBr-9b-TV4"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="631-YO-G6u" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="198" y="251"/>
+            <point key="canvasLocation" x="226" y="245"/>
         </scene>
     </scenes>
     <resources>

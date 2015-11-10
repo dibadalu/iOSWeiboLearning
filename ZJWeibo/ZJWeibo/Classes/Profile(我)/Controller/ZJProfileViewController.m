@@ -19,12 +19,12 @@
 #import "ZJHttpTool.h"
 #import <MJExtension.h>
 #import "ZJInfoCount.h"
-//#import "ZJProfileDetailViewController.h"
 
 @interface ZJProfileViewController ()<ZJProfileHeaderViewDelegate>
 
 @property(nonatomic,weak) ZJInfoCount *infoCount;
 @property(nonatomic,weak) ZJProfileHeaderView *headerView;
+
 
 @end
 
@@ -154,8 +154,6 @@
 - (void)profileHeaderView:(ZJProfileHeaderView *)profileHeaderView
 {
 //    ZJLog(@"ZJProfileViewController---profileHeaderView");
-//    ZJProfileDetailViewController *profileDetailVc = [[ZJProfileDetailViewController alloc] init];
-    
     //1.创建storyboard对象
     UIStoryboard *profileDetail = [UIStoryboard storyboardWithName:@"ZJProfileDetail" bundle:nil];
     //2.创建storyboard对应的控制器

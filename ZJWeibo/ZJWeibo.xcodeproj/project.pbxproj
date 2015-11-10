@@ -55,6 +55,7 @@
 		54703FCA1BF0B16B003F8207 /* ZJInfoCount.m in Sources */ = {isa = PBXBuildFile; fileRef = 54703FC91BF0B16B003F8207 /* ZJInfoCount.m */; };
 		54703FCD1BF0C1CE003F8207 /* ZJProfileDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 54703FCC1BF0C1CE003F8207 /* ZJProfileDetailViewController.m */; };
 		547040051BF1916B003F8207 /* ZJProfileDetail.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 547040041BF1916B003F8207 /* ZJProfileDetail.storyboard */; };
+		547040091BF22640003F8207 /* ZJProfileStatusTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 547040081BF22640003F8207 /* ZJProfileStatusTool.m */; };
 		547272A21BDCB86D0021D9EA /* ZJEmotionKeyboard.m in Sources */ = {isa = PBXBuildFile; fileRef = 547272A11BDCB86D0021D9EA /* ZJEmotionKeyboard.m */; };
 		547272A51BDCBBA20021D9EA /* ZJEmotionListView.m in Sources */ = {isa = PBXBuildFile; fileRef = 547272A41BDCBBA20021D9EA /* ZJEmotionListView.m */; };
 		547272A81BDCBBB50021D9EA /* ZJEmotionTabBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 547272A71BDCBBB50021D9EA /* ZJEmotionTabBar.m */; };
@@ -420,6 +421,8 @@
 		54703FCB1BF0C1CE003F8207 /* ZJProfileDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZJProfileDetailViewController.h; sourceTree = "<group>"; };
 		54703FCC1BF0C1CE003F8207 /* ZJProfileDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZJProfileDetailViewController.m; sourceTree = "<group>"; };
 		547040041BF1916B003F8207 /* ZJProfileDetail.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ZJProfileDetail.storyboard; sourceTree = "<group>"; };
+		547040071BF22640003F8207 /* ZJProfileStatusTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZJProfileStatusTool.h; sourceTree = "<group>"; };
+		547040081BF22640003F8207 /* ZJProfileStatusTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZJProfileStatusTool.m; sourceTree = "<group>"; };
 		547272A01BDCB86D0021D9EA /* ZJEmotionKeyboard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZJEmotionKeyboard.h; sourceTree = "<group>"; };
 		547272A11BDCB86D0021D9EA /* ZJEmotionKeyboard.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZJEmotionKeyboard.m; sourceTree = "<group>"; };
 		547272A31BDCBBA20021D9EA /* ZJEmotionListView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZJEmotionListView.h; sourceTree = "<group>"; };
@@ -1048,6 +1051,7 @@
 		5421DAAF1BD4CED400B82561 /* Profile(我) */ = {
 			isa = PBXGroup;
 			children = (
+				547040061BF22629003F8207 /* Tool */,
 				54703FC71BF097B9003F8207 /* Model */,
 				54703FB81BECC891003F8207 /* View */,
 				5421DAB01BD4CED400B82561 /* Controller */,
@@ -1138,6 +1142,15 @@
 				54703FC91BF0B16B003F8207 /* ZJInfoCount.m */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		547040061BF22629003F8207 /* Tool */ = {
+			isa = PBXGroup;
+			children = (
+				547040071BF22640003F8207 /* ZJProfileStatusTool.h */,
+				547040081BF22640003F8207 /* ZJProfileStatusTool.m */,
+			);
+			path = Tool;
 			sourceTree = "<group>";
 		};
 		547272AC1BDCD1220021D9EA /* Model */ = {
@@ -1915,6 +1928,7 @@
 				547272AB1BDCC81E0021D9EA /* ZJEmotionTabBarButton.m in Sources */,
 				542EDA5F1BD6444900CAA724 /* AFJSONResponseSerializer+ZJ.m in Sources */,
 				547A886E1BE2216E00805E0C /* ZJStatusTextView.m in Sources */,
+				547040091BF22640003F8207 /* ZJProfileStatusTool.m in Sources */,
 				54689AF41BEB825A002FAD95 /* ZJBadgeView.m in Sources */,
 				54703FBB1BECC902003F8207 /* ZJProfileHeaderView.m in Sources */,
 				547AF2971BDE16B0008A949B /* UITextView+Extension.m in Sources */,

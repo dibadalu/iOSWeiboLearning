@@ -17,6 +17,8 @@
 #import <MJRefresh.h>
 #import <UIImageView+WebCache.h>
 #import "ZJProfileStatusTool.h"
+#import "ZJInfoCountTool.h"
+#import "ZJInfoCount.h"
 
 #define ZJProfileDetailHeaderH 200
 #define ZJProfileDetailHeaderMinH 64  //头部视图的最小高度
@@ -67,7 +69,10 @@
     //设置用户的头像
     ZJAccount *account = [ZJAccountTool account];
     [self.iconView sd_setImageWithURL:[NSURL URLWithString:account.profile_image_url] placeholderImage:[UIImage imageNamed:@"suoluobg"]];
+ 
     
+    ZJInfoCount *infoCount = [ZJInfoCountTool infoCount];
+    ZJLog(@"%d",infoCount.friends_count);
 }
 
 #pragma mark - init method

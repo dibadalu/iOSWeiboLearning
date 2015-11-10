@@ -19,6 +19,7 @@
 #import "ZJHttpTool.h"
 #import <MJExtension.h>
 #import "ZJInfoCount.h"
+#import "ZJInfoCountTool.h"
 
 @interface ZJProfileViewController ()<ZJProfileHeaderViewDelegate>
 
@@ -125,6 +126,7 @@
         ////通过MJExtension字典转模型
         ZJInfoCount *infoCount = [ZJInfoCount objectWithKeyValues:json];
         self.headerView.infoCount = infoCount;
+        [ZJInfoCountTool saveInfoCount:infoCount];
         
     } failure:^(NSError *error) {
         ZJLog(@"请求失败--%@",error);

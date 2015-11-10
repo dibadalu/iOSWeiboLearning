@@ -7,7 +7,14 @@
 //
 
 #import "ZJInfoCount.h"
+#import <MJExtension.h>
 
 @implementation ZJInfoCount
+
+/**
+ *  归档的实现
+ */
+MJCodingImplementation;
+
 
 @end

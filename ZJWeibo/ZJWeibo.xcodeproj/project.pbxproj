@@ -54,6 +54,7 @@
 		54703FC61BF090E8003F8207 /* ZJProfileHeaderBottomView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 54703FC51BF090E8003F8207 /* ZJProfileHeaderBottomView.xib */; };
 		54703FCA1BF0B16B003F8207 /* ZJInfoCount.m in Sources */ = {isa = PBXBuildFile; fileRef = 54703FC91BF0B16B003F8207 /* ZJInfoCount.m */; };
 		54703FCD1BF0C1CE003F8207 /* ZJProfileDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 54703FCC1BF0C1CE003F8207 /* ZJProfileDetailViewController.m */; };
+		547040051BF1916B003F8207 /* ZJProfileDetail.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 547040041BF1916B003F8207 /* ZJProfileDetail.storyboard */; };
 		547272A21BDCB86D0021D9EA /* ZJEmotionKeyboard.m in Sources */ = {isa = PBXBuildFile; fileRef = 547272A11BDCB86D0021D9EA /* ZJEmotionKeyboard.m */; };
 		547272A51BDCBBA20021D9EA /* ZJEmotionListView.m in Sources */ = {isa = PBXBuildFile; fileRef = 547272A41BDCBBA20021D9EA /* ZJEmotionListView.m */; };
 		547272A81BDCBBB50021D9EA /* ZJEmotionTabBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 547272A71BDCBBB50021D9EA /* ZJEmotionTabBar.m */; };
@@ -418,6 +419,7 @@
 		54703FC91BF0B16B003F8207 /* ZJInfoCount.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZJInfoCount.m; sourceTree = "<group>"; };
 		54703FCB1BF0C1CE003F8207 /* ZJProfileDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZJProfileDetailViewController.h; sourceTree = "<group>"; };
 		54703FCC1BF0C1CE003F8207 /* ZJProfileDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZJProfileDetailViewController.m; sourceTree = "<group>"; };
+		547040041BF1916B003F8207 /* ZJProfileDetail.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ZJProfileDetail.storyboard; sourceTree = "<group>"; };
 		547272A01BDCB86D0021D9EA /* ZJEmotionKeyboard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZJEmotionKeyboard.h; sourceTree = "<group>"; };
 		547272A11BDCB86D0021D9EA /* ZJEmotionKeyboard.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZJEmotionKeyboard.m; sourceTree = "<group>"; };
 		547272A31BDCBBA20021D9EA /* ZJEmotionListView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZJEmotionListView.h; sourceTree = "<group>"; };
@@ -1124,6 +1126,7 @@
 				54703FC21BF08DF9003F8207 /* ZJProfileHeaderBottomView.h */,
 				54703FC31BF08DF9003F8207 /* ZJProfileHeaderBottomView.m */,
 				54703FC51BF090E8003F8207 /* ZJProfileHeaderBottomView.xib */,
+				547040041BF1916B003F8207 /* ZJProfileDetail.storyboard */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1656,6 +1659,7 @@
 				547AF1AF1BDDDC93008A949B /* d_duixiang@2x.png in Resources */,
 				547AF2561BDDDC93008A949B /* lxh_xiangyixiang@2x.png in Resources */,
 				547AF2821BDDDC93008A949B /* w_xiayu@2x.png in Resources */,
+				547040051BF1916B003F8207 /* ZJProfileDetail.storyboard in Resources */,
 				547AF1D21BDDDC93008A949B /* d_tuzi@2x.png in Resources */,
 				547AF2791BDDDC93008A949B /* o_weiguan@2x.png in Resources */,
 				547AF1E31BDDDC93008A949B /* f_geili@2x.png in Resources */,

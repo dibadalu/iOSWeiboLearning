@@ -57,6 +57,14 @@
 		547040051BF1916B003F8207 /* ZJProfileDetail.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 547040041BF1916B003F8207 /* ZJProfileDetail.storyboard */; };
 		547040091BF22640003F8207 /* ZJProfileStatusTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 547040081BF22640003F8207 /* ZJProfileStatusTool.m */; };
 		5470400F1BF23081003F8207 /* ZJInfoCountTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 5470400E1BF23081003F8207 /* ZJInfoCountTool.m */; };
+		547040201BF32B6B003F8207 /* MJPhoto.m in Sources */ = {isa = PBXBuildFile; fileRef = 547040121BF32B6B003F8207 /* MJPhoto.m */; };
+		547040211BF32B6B003F8207 /* MJPhotoBrowser.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 547040131BF32B6B003F8207 /* MJPhotoBrowser.bundle */; };
+		547040221BF32B6B003F8207 /* MJPhotoBrowser.m in Sources */ = {isa = PBXBuildFile; fileRef = 547040151BF32B6B003F8207 /* MJPhotoBrowser.m */; };
+		547040231BF32B6B003F8207 /* MJPhotoLoadingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 547040171BF32B6B003F8207 /* MJPhotoLoadingView.m */; };
+		547040241BF32B6B003F8207 /* MJPhotoProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = 547040191BF32B6B003F8207 /* MJPhotoProgressView.m */; };
+		547040251BF32B6B003F8207 /* MJPhotoToolbar.m in Sources */ = {isa = PBXBuildFile; fileRef = 5470401B1BF32B6B003F8207 /* MJPhotoToolbar.m */; };
+		547040261BF32B6B003F8207 /* MJPhotoView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5470401D1BF32B6B003F8207 /* MJPhotoView.m */; };
+		547040271BF32B6B003F8207 /* SDWebImageManager+MJ.m in Sources */ = {isa = PBXBuildFile; fileRef = 5470401F1BF32B6B003F8207 /* SDWebImageManager+MJ.m */; };
 		547272A21BDCB86D0021D9EA /* ZJEmotionKeyboard.m in Sources */ = {isa = PBXBuildFile; fileRef = 547272A11BDCB86D0021D9EA /* ZJEmotionKeyboard.m */; };
 		547272A51BDCBBA20021D9EA /* ZJEmotionListView.m in Sources */ = {isa = PBXBuildFile; fileRef = 547272A41BDCBBA20021D9EA /* ZJEmotionListView.m */; };
 		547272A81BDCBBB50021D9EA /* ZJEmotionTabBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 547272A71BDCBBB50021D9EA /* ZJEmotionTabBar.m */; };
@@ -426,6 +434,21 @@
 		547040081BF22640003F8207 /* ZJProfileStatusTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZJProfileStatusTool.m; sourceTree = "<group>"; };
 		5470400D1BF23081003F8207 /* ZJInfoCountTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZJInfoCountTool.h; sourceTree = "<group>"; };
 		5470400E1BF23081003F8207 /* ZJInfoCountTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZJInfoCountTool.m; sourceTree = "<group>"; };
+		547040111BF32B6B003F8207 /* MJPhoto.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MJPhoto.h; sourceTree = "<group>"; };
+		547040121BF32B6B003F8207 /* MJPhoto.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MJPhoto.m; sourceTree = "<group>"; };
+		547040131BF32B6B003F8207 /* MJPhotoBrowser.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = MJPhotoBrowser.bundle; sourceTree = "<group>"; };
+		547040141BF32B6B003F8207 /* MJPhotoBrowser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MJPhotoBrowser.h; sourceTree = "<group>"; };
+		547040151BF32B6B003F8207 /* MJPhotoBrowser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MJPhotoBrowser.m; sourceTree = "<group>"; };
+		547040161BF32B6B003F8207 /* MJPhotoLoadingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MJPhotoLoadingView.h; sourceTree = "<group>"; };
+		547040171BF32B6B003F8207 /* MJPhotoLoadingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MJPhotoLoadingView.m; sourceTree = "<group>"; };
+		547040181BF32B6B003F8207 /* MJPhotoProgressView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MJPhotoProgressView.h; sourceTree = "<group>"; };
+		547040191BF32B6B003F8207 /* MJPhotoProgressView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MJPhotoProgressView.m; sourceTree = "<group>"; };
+		5470401A1BF32B6B003F8207 /* MJPhotoToolbar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MJPhotoToolbar.h; sourceTree = "<group>"; };
+		5470401B1BF32B6B003F8207 /* MJPhotoToolbar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MJPhotoToolbar.m; sourceTree = "<group>"; };
+		5470401C1BF32B6B003F8207 /* MJPhotoView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MJPhotoView.h; sourceTree = "<group>"; };
+		5470401D1BF32B6B003F8207 /* MJPhotoView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MJPhotoView.m; sourceTree = "<group>"; };
+		5470401E1BF32B6B003F8207 /* SDWebImageManager+MJ.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SDWebImageManager+MJ.h"; sourceTree = "<group>"; };
+		5470401F1BF32B6B003F8207 /* SDWebImageManager+MJ.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "SDWebImageManager+MJ.m"; sourceTree = "<group>"; };
 		547272A01BDCB86D0021D9EA /* ZJEmotionKeyboard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZJEmotionKeyboard.h; sourceTree = "<group>"; };
 		547272A11BDCB86D0021D9EA /* ZJEmotionKeyboard.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZJEmotionKeyboard.m; sourceTree = "<group>"; };
 		547272A31BDCBBA20021D9EA /* ZJEmotionListView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZJEmotionListView.h; sourceTree = "<group>"; };
@@ -832,6 +855,7 @@
 		541EC27B1BD539BB00461947 /* Lib */ = {
 			isa = PBXGroup;
 			children = (
+				547040101BF32B6B003F8207 /* MJPhotoBrowser */,
 				542A49FA1BD63CBA00C457CF /* AFNetworking */,
 				54E7EDF01BD60F640018280F /* MBProgressHUD */,
 			);
@@ -1156,6 +1180,28 @@
 				5470400E1BF23081003F8207 /* ZJInfoCountTool.m */,
 			);
 			path = Tool;
+			sourceTree = "<group>";
+		};
+		547040101BF32B6B003F8207 /* MJPhotoBrowser */ = {
+			isa = PBXGroup;
+			children = (
+				547040111BF32B6B003F8207 /* MJPhoto.h */,
+				547040121BF32B6B003F8207 /* MJPhoto.m */,
+				547040131BF32B6B003F8207 /* MJPhotoBrowser.bundle */,
+				547040141BF32B6B003F8207 /* MJPhotoBrowser.h */,
+				547040151BF32B6B003F8207 /* MJPhotoBrowser.m */,
+				547040161BF32B6B003F8207 /* MJPhotoLoadingView.h */,
+				547040171BF32B6B003F8207 /* MJPhotoLoadingView.m */,
+				547040181BF32B6B003F8207 /* MJPhotoProgressView.h */,
+				547040191BF32B6B003F8207 /* MJPhotoProgressView.m */,
+				5470401A1BF32B6B003F8207 /* MJPhotoToolbar.h */,
+				5470401B1BF32B6B003F8207 /* MJPhotoToolbar.m */,
+				5470401C1BF32B6B003F8207 /* MJPhotoView.h */,
+				5470401D1BF32B6B003F8207 /* MJPhotoView.m */,
+				5470401E1BF32B6B003F8207 /* SDWebImageManager+MJ.h */,
+				5470401F1BF32B6B003F8207 /* SDWebImageManager+MJ.m */,
+			);
+			path = MJPhotoBrowser;
 			sourceTree = "<group>";
 		};
 		547272AC1BDCD1220021D9EA /* Model */ = {
@@ -1631,6 +1677,7 @@
 				547AF20B1BDDDC93008A949B /* lxh_geijin.png in Resources */,
 				547AF2711BDDDC93008A949B /* o_fahongbao@2x.png in Resources */,
 				547AF1D51BDDDC93008A949B /* d_xiongmao@2x.png in Resources */,
+				547040211BF32B6B003F8207 /* MJPhotoBrowser.bundle in Resources */,
 				547AF22E1BDDDC93008A949B /* lxh_leiliumanmian.gif in Resources */,
 				547AF1F71BDDDC93008A949B /* lxh_beicui@2x.png in Resources */,
 				547AF2451BDDDC93008A949B /* lxh_quntiweiguan.gif in Resources */,
@@ -1899,15 +1946,18 @@
 				5470400F1BF23081003F8207 /* ZJInfoCountTool.m in Sources */,
 				547AEF011BDDD9B6008A949B /* NSString+Emoji.m in Sources */,
 				54A911B61BE8B05200B9720D /* ZJCommonItem.m in Sources */,
+				547040221BF32B6B003F8207 /* MJPhotoBrowser.m in Sources */,
 				547A88911BE26D5B00805E0C /* ZJStatusFrame.m in Sources */,
 				547A88941BE26D6A00805E0C /* ZJStatusCell.m in Sources */,
 				54703FCD1BF0C1CE003F8207 /* ZJProfileDetailViewController.m in Sources */,
 				54A3AD861BDA63E300F4C89F /* ZJTextView.m in Sources */,
+				547040231BF32B6B003F8207 /* MJPhotoLoadingView.m in Sources */,
 				54689AFE1BEC6F72002FAD95 /* ZJCommonViewController.m in Sources */,
 				547272A81BDCBBB50021D9EA /* ZJEmotionTabBar.m in Sources */,
 				542A49F91BD6365A00C457CF /* ZJHttpTool.m in Sources */,
 				542A4A0D1BD641D800C457CF /* ZJAccount.m in Sources */,
 				54FB0B821BEB2D8F00620FA2 /* ZJCommonCell.m in Sources */,
+				547040241BF32B6B003F8207 /* MJPhotoProgressView.m in Sources */,
 				541B328A1BD90197004C4BC6 /* ZJPhoto.m in Sources */,
 				547AF2941BDE159F008A949B /* ZJEmotionAttachment.m in Sources */,
 				544A87311BD4E17800659A85 /* ZJNavigationViewController.m in Sources */,
@@ -1941,18 +1991,22 @@
 				54689AF11BEB7F5D002FAD95 /* ZJCommonLabelItem.m in Sources */,
 				547A886C1BE2216E00805E0C /* ZJStatusPhotosView.m in Sources */,
 				54042C2D1BE74DD800183AFC /* ZJComment.m in Sources */,
+				547040201BF32B6B003F8207 /* MJPhoto.m in Sources */,
 				54042C221BE6F7A700183AFC /* ZJStatusDetailBottomToolBar.m in Sources */,
 				547A886F1BE2216E00805E0C /* ZJStatusToolBar.m in Sources */,
 				5444C6431BDBBC2300C7A5C1 /* ZJComposeToolBar.m in Sources */,
 				54703FCA1BF0B16B003F8207 /* ZJInfoCount.m in Sources */,
+				547040251BF32B6B003F8207 /* MJPhotoToolbar.m in Sources */,
 				542A49F31BD635A800C457CF /* main.m in Sources */,
 				54855CB91BDE678300FF876B /* ZJTextPart.m in Sources */,
 				541B32841BD8D86F004C4BC6 /* Foundation+Log.m in Sources */,
 				547AF2861BDE0DE8008A949B /* ZJEmotinButton.m in Sources */,
 				54C220261BD52D5F00BE0ED0 /* ZJOAuthViewController.m in Sources */,
+				547040261BF32B6B003F8207 /* MJPhotoView.m in Sources */,
 				5424546B1BEB7A7700C730F4 /* ZJCommonSwitchItem.m in Sources */,
 				547272AF1BDCD1360021D9EA /* ZJEmotion.m in Sources */,
 				547A886A1BE2216E00805E0C /* ZJIconView.m in Sources */,
+				547040271BF32B6B003F8207 /* SDWebImageManager+MJ.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

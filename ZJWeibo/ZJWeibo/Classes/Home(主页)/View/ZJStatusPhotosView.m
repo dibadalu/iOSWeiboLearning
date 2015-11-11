@@ -16,11 +16,12 @@
 #import "ZJStatusPhotosView.h"
 #import "ZJPhoto.h"
 #import "ZJStatusPhotoView.h"
-//#import <UIImageView+WebCache.h>
 #import "ZJStatusPhotoView.h"
+#import "MJPhotoBrowser.h"
+#import "MJPhoto.h"
 
 @implementation ZJStatusPhotosView
-#pragma mark - 系统方法
+#pragma mark - system method
 - (id)initWithFrame:(CGRect)frame
 {
     self = [super initWithFrame:frame];
@@ -29,9 +30,37 @@
     }
     return self;
 }
+/**
+*  计算图片的位置和尺寸
+*/
+- (void)layoutSubviews
+{
+    [super layoutSubviews];
+    
+    //图片的数量(考虑到有4张配图的特殊情况)
+    NSUInteger photosCount = self.photos.count;
+    
+    //设置图片的位置和尺寸
+    int maxCols = ZJStatusPhotoMaxCol(photosCount);
+    for (int i = 0; i< self.photos.count; i++) {
+        ZJStatusPhotoView *photoView = self.subviews[i];
+        
+        //列
+        int col = i % maxCols;
+        photoView.x = col * (ZJStatusPhotoWH + ZJStatusPhotoMargin);
+        
+        //行
+        int row = i / maxCols ;
+        photoView.y = row * (ZJStatusPhotoWH + ZJStatusPhotoMargin);
+        
+        photoView.width = ZJStatusPhotoWH;
+        photoView.height = ZJStatusPhotoWH;
+        
+        
+    }
+}
 
-
-#pragma mark - 传值
+#pragma mark - setter
 /**
  *  设置配图相册里的配图
  *
@@ -57,49 +86,21 @@
         //注意：判断是否显示或隐藏几个图片控件
         if (i < photosCount) {//显示图片控件
             photoView.hidden = NO;
-            
             //设置配图
-            //取出配图模型
-//            ZJPhoto *photo = photos[i] ;
-//            [photoView sd_setImageWithURL:[NSURL URLWithString:photo.thumbnail_pic] placeholderImage:[UIImage imageNamed:@"timeline_image_placeholder"]];
             photoView.photo = photos[i];
-
         }else{//隐藏没用到的imageView
             photoView.hidden = YES;
         }
         
+        //给图片控件添加手势监听器（一个手势监听器只能监听对应的一个图片控件）
+        photoView.tag = i;
+        UITapGestureRecognizer *recgnizer = [[UITapGestureRecognizer alloc] init];
+        [recgnizer addTarget:self action:@selector(tapPhoto:)];
+        [photoView addGestureRecognizer:recgnizer];
     }
     
 }
-/**
- *  计算图片的位置和尺寸
- */
-- (void)layoutSubviews
-{
-    [super layoutSubviews];
-    
-    //图片的数量(考虑到有4张配图的特殊情况)
-    NSUInteger photosCount = self.photos.count;
-    
-    //设置图片的位置和尺寸
-    int maxCols = ZJStatusPhotoMaxCol(photosCount);
-    for (int i = 0; i< self.photos.count; i++) {
-        ZJStatusPhotoView *photoView = self.subviews[i];
-        
-        //列
-        int col = i % maxCols;
-        photoView.x = col * (ZJStatusPhotoWH + ZJStatusPhotoMargin);
-        
-        //行
-        int row = i / maxCols ;
-        photoView.y = row * (ZJStatusPhotoWH + ZJStatusPhotoMargin);
 
-        photoView.width = ZJStatusPhotoWH;
-        photoView.height = ZJStatusPhotoWH;
-        
-        
-    }
-}
 /**
  *  根据图片个数计算整个相册的尺寸
  */
@@ -127,20 +128,39 @@
 
 }
 
+#pragma mark - action method
+/**
+ *  监听图片的点击
+ */
+- (void)tapPhoto:(UITapGestureRecognizer *)recgnizer
+{
+    
+    //1.创建图片浏览器
+    MJPhotoBrowser *browser = [[MJPhotoBrowser alloc] init];
+    
+    //2.设置图片浏览器显示的所有图片
+    NSMutableArray *photos = [NSMutableArray array];
+    int count = self.photos.count;
+    for (int i = 0; i< count; i++) {
+        ZJPhoto *pic = self.photos[i];
+        
+        MJPhoto *photo = [[MJPhoto alloc] init];
+        //设置图片的路径
+        photo.url = [NSURL URLWithString:pic.bmiddle_pic];
+        //设置来源于哪一个图片控件
+        photo.srcImageView = self.subviews[i];
+        [photos addObject:photo];
+    }
+    browser.photos = photos;
+    
+    //3.设置默认显示的图片索引
+    browser.currentPhotoIndex = recgnizer.view.tag;
+    
+    //4.显示浏览器
+    [browser show];
+}
+
+
+
 @end
 
-
-/*
- //行数思路
- int rows = 0;
- if (count % 3 == 0) {//count = 3\6\9
- rows = count / 3;
- }else{ //count = 1\2 4\5 7\8
- rows = count / 3 + 1;
- }
- 
- int rows = count / 3;
- if (count % 3 != 0) {
- rows += 1;
- }
- */

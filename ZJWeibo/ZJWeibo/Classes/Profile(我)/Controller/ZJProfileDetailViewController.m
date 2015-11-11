@@ -29,7 +29,12 @@
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *headerViewHCons;
 @property (weak, nonatomic) IBOutlet UIImageView *iconView;
-@property(nonatomic,weak) UILabel *nameLabel;
+@property (weak, nonatomic) IBOutlet UILabel *nameLabel;
+@property (weak, nonatomic) IBOutlet UILabel *descriptionLabel;
+@property (weak, nonatomic) IBOutlet UIButton *frendsBtn;
+@property (weak, nonatomic) IBOutlet UIButton *followersBtn;
+
+@property(nonatomic,weak) UILabel *titleLabel;
 @property(nonatomic,assign) CGFloat lastOffsetY;
 /** 微博数组--存放的是微博Frame模型 */
 @property(nonatomic,strong) NSMutableArray *statusFrames;
@@ -61,31 +66,27 @@
     // 设置导航条开始时的透明度为0
     self.navigationController.navigationBar.alpha = 0;
     // 设置导航条的标题
-    [self setupNameLabel];
+    [self setuptitleLabel];
     
     //获取当前用户的微博
     [self setupUserStatus];
     
-    //设置用户的头像
-    ZJAccount *account = [ZJAccountTool account];
-    [self.iconView sd_setImageWithURL:[NSURL URLWithString:account.profile_image_url] placeholderImage:[UIImage imageNamed:@"suoluobg"]];
- 
+    //设置头部视图上的用户相关信息
+    [self setupHeaderViewUserInfo];
     
-    ZJInfoCount *infoCount = [ZJInfoCountTool infoCount];
-    ZJLog(@"%d",infoCount.friends_count);
 }
 
 #pragma mark - init method
 /**
  *  设置导航条的标题
  */
-- (void)setupNameLabel
+- (void)setuptitleLabel
 {
-    UILabel *nameLabel = [[UILabel alloc] init];
-    nameLabel.text = @"dibadalu";
-    [nameLabel sizeToFit];
-    self.navigationItem.titleView = nameLabel;
-    self.nameLabel = nameLabel;
+    UILabel *titleLabel = [[UILabel alloc] init];
+    titleLabel.text = @"dibadalu";
+    [titleLabel sizeToFit];
+    self.navigationItem.titleView = titleLabel;
+    self.titleLabel = titleLabel;
 }
 /**
  *  获取当前用户的微博
@@ -164,6 +165,45 @@
     }
     return frames;
 }
+/**
+ *  设置头部视图上的用户相关信息
+ */
+- (void)setupHeaderViewUserInfo
+{
+    ZJAccount *account = [ZJAccountTool account];
+    [self.iconView sd_setImageWithURL:[NSURL URLWithString:account.profile_image_url] placeholderImage:[UIImage imageNamed:@"suoluobg"]];
+    self.nameLabel.text = account.name;
+    self.nameLabel.font = [UIFont systemFontOfSize:13];
+    self.nameLabel.textColor = [UIColor whiteColor];
+    self.descriptionLabel.text = account.descriptionText;
+    self.descriptionLabel.font = [UIFont systemFontOfSize:13];
+    self.descriptionLabel.textColor = [UIColor whiteColor];
+    
+    ZJInfoCount *infoCount = [ZJInfoCountTool infoCount];
+    [self setupBtnCount:infoCount.friends_count btn:self.frendsBtn title:@"关注"];
+    [self setupBtnCount:infoCount.followers_count btn:self.followersBtn title:@"粉丝"];
+
+}
+/**
+ *  设置按钮的文字
+ */
+- (void)setupBtnCount:(int)count  btn:(UIButton *)btn title:(NSString *)title
+{
+    if (count) {//数字不为0
+        if (count < 10000) {// 不足10000：直接显示数字，比如786、7986
+            title = [NSString stringWithFormat:@"%@ %d",title,count];
+        }else{// 达到10000：显示xx.x万，不要有.0的情况
+            double wan = count/10000.0;
+            title = [NSString stringWithFormat:@"%@ %.1f万",title,wan];
+            // 将字符串里面的.0去掉
+            title = [title stringByReplacingOccurrencesOfString:@".0" withString:@""];
+        }
+        [btn setTitle:title forState:UIControlStateNormal];
+        [btn setTitle:title forState:UIControlStateSelected];
+    }
+    [btn setTitle:title forState:UIControlStateNormal];
+    [btn setTitle:title forState:UIControlStateSelected];
+}
 
 #pragma mark - UITableViewDataSource
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -206,7 +246,7 @@
         alpha = 0.99;
     }
     //设置导航条的透明度
-    self.nameLabel.alpha = alpha;
+    self.titleLabel.alpha = alpha;
     self.navigationController.navigationBar.alpha = alpha;
 }
 

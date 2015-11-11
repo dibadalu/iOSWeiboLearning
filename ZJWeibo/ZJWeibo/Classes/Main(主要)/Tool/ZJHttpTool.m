@@ -10,7 +10,7 @@
 #import "AFJSONResponseSerializer+ZJ.h"
 
 @implementation ZJHttpTool
-
+#pragma mark - get请求
 + (void)get:(NSString *)url params:(NSDictionary *)params success:(void (^)(id json))success failure:(void (^)(NSError *error))failure
 {
     //1.创建请求管理者
@@ -29,8 +29,7 @@
         }
     }];
 }
-
-
+#pragma mark - post请求
 + (void)post:(NSString *)url params:(NSDictionary *)params success:(void (^)(id json))success failure:(void (^)(NSError *error))failure
 {
     //1.创建请求管理者

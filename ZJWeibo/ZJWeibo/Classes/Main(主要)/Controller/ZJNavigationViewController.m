@@ -14,12 +14,10 @@
 @end
 
 @implementation ZJNavigationViewController
-
+#pragma mark - system method
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
-    
-   
+
 }
 
 /**
@@ -41,13 +39,11 @@
     
     [super pushViewController:viewController animated:animated];
     
-   
 }
 
-#pragma mark - 点击事件
+#pragma mark - action method
 - (void)back
 {
- 
     [self popViewControllerAnimated:YES];
 }
 

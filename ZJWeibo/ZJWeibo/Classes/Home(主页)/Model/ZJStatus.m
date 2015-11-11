@@ -27,7 +27,7 @@
     
 }
 
-#pragma mark - 系统方法
+#pragma mark - getter & setter method
 /**
  *  created_at的getter方法，更改时间格式
  *  注意：时间会不断改变，所以要用get方法多次获取时间
@@ -101,7 +101,6 @@
     
 }
 
-
 /**
  *  text的setter方法，将微博正文转为属性文字
  *
@@ -129,7 +128,7 @@
     
 }
 
-#pragma mark -  抽取的方法
+#pragma mark -  custom method
 /**
  *  重点：将普通文字转变为属性文字，利用正则表达式将特殊字符高亮显示
  *

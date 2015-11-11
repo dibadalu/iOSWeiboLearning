@@ -18,7 +18,7 @@
 
 @implementation ZJEmotionListView
 
-#pragma mark - 系统方法
+#pragma mark - system method
 - (id)initWithFrame:(CGRect)frame
 {
     self = [super initWithFrame:frame];
@@ -80,6 +80,7 @@
     
 }
 
+#pragma mark - setter method
 /**
  *  通过ZJEmotion模型计算表情内容的页数
  *

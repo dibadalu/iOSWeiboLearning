@@ -15,7 +15,7 @@
 @end
 
 @implementation ZJComposeToolBar
-#pragma mark - 系统方法
+#pragma mark - system method
 - (id)initWithFrame:(CGRect)frame
 {
     self = [super initWithFrame:frame];
@@ -56,7 +56,7 @@
     
 }
 
-#pragma mark - 初始化方法
+#pragma mark - init method
 - (UIButton *)setupOneBtn:(NSString *)image highImage:(NSString *)highImage buttonType:(ZJComposeToolbarButtonType)buttonType
 {
     UIButton *btn = [[UIButton alloc] init];
@@ -70,7 +70,7 @@
     
 }
 
-#pragma mark - 点击事件
+#pragma mark - action method
 - (void)btnClick:(UIButton *)btn
 {
     //通知代理做事情
@@ -80,7 +80,7 @@
 
 }
 
-#pragma mark - 其他方法
+#pragma mark - setter method
 /**
  *  是否显示键盘按钮
  *

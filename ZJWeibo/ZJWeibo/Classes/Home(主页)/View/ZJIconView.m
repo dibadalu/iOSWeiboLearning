@@ -18,7 +18,7 @@
 @end
 
 @implementation ZJIconView
-#pragma mark - 懒加载
+#pragma mark - lazy method
 - (UIImageView *)verifiedView
 {
     if (!_verifiedView) {
@@ -29,7 +29,7 @@
     return _verifiedView;
 }
 
-#pragma mark - 系统方法
+#pragma mark - system method
 - (id)initWithFrame:(CGRect)frame
 {
     self = [super initWithFrame:frame];
@@ -56,7 +56,7 @@
 }
 
 
-#pragma mark - 传值
+#pragma mark - setter method
 /**
  *  设置头像和认证标识
  *

@@ -10,7 +10,7 @@
 
 @implementation ZJEmotionTabBarButton
 
-#pragma mark - 系统方法
+#pragma mark - system method
 - (id)initWithFrame:(CGRect)frame
 {
     self = [super initWithFrame:frame];

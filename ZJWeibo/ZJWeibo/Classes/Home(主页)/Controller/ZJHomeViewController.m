@@ -43,7 +43,7 @@
     return _statusFrames;
 }
 
-#pragma mark - 系统方法
+#pragma mark - system method
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -73,7 +73,7 @@
     
 }
 
-#pragma mark - 初始化方法
+#pragma mark - init method
 /**
  *  设置导航栏内容
  */
@@ -376,7 +376,7 @@
 
     }];
 }
-#pragma mark - 提取的方法
+#pragma mark - custom method
 /**
  * 将ZJStatus转化为ZJStatusFrame
  */
@@ -393,7 +393,7 @@
 }
 
 
-#pragma mark - 点击事件
+#pragma mark - action method
 - (void)popClick
 {
     ZJLog(@"popClick");
@@ -430,7 +430,7 @@
     
 }
 
-#pragma mark - 数据源
+#pragma mark - UITableVeiwDataSource
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
 

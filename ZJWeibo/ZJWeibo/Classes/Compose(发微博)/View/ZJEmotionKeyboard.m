@@ -28,7 +28,7 @@
 @end
 
 @implementation ZJEmotionKeyboard
-#pragma mark - 懒加载
+#pragma mark - lazy method
 - (ZJEmotionListView *)recentEmotionListView
 {
     if (!_recentEmotionListView) {
@@ -71,7 +71,7 @@
     return _lxhEmotionListView;
 }
 
-#pragma mark - 系统方法
+#pragma mark - system method
 - (id)initWithFrame:(CGRect)frame
 {
     self = [super initWithFrame:frame];
@@ -114,7 +114,7 @@
 
 }
 
-#pragma mark - 点击事件
+#pragma mark - action method
 - (void)emotionDidSelect
 {
     //保证“最近”上的表情能够随着tabBar选项卡的切换及时更新

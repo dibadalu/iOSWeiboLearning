@@ -12,6 +12,40 @@
 #import "ZJStatusPhotosView.h"
 
 @implementation ZJStatusFrame
+#pragma mark - setter method
+/**
+ *  计算cell子控件的frame和cell的高度
+ *
+ *  @param status 微博模型
+ */
+- (void)setStatus:(ZJStatus *)status
+{
+    _status = status;
+    
+    //1.计算原创微博的frame
+    [self setupOriginalFrame:status];
+    
+    //2.计算转发微博的frame
+    CGFloat toolBarY = 0;
+    if (status.retweeted_status) {//存在转发微博
+        
+        [self setupRetweetedFrame:status];
+        toolBarY = CGRectGetMaxY(self.retweetedViewF);
+    }else{//没转发微博
+        toolBarY = CGRectGetMaxY(self.originalViewF);
+    }
+    
+    //3.工具条
+    CGFloat toolBarX = 0;
+    CGFloat toolBarW = ZJScreenW ;
+    CGFloat toolBarH = 30;
+    self.toolBarF = CGRectMake(toolBarX, toolBarY, toolBarW, toolBarH);
+    
+    //4.cell的高度
+    self.cellHeight = CGRectGetMaxY(self.toolBarF);
+    
+}
+#pragma mark - init method
 /**
  *  计算原创微博的frame
  *
@@ -90,7 +124,6 @@
     self.originalViewF = CGRectMake(originalX, originalY, originalW, originalH);
 }
 
-
 /**
  *  计算转发微博的frame
  *
@@ -132,40 +165,7 @@
 
 }
 
-/**
- *  计算cell子控件的frame和cell的高度
- *
- *  @param status 微博模型
- */
-- (void)setStatus:(ZJStatus *)status
-{
-    _status = status;
-    
-    //1.计算原创微博的frame
-    [self setupOriginalFrame:status];
-    
-    //2.计算转发微博的frame
-    CGFloat toolBarY = 0;
-    if (status.retweeted_status) {//存在转发微博
-        
-        [self setupRetweetedFrame:status];
-        toolBarY = CGRectGetMaxY(self.retweetedViewF);
-    }else{//没转发微博
-        toolBarY = CGRectGetMaxY(self.originalViewF);
-    }
-    
-    //3.工具条
-    CGFloat toolBarX = 0;
-    CGFloat toolBarW = ZJScreenW ;
-    CGFloat toolBarH = 30;
-    self.toolBarF = CGRectMake(toolBarX, toolBarY, toolBarW, toolBarH);
-    
-    
-    //4.cell的高度
-    self.cellHeight = CGRectGetMaxY(self.toolBarF);
-    
-    
-}
+
 
 
 

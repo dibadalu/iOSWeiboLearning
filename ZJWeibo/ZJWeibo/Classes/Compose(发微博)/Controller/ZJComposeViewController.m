@@ -36,7 +36,7 @@
 @end
 
 @implementation ZJComposeViewController
-#pragma mark - 懒加载
+#pragma mark - lazy method
 - (ZJEmotionKeyboard *)emotionKeyboard
 {
     if (!_emotionKeyboard) {
@@ -48,7 +48,7 @@
     return _emotionKeyboard;
 }
 
-#pragma mark - 系统方法
+#pragma mark - system method
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -84,7 +84,7 @@
     [ZJNotificationCenter removeObserver:self];
 }
 
-#pragma mark - 初始化方法
+#pragma mark - init method
 /**
  *  设置导航栏的内容
  */
@@ -117,7 +117,6 @@
     textView.delegate = self;//设置代理
     [self.view addSubview:textView];
     self.textView = textView;
-    
     
     //通知
     //文字改变的通知
@@ -158,7 +157,7 @@
     self.photosView = photosView;
 }
 
-#pragma mark - 点击事件
+#pragma mark - action method
 - (void)cancel
 {
 //    ZJLog(@"cancel");
@@ -329,7 +328,7 @@
     }
 }
 
-#pragma mark - 其他方法
+#pragma mark - custom method
 /**
  *  拍照
  */

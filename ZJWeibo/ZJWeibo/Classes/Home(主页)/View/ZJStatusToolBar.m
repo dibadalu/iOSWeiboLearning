@@ -44,7 +44,7 @@
     return _dividers;
 }
 
-#pragma mark - create method
+#pragma mark - class method
 + (instancetype)tooBar
 {
     ZJStatusToolBar *toolBar = [[self alloc] init];
@@ -145,7 +145,7 @@
     [self.dividers addObject:divider];
 }
 
-#pragma mark - setter&getter
+#pragma mark - setter method 
 /**
  *  微博模型的setter方法，设置按钮上的数字
  *

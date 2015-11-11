@@ -18,7 +18,7 @@
 @end
 
 @implementation ZJPageEmotionView
-#pragma mark - 系统方法
+#pragma mark - system method
 - (id)initWithFrame:(CGRect)frame
 {
     self = [super initWithFrame:frame];
@@ -69,6 +69,8 @@
     self.deleteButton.y = self.height - btnH;
     self.deleteButton.x = self.width - btnW - padding;
 }
+
+#pragma mark - setter method
 /**
  *  添加按钮，设置表情图标
  *
@@ -93,7 +95,7 @@
     
 }
 
-#pragma mark - 点击事件
+#pragma mark - action method 
 - (void)btnClick:(ZJEmotinButton *)btn
 {
 //    ZJLog(@"btnClick");

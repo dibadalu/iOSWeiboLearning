@@ -52,8 +52,7 @@
 @end
 
 @implementation ZJStatusCell
-
-#pragma mark - 创建方法
+#pragma mark - class method
 /**
  *  创建cell
  *
@@ -72,7 +71,7 @@
     return cell;
 }
 
-#pragma mark - 系统方法
+#pragma mark - system method
 /**
  *  只调用一次，进行cell子控件的初始化
  *  1.添加有可能显示的所有cell子控件到contentView中
@@ -99,7 +98,7 @@
     
 }
 
-#pragma mark - 初始化方法
+#pragma mark - init method
 /**
  *  初始化原创微博
  */
@@ -183,7 +182,7 @@
     self.toolBar = toolBar;
 }
 
-#pragma mark - 传值
+#pragma mark - setter method
 /**
  *  设置原创微博的frame和微博数据
  *

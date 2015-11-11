@@ -18,7 +18,7 @@
 @end
 
 @implementation ZJStatusPhotoView
-#pragma mark - 懒加载
+#pragma mark - lazy method
 - (UIImageView *)gifView
 {
     if (!_gifView) {
@@ -30,7 +30,7 @@
     return _gifView;
 }
 
-#pragma mark - 系统方法
+#pragma mark - system method
 - (id)initWithFrame:(CGRect)frame
 {
     self = [super initWithFrame:frame];
@@ -56,7 +56,7 @@
     self.gifView.y = self.height - self.gifView.height;
 }
 
-#pragma mark - 传值
+#pragma mark - setter method 
 - (void)setPhoto:(ZJPhoto *)photo
 {
     _photo = photo;
@@ -73,27 +73,4 @@
 
 @end
 
-/**
- UIViewContentModeScaleToFill : 图片拉伸至填充整个UIImageView（图片可能会变形）
- 
- UIViewContentModeScaleAspectFit : 图片拉伸至完全显示在UIImageView里面为止（图片不会变形）
- 
- UIViewContentModeScaleAspectFill :
- 图片拉伸至 图片的宽度等于UIImageView的宽度 或者 图片的高度等于UIImageView的高度 为止
- 
- UIViewContentModeRedraw : 调用了setNeedsDisplay方法时，就会将图片重新渲染
- 
- UIViewContentModeCenter : 居中显示
- UIViewContentModeTop,
- UIViewContentModeBottom,
- UIViewContentModeLeft,
- UIViewContentModeRight,
- UIViewContentModeTopLeft,
- UIViewContentModeTopRight,
- UIViewContentModeBottomLeft,
- UIViewContentModeBottomRight,
- 
- 经验规律：
- 1.凡是带有Scale单词的，图片都会拉伸
- 2.凡是带有Aspect单词的，图片都会保持原来的宽高比，图片不会变形
- */
+

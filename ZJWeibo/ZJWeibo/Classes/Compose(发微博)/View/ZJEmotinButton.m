@@ -10,7 +10,7 @@
 #import "ZJEmotion.h"
 
 @implementation ZJEmotinButton
-#pragma mark - 系统方法
+#pragma mark - system method
 /**
  * 当控件不是从xib、storyboard中创建时，就会调用这个方法
  */
@@ -43,6 +43,7 @@
     //    HMLog(@"awakeFromNib");
 }
 
+#pragma init method 
 - (void)setup
 {
     //一次性设置
@@ -51,6 +52,7 @@
     self.adjustsImageWhenHighlighted = NO;
 }
 
+#pragma mark - setter method
 - (void)setEmotion:(ZJEmotion *)emotion
 {
     _emotion = emotion;

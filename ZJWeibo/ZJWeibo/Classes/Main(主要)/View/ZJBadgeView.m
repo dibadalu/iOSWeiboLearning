@@ -22,7 +22,6 @@
         //设置按钮的高度为当前图片的高度（宽度得视文字而定）
         self.height = self.currentBackgroundImage.size.height;
         
-        
     }
     return self;
 }

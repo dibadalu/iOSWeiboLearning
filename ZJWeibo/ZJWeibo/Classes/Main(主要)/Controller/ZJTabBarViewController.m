@@ -20,6 +20,7 @@
 
 @implementation ZJTabBarViewController
 
+#pragma mark - system method
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
@@ -40,6 +41,7 @@
     [self addOneChirdVC:profile title:@"我" image:@"tabbar_profile" selectedImage:@"tabbar_profile_selected"];
 }
 
+#pragma mark - init method
 - (void)addOneChirdVC:(UIViewController *)chirdVC title:(NSString *)title image:(NSString *)image selectedImage:(NSString *)selectedImage
 {
     //测试：背景色

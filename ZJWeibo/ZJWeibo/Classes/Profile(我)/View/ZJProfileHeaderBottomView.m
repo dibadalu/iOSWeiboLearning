@@ -34,7 +34,7 @@
     
 }
 
-#pragma mark - setter
+#pragma mark - setter method
 - (void)setInfoCount:(ZJInfoCount *)infoCount
 {
     _infoCount = infoCount;

@@ -71,7 +71,6 @@ static NSMutableArray *_recentEmotions; //静态全局变量
     return [ZJEmotion objectArrayWithKeyValuesArray:[NSArray arrayWithContentsOfFile:path]];
 }
 
-
 /**
  *  根据chs返回相应的HMEmotion模型
  */

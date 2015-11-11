@@ -10,7 +10,7 @@
 
 
 @implementation ZJSearchBar
-
+#pragma mark - class method
 + (instancetype)searchBar
 {
     return [[self alloc] init];

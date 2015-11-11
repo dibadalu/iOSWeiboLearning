@@ -77,14 +77,3 @@
 @end
 
 
-/**
- selectedRange :
- 1.本来是用来控制textView的文字选中范围
- 2.如果selectedRange.length为0，selectedRange.location就是textView的光标位置
- 
- 关于textView文字的字体
- 1.如果是普通文字（text），文字大小由textView.font控制
- 2.如果是属性文字（attributedText），文字大小不受textView.font控制，应该利用NSMutableAttributedString的
- - (void)addAttribute:(NSString *)name value:(id)value range:(NSRange)range;
- 方法设置字体
- **/

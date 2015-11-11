@@ -9,7 +9,7 @@
 #import "ZJComposePhotosView.h"
 
 @implementation ZJComposePhotosView
-#pragma mark - 系统方法
+#pragma mark - system method
 - (id)initWithFrame:(CGRect)frame
 {
     self = [super initWithFrame:frame];
@@ -46,13 +46,12 @@
     }
 }
 
-#pragma mark - 传值
+#pragma mark - setter method
 - (void)addPhoto:(UIImage *)image
 {
     UIImageView *photoView = [[UIImageView alloc] init];
     photoView.image = image;
     [self addSubview:photoView];
-    
     
     //存储图片
     [_photos addObject:image];

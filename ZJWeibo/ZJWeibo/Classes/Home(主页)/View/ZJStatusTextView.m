@@ -12,7 +12,7 @@
 #import "ZJSpecialText.h"
 
 @implementation ZJStatusTextView
-#pragma mark - 系统方法
+#pragma mark - system method
 - (instancetype)init
 {
     self = [super init];
@@ -25,7 +25,7 @@
     return self;
 }
 
-#pragma mark - touches
+#pragma mark - touches method
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
 {
     //触摸对象
@@ -79,7 +79,7 @@
     });
 }
 
-#pragma mark - 其他方法
+#pragma mark - custom method
 /**
  *  计算特殊文字的矩形框，并将其存储在模型ZJSpecialText中
  */
@@ -145,7 +145,7 @@
     }
 }
 
-#pragma mark - 触摸事件
+#pragma mark - touch action method
 //- (UIView *)hitTest:(CGPoint)point withEvent:(UIEvent *)event
 //{
 //    return [super hitTest:point withEvent:event];
@@ -177,7 +177,4 @@
 
 @end
 
-// 触摸事件的处理
-// 1.判断触摸点在谁身上: 调用所有UI控件的- (BOOL)pointInside:(CGPoint)point withEvent:(UIEvent *)event
-// 2.pointInside返回YES的控件就是触摸点所在的UI控件
-// 3.由触摸点所在的UI控件选出处理事件的UI控件: 调用- (UIView *)hitTest:(CGPoint)point withEvent:(UIEvent *)event
+

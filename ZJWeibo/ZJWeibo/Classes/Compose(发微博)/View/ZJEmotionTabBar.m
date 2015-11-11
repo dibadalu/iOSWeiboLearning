@@ -18,7 +18,7 @@
 
 @implementation ZJEmotionTabBar
 
-#pragma mark - 系统方法
+#pragma mark - system method
 - (id)initWithFrame:(CGRect)frame
 {
     self = [super initWithFrame:frame];
@@ -68,7 +68,7 @@
     [self btnClick:(ZJEmotionTabBarButton *)[self viewWithTag:ZJEmotionTabBarButtonTypeDefault]];
 }
 
-#pragma mark - 初始化方法
+#pragma mark - init method
 /**
  *  初始化按钮
  */
@@ -103,7 +103,7 @@
     return btn;
 }
 
-#pragma mark - 点击事件
+#pragma mark - action method
 - (void)btnClick:(ZJEmotionTabBarButton *)btn
 {
 //    ZJLog(@"btnClick");

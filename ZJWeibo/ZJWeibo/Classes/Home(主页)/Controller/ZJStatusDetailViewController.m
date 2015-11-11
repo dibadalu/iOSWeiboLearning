@@ -184,7 +184,7 @@
     
 }
 
-#pragma mark - other method
+#pragma mark - custom method
 /**
  *  获取转发内容
  */

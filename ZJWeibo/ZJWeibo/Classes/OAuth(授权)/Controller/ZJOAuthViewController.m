@@ -21,7 +21,7 @@
 
 @implementation ZJOAuthViewController
 
-#pragma mark - 系统方法
+#pragma mark - system method
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -46,7 +46,7 @@
     
 }
 
-#pragma mark - UIWebViewDelegate代理方法
+#pragma mark - UIWebViewDelegate
 - (void)webViewDidStartLoad:(UIWebView *)webView
 {
 //    NSLog(@"webViewDidStartLoad");
@@ -95,7 +95,7 @@
     return YES;//返回回调地址
 }
 
-
+#pragma mark - custom method
 /**
  *  利用code的请求标识换取一个accessToken
  */

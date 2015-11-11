@@ -10,7 +10,7 @@
 
 @implementation ZJTextView
 
-#pragma mark - 系统方法
+#pragma mark - system method
 - (id)initWithFrame:(CGRect)frame
 {
     self = [super initWithFrame:frame];
@@ -59,7 +59,7 @@
     [self.placedholder drawInRect:placeholderRect withAttributes:attrs];
     
 }
-#pragma mark - setter方法
+#pragma mark - setter method
 //当自定义控件时，“属性”有时候要重写set方法
 - (void)setPlacedholder:(NSString *)placedholder
 {
@@ -96,7 +96,7 @@
     [self setNeedsDisplay];
 }
 
-#pragma mark - 点击事件
+#pragma mark - action method
 - (void)textDidChange
 {
     //    HMLog(@"textDidChange");

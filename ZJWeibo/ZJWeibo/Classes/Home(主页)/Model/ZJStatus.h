@@ -63,4 +63,6 @@
 /**表态数 */
 @property(nonatomic,assign) int attitudes_count;
 
+
+
 @end

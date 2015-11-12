@@ -47,5 +47,4 @@ typedef enum {
 /** 认证类型 */
 @property (nonatomic, assign) ZJUserVerifiedType verified_type;
 
-
 @end

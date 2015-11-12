@@ -22,3 +22,7 @@ NSString * const ZJEmotionDidDeleteNotification = @"HMEmotionDidDeleteNotificati
 NSString * const ZJSpecialTextDidSelectNotification =@"ZJSpecialTextDidSelectNotification";
 //特殊字符出现的文本内容
 NSString * const ZJSpecialTextDidSelectText = @"ZJSpecialTextDidSelectText";
+//ZJProfileHeaderBottomView的按钮被点击的通知
+NSString * const ZJProfileHeaderBottomViewBtnDidSelectNotification = @"ZJProfileHeaderBottomViewBtnDidSelectNotification";
+//ZJProfileHeaderBottomView的按钮被点击的按钮类型
+NSString * const ZJSelectProfileHeaderBottomViewBtnType = @"selectProfileHeaderBottomViewBtnType";

@@ -22,3 +22,7 @@ extern NSString * const ZJEmotionDidDeleteNotification;
 extern NSString * const ZJSpecialTextDidSelectNotification;
 //特殊字符出现的文本内容
 extern NSString * const ZJSpecialTextDidSelectText;
+//ZJProfileHeaderBottomView的按钮被点击的通知
+extern NSString * const ZJProfileHeaderBottomViewBtnDidSelectNotification;
+//ZJProfileHeaderBottomView的按钮被点击的按钮类型
+extern NSString * const ZJSelectProfileHeaderBottomViewBtnType;

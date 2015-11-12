@@ -194,7 +194,7 @@
     }else{
         //3.发送请求
         [ZJHttpTool get:@"https://api.weibo.com/2/statuses/friends_timeline.json" params:params success:^(id json) {
-            //        ZJLog(@"请求成功---%@",json[@"statuses"]);
+//                    ZJLog(@"请求成功---%@",json[@"statuses"]);
             
             //FMDB缓存从新浪获取的微博字典数组
             [ZJStatusTool saveStatuses:json[@"statuses"]];
@@ -444,7 +444,7 @@
     
     //2.给cell传微博frame模型（在cell里面设置frame和数据）
     cell.statusFrame = self.statusFrames[indexPath.row];
-    
+        
     return cell;
     
 }

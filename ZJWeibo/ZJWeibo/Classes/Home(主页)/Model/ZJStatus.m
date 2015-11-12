@@ -128,6 +128,7 @@
     
 }
 
+
 #pragma mark -  custom method
 /**
  *  重点：将普通文字转变为属性文字，利用正则表达式将特殊字符高亮显示
@@ -234,6 +235,8 @@
     
     return attributedText;
 }
+
+
 
 
 @end

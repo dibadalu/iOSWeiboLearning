@@ -20,6 +20,10 @@
 #import <MJExtension.h>
 #import "ZJInfoCount.h"
 #import "ZJInfoCountTool.h"
+#import "ZJProfileHeaderBottomView.h"
+#import "ZJFriendsInfoViewController.h"
+#import "ZJFollowersInfoViewController.h"
+
 
 @interface ZJProfileViewController ()<ZJProfileHeaderViewDelegate>
 
@@ -48,6 +52,17 @@
     //获取用户信息
     [self setupUserInfo];
     
+    //bottomView按钮被点击的通知
+    [ZJNotificationCenter addObserver:self selector:@selector(bottomViewBtnDidSelect:) name:ZJProfileHeaderBottomViewBtnDidSelectNotification object:nil];
+    
+}
+
+/**
+ *  移除观察者
+ */
+- (void)dealloc
+{
+    [ZJNotificationCenter removeObserver:self];
 }
 
 #pragma mark - init method
@@ -142,7 +157,48 @@
     settingVc.title = @"设置";
     [self.navigationController pushViewController:settingVc animated:YES];
 }
+/**
+ *  bottomView按钮被点击的通知
+ */
+- (void)bottomViewBtnDidSelect:(NSNotification *)notification
+{
+    //取出携带的按钮类型
+    UIButton *btn = notification.userInfo[ZJSelectProfileHeaderBottomViewBtnType];
+//    ZJLog(@"%d",btn.tag);
+    switch (btn.tag) {
+        case ZJProfileHeaderBottomViewButtonStatusesType:
+            ZJLog(@"---微博");
+            break;
+        case ZJProfileHeaderBottomViewButtonFriendsType:
+//            ZJLog(@"---关注");
+            [self setupFriendsInfoVc];
+            break;
+        case ZJProfileHeaderBottomViewButtonFollowersType:
+//            ZJLog(@"---粉丝");
+            [self setupFollowersInfoVc];
+            break;
+    }
+    
+}
 
+#pragma mark - custom method
+/**
+ *  跳转到关注详情控制器
+ */
+- (void)setupFriendsInfoVc
+{
+    ZJFriendsInfoViewController *friendsVc = [[ZJFriendsInfoViewController alloc] init];
+    [self.navigationController pushViewController:friendsVc animated:YES];
+}
+/**
+ *  跳转到粉丝详情控制器
+ */
+- (void)setupFollowersInfoVc
+{
+    ZJFollowersInfoViewController *followersVc = [[ZJFollowersInfoViewController alloc] init];
+    [self.navigationController pushViewController:followersVc animated:YES];
+    
+}
 #pragma mark - UITableViewDelegate
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
 {
@@ -164,5 +220,8 @@
     [self.navigationController pushViewController:profileDetailVc animated:YES];
     
 }
+
+
+
 
 @end

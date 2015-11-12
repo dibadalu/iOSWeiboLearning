@@ -6,6 +6,13 @@
 //  Copyright (c) 2015年 dibadalu. All rights reserved.
 //
 
+typedef enum {
+    ZJProfileHeaderBottomViewButtonStatusesType,
+    ZJProfileHeaderBottomViewButtonFriendsType,
+    ZJProfileHeaderBottomViewButtonFollowersType
+}ZJProfileHeaderBottomViewButtonType;
+
+
 #import <UIKit/UIKit.h>
 @class ZJInfoCount;
 

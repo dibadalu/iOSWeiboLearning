@@ -87,5 +87,4 @@
  self.titleLabel.font = [UIFont systemFontOfSize:32];
  ZJLog(@"%@",self.currentTitle);
  }
-
  */

@@ -14,7 +14,7 @@
                     <rect key="frame" x="0.0" y="0.0" width="106" height="40"/>
                     <subviews>
                         <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Cp8-h2-OhI">
-                            <rect key="frame" x="0.0" y="0.0" width="106" height="30"/>
+                            <rect key="frame" x="0.0" y="0.0" width="106" height="32"/>
                             <state key="normal" title="269">
                                 <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -78,9 +78,9 @@
             <nil key="simulatedStatusBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
-                <outlet property="followBtn" destination="R9k-E8-Bcx" id="fTC-QL-cSe"/>
-                <outlet property="followerBtn" destination="1lN-dz-Pfq" id="z1c-V1-F25"/>
-                <outlet property="weiboBtn" destination="Cp8-h2-OhI" id="6z1-FX-UUA"/>
+                <outlet property="followersBtn" destination="1lN-dz-Pfq" id="HmT-UH-rAO"/>
+                <outlet property="friendsBtn" destination="R9k-E8-Bcx" id="Pa4-2R-jU5"/>
+                <outlet property="statusesBtn" destination="Cp8-h2-OhI" id="0z7-mU-hIq"/>
             </connections>
             <point key="canvasLocation" x="608" y="331"/>
         </view>

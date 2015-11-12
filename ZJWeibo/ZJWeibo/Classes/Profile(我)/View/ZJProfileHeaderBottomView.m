@@ -11,9 +11,9 @@
 
 @interface ZJProfileHeaderBottomView ()
 
-@property (weak, nonatomic) IBOutlet UIButton *weiboBtn;
-@property (weak, nonatomic) IBOutlet UIButton *followBtn;
-@property (weak, nonatomic) IBOutlet UIButton *followerBtn;
+@property (weak, nonatomic) IBOutlet UIButton *statusesBtn;
+@property (weak, nonatomic) IBOutlet UIButton *friendsBtn;
+@property (weak, nonatomic) IBOutlet UIButton *followersBtn;
 - (IBAction)btnClick:(UIButton *)button;
 
 @end
@@ -31,7 +31,10 @@
  */
 - (void)awakeFromNib
 {
-    
+    //设置三个按钮的tag
+    self.statusesBtn.tag = ZJProfileHeaderBottomViewButtonStatusesType;
+    self.friendsBtn.tag = ZJProfileHeaderBottomViewButtonFriendsType;
+    self.followersBtn.tag = ZJProfileHeaderBottomViewButtonFollowersType;
 }
 
 #pragma mark - setter method
@@ -42,11 +45,11 @@
 //    ZJLog(@"%d",self.infoCount.friends_count);
     
     //微博
-    [self setupBtnCount:infoCount.statuses_count btn:self.weiboBtn];
+    [self setupBtnCount:infoCount.statuses_count btn:self.statusesBtn];
     //关注
-    [self setupBtnCount:infoCount.friends_count btn:self.followBtn];
+    [self setupBtnCount:infoCount.friends_count btn:self.friendsBtn];
     //粉丝
-    [self setupBtnCount:infoCount.followers_count btn:self.followerBtn];
+    [self setupBtnCount:infoCount.followers_count btn:self.followersBtn];
 
 }
 
@@ -71,7 +74,13 @@
 
 #pragma mark - action method 
 - (IBAction)btnClick:(UIButton *)button {
-    ZJLog(@"btnClick");
+//    ZJLog(@"btnClick-%d",button.tag);
+    
+    //发出通知（携带被点击按钮的类型）
+    NSMutableDictionary *userInfo = [NSMutableDictionary dictionary];
+    userInfo[ZJSelectProfileHeaderBottomViewBtnType] = button;
+    [ZJNotificationCenter postNotificationName:ZJProfileHeaderBottomViewBtnDidSelectNotification object:nil userInfo:userInfo];
+    
 }
 
 @end

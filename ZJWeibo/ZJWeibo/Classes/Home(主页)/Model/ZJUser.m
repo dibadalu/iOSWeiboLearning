@@ -7,6 +7,7 @@
 //  
 
 #import "ZJUser.h"
+#import <MJExtension.h>
 
 @implementation ZJUser
 
@@ -20,5 +21,13 @@
     self.vip = mbtype > 2;
 }
 
+/**
+ *  告知系统属性descriptionText存放的是description键值
+ */
++ (NSDictionary *)replacedKeyFromPropertyName
+{
+    return @{@"descriptionText" : @"description"};
+    
+}
 
 @end

@@ -49,6 +49,7 @@
 		54689AFB1BEB8A5A002FAD95 /* ZJTwoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 54689AFA1BEB8A5A002FAD95 /* ZJTwoViewController.m */; };
 		54689AFE1BEC6F72002FAD95 /* ZJCommonViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 54689AFD1BEC6F72002FAD95 /* ZJCommonViewController.m */; };
 		54689B011BEC721A002FAD95 /* ZJSettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 54689B001BEC721A002FAD95 /* ZJSettingViewController.m */; };
+		5468D4DF1BF48D50000CB616 /* ZJStatusesInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5468D4DE1BF48D50000CB616 /* ZJStatusesInfoViewController.m */; };
 		54703FBB1BECC902003F8207 /* ZJProfileHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 54703FBA1BECC902003F8207 /* ZJProfileHeaderView.m */; };
 		54703FC41BF08DF9003F8207 /* ZJProfileHeaderBottomView.m in Sources */ = {isa = PBXBuildFile; fileRef = 54703FC31BF08DF9003F8207 /* ZJProfileHeaderBottomView.m */; };
 		54703FC61BF090E8003F8207 /* ZJProfileHeaderBottomView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 54703FC51BF090E8003F8207 /* ZJProfileHeaderBottomView.xib */; };
@@ -422,6 +423,8 @@
 		54689AFD1BEC6F72002FAD95 /* ZJCommonViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZJCommonViewController.m; sourceTree = "<group>"; };
 		54689AFF1BEC721A002FAD95 /* ZJSettingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZJSettingViewController.h; sourceTree = "<group>"; };
 		54689B001BEC721A002FAD95 /* ZJSettingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZJSettingViewController.m; sourceTree = "<group>"; };
+		5468D4DD1BF48D50000CB616 /* ZJStatusesInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZJStatusesInfoViewController.h; sourceTree = "<group>"; };
+		5468D4DE1BF48D50000CB616 /* ZJStatusesInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZJStatusesInfoViewController.m; sourceTree = "<group>"; };
 		54703FB91BECC902003F8207 /* ZJProfileHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZJProfileHeaderView.h; sourceTree = "<group>"; };
 		54703FBA1BECC902003F8207 /* ZJProfileHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZJProfileHeaderView.m; sourceTree = "<group>"; };
 		54703FC21BF08DF9003F8207 /* ZJProfileHeaderBottomView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZJProfileHeaderBottomView.h; sourceTree = "<group>"; };
@@ -1105,6 +1108,8 @@
 				548801881BF3745000428D4A /* ZJFriendsInfoViewController.m */,
 				5488018A1BF374FF00428D4A /* ZJFollowersInfoViewController.h */,
 				5488018B1BF374FF00428D4A /* ZJFollowersInfoViewController.m */,
+				5468D4DD1BF48D50000CB616 /* ZJStatusesInfoViewController.h */,
+				5468D4DE1BF48D50000CB616 /* ZJStatusesInfoViewController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -1601,7 +1606,7 @@
 			isa = PBXProject;
 			attributes = {
 				CLASSPREFIX = ZJ;
-				LastUpgradeCheck = 0640;
+				LastUpgradeCheck = 0710;
 				ORGANIZATIONNAME = dibadalu;
 				TargetAttributes = {
 					54097DB71BD0A320008084D3 = {
@@ -2000,6 +2005,7 @@
 				54689AF41BEB825A002FAD95 /* ZJBadgeView.m in Sources */,
 				54703FBB1BECC902003F8207 /* ZJProfileHeaderView.m in Sources */,
 				547AF2971BDE16B0008A949B /* UITextView+Extension.m in Sources */,
+				5468D4DF1BF48D50000CB616 /* ZJStatusesInfoViewController.m in Sources */,
 				54689AF11BEB7F5D002FAD95 /* ZJCommonLabelItem.m in Sources */,
 				547A886C1BE2216E00805E0C /* ZJStatusPhotosView.m in Sources */,
 				54042C2D1BE74DD800183AFC /* ZJComment.m in Sources */,
@@ -2081,6 +2087,7 @@
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -2152,6 +2159,7 @@
 				INFOPLIST_FILE = ZJWeibo/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "dibadalu.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -2167,6 +2175,7 @@
 				INFOPLIST_FILE = ZJWeibo/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "dibadalu.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -2189,6 +2198,7 @@
 				INFOPLIST_FILE = ZJWeiboTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "dibadalu.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ZJWeibo.app/ZJWeibo";
 			};
@@ -2207,6 +2217,7 @@
 				INFOPLIST_FILE = ZJWeiboTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "dibadalu.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ZJWeibo.app/ZJWeibo";
 			};

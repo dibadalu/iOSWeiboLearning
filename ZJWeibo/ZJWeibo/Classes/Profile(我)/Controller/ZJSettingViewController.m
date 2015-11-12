@@ -109,7 +109,7 @@
     ZJCommonSwitchItem *night = [ZJCommonSwitchItem itemWithTitle:@"夜间模式"];
     ZJCommonLabelItem *cache = [ZJCommonLabelItem itemWithTitle:@"清除缓存"];
     //计算图片缓存的字节
-    int byteSize = [SDImageCache sharedImageCache].getSize;
+    NSUInteger byteSize = [SDImageCache sharedImageCache].getSize;
     double size = byteSize / 1000.0 /1000.0;//记得加.0
     cache.text = [NSString stringWithFormat:@"%.1fMB",size];
     

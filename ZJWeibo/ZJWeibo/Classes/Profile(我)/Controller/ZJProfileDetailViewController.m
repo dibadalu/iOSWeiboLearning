@@ -14,7 +14,6 @@
 #import "ZJStatusFrame.h"
 #import <MJExtension.h>
 #import "ZJStatusCell.h"
-#import <MJRefresh.h>
 #import <UIImageView+WebCache.h>
 #import "ZJProfileStatusTool.h"
 #import "ZJInfoCountTool.h"

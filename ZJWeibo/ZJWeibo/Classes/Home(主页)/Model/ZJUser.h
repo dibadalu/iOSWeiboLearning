@@ -47,4 +47,7 @@ typedef enum {
 /** 认证类型 */
 @property (nonatomic, assign) ZJUserVerifiedType verified_type;
 
+/** 用户的简介 */
+@property(nonatomic,copy) NSString *descriptionText;
+
 @end

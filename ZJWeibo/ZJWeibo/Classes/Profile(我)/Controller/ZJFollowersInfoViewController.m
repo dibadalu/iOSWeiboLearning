@@ -7,96 +7,100 @@
 //
 
 #import "ZJFollowersInfoViewController.h"
+#import "ZJAccount.h"
+#import "ZJAccountTool.h"
+#import "ZJHttpTool.h"
+#import "ZJUser.h"
+#import <MJExtension.h>
+#import <UIImageView+WebCache.h>
+
 
 @interface ZJFollowersInfoViewController ()
+
+/** 关注总数组，存放的是每一个用户模型 */
+@property(nonatomic,strong) NSMutableArray *users;
 
 @end
 
 @implementation ZJFollowersInfoViewController
+#pragma mark - lazy method
+- (NSMutableArray *)users
+{
+    if (!_users) {
+        self.users = [NSMutableArray array];
+    }
+    return _users;
+}
 
+#pragma mark - system method
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.view.backgroundColor = [UIColor blueColor];
+    self.title = @"全部粉丝";
     
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
+    //获取关注列表
+    [self setupFollowersList];
+}
+
+- (void)setupFollowersList
+{
+    /*
+     https://api.weibo.com/2/friendships/followers.json  get
+     
+     access_token	false	string	采用OAuth授权方式为必填参数，其他授权方式不需要此参数，OAuth授权后获得。
+     uid	false	int64	需要查询的用户UID。
+     
+     */
+    //1.拼接请求参数
+    ZJAccount *account = [ZJAccountTool account];
+    NSMutableDictionary *params = [NSMutableDictionary dictionary];
+    params[@"access_token"] = account.access_token;
+    params[@"uid"] = account.uid;
     
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    //2.发送请求
+    [ZJHttpTool get:@"https://api.weibo.com/2/friendships/followers.json" params:params success:^(id json) {
+        //        ZJLog(@"请求成功--%@",json[@"users"]);
+        
+        //关注的用户字典数组 （字典数组转模型数组）
+        NSArray *usersArray = [ZJUser objectArrayWithKeyValuesArray:json[@"users"]];
+        
+        //将最新的关注数据，添加到总数组的最前面（插入）
+        NSRange range = NSMakeRange(0, usersArray.count);
+        NSIndexSet *set = [NSIndexSet indexSetWithIndexesInRange:range];
+        [self.users insertObjects:usersArray atIndexes:set];
+        
+        //刷新表格
+        [self.tableView reloadData];
+        
+        
+    } failure:^(NSError *error) {
+        ZJLog(@"请求失败--%@",error);
+    }];
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+#pragma mark - UITableViewDataSource
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    return self.users.count;
 }
 
-#pragma mark - Table view data source
-
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-#warning Potentially incomplete method implementation.
-    // Return the number of sections.
-    return 0;
-}
-
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-#warning Incomplete method implementation.
-    // Return the number of rows in the section.
-    return 0;
-}
-
-/*
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:<#@"reuseIdentifier"#> forIndexPath:indexPath];
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    static NSString *ID = @"follower";
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:ID];
+    if (!cell) {
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:ID];
+    }
     
-    // Configure the cell...
+    ZJUser *user = self.users[indexPath.row];//取出用户模型
+    cell.textLabel.text = user.name;
+    cell.detailTextLabel.text = user.descriptionText;
+    [cell.imageView sd_setImageWithURL:[NSURL URLWithString:user.profile_image_url] placeholderImage:[UIImage imageNamed:@"avatar_default_small"]];
     
     return cell;
 }
-*/
 
-/*
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Return NO if you do not want the specified item to be editable.
-    return YES;
-}
-*/
 
-/*
-// Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    } else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
-}
-*/
 
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath {
-}
-*/
-
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
-}
-*/
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end

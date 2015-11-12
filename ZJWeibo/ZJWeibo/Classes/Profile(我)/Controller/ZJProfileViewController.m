@@ -23,6 +23,8 @@
 #import "ZJProfileHeaderBottomView.h"
 #import "ZJFriendsInfoViewController.h"
 #import "ZJFollowersInfoViewController.h"
+#import "ZJStatusesInfoViewController.h"
+
 
 
 @interface ZJProfileViewController ()<ZJProfileHeaderViewDelegate>
@@ -167,7 +169,8 @@
 //    ZJLog(@"%d",btn.tag);
     switch (btn.tag) {
         case ZJProfileHeaderBottomViewButtonStatusesType:
-            ZJLog(@"---微博");
+//            ZJLog(@"---微博");
+            [self setupStatussesInfoVc];
             break;
         case ZJProfileHeaderBottomViewButtonFriendsType:
 //            ZJLog(@"---关注");
@@ -198,6 +201,14 @@
     ZJFollowersInfoViewController *followersVc = [[ZJFollowersInfoViewController alloc] init];
     [self.navigationController pushViewController:followersVc animated:YES];
     
+}
+/**
+ *  跳转到微博详情控制器
+ */
+- (void)setupStatussesInfoVc
+{
+    ZJStatusesInfoViewController *statusesVc = [[ZJStatusesInfoViewController alloc] init];
+    [self.navigationController pushViewController:statusesVc animated:YES];
 }
 #pragma mark - UITableViewDelegate
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section

@@ -59,10 +59,7 @@
     
     //2.发送请求
     [ZJHttpTool get:@"https://api.weibo.com/2/friendships/friends.json" params:params success:^(id json) {
-        ZJLog(@"请求成功--%@",json[@"users"]);
-        
-        
-        NSString *friendDescription = json[@"description"];
+//        ZJLog(@"请求成功--%@",json[@"users"]);
         
         //关注的用户字典数组 （字典数组转模型数组）
         NSArray *usersArray = [ZJUser objectArrayWithKeyValuesArray:json[@"users"]];
@@ -71,7 +68,7 @@
         NSRange range = NSMakeRange(0, usersArray.count);
         NSIndexSet *set = [NSIndexSet indexSetWithIndexesInRange:range];
         [self.users insertObjects:usersArray atIndexes:set];
-        
+   
         //刷新表格
         [self.tableView reloadData];
         
@@ -97,7 +94,7 @@
     
     ZJUser *user = self.users[indexPath.row];//取出用户模型
     cell.textLabel.text = user.name;
-    cell.detailTextLabel.text = @"个人简介";
+    cell.detailTextLabel.text = user.descriptionText;
     [cell.imageView sd_setImageWithURL:[NSURL URLWithString:user.profile_image_url] placeholderImage:[UIImage imageNamed:@"avatar_default_small"]];
     
     return cell;

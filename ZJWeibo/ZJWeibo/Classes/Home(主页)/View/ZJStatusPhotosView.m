@@ -140,7 +140,7 @@
     
     //2.设置图片浏览器显示的所有图片
     NSMutableArray *photos = [NSMutableArray array];
-    int count = self.photos.count;
+    int count =(int) self.photos.count;
     for (int i = 0; i< count; i++) {
         ZJPhoto *pic = self.photos[i];
         

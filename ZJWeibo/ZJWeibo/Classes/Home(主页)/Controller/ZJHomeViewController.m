@@ -123,7 +123,7 @@
         //将昵称和头像存储到沙盒
         account.name = user.name;
         account.profile_image_url = user.profile_image_url;
-        account.descriptionText = json[@"description"];
+        account.descriptionText = user.descriptionText;
         [ZJAccountTool saveAccount:account];
         
         
@@ -240,7 +240,7 @@
     if (count == 0) {
         label.text = @"没有新微博";
     }else{
-        label.text = [NSString stringWithFormat:@"%d新微博",count];
+        label.text = [NSString stringWithFormat:@"%lu新微博",(unsigned long)count];
     }
     [label setTextColor:[UIColor whiteColor]];
     [label setFont:[UIFont systemFontOfSize:16]];
@@ -462,7 +462,7 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    ZJLog(@"didSelectRowAtIndexPath---%d",indexPath.row);
+    ZJLog(@"didSelectRowAtIndexPath---%ld",(long)indexPath.row);
     ZJStatusDetailViewController *detail = [[ZJStatusDetailViewController alloc] init];
     ZJStatusFrame *frame = self.statusFrames[indexPath.row];
     detail.status = frame.status;//传微博数据给ZJStatusDetailViewController

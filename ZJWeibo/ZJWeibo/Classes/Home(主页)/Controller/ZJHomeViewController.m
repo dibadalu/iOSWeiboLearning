@@ -396,7 +396,7 @@
 #pragma mark - action method
 - (void)popClick
 {
-    ZJLog(@"popClick");
+//    ZJLog(@"popClick");
 }
 /**
  *  发微博
@@ -411,7 +411,7 @@
 
 - (void)titleBtnClick
 {
-    ZJLog(@"titleBtnClick");
+//    ZJLog(@"titleBtnClick");
 }
 /**
  *  特殊字符上url链接被选中的通知
@@ -462,7 +462,7 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    ZJLog(@"didSelectRowAtIndexPath---%ld",(long)indexPath.row);
+//    ZJLog(@"didSelectRowAtIndexPath---%ld",(long)indexPath.row);
     ZJStatusDetailViewController *detail = [[ZJStatusDetailViewController alloc] init];
     ZJStatusFrame *frame = self.statusFrames[indexPath.row];
     detail.status = frame.status;//传微博数据给ZJStatusDetailViewController

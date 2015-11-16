@@ -74,8 +74,8 @@
  */
 - (void)setupGroups
 {
-    //设置headerView
-    [self setupGroup0];
+   
+//    [self setupGroup0];
     [self setupGroup1];
 
 }
@@ -100,10 +100,11 @@
     ZJCommonItem *album = [ZJCommonItem itemWithTitle:@"我的相册" icon:@"album"];
 //    album.subTitle = @"(80)";
     ZJCommonItem *collect = [ZJCommonItem itemWithTitle:@"我的收藏" icon:@"collect"];
-//    collect.subTitle = @"(50)";
+    ZJInfoCount *infoCount = [ZJInfoCountTool infoCount];
+    collect.badgeValue = [NSString stringWithFormat:@"%d",infoCount.favourites_count];
     collect.destVcClass = [ZJStatusFavoritesViewController class];
 
-    ZJCommonItem *like = [ZJCommonItem itemWithTitle:@"赞" icon:@"like"];
+    ZJCommonItem *like = [ZJCommonItem itemWithTitle:@"我的赞" icon:@"like"];
 //    like.subTitle = @"(182)";
 
     group.items = @[album,collect,like];

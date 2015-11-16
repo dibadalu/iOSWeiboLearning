@@ -1,12 +1,12 @@
 //
-//  ZJComposeViewController.m
+//  ZJCommentViewController.m
 //  ZJWeibo
 //
 //  Created by dibadalu on 15/10/23.
 //  Copyright (c) 2015年 dibadalu. All rights reserved.
 //
 
-#import "ZJComposeViewController.h"
+#import "ZJCommentViewController.h"
 #import "ZJAccountTool.h"
 #import "ZJAccount.h"
 #import "ZJTextView.h"
@@ -18,9 +18,9 @@
 #import "ZJEmotionKeyboard.h"
 #import "ZJEmotion.h"
 #import "ZJEmotionTextView.h"
+#import "ZJStatus.h"
 
-
-@interface ZJComposeViewController ()<UITextViewDelegate,ZJComposeToolBarDelegate,UINavigationControllerDelegate,UIImagePickerControllerDelegate>
+@interface ZJCommentViewController ()<UITextViewDelegate,ZJComposeToolBarDelegate,UINavigationControllerDelegate,UIImagePickerControllerDelegate>
 
 /** 输入控件 */
 @property(nonatomic,strong) ZJEmotionTextView *textView;
@@ -35,7 +35,7 @@
 
 @end
 
-@implementation ZJComposeViewController
+@implementation ZJCommentViewController
 #pragma mark - lazy method
 - (ZJEmotionKeyboard *)emotionKeyboard
 {
@@ -96,9 +96,7 @@
     self.navigationItem.rightBarButtonItem.enabled = NO;
     
     //设置导航栏的标题文字
-    //取出账号模型里存放的用户昵称
-    NSString *name = [ZJAccountTool account].name;
-    self.navigationItem.title = name;
+    self.navigationItem.title = @"发评论";
 }
 /**
  *  添加输入控件
@@ -111,7 +109,7 @@
     textView.alwaysBounceVertical = YES;
     textView.frame = self.view.bounds;
     textView.font = [UIFont systemFontOfSize:16];
-    textView.placedholder = @"分享新鲜事......";
+    textView.placedholder = @"写评论...";
     textView.placedholderColor = [UIColor grayColor];
     textView.delegate = self;//设置代理
     [self.view addSubview:textView];
@@ -151,7 +149,7 @@
     photosView.width = self.view.width;
     photosView.height = 300;
     photosView.y = 100;
-//    photosView.backgroundColor = ZJRandomColor;
+    //    photosView.backgroundColor = ZJRandomColor;
     [self.textView addSubview:photosView];
     self.photosView = photosView;
 }
@@ -159,87 +157,43 @@
 #pragma mark - action method
 - (void)cancel
 {
-//    ZJLog(@"cancel");
+    //    ZJLog(@"cancel");
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 - (void)send
 {
-//    ZJLog(@"send");
-    if (self.photosView.photos.count) {//有配图
-        [self sendWithImage];
-    }else{//没配图
-        [self sendWithoutImage];
-    }
-    
-    //dismiss
-    [self dismissViewControllerAnimated:YES completion:nil];
-}
-- (void)sendWithoutImage
-{
     /*
-     https://api.weibo.com/2/statuses/update.json  post
+     https://api.weibo.com/2/comments/create.json post
      
      access_token	false	string	采用OAuth授权方式为必填参数，其他授权方式不需要此参数，OAuth授权后获得。
-     status	true	string	要发布的微博文本内容，必须做URLencode，内容不超过140个汉字
+     comment	true	string	评论内容，必须做URLencode，内容不超过140个汉字。
+     id	true	int64	需要评论的微博ID。
      */
     
     //1.拼接请求参数
     ZJAccount *account = [ZJAccountTool account];//取出账号模型
     NSMutableDictionary *params = [NSMutableDictionary dictionary];
     params[@"access_token"] = account.access_token;
-    params[@"status"] = self.textView.fullText;
+    params[@"comment"] = self.textView.fullText;
+    params[@"id"] = self.status.idstr;
     
     //2.发送请求
-    [ZJHttpTool post:@"https://api.weibo.com/2/statuses/update.json" params:params success:^(id json) {
-        //        ZJLog(@"请求成功--%@",json[@"text"]);
-        [MBProgressHUD showSuccess:@"您的新鲜事成功分享了!"];
+    [ZJHttpTool post:@"https://api.weibo.com/2/comments/create.json" params:params success:^(id json) {
+        //                ZJLog(@"请求成功--%@",json[@"text"]);
+        [MBProgressHUD showSuccess:@"评论成功!"];
     } failure:^(NSError *error) {
-        //        ZJLog(@"请求失败--%@",error);
-        [MBProgressHUD showError:@"网络繁忙，麻烦重新发送!"];
+        //                ZJLog(@"请求失败--%@",error);
+        [MBProgressHUD showError:@"网络繁忙，麻烦重新评论!"];
         
     }];
-  
-}
-- (void)sendWithImage
-{
-    /*
-     https://api.weibo.com/2/statuses/upload.json  post
-     
-     access_token	false	string	采用OAuth授权方式为必填参数，其他授权方式不需要此参数，OAuth授权后获得。
-     status	true	string	要发布的微博文本内容，必须做URLencode，内容不超过140个汉字
-     pic	true	binary	要上传的图片，仅支持JPEG、GIF、PNG格式，图片大小小于5M。     */
-    
-    //0.请求管理者
-    AFHTTPRequestOperationManager *mgr = [AFHTTPRequestOperationManager manager];
-    
-    //1.拼接请求参数
-    ZJAccount *account = [ZJAccountTool account];//取出账号模型
-    NSMutableDictionary *params = [NSMutableDictionary dictionary];
-    params[@"access_token"] = account.access_token;
-    params[@"status"] = self.textView.fullText;
-    
-    //2.发送请求
-    [mgr POST:@"https://api.weibo.com/2/statuses/upload.json" parameters:params constructingBodyWithBlock:^(id<AFMultipartFormData> formData) {
-        
-        UIImage *image = [self.photosView.photos firstObject];
-//        ZJLog(@"%@",self.photosView.photos);
-        NSData *data = UIImageJPEGRepresentation(image, 1.0);//5M以内的图片
-        //上传可能有点慢
-        [formData appendPartWithFileData:data name:@"pic" fileName:@"test.jpg" mimeType:@"image/jpeg"];
-        
-    } success:^(AFHTTPRequestOperation *operation , id json) {
-        [MBProgressHUD showSuccess:@"您的新鲜事成功分享了!"];
 
-    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        [MBProgressHUD showError:@"网络繁忙，麻烦重新发送!"];
-
-    }];
-    
-    
+    //3.dismiss
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
+
 - (void)textDidChange
 {
-//    ZJLog(@"textDidChange");
+    //    ZJLog(@"textDidChange");
     //当textView有文字，发送微博按钮可用
     self.navigationItem.rightBarButtonItem.enabled = self.textView.hasText;
 }
@@ -249,18 +203,6 @@
     if (self.switchingKeyBoard) {
         return;
     }
-    
-    //    ZJLog(@"keyboardDidChangeFrame--%@",notification);
-    /*
-     userInfo = {
-     //键盘弹出\隐藏后的frame
-     UIKeyboardFrameEndUserInfoKey = NSRect: {{0, 352}, {320, 216}},
-     //键盘弹出\隐藏所耗费的时间
-     UIKeyboardAnimationDurationUserInfoKey = 0.25,
-     //键盘弹出\隐藏动画执行的节奏（先快后慢、匀速）
-     UIKeyboardAnimationCurveUserInfoKey = 7
-     }
-     */
     
     //通过动画移动toolBar
     //取出notification的userInfo
@@ -277,9 +219,9 @@
 }
 - (void)emotionDidSelect:(NSNotification *)notification
 {
-//    ZJLog(@"emotionDidSelect");
+    //    ZJLog(@"emotionDidSelect");
     ZJEmotion *emotion = notification.userInfo[ZJSelectEmotion];//取出携带的模型数据
-//    ZJLog(@"%@---表情按钮被点击了",emotion.chs);
+    //    ZJLog(@"%@---表情按钮被点击了",emotion.chs);
     //插入文字或图片
     [self.textView insertEmotion:emotion];
 }
@@ -302,27 +244,27 @@
     switch (buttonType) {
         case ZJComposeToolbarButtonTypeCamera://相机
             ZJLog(@"相机");
-//            [self openCamera];//需要真机调试
+            //            [self openCamera];//需要真机调试
             
             break;
         case ZJComposeToolbarButtonTypePicture://相册
-//            ZJLog(@"相册");
+            //            ZJLog(@"相册");
             [self openAlbum];
-
+            
             break;
         case ZJComposeToolbarButtonTypeTrend://#
             ZJLog(@"#");
-
+            
             break;
         case ZJComposeToolbarButtonTypeMention://@
             ZJLog(@"@");
-
+            
             break;
         case ZJComposeToolbarButtonTypeEmotion://表情
-//            ZJLog(@"表情");
+            //            ZJLog(@"表情");
             //切换键盘
             [self switchKeyboard];
-
+            
             break;
     }
 }
@@ -359,7 +301,7 @@
  */
 - (void)switchKeyboard
 {
-//    ZJLog(@"switchKeyboard");
+    //    ZJLog(@"switchKeyboard");
     
     if (self.textView.inputView == nil) {//如果是系统键盘，切换表情键盘
         self.textView.inputView = self.emotionKeyboard;
@@ -406,24 +348,3 @@
 }
 
 @end
-
-/**
- UITextField：
- 1.文字永远是一行，不能显示多行文字
- 2.有placeHolder属性设置占位文字
- 3.继承自UIControl
- 4.监听行为：
- 1>设置代理
- 2>addTarget:action:forControlEvents:
- 3>通知:UITextFieldTextDidChangeNotification
- 
- 
- UITextView：
- 1.可以显示任意行文字
- 2.不能设置占位文字
- 3.继承自UIScollView
- 4.监听行为：
- 1>设置代理
- 2>通知：UITextViewTextDidChangeNotification
- 
- */

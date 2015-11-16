@@ -50,9 +50,9 @@
         self.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"statusdetail_toolbar_background"]];
         
         //添加toolBar的子控件
-        [self addBtn:@"转发" iconName:@"timeline_icon_retweet"];
-        [self addBtn:@"评论" iconName:@"timeline_icon_comment"];
-        [self addBtn:@"赞" iconName:@"timeline_icon_unlike"];
+        [self addBtn:@"转发" iconName:@"timeline_icon_retweet" btnType:ZJStatusDetailBottomToolBarButtonRetweetType];
+        [self addBtn:@"评论" iconName:@"timeline_icon_comment" btnType:ZJStatusDetailBottomToolBarButtonCommentType];
+        [self addBtn:@"赞" iconName:@"timeline_icon_unlike" btnType:ZJStatusDetailBottomToolBarButtonLikeType];
         
         //添加分割线
         [self setupDivider];
@@ -93,9 +93,6 @@
     
 }
 
-
-
-
 #pragma mark - init method
 /**
  *  添加toolBar的子控件
@@ -103,7 +100,7 @@
  *  @param title    按钮文字
  *  @param iconName 按钮图片
  */
-- (UIButton *)addBtn:(NSString *)title iconName:(NSString *)iconName
+- (UIButton *)addBtn:(NSString *)title iconName:(NSString *)iconName btnType:(ZJStatusDetailBottomToolBarButtonType)btnType
 {
     UIButton *btn = [[UIButton alloc] init];
     btn.titleEdgeInsets = UIEdgeInsetsMake(0, 5, 0, 0);//间距
@@ -112,6 +109,8 @@
     btn.titleLabel.font = [UIFont systemFontOfSize:14];
     [btn setImage:[UIImage imageNamed:iconName] forState:UIControlStateNormal];
     [btn setBackgroundImage:[UIImage imageNamed:@"timeline_card_bottom_background_highlighted"] forState:UIControlStateHighlighted];
+    btn.tag = btnType;
+    [btn addTarget:self action:@selector(btnClick:) forControlEvents:UIControlEventTouchUpInside];
     [self addSubview:btn];
     
     [self.btns addObject:btn];
@@ -129,6 +128,18 @@
     [self addSubview:divider];
     
     [self.dividers addObject:divider];
+}
+
+#pragma mark - action method
+- (void)btnClick:(UIButton *)btn
+{
+//    ZJLog(@"btnClick--%@",btn.titleLabel.text);
+    
+    //通知代理做事情
+    if ([self.delegate respondsToSelector:@selector(statusDetailBottomToolBar:bottomButtonType:)]) {
+        [self.delegate statusDetailBottomToolBar:self bottomButtonType:btn.tag];
+    }
+    
 }
 
 @end

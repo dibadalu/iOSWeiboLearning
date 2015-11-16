@@ -19,8 +19,11 @@
 #import "ZJComment.h"
 #import <MJExtension.h>
 #import "ZJRepostResult.h"
+#import "ZJCommentViewController.h"
+#import "ZJRetweetViewController.h"
 
-@interface ZJStatusDetailViewController ()<UITableViewDataSource,UITableViewDelegate,ZJStatusDetailTopToolBarDelegate>
+
+@interface ZJStatusDetailViewController ()<UITableViewDataSource,UITableViewDelegate,ZJStatusDetailTopToolBarDelegate,ZJStatusDetailBottomToolBarDelegate>
 
 @property(nonatomic,weak) UITableView *tableView;
 @property(nonatomic,strong) ZJStatusDetailTopToolBar *topToolBar;
@@ -116,6 +119,7 @@
     bottomToolBar.width = self.view.width;
     bottomToolBar.height = self.view.height - self.tableView.height;
     bottomToolBar.y = CGRectGetMaxY(self.tableView.frame);
+    bottomToolBar.delegate = self;
     [self.view addSubview:bottomToolBar];
 }
 
@@ -210,7 +214,7 @@
     
     //2.发送请求
     [ZJHttpTool get:@"https://api.weibo.com/2/statuses/repost_timeline.json" params:params success:^(id json) {
-        ZJLog(@"请求成功---%@--%@",json[@"total_number"],json);//转发内容的接口被封
+//        ZJLog(@"请求成功---%@--%@",json[@"total_number"],json);//转发内容的接口被封
        
         //将字典 转换为 转发结果模型
         ZJRepostResult *repostResults = [ZJRepostResult objectWithKeyValues:json];
@@ -227,12 +231,11 @@
 //        });
         
 
- 
     } failure:^(NSError *error) {
         ZJLog(@"请求失败---%@",error);
         
     }];
-
+    
 }
 /**
  *  获取评论内容
@@ -283,6 +286,49 @@
         ZJLog(@"请求失败---%@",error);
 
     }];
+}
+
+#pragma mark - ZJStatusDetailBottomToolBarDelegate
+- (void)statusDetailBottomToolBar:(ZJStatusDetailBottomToolBar *)bottomToolBar bottomButtonType:(ZJStatusDetailBottomToolBarButtonType)bottomBtnType
+{
+    switch (bottomBtnType) {
+        case ZJStatusDetailBottomToolBarButtonRetweetType:
+//            ZJLog(@"转发");
+            //转发微博
+            [self setupRetweet];
+            break;
+        case ZJStatusDetailBottomToolBarButtonCommentType:
+//            ZJLog(@"评论");
+            //评论微博
+            [self setupCommont];
+            break;
+        case ZJStatusDetailBottomToolBarButtonLikeType:
+            ZJLog(@"赞");
+            break;
+    }
+}
+/**
+ *  转发微博
+ */
+- (void)setupRetweet
+{
+//    ZJLog(@"setupRetweet");
+    ZJRetweetViewController *retweetVc = [[ZJRetweetViewController alloc] init];
+    retweetVc.status = self.status;//传微博数据
+    UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:retweetVc];
+    [self presentViewController:nav animated:YES completion:nil];
+}
+/**
+ *  评论微博
+ */
+- (void)setupCommont
+{
+//    ZJLog(@"setupCommont");
+    ZJCommentViewController *commentVc = [[ZJCommentViewController alloc] init];
+    commentVc.status = self.status;//传微博数据
+    UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:commentVc];
+    [self presentViewController:nav animated:YES completion:nil];
+    
 }
 
 @end

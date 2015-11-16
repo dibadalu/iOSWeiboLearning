@@ -10,12 +10,12 @@
 #import "ZJSearchBar.h"
 #import "ZJCommonItem.h"
 #import "ZJCommonGroup.h"
-//#import "ZJCommonCell.h"
 #import "ZJCommonArrowItem.h"
 #import "ZJCommonSwitchItem.h"
 #import "ZJCommonLabelItem.h"
-#import "ZJOneViewController.h"
-#import "ZJTwoViewController.h"
+#import "ZJPublicStatusesViewController.h"
+#import "ZJUserSearchViewController.h"
+
 
 @interface ZJDiscoverViewController ()<UIScrollViewDelegate>
 
@@ -36,7 +36,6 @@
     //初始化模型数据
     [self setupGroups];
     
-
 }
 
 
@@ -51,6 +50,7 @@
     searchBar.height = 30;
     self.navigationItem.titleView = searchBar;
     self.searchBar = searchBar;
+    
 }
 /**
  *  初始化模型数据
@@ -69,8 +69,10 @@
     
     //2.设置组的所有行
     ZJCommonItem *hotStatus = [ZJCommonItem itemWithTitle:@"热门微博" icon:@"hot_status"];
+    hotStatus.destVcClass = [ZJPublicStatusesViewController class];
     hotStatus.subTitle = @"神马";
     ZJCommonItem *findPeople = [ZJCommonItem itemWithTitle:@"找人" icon:@"find_people"];
+    findPeople.destVcClass = [ZJUserSearchViewController class];
     findPeople.subTitle = @"乔布斯";
     group.items = @[hotStatus,findPeople];
 }
@@ -81,18 +83,13 @@
     [self.groups addObject:group];
     
     //2.设置组的所有行
-    ZJCommonItem *gameCenter = [ZJCommonItem itemWithTitle:@"游戏中心" icon:@"game_center"];
-    gameCenter.operation = ^{
-        ZJLog(@"点击了游戏中心");
-    };
     ZJCommonItem *near = [ZJCommonItem itemWithTitle:@"周边" icon:@"near"];
     near.operation = ^{
         ZJLog(@"点击了周边");
     };
     ZJCommonItem *app = [ZJCommonItem itemWithTitle:@"应用" icon:@"app"];
-    app.destVcClass = [ZJTwoViewController class];
     
-    group.items = @[gameCenter,near,app];
+    group.items = @[near,app];
 }
 - (void)setupGroup2
 {
@@ -102,14 +99,12 @@
     
     //2.设置组的所有行
     ZJCommonItem *video = [ZJCommonItem itemWithTitle:@"视频" icon:@"video"];
-    video.destVcClass = [ZJOneViewController class];
     ZJCommonItem *music = [ZJCommonItem itemWithTitle:@"音乐" icon:@"music"];
-    music.badgeValue = @"998";//右边样式为数字标识
     ZJCommonLabelItem *movie = [ZJCommonLabelItem itemWithTitle:@"电影" icon:@"movie"];
     movie.text = @"最新最热门的电影";
-    ZJCommonSwitchItem *cast = [ZJCommonSwitchItem itemWithTitle:@"播客" icon:@"cast"];
+    ZJCommonItem *cast = [ZJCommonItem itemWithTitle:@"播客" icon:@"cast"];
     ZJCommonArrowItem *more = [ZJCommonArrowItem itemWithTitle:@"更多" icon:@"more"];
-    
+
     group.items = @[video,music,movie,cast,more];
 }
 

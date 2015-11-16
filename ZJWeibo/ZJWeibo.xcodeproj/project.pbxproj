@@ -315,6 +315,10 @@
 		5488019C1BF9777A00428D4A /* ZJStatusesInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 548801981BF9777A00428D4A /* ZJStatusesInfoViewController.m */; };
 		5488019F1BF9781C00428D4A /* ZJStatusFavoritesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5488019E1BF9781C00428D4A /* ZJStatusFavoritesViewController.m */; };
 		548801A21BF97F2E00428D4A /* ZJFavorites.m in Sources */ = {isa = PBXBuildFile; fileRef = 548801A11BF97F2E00428D4A /* ZJFavorites.m */; };
+		548801A51BF9C4FC00428D4A /* ZJPublicStatusesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 548801A41BF9C4FC00428D4A /* ZJPublicStatusesViewController.m */; };
+		548801A81BF9CA2500428D4A /* ZJUserSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 548801A71BF9CA2500428D4A /* ZJUserSearchViewController.m */; };
+		548801AB1BF9D97000428D4A /* ZJCommentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 548801AA1BF9D97000428D4A /* ZJCommentViewController.m */; };
+		548801AE1BF9DE6D00428D4A /* ZJRetweetViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 548801AD1BF9DE6D00428D4A /* ZJRetweetViewController.m */; };
 		54965CCD1BDF5C35007DD69C /* ZJStatusTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 54965CCC1BDF5C35007DD69C /* ZJStatusTool.m */; };
 		54A3AD861BDA63E300F4C89F /* ZJTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 54A3AD851BDA63E300F4C89F /* ZJTextView.m */; };
 		54A911A61BE8538A00B9720D /* UIImage+ZJExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 54A911A51BE8538A00B9720D /* UIImage+ZJExtension.m */; };
@@ -730,6 +734,14 @@
 		5488019E1BF9781C00428D4A /* ZJStatusFavoritesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZJStatusFavoritesViewController.m; sourceTree = "<group>"; };
 		548801A01BF97F2E00428D4A /* ZJFavorites.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZJFavorites.h; sourceTree = "<group>"; };
 		548801A11BF97F2E00428D4A /* ZJFavorites.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZJFavorites.m; sourceTree = "<group>"; };
+		548801A31BF9C4FC00428D4A /* ZJPublicStatusesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZJPublicStatusesViewController.h; sourceTree = "<group>"; };
+		548801A41BF9C4FC00428D4A /* ZJPublicStatusesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZJPublicStatusesViewController.m; sourceTree = "<group>"; };
+		548801A61BF9CA2500428D4A /* ZJUserSearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZJUserSearchViewController.h; sourceTree = "<group>"; };
+		548801A71BF9CA2500428D4A /* ZJUserSearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZJUserSearchViewController.m; sourceTree = "<group>"; };
+		548801A91BF9D97000428D4A /* ZJCommentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZJCommentViewController.h; sourceTree = "<group>"; };
+		548801AA1BF9D97000428D4A /* ZJCommentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZJCommentViewController.m; sourceTree = "<group>"; };
+		548801AC1BF9DE6D00428D4A /* ZJRetweetViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZJRetweetViewController.h; sourceTree = "<group>"; };
+		548801AD1BF9DE6D00428D4A /* ZJRetweetViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZJRetweetViewController.m; sourceTree = "<group>"; };
 		54965CCB1BDF5C35007DD69C /* ZJStatusTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZJStatusTool.h; sourceTree = "<group>"; };
 		54965CCC1BDF5C35007DD69C /* ZJStatusTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZJStatusTool.m; sourceTree = "<group>"; };
 		54A3AD841BDA63E300F4C89F /* ZJTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZJTextView.h; sourceTree = "<group>"; };
@@ -908,6 +920,10 @@
 			children = (
 				541B32991BDA5934004C4BC6 /* ZJComposeViewController.h */,
 				541B329A1BDA5934004C4BC6 /* ZJComposeViewController.m */,
+				548801A91BF9D97000428D4A /* ZJCommentViewController.h */,
+				548801AA1BF9D97000428D4A /* ZJCommentViewController.m */,
+				548801AC1BF9DE6D00428D4A /* ZJRetweetViewController.h */,
+				548801AD1BF9DE6D00428D4A /* ZJRetweetViewController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -952,6 +968,10 @@
 			children = (
 				544A87251BD4D78100659A85 /* ZJDiscoverViewController.h */,
 				544A87261BD4D78100659A85 /* ZJDiscoverViewController.m */,
+				548801A31BF9C4FC00428D4A /* ZJPublicStatusesViewController.h */,
+				548801A41BF9C4FC00428D4A /* ZJPublicStatusesViewController.m */,
+				548801A61BF9CA2500428D4A /* ZJUserSearchViewController.h */,
+				548801A71BF9CA2500428D4A /* ZJUserSearchViewController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -1968,9 +1988,11 @@
 				54C220201BD52B0400BE0ED0 /* UIView+ZJExtension.m in Sources */,
 				544A871E1BD4D56D00659A85 /* ZJTabBarViewController.m in Sources */,
 				544A87211BD4D75E00659A85 /* ZJHomeViewController.m in Sources */,
+				548801AB1BF9D97000428D4A /* ZJCommentViewController.m in Sources */,
 				54042C301BE75ABE00183AFC /* ZJRepostResult.m in Sources */,
 				54A911A61BE8538A00B9720D /* UIImage+ZJExtension.m in Sources */,
 				54965CCD1BDF5C35007DD69C /* ZJStatusTool.m in Sources */,
+				548801AE1BF9DE6D00428D4A /* ZJRetweetViewController.m in Sources */,
 				542454681BEB7A6600C730F4 /* ZJCommonArrowItem.m in Sources */,
 				541B32871BD8DB1E004C4BC6 /* NSString+Extension.m in Sources */,
 				54A911B01BE8AF1E00B9720D /* ZJCommonGroup.m in Sources */,
@@ -1991,6 +2013,7 @@
 				542A4A0D1BD641D800C457CF /* ZJAccount.m in Sources */,
 				54FB0B821BEB2D8F00620FA2 /* ZJCommonCell.m in Sources */,
 				547040241BF32B6B003F8207 /* MJPhotoProgressView.m in Sources */,
+				548801A51BF9C4FC00428D4A /* ZJPublicStatusesViewController.m in Sources */,
 				548801991BF9777A00428D4A /* ZJFollowersInfoViewController.m in Sources */,
 				541B328A1BD90197004C4BC6 /* ZJPhoto.m in Sources */,
 				547AF2941BDE159F008A949B /* ZJEmotionAttachment.m in Sources */,
@@ -2033,6 +2056,7 @@
 				5444C6431BDBBC2300C7A5C1 /* ZJComposeToolBar.m in Sources */,
 				54703FCA1BF0B16B003F8207 /* ZJInfoCount.m in Sources */,
 				547040251BF32B6B003F8207 /* MJPhotoToolbar.m in Sources */,
+				548801A81BF9CA2500428D4A /* ZJUserSearchViewController.m in Sources */,
 				542A49F31BD635A800C457CF /* main.m in Sources */,
 				54855CB91BDE678300FF876B /* ZJTextPart.m in Sources */,
 				541B32841BD8D86F004C4BC6 /* Foundation+Log.m in Sources */,

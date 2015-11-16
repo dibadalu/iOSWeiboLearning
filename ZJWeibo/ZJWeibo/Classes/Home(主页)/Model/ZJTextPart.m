@@ -8,6 +8,7 @@
 
 #import "ZJTextPart.h"
 
+
 @implementation ZJTextPart
 
 - (NSString *)description
@@ -15,5 +16,7 @@
     return [NSString stringWithFormat:@"%@---%@",self.text,NSStringFromRange(self.range)];
     
 }
+
+
 
 @end

@@ -21,6 +21,8 @@
 #import "ZJRepostResult.h"
 #import "ZJCommentViewController.h"
 #import "ZJRetweetViewController.h"
+#import "MBProgressHUD+MJ.h"
+#import "ZJStatusTool.h"
 
 
 @interface ZJStatusDetailViewController ()<UITableViewDataSource,UITableViewDelegate,ZJStatusDetailTopToolBarDelegate,ZJStatusDetailBottomToolBarDelegate>
@@ -77,7 +79,9 @@
     
     //通过UITableViewDelegate创建顶部工具条
     
-    
+    //设置导航栏的收藏按钮
+     [self setupNavigationBar];
+
 }
 
 #pragma mark - init method
@@ -121,6 +125,55 @@
     bottomToolBar.y = CGRectGetMaxY(self.tableView.frame);
     bottomToolBar.delegate = self;
     [self.view addSubview:bottomToolBar];
+}
+/**
+ *  设置导航栏的收藏按钮
+ */
+- (void)setupNavigationBar
+{
+    self.navigationItem.rightBarButtonItem = [UIBarButtonItem itemWithImage:@"statusdetail_icon_favorite" disabledImage:@"statusdetail_icon_favorite_highlighted" target:self action:@selector(favorite)];
+#warning To Do List 在这里获取收藏信息,
+    self.navigationItem.rightBarButtonItem.enabled = !self.status.favorited;
+    
+}
+
+#pragma mark - action method
+- (void)favorite
+{
+    ZJLog(@"favorite");
+
+    /*
+     https://api.weibo.com/2/favorites/create.json post
+     
+     access_token	false	string	采用OAuth授权方式为必填参数，其他授权方式不需要此参数，OAuth授权后获得。
+     id	true	int64	要收藏的微博ID。
+     */
+    //1.拼接请求参数
+    ZJAccount *account = [ZJAccountTool account];//取出账号模型
+    NSMutableDictionary *params = [NSMutableDictionary dictionary];
+    params[@"access_token"] = account.access_token;
+    params[@"id"] = self.status.idstr;
+    
+    //2.发送请求
+    [ZJHttpTool post:@"https://api.weibo.com/2/favorites/create.json" params:params success:^(id json) {
+//        ZJLog(@"请求成功--%@",json[@"status"]);
+    
+        //字典转模型
+        ZJStatus *status = [ZJStatus objectWithKeyValues:json[@"status"]];
+//        ZJLog(@"%d",status.favorited);
+        self.navigationItem.rightBarButtonItem.enabled = !status.favorited;
+        self.status.favorited = status.favorited;
+        
+        [MBProgressHUD showSuccess:@"收藏成功!"];
+        
+    } failure:^(NSError *error) {
+//        ZJLog(@"请求失败--%@",error);
+        [MBProgressHUD showError:@"网络繁忙，麻烦重新收藏!"];
+        
+    }];
+    
+
+    
 }
 
 #pragma mark - UITableViewDataSource

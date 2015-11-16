@@ -8,6 +8,7 @@
 
 #import "ZJPhoto.h"
 
+
 @implementation ZJPhoto
 
 #pragma setter
@@ -17,5 +18,7 @@
     
     self.bmiddle_pic = [thumbnail_pic stringByReplacingOccurrencesOfString:@"thumbnail" withString:@"bmiddle"];
 }
+
+
 
 @end

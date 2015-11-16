@@ -15,7 +15,6 @@
 		54042C2A1BE746B300183AFC /* ZJCommentResult.m in Sources */ = {isa = PBXBuildFile; fileRef = 54042C291BE746B300183AFC /* ZJCommentResult.m */; };
 		54042C2D1BE74DD800183AFC /* ZJComment.m in Sources */ = {isa = PBXBuildFile; fileRef = 54042C2C1BE74DD800183AFC /* ZJComment.m */; };
 		54042C301BE75ABE00183AFC /* ZJRepostResult.m in Sources */ = {isa = PBXBuildFile; fileRef = 54042C2F1BE75ABE00183AFC /* ZJRepostResult.m */; };
-		54097DC71BD0A320008084D3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 54097DC51BD0A320008084D3 /* Main.storyboard */; };
 		54097DCC1BD0A320008084D3 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 54097DCA1BD0A320008084D3 /* LaunchScreen.xib */; };
 		54097DD81BD0A321008084D3 /* ZJWeiboTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 54097DD71BD0A321008084D3 /* ZJWeiboTests.m */; };
 		541B32821BD8D85C004C4BC6 /* NSDate+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = 541B32811BD8D85C004C4BC6 /* NSDate+Extension.m */; };
@@ -319,6 +318,7 @@
 		548801A81BF9CA2500428D4A /* ZJUserSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 548801A71BF9CA2500428D4A /* ZJUserSearchViewController.m */; };
 		548801AB1BF9D97000428D4A /* ZJCommentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 548801AA1BF9D97000428D4A /* ZJCommentViewController.m */; };
 		548801AE1BF9DE6D00428D4A /* ZJRetweetViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 548801AD1BF9DE6D00428D4A /* ZJRetweetViewController.m */; };
+		548801B01BF9F58300428D4A /* ZJStatusDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 548801AF1BF9F58300428D4A /* ZJStatusDetailViewController.m */; };
 		54965CCD1BDF5C35007DD69C /* ZJStatusTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 54965CCC1BDF5C35007DD69C /* ZJStatusTool.m */; };
 		54A3AD861BDA63E300F4C89F /* ZJTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 54A3AD851BDA63E300F4C89F /* ZJTextView.m */; };
 		54A911A61BE8538A00B9720D /* UIImage+ZJExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 54A911A51BE8538A00B9720D /* UIImage+ZJExtension.m */; };
@@ -328,7 +328,6 @@
 		54C220201BD52B0400BE0ED0 /* UIView+ZJExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 54C2201F1BD52B0400BE0ED0 /* UIView+ZJExtension.m */; };
 		54C220261BD52D5F00BE0ED0 /* ZJOAuthViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 54C220251BD52D5F00BE0ED0 /* ZJOAuthViewController.m */; };
 		54E7EDF31BD60F640018280F /* MBProgressHUD+MJ.m in Sources */ = {isa = PBXBuildFile; fileRef = 54E7EDF21BD60F640018280F /* MBProgressHUD+MJ.m */; };
-		54F034441BE31C3900B32304 /* ZJStatusDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 54F034431BE31C3900B32304 /* ZJStatusDetailViewController.m */; };
 		54F608391BD50D3800F7BB3E /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 54F608381BD50D3800F7BB3E /* Images.xcassets */; };
 		54FB0B821BEB2D8F00620FA2 /* ZJCommonCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 54FB0B811BEB2D8F00620FA2 /* ZJCommonCell.m */; };
 		54FB0B851BEB424000620FA2 /* ZJSearchBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 54FB0B841BEB424000620FA2 /* ZJSearchBar.m */; };
@@ -365,7 +364,6 @@
 		54042C2F1BE75ABE00183AFC /* ZJRepostResult.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZJRepostResult.m; sourceTree = "<group>"; };
 		54097DB81BD0A320008084D3 /* ZJWeibo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ZJWeibo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		54097DBC1BD0A320008084D3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		54097DC61BD0A320008084D3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		54097DCB1BD0A320008084D3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		54097DD11BD0A321008084D3 /* ZJWeiboTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ZJWeiboTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		54097DD61BD0A321008084D3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -742,6 +740,7 @@
 		548801AA1BF9D97000428D4A /* ZJCommentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZJCommentViewController.m; sourceTree = "<group>"; };
 		548801AC1BF9DE6D00428D4A /* ZJRetweetViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZJRetweetViewController.h; sourceTree = "<group>"; };
 		548801AD1BF9DE6D00428D4A /* ZJRetweetViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZJRetweetViewController.m; sourceTree = "<group>"; };
+		548801AF1BF9F58300428D4A /* ZJStatusDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZJStatusDetailViewController.m; sourceTree = "<group>"; };
 		54965CCB1BDF5C35007DD69C /* ZJStatusTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZJStatusTool.h; sourceTree = "<group>"; };
 		54965CCC1BDF5C35007DD69C /* ZJStatusTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZJStatusTool.m; sourceTree = "<group>"; };
 		54A3AD841BDA63E300F4C89F /* ZJTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZJTextView.h; sourceTree = "<group>"; };
@@ -761,7 +760,6 @@
 		54E7EDF11BD60F640018280F /* MBProgressHUD+MJ.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MBProgressHUD+MJ.h"; sourceTree = "<group>"; };
 		54E7EDF21BD60F640018280F /* MBProgressHUD+MJ.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MBProgressHUD+MJ.m"; sourceTree = "<group>"; };
 		54F034421BE31C3900B32304 /* ZJStatusDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZJStatusDetailViewController.h; sourceTree = "<group>"; };
-		54F034431BE31C3900B32304 /* ZJStatusDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZJStatusDetailViewController.m; sourceTree = "<group>"; };
 		54F608381BD50D3800F7BB3E /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		54FB0B801BEB2D8F00620FA2 /* ZJCommonCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZJCommonCell.h; sourceTree = "<group>"; };
 		54FB0B811BEB2D8F00620FA2 /* ZJCommonCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZJCommonCell.m; sourceTree = "<group>"; };
@@ -854,7 +852,6 @@
 				547AF0C31BDDDC93008A949B /* EmotionIcons */,
 				541B328E1BD9E350004C4BC6 /* fakeStatus.plist */,
 				54F608381BD50D3800F7BB3E /* Images.xcassets */,
-				54097DC51BD0A320008084D3 /* Main.storyboard */,
 				54097DCA1BD0A320008084D3 /* LaunchScreen.xib */,
 				54097DBC1BD0A320008084D3 /* Info.plist */,
 				54029FDC1BD5134300A433BD /* ZJWeibo-Prefix.pch */,
@@ -993,7 +990,7 @@
 				544A871F1BD4D75E00659A85 /* ZJHomeViewController.h */,
 				544A87201BD4D75E00659A85 /* ZJHomeViewController.m */,
 				54F034421BE31C3900B32304 /* ZJStatusDetailViewController.h */,
-				54F034431BE31C3900B32304 /* ZJStatusDetailViewController.m */,
+				548801AF1BF9F58300428D4A /* ZJStatusDetailViewController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -1742,7 +1739,6 @@
 				547AF1D71BDDDC93008A949B /* d_xu@2x.png in Resources */,
 				547AF26C1BDDDC93008A949B /* lxh_zhuanfa.gif in Resources */,
 				547AF1A41BDDDC93008A949B /* d_aini@2x.png in Resources */,
-				54097DC71BD0A320008084D3 /* Main.storyboard in Resources */,
 				547AF1C81BDDDC93008A949B /* d_shengbing@2x.png in Resources */,
 				547AF26B1BDDDC93008A949B /* lxh_zhenjing@2x.png in Resources */,
 				547AF1FE1BDDDC93008A949B /* lxh_biefanwo.gif in Resources */,
@@ -2022,7 +2018,6 @@
 				54042C1B1BE6F55F00183AFC /* ZJStatusDetailFrame.m in Sources */,
 				547AF2911BDE1501008A949B /* ZJEmotionTextView.m in Sources */,
 				54042C1F1BE6F57600183AFC /* ZJStatusDetailView.m in Sources */,
-				54F034441BE31C3900B32304 /* ZJStatusDetailViewController.m in Sources */,
 				54855CBC1BDE67CC00FF876B /* ZJSpecialText.m in Sources */,
 				542A49F61BD635C900C457CF /* ZJConst.m in Sources */,
 				54330C6C1BD72BF7005DFFDE /* ZJStatus.m in Sources */,
@@ -2045,6 +2040,7 @@
 				547040091BF22640003F8207 /* ZJProfileStatusTool.m in Sources */,
 				54689AF41BEB825A002FAD95 /* ZJBadgeView.m in Sources */,
 				54703FBB1BECC902003F8207 /* ZJProfileHeaderView.m in Sources */,
+				548801B01BF9F58300428D4A /* ZJStatusDetailViewController.m in Sources */,
 				547AF2971BDE16B0008A949B /* UITextView+Extension.m in Sources */,
 				54689AF11BEB7F5D002FAD95 /* ZJCommonLabelItem.m in Sources */,
 				547A886C1BE2216E00805E0C /* ZJStatusPhotosView.m in Sources */,
@@ -2091,14 +2087,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		54097DC51BD0A320008084D3 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				54097DC61BD0A320008084D3 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		54097DCA1BD0A320008084D3 /* LaunchScreen.xib */ = {
 			isa = PBXVariantGroup;
 			children = (

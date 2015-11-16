@@ -11,5 +11,5 @@
 @interface UIBarButtonItem (ZJExtension)
 
 + (UIBarButtonItem *)itemWithImage:(NSString *)image highImage:(NSString *)highImage target:(id)target action:(SEL)action;
-
++ (UIBarButtonItem *)itemWithImage:(NSString *)image disabledImage:(NSString *)disabledImage target:(id)target action:(SEL)action;
 @end

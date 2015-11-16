@@ -63,6 +63,9 @@
 /**表态数 */
 @property(nonatomic,assign) int attitudes_count;
 
+/** favorited	boolean	是否已收藏，true：是，false：否 */
+@property(nonatomic,assign) BOOL favorited;
+
 
 
 @end

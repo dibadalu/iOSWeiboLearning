@@ -7,6 +7,7 @@
 //  FMDB微博数据缓存工具类
 
 #import <Foundation/Foundation.h>
+@class ZJStatus;
 
 @interface ZJStatusTool : NSObject
 
@@ -25,6 +26,10 @@
  *  @param statuses 从新浪获取的微博字典数组
  */
 + (void)saveStatuses:(NSArray *)statuses;
+
+
+
+
 
 
 @end

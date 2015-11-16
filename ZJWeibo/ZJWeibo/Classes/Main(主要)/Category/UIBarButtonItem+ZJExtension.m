@@ -27,4 +27,17 @@
     return [[UIBarButtonItem alloc] initWithCustomView:button];
 }
 
+
++ (UIBarButtonItem *)itemWithImage:(NSString *)image disabledImage:(NSString *)disabledImage target:(id)target action:(SEL)action
+{
+    UIButton *button = [[UIButton alloc] init];
+    [button setBackgroundImage:[UIImage imageNamed:image] forState:UIControlStateNormal];
+    [button setBackgroundImage:[UIImage imageNamed:disabledImage] forState:UIControlStateDisabled];
+
+    button.size = button.currentBackgroundImage.size;//size用到UIView的category
+    [button addTarget:target action:action forControlEvents:UIControlEventTouchUpInside];
+    
+    return [[UIBarButtonItem alloc] initWithCustomView:button];
+}
+
 @end

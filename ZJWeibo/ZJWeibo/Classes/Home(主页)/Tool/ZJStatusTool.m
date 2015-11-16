@@ -6,6 +6,7 @@
 //  Copyright (c) 2015年 dibadalu. All rights reserved.
 //
 
+
 #import "ZJStatusTool.h"
 #import <FMDB.h>
 
@@ -82,5 +83,8 @@ static FMDatabase *_db;//全局静态常量
         [_db executeUpdateWithFormat:@"INSERT INTO t_status(status,idstr) VALUES (%@,%@);",statusData,status[@"idstr"]];
     }
 }
+
+
+
 
 @end

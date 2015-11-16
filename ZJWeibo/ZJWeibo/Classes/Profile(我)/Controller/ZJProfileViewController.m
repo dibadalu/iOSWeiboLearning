@@ -24,6 +24,7 @@
 #import "ZJFriendsInfoViewController.h"
 #import "ZJFollowersInfoViewController.h"
 #import "ZJStatusesInfoViewController.h"
+#import "ZJStatusFavoritesViewController.h"
 
 
 
@@ -96,13 +97,14 @@
     [self.groups addObject:group];
     
     //2.设置组的所有行
-    
     ZJCommonItem *album = [ZJCommonItem itemWithTitle:@"我的相册" icon:@"album"];
-    album.subTitle = @"(80)";
+//    album.subTitle = @"(80)";
     ZJCommonItem *collect = [ZJCommonItem itemWithTitle:@"我的收藏" icon:@"collect"];
-    collect.subTitle = @"(50)";
+//    collect.subTitle = @"(50)";
+    collect.destVcClass = [ZJStatusFavoritesViewController class];
+
     ZJCommonItem *like = [ZJCommonItem itemWithTitle:@"赞" icon:@"like"];
-    like.subTitle = @"(182)";
+//    like.subTitle = @"(182)";
 
     group.items = @[album,collect,like];
 }
@@ -181,7 +183,6 @@
             [self setupFollowersInfoVc];
             break;
     }
-    
 }
 
 #pragma mark - custom method

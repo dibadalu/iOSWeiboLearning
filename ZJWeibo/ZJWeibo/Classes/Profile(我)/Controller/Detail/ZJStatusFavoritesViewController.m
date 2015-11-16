@@ -39,19 +39,18 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    self.title = @"收藏";
     
-    self.title = @"微博收藏";
-    
-    //获取当前用户的微博
-    [self setupUserStatus];
+    //获取当前用户的收藏微博
+    [self setupFavoritesStatus];
     
 }
 
 #pragma mark - init method
 /**
- *  获取当前用户的微博
+ *  获取当前用户的收藏微博
  */
-- (void)setupUserStatus
+- (void)setupFavoritesStatus
 {
     /*
      https://api.weibo.com/2/favorites.json get

@@ -15,6 +15,7 @@
 #import <MJExtension.h>
 #import "ZJStatusCell.h"
 #import "ZJProfileStatusTool.h"
+#import "ZJStatusDetailViewController.h"
 
 @interface ZJStatusesInfoViewController ()
 
@@ -148,6 +149,15 @@
     ZJStatusFrame *frame = self.statusFrames[indexPath.row];
     return frame.cellHeight;
     
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    //    ZJLog(@"didSelectRowAtIndexPath---%ld",(long)indexPath.row);
+    ZJStatusDetailViewController *detail = [[ZJStatusDetailViewController alloc] init];
+    ZJStatusFrame *frame = self.statusFrames[indexPath.row];
+    detail.status = frame.status;//传微博数据给ZJStatusDetailViewController
+    [self.navigationController pushViewController:detail animated:YES];
 }
 
 @end

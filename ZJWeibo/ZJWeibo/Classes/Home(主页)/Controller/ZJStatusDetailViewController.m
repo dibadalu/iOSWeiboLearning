@@ -132,16 +132,36 @@
 - (void)setupNavigationBar
 {
     self.navigationItem.rightBarButtonItem = [UIBarButtonItem itemWithImage:@"statusdetail_icon_favorite" disabledImage:@"statusdetail_icon_favorite_highlighted" target:self action:@selector(favorite)];
-#warning To Do List 在这里获取收藏信息,
-    self.navigationItem.rightBarButtonItem.enabled = !self.status.favorited;
+#warning 在这里获取收藏信息
+    /*
+     https://api.weibo.com/2/favorites/show.json get
+     
+     access_token	false	string	采用OAuth授权方式为必填参数，其他授权方式不需要此参数，OAuth授权后获得。
+     id	true	int64	需要查询的收藏ID。
+     */
+    //1.拼接请求参数
+    ZJAccount *account = [ZJAccountTool account];//取出账号模型
+    NSMutableDictionary *params = [NSMutableDictionary dictionary];
+    params[@"access_token"] = account.access_token;
+    params[@"id"] = self.status.idstr;
+
+    //2.发送请求
+    [ZJHttpTool get:@"https://api.weibo.com/2/favorites/show.json" params:params success:^(id json) {
+//        ZJLog(@"请求成功-%@",json);
+        //字典转模型
+        ZJStatus *status = [ZJStatus objectWithKeyValues:json[@"status"]];
+        self.navigationItem.rightBarButtonItem.enabled = !status.favorited;
+
+    } failure:^(NSError *error) {
+//        ZJLog(@"请求失败-%@",error);
+    }];
     
 }
 
 #pragma mark - action method
 - (void)favorite
 {
-    ZJLog(@"favorite");
-
+//    ZJLog(@"favorite");
     /*
      https://api.weibo.com/2/favorites/create.json post
      
@@ -162,7 +182,6 @@
         ZJStatus *status = [ZJStatus objectWithKeyValues:json[@"status"]];
 //        ZJLog(@"%d",status.favorited);
         self.navigationItem.rightBarButtonItem.enabled = !status.favorited;
-        self.status.favorited = status.favorited;
         
         [MBProgressHUD showSuccess:@"收藏成功!"];
         
@@ -171,8 +190,6 @@
         [MBProgressHUD showError:@"网络繁忙，麻烦重新收藏!"];
         
     }];
-    
-
     
 }
 

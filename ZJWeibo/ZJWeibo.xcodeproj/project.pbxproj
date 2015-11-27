@@ -319,6 +319,8 @@
 		548801AB1BF9D97000428D4A /* ZJCommentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 548801AA1BF9D97000428D4A /* ZJCommentViewController.m */; };
 		548801AE1BF9DE6D00428D4A /* ZJRetweetViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 548801AD1BF9DE6D00428D4A /* ZJRetweetViewController.m */; };
 		548801B01BF9F58300428D4A /* ZJStatusDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 548801AF1BF9F58300428D4A /* ZJStatusDetailViewController.m */; };
+		549468FF1C08580B00F9F369 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 549468FE1C08580B00F9F369 /* MapKit.framework */; };
+		549469021C08597900F9F369 /* ZJNearbyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 549469011C08597900F9F369 /* ZJNearbyViewController.m */; };
 		54965CCD1BDF5C35007DD69C /* ZJStatusTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 54965CCC1BDF5C35007DD69C /* ZJStatusTool.m */; };
 		54A3AD861BDA63E300F4C89F /* ZJTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 54A3AD851BDA63E300F4C89F /* ZJTextView.m */; };
 		54A911A61BE8538A00B9720D /* UIImage+ZJExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 54A911A51BE8538A00B9720D /* UIImage+ZJExtension.m */; };
@@ -741,6 +743,9 @@
 		548801AC1BF9DE6D00428D4A /* ZJRetweetViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZJRetweetViewController.h; sourceTree = "<group>"; };
 		548801AD1BF9DE6D00428D4A /* ZJRetweetViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZJRetweetViewController.m; sourceTree = "<group>"; };
 		548801AF1BF9F58300428D4A /* ZJStatusDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZJStatusDetailViewController.m; sourceTree = "<group>"; };
+		549468FE1C08580B00F9F369 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		549469001C08597900F9F369 /* ZJNearbyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZJNearbyViewController.h; sourceTree = "<group>"; };
+		549469011C08597900F9F369 /* ZJNearbyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZJNearbyViewController.m; sourceTree = "<group>"; };
 		54965CCB1BDF5C35007DD69C /* ZJStatusTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZJStatusTool.h; sourceTree = "<group>"; };
 		54965CCC1BDF5C35007DD69C /* ZJStatusTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZJStatusTool.m; sourceTree = "<group>"; };
 		54A3AD841BDA63E300F4C89F /* ZJTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZJTextView.h; sourceTree = "<group>"; };
@@ -774,6 +779,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				549468FF1C08580B00F9F369 /* MapKit.framework in Frameworks */,
 				6AECC741C4BF317B731FA14B /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -969,6 +975,8 @@
 				548801A41BF9C4FC00428D4A /* ZJPublicStatusesViewController.m */,
 				548801A61BF9CA2500428D4A /* ZJUserSearchViewController.h */,
 				548801A71BF9CA2500428D4A /* ZJUserSearchViewController.m */,
+				549469001C08597900F9F369 /* ZJNearbyViewController.h */,
+				549469011C08597900F9F369 /* ZJNearbyViewController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -1596,6 +1604,7 @@
 		7A2DB6F96C356D02013297D7 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				549468FE1C08580B00F9F369 /* MapKit.framework */,
 				B19ADE546568B396A0CC7AEC /* libPods.a */,
 			);
 			name = Frameworks;
@@ -1984,6 +1993,7 @@
 				542A49F21BD635A800C457CF /* AppDelegate.m in Sources */,
 				547A886D1BE2216E00805E0C /* ZJStatusPhotoView.m in Sources */,
 				541B32821BD8D85C004C4BC6 /* NSDate+Extension.m in Sources */,
+				549469021C08597900F9F369 /* ZJNearbyViewController.m in Sources */,
 				54689B011BEC721A002FAD95 /* ZJSettingViewController.m in Sources */,
 				54E7EDF31BD60F640018280F /* MBProgressHUD+MJ.m in Sources */,
 				547AF29B1BDE1F2B008A949B /* ZJEmotionTool.m in Sources */,

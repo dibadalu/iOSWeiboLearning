@@ -15,6 +15,8 @@
 #import "ZJCommonLabelItem.h"
 #import "ZJPublicStatusesViewController.h"
 #import "ZJUserSearchViewController.h"
+#import "ZJNearbyViewController.h"
+
 
 
 @interface ZJDiscoverViewController ()<UIScrollViewDelegate>
@@ -87,6 +89,7 @@
     near.operation = ^{
         ZJLog(@"点击了周边");
     };
+    near.destVcClass = [ZJNearbyViewController class];
     ZJCommonItem *app = [ZJCommonItem itemWithTitle:@"应用" icon:@"app"];
     
     group.items = @[near,app];

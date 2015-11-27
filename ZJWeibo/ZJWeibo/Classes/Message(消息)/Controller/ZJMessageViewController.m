@@ -7,6 +7,9 @@
 //
 
 #import "ZJMessageViewController.h"
+#import "ZJCommonItem.h"
+#import "ZJCommonGroup.h"
+#import "ZJCommonArrowItem.h"
 
 @interface ZJMessageViewController ()
 
@@ -16,27 +19,34 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+  
+    //初始化模型数据
+    [self setupGroups];
 
     
+}
+
+#pragma mark - 
+- (void)setupGroups
+{
+    //1.创建组
+    ZJCommonGroup *group = [ZJCommonGroup group];
+    [self.groups addObject:group];
+    
+    //2.设置组的所有行
+    ZJCommonArrowItem *at = [ZJCommonArrowItem itemWithTitle:@"@我的" icon:@"messagescenter_at"];
+    ZJCommonArrowItem *comments = [ZJCommonArrowItem itemWithTitle:@"评论" icon:@"messagescenter_comments"];
+    ZJCommonArrowItem *good = [ZJCommonArrowItem itemWithTitle:@"赞" icon:@"messagescenter_good"];
+    ZJCommonArrowItem *messagebox = [ZJCommonArrowItem itemWithTitle:@"订阅消息" icon:@"messagescenter_messagebox"];
+
+    group.items = @[at,comments,good,messagebox];
+
 }
 
 #pragma mark - Table view data source
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    
-    return 20;
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return 55;
 }
 
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    static NSString *ID = @"cell";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:ID];
-    if (!cell) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:ID];
-    }
-    
-    cell.textLabel.text = @"测试数据--消息";
-    
-    return cell;
-}
 @end

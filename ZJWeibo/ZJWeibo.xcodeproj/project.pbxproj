@@ -1493,12 +1493,12 @@
 		548801901BF9777A00428D4A /* Detail */ = {
 			isa = PBXGroup;
 			children = (
+				548801951BF9777A00428D4A /* ZJProfileDetailViewController.h */,
+				548801961BF9777A00428D4A /* ZJProfileDetailViewController.m */,
 				548801911BF9777A00428D4A /* ZJFollowersInfoViewController.h */,
 				548801921BF9777A00428D4A /* ZJFollowersInfoViewController.m */,
 				548801931BF9777A00428D4A /* ZJFriendsInfoViewController.h */,
 				548801941BF9777A00428D4A /* ZJFriendsInfoViewController.m */,
-				548801951BF9777A00428D4A /* ZJProfileDetailViewController.h */,
-				548801961BF9777A00428D4A /* ZJProfileDetailViewController.m */,
 				548801971BF9777A00428D4A /* ZJStatusesInfoViewController.h */,
 				548801981BF9777A00428D4A /* ZJStatusesInfoViewController.m */,
 				5488019D1BF9781C00428D4A /* ZJStatusFavoritesViewController.h */,

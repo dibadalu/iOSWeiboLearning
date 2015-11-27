@@ -6,8 +6,9 @@
 //  Copyright (c) 2015年 dibadalu. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+//#import <UIKit/UIKit.h>
+#import "ZJCommonViewController.h"
 
-@interface ZJMessageViewController : UITableViewController
+@interface ZJMessageViewController : ZJCommonViewController
 
 @end

@@ -32,6 +32,8 @@
     [self addOneChirdVC:home title:@"主页" image:@"tabbar_home" selectedImage:@"tabbar_home_selected"];
     //message
     ZJMessageViewController *message = [[ZJMessageViewController alloc] init];
+//    UIStoryboard *messageSB = [UIStoryboard storyboardWithName:@"ZJMessageViewController" bundle:nil];
+//    UIViewController *messageVc = messageSB.instantiateInitialViewController;
     [self addOneChirdVC:message title:@"消息" image:@"tabbar_message_center" selectedImage:@"tabbar_message_center_selected"];
     //discover
     ZJDiscoverViewController *discover = [[ZJDiscoverViewController alloc] init];

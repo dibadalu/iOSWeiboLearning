@@ -1065,6 +1065,7 @@
 		5421DAA71BD4CED400B82561 /* Message(消息) */ = {
 			isa = PBXGroup;
 			children = (
+				549468E81C08410800F9F369 /* View */,
 				5421DAA81BD4CED400B82561 /* Controller */,
 			);
 			path = "Message(消息)";
@@ -1504,6 +1505,13 @@
 				5488019E1BF9781C00428D4A /* ZJStatusFavoritesViewController.m */,
 			);
 			path = Detail;
+			sourceTree = "<group>";
+		};
+		549468E81C08410800F9F369 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 		54965CCA1BDF5C11007DD69C /* Tool */ = {

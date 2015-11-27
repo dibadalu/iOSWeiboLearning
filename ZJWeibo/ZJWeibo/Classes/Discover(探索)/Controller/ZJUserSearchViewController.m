@@ -30,8 +30,8 @@
     
 }
 
-- (void)viewDidAppear:(BOOL)animated
-{
+- (void)viewDidAppear:(BOOL)animated{
+    
     [super viewDidAppear:animated];
     
     [self.searchBar becomeFirstResponder];
@@ -41,8 +41,8 @@
 /**
  *  设置搜索框
  */
-- (void)setupSearchBar
-{
+- (void)setupSearchBar{
+    
     ZJSearchBar *searchBar = [[ZJSearchBar alloc] init];
     searchBar.width = 300;
     searchBar.height = 30;
@@ -57,7 +57,7 @@
 #pragma mark - action method
 - (void)textDidChange
 {
-//    ZJLog(@"textDidChange---%@",self.searchBar.text);
+    ZJLog(@"textDidChange---%@",self.searchBar.text);
     
     /*
      https://api.weibo.com/2/search/suggestions/users.json get
@@ -71,17 +71,19 @@
     ZJAccount *account = [ZJAccountTool account];//取得账号模型
     NSMutableDictionary *params = [NSMutableDictionary dictionary];
     params[@"access_token"] = account.access_token;
-#warning  To Do List
-    NSString *newSearchString = [self.searchBar.text stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+#warning  必须做URLencoding
+    NSString *newSearchString = [self.searchBar.text urlencode];
     params[@"q"] = newSearchString;
+    params[@"count"] = @10;
     
+#warning  用户关键字联想搜索 请求失败
     //2.发送请求
     [ZJHttpTool get:@"https://api.weibo.com/2/search/suggestions/users.json" params:params success:^(id json) {
-//       ZJLog(@"请求成功-%@",json);
+       ZJLog(@"请求成功-%@",json);
        
         
     } failure:^(NSError *error) {
-//        ZJLog(@"请求失败-%@",error);
+        ZJLog(@"请求失败-%@",error);
     }];
 
 }

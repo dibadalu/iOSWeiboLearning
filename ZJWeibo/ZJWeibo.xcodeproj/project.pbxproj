@@ -32,6 +32,7 @@
 		542A49F91BD6365A00C457CF /* ZJHttpTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 542A49F81BD6365A00C457CF /* ZJHttpTool.m */; };
 		542A4A0D1BD641D800C457CF /* ZJAccount.m in Sources */ = {isa = PBXBuildFile; fileRef = 542A4A0C1BD641D800C457CF /* ZJAccount.m */; };
 		542E8CCD1C0C400800A8BC82 /* ZJGeo.m in Sources */ = {isa = PBXBuildFile; fileRef = 542E8CCC1C0C400800A8BC82 /* ZJGeo.m */; };
+		542E8CD01C0C4A7900A8BC82 /* ZJMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 542E8CCF1C0C4A7900A8BC82 /* ZJMapViewController.m */; };
 		542EDA5F1BD6444900CAA724 /* AFJSONResponseSerializer+ZJ.m in Sources */ = {isa = PBXBuildFile; fileRef = 542EDA5E1BD6444900CAA724 /* AFJSONResponseSerializer+ZJ.m */; };
 		542EDA621BD645C600CAA724 /* ZJAccountTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 542EDA611BD645C600CAA724 /* ZJAccountTool.m */; };
 		54330C6C1BD72BF7005DFFDE /* ZJStatus.m in Sources */ = {isa = PBXBuildFile; fileRef = 54330C6B1BD72BF7005DFFDE /* ZJStatus.m */; };
@@ -399,6 +400,8 @@
 		542A4A0C1BD641D800C457CF /* ZJAccount.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZJAccount.m; sourceTree = "<group>"; };
 		542E8CCB1C0C400800A8BC82 /* ZJGeo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZJGeo.h; sourceTree = "<group>"; };
 		542E8CCC1C0C400800A8BC82 /* ZJGeo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZJGeo.m; sourceTree = "<group>"; };
+		542E8CCE1C0C4A7900A8BC82 /* ZJMapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZJMapViewController.h; sourceTree = "<group>"; };
+		542E8CCF1C0C4A7900A8BC82 /* ZJMapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZJMapViewController.m; sourceTree = "<group>"; };
 		542EDA5D1BD6444900CAA724 /* AFJSONResponseSerializer+ZJ.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "AFJSONResponseSerializer+ZJ.h"; sourceTree = "<group>"; };
 		542EDA5E1BD6444900CAA724 /* AFJSONResponseSerializer+ZJ.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "AFJSONResponseSerializer+ZJ.m"; sourceTree = "<group>"; };
 		542EDA601BD645C600CAA724 /* ZJAccountTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZJAccountTool.h; sourceTree = "<group>"; };
@@ -984,6 +987,8 @@
 				548801A71BF9CA2500428D4A /* ZJUserSearchViewController.m */,
 				549469001C08597900F9F369 /* ZJNearbyViewController.h */,
 				549469011C08597900F9F369 /* ZJNearbyViewController.m */,
+				542E8CCE1C0C4A7900A8BC82 /* ZJMapViewController.h */,
+				542E8CCF1C0C4A7900A8BC82 /* ZJMapViewController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -2058,6 +2063,7 @@
 				54855CBC1BDE67CC00FF876B /* ZJSpecialText.m in Sources */,
 				542A49F61BD635C900C457CF /* ZJConst.m in Sources */,
 				54330C6C1BD72BF7005DFFDE /* ZJStatus.m in Sources */,
+				542E8CD01C0C4A7900A8BC82 /* ZJMapViewController.m in Sources */,
 				5444C6461BDBC55900C7A5C1 /* ZJComposePhotosView.m in Sources */,
 				5423DFCD1BD688D200B59739 /* ZJUser.m in Sources */,
 				547272A21BDCB86D0021D9EA /* ZJEmotionKeyboard.m in Sources */,

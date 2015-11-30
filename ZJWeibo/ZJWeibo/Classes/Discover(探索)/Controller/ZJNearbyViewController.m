@@ -11,19 +11,17 @@
 #import "ZJHttpTool.h"
 #import "ZJAccountTool.h"
 #import "ZJAccount.h"
-#import <MapKit/MapKit.h>
 #import "ZJStatusCell.h"
 #import "ZJStatus.h"
 #import "ZJStatusFrame.h"
 #import <MJExtension.h>
 #import "ZJStatusDetailViewController.h"
+#import "ZJMapViewController.h"
 
-@interface ZJNearbyViewController ()<CLLocationManagerDelegate,MKMapViewDelegate>
+@interface ZJNearbyViewController ()<CLLocationManagerDelegate>
 
 @property(nonatomic,strong) CLLocationManager *clMgr;//定位管理者对象
-//@property(nonatomic,strong) MKMapView *mapView;//地图控件对象
-@property(nonatomic,strong) CLGeocoder *gecoder;//地理编码对象
-
+//@property(nonatomic,strong) CLGeocoder *gecoder;//地理编码对象
 @property(nonatomic,strong) NSMutableArray *statusFrames;
 
 @end
@@ -43,26 +41,13 @@
     }
     return _clMgr;
 }
-//- (MKMapView *)mapView
+//- (CLGeocoder *)gecoder
 //{
-//    if (!_mapView) {
-//        _mapView = [[MKMapView alloc] init];
-//        _mapView.frame = [UIScreen mainScreen].bounds;
-//        //设置地图控件的属性
-//        _mapView.mapType = MKMapTypeStandard;
-//        _mapView.userTrackingMode = MKUserTrackingModeFollow;
-//        _mapView.rotateEnabled = NO;
-//        _mapView.delegate = self;
+//    if (!_gecoder) {
+//        _gecoder = [[CLGeocoder alloc] init];
 //    }
-//    return _mapView;
+//    return _gecoder;
 //}
-- (CLGeocoder *)gecoder
-{
-    if (!_gecoder) {
-        _gecoder = [[CLGeocoder alloc] init];
-    }
-    return _gecoder;
-}
 - (NSMutableArray *)statusFrames
 {
     if (!_statusFrames) {
@@ -76,7 +61,10 @@
     
     self.title = @"周边";
 //    self.view = self.mapView;
-   
+    
+    //设置地图按钮
+   self.navigationItem.rightBarButtonItem = [UIBarButtonItem itemWithImage:@"near_change_map" highImage:@"near_change_map_sel" target:self action:@selector(mapButtonClick)];
+    
     //iOS8之后，需要主动获取用户授权
     if ([CLLocationManager authorizationStatus] == kCLAuthorizationStatusNotDetermined) {
 //        self.clMgr = [[CLLocationManager alloc] init];
@@ -85,6 +73,14 @@
     //开始定位跟踪
     [self.clMgr startUpdatingLocation];
     
+
+}
+
+- (void)mapButtonClick
+{
+//    ZJLog(@"mapButtonClick");
+    ZJMapViewController *mapView = [[ZJMapViewController alloc] init];
+    [self.navigationController pushViewController:mapView animated:YES];
 }
 
 #pragma mark - CLLocationManagerDelegate
@@ -103,10 +99,10 @@
 //    NSLog(@"经度：%f 纬度：%f",coodinate.longitude,coodinate.latitude);
     
     //利用地理编码设置导航栏标题的内容
-    [self.gecoder reverseGeocodeLocation:firstLocation completionHandler:^(NSArray *placemarks, NSError *error) {
-        CLPlacemark *placemark = [placemarks firstObject];//取得第一个地标
-        self.title = placemark.thoroughfare;//街道
-    }];
+//    [self.gecoder reverseGeocodeLocation:firstLocation completionHandler:^(NSArray *placemarks, NSError *error) {
+//        CLPlacemark *placemark = [placemarks firstObject];//取得第一个地标
+//        self.title = placemark.thoroughfare;//街道
+//    }];
     
     //获取某个位置周边的动态
     ZJAccount *account = [ZJAccountTool account];
@@ -156,34 +152,7 @@
     return frames;
 }
 
-#pragma mark - MKMapViewDelegate
-/**
- *  用户位置发生改变时触发（第一次定位到用户位置也会触发该方法）
- *
- *  @param mapView      地图控件对象
- *  @param userLocation 用户位置
- */
-//- (void)mapView:(MKMapView *)mapView didUpdateUserLocation:(MKUserLocation *)userLocation
-//{
-//    NSLog(@"MKMapViewDelegate--didUpdateLocations");
-//    
-//    //利用地理编码设置大头针的内容
-//    [self.gecoder reverseGeocodeLocation:userLocation.location completionHandler:^(NSArray *placemarks, NSError *error) {
-//        CLPlacemark *placemark = [placemarks firstObject];//取得第一个地标
-//        userLocation.title = placemark.name;
-//        userLocation.subtitle = placemark.locality;
-//    }];
-//
-//    CLLocationCoordinate2D coodinate = userLocation.coordinate;
-//    //设置地图的中心位置
-//    [self.mapView setCenterCoordinate:coodinate animated:YES];
-//
-//    //设置地图显示的区域
-//    CLLocationCoordinate2D center = coodinate;
-//    MKCoordinateSpan span = MKCoordinateSpanMake(0.1, 0.1);
-//    MKCoordinateRegion regin = MKCoordinateRegionMake(center, span);
-//    [self.mapView setRegion:regin animated:YES];
-//}
+
 
 #pragma mark - UITableViewDataSource
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -205,9 +174,6 @@
 }
 
 #pragma mark - UITableViewDelegate
-/**
- *  计算cell的高度
- */
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     ZJStatusFrame *frame = self.statusFrames[indexPath.row];
@@ -217,7 +183,6 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    //    ZJLog(@"didSelectRowAtIndexPath---%ld",(long)indexPath.row);
     ZJStatusDetailViewController *detail = [[ZJStatusDetailViewController alloc] init];
     ZJStatusFrame *frame = self.statusFrames[indexPath.row];
     detail.status = frame.status;//传微博数据给ZJStatusDetailViewController

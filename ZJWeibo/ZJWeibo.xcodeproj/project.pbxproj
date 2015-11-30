@@ -329,6 +329,7 @@
 		54C2201A1BD5267100BE0ED0 /* UIBarButtonItem+ZJExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 54C220191BD5267100BE0ED0 /* UIBarButtonItem+ZJExtension.m */; };
 		54C220201BD52B0400BE0ED0 /* UIView+ZJExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 54C2201F1BD52B0400BE0ED0 /* UIView+ZJExtension.m */; };
 		54C220261BD52D5F00BE0ED0 /* ZJOAuthViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 54C220251BD52D5F00BE0ED0 /* ZJOAuthViewController.m */; };
+		54DC810C1C0BEACA00039C2B /* ZJUserSuggestion.m in Sources */ = {isa = PBXBuildFile; fileRef = 54DC810B1C0BEACA00039C2B /* ZJUserSuggestion.m */; };
 		54E7EDF31BD60F640018280F /* MBProgressHUD+MJ.m in Sources */ = {isa = PBXBuildFile; fileRef = 54E7EDF21BD60F640018280F /* MBProgressHUD+MJ.m */; };
 		54F608391BD50D3800F7BB3E /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 54F608381BD50D3800F7BB3E /* Images.xcassets */; };
 		54FB0B821BEB2D8F00620FA2 /* ZJCommonCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 54FB0B811BEB2D8F00620FA2 /* ZJCommonCell.m */; };
@@ -762,6 +763,8 @@
 		54C2201F1BD52B0400BE0ED0 /* UIView+ZJExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+ZJExtension.m"; sourceTree = "<group>"; };
 		54C220241BD52D5F00BE0ED0 /* ZJOAuthViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZJOAuthViewController.h; sourceTree = "<group>"; };
 		54C220251BD52D5F00BE0ED0 /* ZJOAuthViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZJOAuthViewController.m; sourceTree = "<group>"; };
+		54DC810A1C0BEACA00039C2B /* ZJUserSuggestion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZJUserSuggestion.h; sourceTree = "<group>"; };
+		54DC810B1C0BEACA00039C2B /* ZJUserSuggestion.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZJUserSuggestion.m; sourceTree = "<group>"; };
 		54E7EDF11BD60F640018280F /* MBProgressHUD+MJ.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MBProgressHUD+MJ.h"; sourceTree = "<group>"; };
 		54E7EDF21BD60F640018280F /* MBProgressHUD+MJ.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MBProgressHUD+MJ.m"; sourceTree = "<group>"; };
 		54F034421BE31C3900B32304 /* ZJStatusDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZJStatusDetailViewController.h; sourceTree = "<group>"; };
@@ -961,6 +964,7 @@
 		5421DA9B1BD4CED400B82561 /* Discover(探索) */ = {
 			isa = PBXGroup;
 			children = (
+				54DC81091C0BEA4200039C2B /* Model */,
 				5421DA9C1BD4CED400B82561 /* Controller */,
 			);
 			path = "Discover(探索)";
@@ -1570,6 +1574,15 @@
 			path = Category;
 			sourceTree = "<group>";
 		};
+		54DC81091C0BEA4200039C2B /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				54DC810A1C0BEACA00039C2B /* ZJUserSuggestion.h */,
+				54DC810B1C0BEACA00039C2B /* ZJUserSuggestion.m */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		54E7EDF01BD60F640018280F /* MBProgressHUD */ = {
 			isa = PBXGroup;
 			children = (
@@ -1663,6 +1676,7 @@
 				TargetAttributes = {
 					54097DB71BD0A320008084D3 = {
 						CreatedOnToolsVersion = 6.4;
+						DevelopmentTeam = 5F6SG9GNHN;
 					};
 					54097DD01BD0A321008084D3 = {
 						CreatedOnToolsVersion = 6.4;
@@ -2050,6 +2064,7 @@
 				544A87241BD4D77100659A85 /* ZJMessageViewController.m in Sources */,
 				54689AFB1BEB8A5A002FAD95 /* ZJTwoViewController.m in Sources */,
 				541B329B1BDA5934004C4BC6 /* ZJComposeViewController.m in Sources */,
+				54DC810C1C0BEACA00039C2B /* ZJUserSuggestion.m in Sources */,
 				54C2201A1BD5267100BE0ED0 /* UIBarButtonItem+ZJExtension.m in Sources */,
 				544A87271BD4D78100659A85 /* ZJDiscoverViewController.m in Sources */,
 				547272AB1BDCC81E0021D9EA /* ZJEmotionTabBarButton.m in Sources */,
@@ -2204,6 +2219,8 @@
 			baseConfigurationReference = EC46BF00477125448C0EDB0E /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/ZJWeibo/ZJWeibo-Prefix.pch";
 				INFOPLIST_FILE = ZJWeibo/Info.plist;
@@ -2211,6 +2228,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "dibadalu.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
@@ -2220,6 +2238,8 @@
 			baseConfigurationReference = 1234A713405F0CC10CF274B6 /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/ZJWeibo/ZJWeibo-Prefix.pch";
 				INFOPLIST_FILE = ZJWeibo/Info.plist;
@@ -2227,6 +2247,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "dibadalu.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;

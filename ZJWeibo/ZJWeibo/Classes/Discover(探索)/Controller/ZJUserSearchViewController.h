@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ZJUserSearchViewController : UIViewController
+@interface ZJUserSearchViewController : UITableViewController
 
 @end

@@ -71,7 +71,7 @@
 #pragma mark - action method
 - (void)textDidChange
 {
-    ZJLog(@"textDidChange---%@",self.searchBar.text);
+//    ZJLog(@"textDidChange---%@",self.searchBar.text);
     
     /*
      https://api.weibo.com/2/search/suggestions/users.json get

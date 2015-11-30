@@ -25,7 +25,7 @@
  */
 
 #import <Foundation/Foundation.h>
-@class ZJUser;
+@class ZJUser,ZJGeo;
 
 @interface ZJStatus : NSObject
 
@@ -65,6 +65,9 @@
 
 /** favorited	boolean	是否已收藏，true：是，false：否 */
 @property(nonatomic,assign) BOOL favorited;
+
+/**微博的地理信息字段 */
+@property(nonatomic,strong) ZJGeo *geo;
 
 
 

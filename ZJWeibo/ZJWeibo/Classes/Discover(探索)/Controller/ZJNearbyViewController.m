@@ -11,42 +11,77 @@
 #import "ZJHttpTool.h"
 #import "ZJAccountTool.h"
 #import "ZJAccount.h"
-//#import <MapKit/MapKit.h>
+#import <MapKit/MapKit.h>
+#import "ZJStatusCell.h"
+#import "ZJStatus.h"
+#import "ZJStatusFrame.h"
+#import <MJExtension.h>
+#import "ZJStatusDetailViewController.h"
 
-@interface ZJNearbyViewController ()<CLLocationManagerDelegate>
+@interface ZJNearbyViewController ()<CLLocationManagerDelegate,MKMapViewDelegate>
 
 @property(nonatomic,strong) CLLocationManager *clMgr;//定位管理者对象
 //@property(nonatomic,strong) MKMapView *mapView;//地图控件对象
-//@property(nonatomic,strong) CLGeocoder *gecoder;//地理编码对象
+@property(nonatomic,strong) CLGeocoder *gecoder;//地理编码对象
+
+@property(nonatomic,strong) NSMutableArray *statusFrames;
 
 @end
 
 @implementation ZJNearbyViewController
-//- (CLGeocoder *)gecoder
+- (CLLocationManager *)clMgr
+{
+    if (!_clMgr) {
+        _clMgr = [[CLLocationManager alloc] init];
+        //设置CLLocationManager的代理
+        _clMgr.delegate = self;
+        //设置其他属性
+        _clMgr.desiredAccuracy = kCLLocationAccuracyBest;//精度
+        CLLocationDistance distance = 10.0;
+        _clMgr.distanceFilter = distance;//频率
+
+    }
+    return _clMgr;
+}
+//- (MKMapView *)mapView
 //{
-//    if (!_gecoder) {
-//        _gecoder = [[CLGeocoder alloc] init];
+//    if (!_mapView) {
+//        _mapView = [[MKMapView alloc] init];
+//        _mapView.frame = [UIScreen mainScreen].bounds;
+//        //设置地图控件的属性
+//        _mapView.mapType = MKMapTypeStandard;
+//        _mapView.userTrackingMode = MKUserTrackingModeFollow;
+//        _mapView.rotateEnabled = NO;
+//        _mapView.delegate = self;
 //    }
-//    return _gecoder;
+//    return _mapView;
 //}
+- (CLGeocoder *)gecoder
+{
+    if (!_gecoder) {
+        _gecoder = [[CLGeocoder alloc] init];
+    }
+    return _gecoder;
+}
+- (NSMutableArray *)statusFrames
+{
+    if (!_statusFrames) {
+        _statusFrames = [NSMutableArray array];
+    }
+    return _statusFrames;
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     
     self.title = @"周边";
-    self.view.backgroundColor = [UIColor whiteColor];
-    
+//    self.view = self.mapView;
+   
     //iOS8之后，需要主动获取用户授权
     if ([CLLocationManager authorizationStatus] == kCLAuthorizationStatusNotDetermined) {
-        self.clMgr = [[CLLocationManager alloc] init];
+//        self.clMgr = [[CLLocationManager alloc] init];
         [self.clMgr requestWhenInUseAuthorization];
     }
-    //设置CLLocationManager的代理
-    self.clMgr.delegate = self;
-    //设置其他属性
-    self.clMgr.desiredAccuracy = kCLLocationAccuracyBest;//精度
-    CLLocationDistance distance = 10.0;
-    self.clMgr.distanceFilter = distance;//频率
     //开始定位跟踪
     [self.clMgr startUpdatingLocation];
     
@@ -61,36 +96,132 @@
  */
 -  (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations
 {
-    NSLog(@"didUpdateLocations");
+    NSLog(@"CLLocationManagerDelegate--didUpdateLocations");
     
-    CLLocation *firstLocation = [locations firstObject];
-    CLLocationCoordinate2D coodinate = firstLocation.coordinate;//坐标
-    NSLog(@"经度：%f 纬度：%f",coodinate.longitude,coodinate.latitude);
+    CLLocation *firstLocation = [locations firstObject];//取得第一个位置
+    CLLocationCoordinate2D firstCoodinate = firstLocation.coordinate;
+//    NSLog(@"经度：%f 纬度：%f",coodinate.longitude,coodinate.latitude);
     
-    /*
-     https://api.weibo.com/2/place/nearby_timeline.json
-     
-     get
-     access_token	false	string	采用OAuth授权方式为必填参数，其他授权方式不需要此参数，OAuth授权后获得。
-     lat	true	float	纬度。有效范围：-90.0到+90.0，+表示北纬。
-     long	true	float	经度。有效范围：-180.0到+180.0，+表示东经。
-     */
-    //发送请求——获取某个位置周边的动态
+    //利用地理编码设置导航栏标题的内容
+    [self.gecoder reverseGeocodeLocation:firstLocation completionHandler:^(NSArray *placemarks, NSError *error) {
+        CLPlacemark *placemark = [placemarks firstObject];//取得第一个地标
+        self.title = placemark.thoroughfare;//街道
+    }];
+    
+    //获取某个位置周边的动态
     ZJAccount *account = [ZJAccountTool account];
     NSMutableDictionary *params = [NSMutableDictionary dictionary];
     params[@"access_token"] = account.access_token;
-    params[@"lat"] = @(coodinate.latitude);
-    params[@"long"] = @(coodinate.longitude);
-    
-    
+    params[@"lat"] = @(firstCoodinate.latitude);
+    params[@"long"] = @(firstCoodinate.longitude);
+    params[@"count"] = @20;
+    //发送请求
     [ZJHttpTool get:@"https://api.weibo.com/2/place/nearby_timeline.json" params:params success:^(id json) {
-        ZJLog(@"%@",json);
+//        ZJLog(@"%@",json[@"statuses"]);
+        
+        //字典转模型
+        NSArray *newStatuses = [ZJStatus objectArrayWithKeyValuesArray:json[@"statuses"]];
+        
+        //将ZJStatus转化为ZJStatusFrame
+        NSArray *frames = [self statusFramesWithStatuses:newStatuses];
+        
+        //将最新的微博数据，添加到总数组的最前面(插入)
+        NSRange range = NSMakeRange(0, newStatuses.count);
+        NSIndexSet *set = [NSIndexSet indexSetWithIndexesInRange:range];
+        [self.statusFrames insertObjects:frames atIndexes:set];
+        
+        //刷新表格
+        [self.tableView reloadData];
+
     } failure:^(NSError *error) {
         ZJLog(@"%@",error);
     }];
     
     //停止定位跟踪
     [self.clMgr stopUpdatingLocation];
+}
+
+/**
+ * 将ZJStatus转化为ZJStatusFrame
+ */
+- (NSArray *)statusFramesWithStatuses:(NSArray *)statuses
+{
+    //遍历status数组
+    NSMutableArray *frames = [NSMutableArray array];
+    for (ZJStatus *status in statuses) {
+        ZJStatusFrame *frame = [[ZJStatusFrame alloc] init];
+        frame.status = status;
+        [frames addObject:frame];
+    }
+    return frames;
+}
+
+#pragma mark - MKMapViewDelegate
+/**
+ *  用户位置发生改变时触发（第一次定位到用户位置也会触发该方法）
+ *
+ *  @param mapView      地图控件对象
+ *  @param userLocation 用户位置
+ */
+//- (void)mapView:(MKMapView *)mapView didUpdateUserLocation:(MKUserLocation *)userLocation
+//{
+//    NSLog(@"MKMapViewDelegate--didUpdateLocations");
+//    
+//    //利用地理编码设置大头针的内容
+//    [self.gecoder reverseGeocodeLocation:userLocation.location completionHandler:^(NSArray *placemarks, NSError *error) {
+//        CLPlacemark *placemark = [placemarks firstObject];//取得第一个地标
+//        userLocation.title = placemark.name;
+//        userLocation.subtitle = placemark.locality;
+//    }];
+//
+//    CLLocationCoordinate2D coodinate = userLocation.coordinate;
+//    //设置地图的中心位置
+//    [self.mapView setCenterCoordinate:coodinate animated:YES];
+//
+//    //设置地图显示的区域
+//    CLLocationCoordinate2D center = coodinate;
+//    MKCoordinateSpan span = MKCoordinateSpanMake(0.1, 0.1);
+//    MKCoordinateRegion regin = MKCoordinateRegionMake(center, span);
+//    [self.mapView setRegion:regin animated:YES];
+//}
+
+#pragma mark - UITableViewDataSource
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    
+    return self.statusFrames.count;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    //1.创建cell
+    ZJStatusCell *cell = [ZJStatusCell cellWithTableView:tableView];
+    
+    //2.给cell传模型
+    cell.statusFrame = self.statusFrames[indexPath.row];
+    
+    return cell;
+    
+}
+
+#pragma mark - UITableViewDelegate
+/**
+ *  计算cell的高度
+ */
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    ZJStatusFrame *frame = self.statusFrames[indexPath.row];
+    return frame.cellHeight;
+    
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    //    ZJLog(@"didSelectRowAtIndexPath---%ld",(long)indexPath.row);
+    ZJStatusDetailViewController *detail = [[ZJStatusDetailViewController alloc] init];
+    ZJStatusFrame *frame = self.statusFrames[indexPath.row];
+    detail.status = frame.status;//传微博数据给ZJStatusDetailViewController
+    [self.navigationController pushViewController:detail animated:YES];
 }
 
 @end

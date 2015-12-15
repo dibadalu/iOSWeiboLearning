@@ -136,6 +136,7 @@
     
     ZJUserSuggestion *userSeggestion = self.suggestions[indexPath.row];//取出模型
     cell.textLabel.text = userSeggestion.screen_name;
+    cell.detailTextLabel.text = [NSString stringWithFormat:@"粉丝数量：%@",userSeggestion.followers_count];
     
     return cell;
 }
@@ -144,6 +145,11 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     ZJLog(@"选中了--%d",indexPath.row);
+    
+    ZJUserSuggestion *userSeggestion = self.suggestions[indexPath.row];//取出模型
+
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:userSeggestion.screen_name message:[NSString stringWithFormat:@"粉丝数量：%@",userSeggestion.followers_count] delegate:nil cancelButtonTitle:@"取消" otherButtonTitles:nil];
+    [alert show];
 }
 
 

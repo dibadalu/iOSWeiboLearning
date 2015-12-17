@@ -10,6 +10,9 @@
 #import "ZJCommonItem.h"
 #import "ZJCommonGroup.h"
 #import "ZJCommonArrowItem.h"
+#import "ZJChatViewController.h"
+
+
 
 @interface ZJMessageViewController ()
 
@@ -29,6 +32,13 @@
 #pragma mark - 
 - (void)setupGroups
 {
+    [self setupGroup1];
+    [self setupGroup2];
+
+}
+
+- (void)setupGroup1
+{
     //1.创建组
     ZJCommonGroup *group = [ZJCommonGroup group];
     [self.groups addObject:group];
@@ -38,9 +48,23 @@
     ZJCommonArrowItem *comments = [ZJCommonArrowItem itemWithTitle:@"评论" icon:@"messagescenter_comments"];
     ZJCommonArrowItem *good = [ZJCommonArrowItem itemWithTitle:@"赞" icon:@"messagescenter_good"];
     ZJCommonArrowItem *messagebox = [ZJCommonArrowItem itemWithTitle:@"订阅消息" icon:@"messagescenter_messagebox"];
-
+    
     group.items = @[at,comments,good,messagebox];
+    
 
+}
+
+- (void)setupGroup2
+{
+    //1.创建组
+    ZJCommonGroup *group = [ZJCommonGroup group];
+    [self.groups addObject:group];
+    
+    //2.设置组的所有行
+    ZJCommonItem *contact = [ZJCommonItem itemWithTitle:@"微博客服" icon:@"messagescenter_chat"];
+    contact.destVcClass = [ZJChatViewController class];
+    
+    group.items = @[contact];
 }
 
 #pragma mark - Table view data source

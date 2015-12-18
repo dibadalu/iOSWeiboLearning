@@ -336,6 +336,7 @@
 		54A911B01BE8AF1E00B9720D /* ZJCommonGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = 54A911AF1BE8AF1E00B9720D /* ZJCommonGroup.m */; };
 		54A911B61BE8B05200B9720D /* ZJCommonItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 54A911B51BE8B05200B9720D /* ZJCommonItem.m */; };
 		54B50BC41C2054F800889343 /* ZJChatViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 54B50BC31C2054F800889343 /* ZJChatViewController.m */; };
+		54BCA7D31C23BB63005502E2 /* autoReplay.plist in Resources */ = {isa = PBXBuildFile; fileRef = 54BCA7D21C23BB63005502E2 /* autoReplay.plist */; };
 		54C2201A1BD5267100BE0ED0 /* UIBarButtonItem+ZJExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 54C220191BD5267100BE0ED0 /* UIBarButtonItem+ZJExtension.m */; };
 		54C220201BD52B0400BE0ED0 /* UIView+ZJExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 54C2201F1BD52B0400BE0ED0 /* UIView+ZJExtension.m */; };
 		54C220261BD52D5F00BE0ED0 /* ZJOAuthViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 54C220251BD52D5F00BE0ED0 /* ZJOAuthViewController.m */; };
@@ -783,6 +784,7 @@
 		54A911B51BE8B05200B9720D /* ZJCommonItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZJCommonItem.m; sourceTree = "<group>"; };
 		54B50BC21C2054F800889343 /* ZJChatViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZJChatViewController.h; sourceTree = "<group>"; };
 		54B50BC31C2054F800889343 /* ZJChatViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZJChatViewController.m; sourceTree = "<group>"; };
+		54BCA7D21C23BB63005502E2 /* autoReplay.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = autoReplay.plist; sourceTree = "<group>"; };
 		54C220181BD5267100BE0ED0 /* UIBarButtonItem+ZJExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIBarButtonItem+ZJExtension.h"; sourceTree = "<group>"; };
 		54C220191BD5267100BE0ED0 /* UIBarButtonItem+ZJExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIBarButtonItem+ZJExtension.m"; sourceTree = "<group>"; };
 		54C2201E1BD52B0400BE0ED0 /* UIView+ZJExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+ZJExtension.h"; sourceTree = "<group>"; };
@@ -1104,6 +1106,7 @@
 		5421DAA71BD4CED400B82561 /* Message(消息) */ = {
 			isa = PBXGroup;
 			children = (
+				54BCA7D21C23BB63005502E2 /* autoReplay.plist */,
 				549E0A9D1C22AF7E00B5AADB /* messages.plist */,
 				549E0AAA1C22B38300B5AADB /* Model */,
 				549E0A9F1C22B02D00B5AADB /* View */,
@@ -1971,6 +1974,7 @@
 				547AF20E1BDDDC93008A949B /* lxh_haoaio.png in Resources */,
 				547AF23F1BDDDC93008A949B /* lxh_qiubite.gif in Resources */,
 				547AF1DA1BDDDC93008A949B /* d_youhengheng@2x.png in Resources */,
+				54BCA7D31C23BB63005502E2 /* autoReplay.plist in Resources */,
 				547AF1CE1BDDDC93008A949B /* d_taikaixin@2x.png in Resources */,
 				547AF1B01BDDDC93008A949B /* d_feizao@2x.png in Resources */,
 				547AF23C1BDDDC93008A949B /* lxh_qiaoqiao.gif in Resources */,

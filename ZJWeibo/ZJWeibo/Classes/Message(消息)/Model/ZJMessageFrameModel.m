@@ -57,7 +57,7 @@
     //设置正文的size
     CGSize contentMaxSize = CGSizeMake(150, MAXFLOAT);
     CGSize contentRealSize = [messageModel.text boundingRectWithSize:contentMaxSize options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName:ZJMessageContentFont} context:nil].size;
-    CGSize btnSize = CGSizeMake(contentRealSize.width + 40, contentRealSize.height + 40);
+    CGSize btnSize = CGSizeMake(contentRealSize.width + 40, contentRealSize.height + 30);
     if (messageModel.type == ZJMessageModelTypeMe) {//自己发的
         contentX = ZJScreenW - padding * 2 - iconW - btnSize.width;
         

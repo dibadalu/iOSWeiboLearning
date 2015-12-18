@@ -68,7 +68,7 @@
     contentBtn.titleLabel.font = ZJMessageContentFont;
     [contentBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
     contentBtn.titleLabel.numberOfLines = 0;//换行
-    contentBtn.contentEdgeInsets = UIEdgeInsetsMake(20, 20, 20, 20);
+    contentBtn.contentEdgeInsets = UIEdgeInsetsMake(10, 20, 20, 20);
     [self.contentView addSubview:contentBtn];
     self.contentBtn = contentBtn;
     

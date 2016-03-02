@@ -174,6 +174,7 @@
     //dismiss
     [self dismissViewControllerAnimated:YES completion:nil];
 }
+
 - (void)sendWithoutImage
 {
     /*
@@ -200,6 +201,7 @@
     }];
   
 }
+
 - (void)sendWithImage
 {
     /*
@@ -272,8 +274,8 @@
     //执行动画
     [UIView animateWithDuration:duration animations:^{
         self.toolBar.y = frame.origin.y - self.toolBar.height;
+        
     }];
-    
 }
 - (void)emotionDidSelect:(NSNotification *)notification
 {
@@ -302,8 +304,8 @@
     switch (buttonType) {
         case ZJComposeToolbarButtonTypeCamera://相机
             ZJLog(@"相机");
-//            [self openCamera];//需要真机调试
             
+//            [self openCamera];//需要真机调试
             break;
         case ZJComposeToolbarButtonTypePicture://相册
 //            ZJLog(@"相册");
@@ -407,23 +409,4 @@
 
 @end
 
-/**
- UITextField：
- 1.文字永远是一行，不能显示多行文字
- 2.有placeHolder属性设置占位文字
- 3.继承自UIControl
- 4.监听行为：
- 1>设置代理
- 2>addTarget:action:forControlEvents:
- 3>通知:UITextFieldTextDidChangeNotification
- 
- 
- UITextView：
- 1.可以显示任意行文字
- 2.不能设置占位文字
- 3.继承自UIScollView
- 4.监听行为：
- 1>设置代理
- 2>通知：UITextViewTextDidChangeNotification
- 
- */
+

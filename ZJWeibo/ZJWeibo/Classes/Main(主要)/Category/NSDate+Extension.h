@@ -1,6 +1,6 @@
 //
 //  NSDate+Extension.h
-//  黑马微博2期
+//  ZJWeibo
 //
 //  Created by apple on 14-10-18.
 //  Copyright (c) 2014年 heima. All rights reserved.

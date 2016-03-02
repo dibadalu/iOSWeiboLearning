@@ -188,7 +188,7 @@
     [self.view endEditing:YES];
 }
 
-#pragma mark - UITextViewDelegate
+#pragma mark - UITextViewDelegate 文本输入框
 - (void)textViewDidChange:(UITextView *)textView{
     
 //    ZJLog(@"%@",textView.text);

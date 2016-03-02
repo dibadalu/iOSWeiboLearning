@@ -1,6 +1,6 @@
 //
 //  NSString+Extension.m
-//  HM微博01
+//  ZJWeibo
 //
 //  Created by dibadalu on 15/9/14.
 //  Copyright (c) 2015年 dibadalu. All rights reserved.

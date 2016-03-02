@@ -1,7 +1,7 @@
 # iOSWeiboLearning
 weibo学习
 
-使用cocoapods。在编译项目需要对项目进行pod install。
+使用cocoapods。在编译项目前需要对项目进行pod install。
 
 微博类练习作品。这是我在自学iOS的过程中做得比较完整的项目。
 1.授权模块：QAuth新浪账号授权；
